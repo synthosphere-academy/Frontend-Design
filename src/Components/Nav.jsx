@@ -13,13 +13,13 @@ function Nav() {
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mb-2 mb-lg-0 mx-auto">
-        <li className="nav-item pe-4 ">
+        <li className="nav-item pe-2 ">
           <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
         </li>
-        <li className="nav-item pe-4">
+        <li className="nav-item pe-2">
           <a className="nav-link text-white" href="#">Courses</a>
         </li>
-        <li className="nav-item pe-4">
+        <li className="nav-item pe-2">
           <a className="nav-link text-white" href="#">
            Article
           </a>
@@ -30,7 +30,7 @@ function Nav() {
             <li><a className="dropdown-item" href="#">Something else here</a></li>
           </ul> */}
         </li>
-        <li className="nav-item pe-4">
+        <li className="nav-item pe-2">
           <a className="nav-link text-white">Contact</a>
         </li>
       </ul>
