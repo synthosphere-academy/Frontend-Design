@@ -4,7 +4,7 @@ import icon1 from '../Images/icon1.png';
 function Features() {
     return (
         <>
-            <div style={{ backgroundColor: "#fbf9f5" }}>
+            <div >
                 <div className="container py-5">
                     <h1 className="display-4 text-center fw-bold">
                         Our Special Features For You

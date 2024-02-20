@@ -2,7 +2,7 @@ import '../Css/Mostpopularcourse.css'
 function Mostpopularcourse() {
   return (
     <>
-      <div>
+      <div >
         <div className="container">
           <h2 className='display-4 text-center fw-bold'>Most Popular Courses</h2>
           <main className="grid">

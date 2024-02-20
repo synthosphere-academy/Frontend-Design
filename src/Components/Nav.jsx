@@ -1,8 +1,12 @@
 
 import logo from '../Images/academy.png'
 import '../Css/Nav.css'
-
+import { Link } from 'react-router-dom';
 function Nav() {
+ 
+
+ 
+  
     return (
         <>
           <nav className="navbar navbar-expand-lg" style={{backgroundColor:"#5c0e47"}}>
@@ -14,7 +18,7 @@ function Nav() {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mb-2 mb-lg-0 mx-auto">
         <li className="nav-item pe-2 ">
-          <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
+          <a className="nav-link active text-white" aria-current="page" href="/">Home</a>
         </li>
         <li className="nav-item pe-2">
           <a className="nav-link text-white" href="#">Courses</a>
@@ -38,7 +42,8 @@ function Nav() {
       <i className="fa fa-shopping-cart cart" style={{fontSize:"30px"}}></i>
       </span>
       <span>
-      <button className="btn btn btn-success" type="submit">Login</button>
+       <Link to="/login"><button className="btn btn btn-success" type="submit" >Login</button></Link>
+      
       </span>
       {/* <form className="d-flex ml-2" role="search">
         <i className="fa fa-shopping-cart" style={{fontSize:"30px"}}></i>

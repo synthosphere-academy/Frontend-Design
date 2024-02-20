@@ -1,22 +1,22 @@
-import Nav from "./Components/Nav" 
-import Banner from "./Components/Banner"
-import Features from './Components/Features'
-import Steps from './Components/Steps'
-import Footer from "./Components/Footer"
-import Mostpopularcourse from "./Components/Mostpopularcourse"
-import Ourteam from './Components/Ourteam';
+import Homepage from './Components/Homepage'
+import Login from './Components/Login'
+import Nav from './Components/Nav';
+
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
 
 
   return (
     <>
+      <Router>
       <Nav/>
-      <Banner/>
-      <Features/>
-      <Steps/>
-      <Mostpopularcourse/>
-      <Ourteam/>
-      <Footer/>
+        <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+      
 
       
     </>

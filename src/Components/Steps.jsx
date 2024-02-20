@@ -5,7 +5,7 @@ import icon3 from '../Images/IconsStep4.png'
 function Steps() {
     return (
         <>
-            <div className="container py-5">
+            <div className="container py-1"  style={{ backgroundColor: "rgb(255,255,255)" }}>
                 <h1 className="display-4 fw-bold ">
                     Learning Steps For You</h1>
                 <div className="row py-4">
