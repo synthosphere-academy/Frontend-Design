@@ -37,7 +37,7 @@ function Nav() {
           <a className="nav-link text-white" href="#">Courses</a>
         </li> */}
         <li className="nav-item pe-2">
-          <a className="nav-link text-white" href="#">
+          <a className="nav-link text-white" href="/blog">
            Article
           </a>
           </li>

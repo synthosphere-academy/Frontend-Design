@@ -42,7 +42,7 @@ function Login() {
                     <button className="btn btn-lg btn-success w-50 " type="button">Login</button>
                   </div>
                   <div className="d-flex">
-                  <a className=" text-white" href="#!">Forgot password?</a>
+                  <a className=" text-white" href="">Forgot password?</a>
                   <span className="mb-5 pb-lg-2 text-white register_text" >Do not have an account? <a className="reg" href="/register"
                       >Register here</a></span>
                   </div>

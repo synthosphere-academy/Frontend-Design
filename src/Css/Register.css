@@ -5,3 +5,6 @@
 input:hover{
     cursor:url(./src/Images/penfinal.png), auto;
 }
+.img-fluid{
+    height:"auto"
+}

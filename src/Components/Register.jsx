@@ -64,7 +64,7 @@ function Register() {
 
                                                 </div>
                                         </div>
-                                        <div className="col-md-6 col-lg-5 d-md-block mt-5">
+                                        <div className="col-md-6 col-lg-5 d-md-block mt-5 text-center">
                                             <img src={pic}
                                                 alt="loginform" className="img-fluid" width="50%" height="110%" />
                                         </div>

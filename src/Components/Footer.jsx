@@ -4,7 +4,7 @@ import logo from '../Images/academy.png'
 function Footer() {
     return (
         <>
-            <div style={{backgroundColor:"#5c0e47"}}>
+            <div id="footerbackground">
                 <div className="container">
                     <div className="row py-4">
                         <div className="col-lg-6">
@@ -15,7 +15,7 @@ function Footer() {
                             <li className='pe-4'>Courses</li>
                             <li className='pe-4'>Privacy policy</li>
                         </ul>
-                       <br/> <span className='text-white ' style={{marginLeft:"3%"}}>Copyright Synthosphere team © 2024. All rights reserved.</span>
+                       <br/> <span className='text-white'>Copyright Synthosphere team © 2024. All rights reserved.</span>
 
 
                         </div>
