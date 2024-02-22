@@ -1,0 +1,7 @@
+.input{
+    margin-left: 3%;
+    cursor:url(./src/Images/penfinal.png), auto;
+}
+input:hover{
+    cursor:url(./src/Images/penfinal.png), auto;
+}

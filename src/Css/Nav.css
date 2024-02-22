@@ -7,3 +7,20 @@ a{
 .navbar{
     box-shadow: none;
 }
+.navbar-brand{
+    cursor:url(./src/Images/penfinal.png), auto;
+}
+.navbar-toggler-icon{
+    
+    
+    background-image: url(../Images/navbar.png);
+}
+#loginbutton:hover{
+    cursor: url(../Images/penfinal.png), auto;
+}
+.dropdown-item{
+    cursor: url(../Images/penfinal.png), auto;
+}
+.nav-link:hover{
+    cursor: url(../Images/penfinal.png), auto;
+}

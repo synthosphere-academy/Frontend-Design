@@ -1,0 +1,17 @@
+.heading{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: black;
+}
+.touch{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-weight: 700;
+}
+.background{
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+.contactcard{
+    box-shadow: none;
+}
