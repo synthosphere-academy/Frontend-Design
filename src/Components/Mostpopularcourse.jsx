@@ -4,8 +4,147 @@ function Mostpopularcourse() {
     <>
       <div >
         <div className="container">
-          <h2 className='display-4 text-center fw-bold'>Most Popular Courses</h2>
-          <main className="grid">
+          <h2 className='display-4 text-center fw-bold '>Most Popular Courses</h2>
+          <div className="container mt-5 mb-5">
+            <div className="row row-cols-1 row-cols-md-3 ">
+              <div className="col">
+                <div className="card">
+                  <img className="card-img-top" src="https://www.shutterstock.com/image-photo/golden-coins-bitcoin-logo-rise-600nw-2052110753.jpg" alt="Sample photo" />
+                  <div className="card-body">
+                    <h5>The Complete Cryptocurrency Investment Course</h5>
+                    <p>Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!</p>
+                    <div>
+                      <span className='fw-bold'>4.5</span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star"></span>
+                    </div>
+
+                    <span className='fw-bold'>₹899</span>
+                    <label className='text-decoration-line-through'>₹1899</label>
+                    <div><a href="#" className="btn btn-primary btn-block">buy now</a></div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card">
+                  <img className="card-img-top" src="https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg" alt="Sample photo" />
+                  <div className="card-body">
+                    <h5>Music Course</h5>
+                    <p>Expand your music composition skills through learning universal music theory principles, mindset, and ear training.</p>
+                    <div>
+                      <span className='fw-bold'>4</span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star"></span>
+                    </div>
+
+                    <span className='fw-bold'>₹799</span>
+                    <label className='text-decoration-line-through'>₹999</label>
+                    <div><a href="#" className="btn btn-primary btn-block">buy now</a></div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card">
+                  <img className="card-img-top" src="https://cdn.eduonix.com/assets/images/header_img/2020091906114212289.jpg" alt="Sample photo" />
+                  <div className="card-body">
+                    <h5>The Complete Stock market course</h5>
+                    <p>Master Stock Market Investing & Trading in the Stock Market.Apply best practices and techniques to make better stock choices.Invest & Trade!</p>
+                    <div>
+                      <span className='fw-bold'>4</span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star"></span>
+                    </div>
+
+                    <span className='fw-bold'>₹799</span>
+                    <label className='text-decoration-line-through'>₹999</label>
+                    <div><a href="#" className="btn btn-primary btn-block">buy now</a></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div className="row row-cols-1 row-cols-md-3 mt-3 ">
+              <div className="col">
+                <div className="card">
+                <img className="card-img-top" src="https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg" alt="Sample photo" />
+             
+                   <div className="card-body">
+                   <h5>Music Course</h5>
+                <p>Expand your music composition skills through learning universal music theory principles, mindset, and ear training.</p>
+                <div>
+                  <span className='fw-bold'>4</span>
+                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star checked"></span>
+                  <span className="fa fa-star"></span>
+                </div>
+
+                <span className='fw-bold'>₹799</span>
+                <label className='text-decoration-line-through'>₹999</label>
+                <div><a href="#" className="btn btn-primary btn-block">buy now</a></div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card">
+                  <img className="card-img-top" src="https://www.shutterstock.com/image-photo/golden-coins-bitcoin-logo-rise-600nw-2052110753.jpg" alt="Sample photo" />
+                  <div className="card-body">
+                    <h5>The Complete Cryptocurrency Investment Course</h5>
+                    <p>Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!</p>
+                    <div>
+                      <span className='fw-bold'>4.5</span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star"></span>
+                    </div>
+
+                    <span className='fw-bold'>₹899</span>
+                    <label className='text-decoration-line-through'>₹1899</label>
+                    <div><a href="#" className="btn btn-primary btn-block">buy now</a></div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card">
+                  <img className="card-img-top" src="https://www.shutterstock.com/image-photo/golden-coins-bitcoin-logo-rise-600nw-2052110753.jpg" alt="Sample photo" />
+                  <div className="card-body">
+                    <h5>The Complete Cryptocurrency Investment Course</h5>
+                    <p>Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!</p>
+                    <div>
+                      <span className='fw-bold'>4.5</span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star checked"></span>
+                      <span className="fa fa-star"></span>
+                    </div>
+
+                    <span className='fw-bold'>₹899</span>
+                    <label className='text-decoration-line-through'>₹1899</label>
+                    <div><a href="#" className="btn btn-primary btn-block">buy now</a></div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+          {/* <main className="grid">
             <article className='cardbody'>
               <img src="https://www.shutterstock.com/image-photo/golden-coins-bitcoin-logo-rise-600nw-2052110753.jpg" alt="Sample photo" />
               <div className="text">
@@ -158,7 +297,7 @@ function Mostpopularcourse() {
                 <div><a href="#" className="btn btn-primary btn-block">buy now</a></div>
               </div>
             </article>
-          </main>
+          </main> */}
         </div>
       </div>
 

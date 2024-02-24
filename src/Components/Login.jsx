@@ -1,4 +1,4 @@
-import Footer from "./Footer"
+
 import pic from '../Images/login1.jpg'
 import '../Css/Login.css'
 
@@ -56,7 +56,7 @@ function Login() {
     </div>
   </div>
 </section>
-      <Footer/>
+      
       </>
    
   )

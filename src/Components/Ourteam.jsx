@@ -43,7 +43,7 @@ function Ourteam() {
                         </p>
 
                     </article>
-                    <article className='grid-body text-center'>
+                    {/* <article className='grid-body text-center'>
                         <img className="rounded-circle shadow-1-strong mb-4"
                             src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(6).webp" alt="avatar"
                             style={{ width: "44%" }} />
@@ -54,7 +54,7 @@ function Ourteam() {
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id
                             officiis hic tenetur quae quaerat ad velit ab hic tenetur.
                         </p>
-                    </article>
+                    </article> */}
                 </main>
 
             </div>

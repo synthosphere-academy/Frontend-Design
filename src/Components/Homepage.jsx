@@ -2,7 +2,7 @@
 import Banner from "./Banner"
 import Features from './Features'
 import Steps from './Steps'
-import Footer from "./Footer"
+// import Footer from "./Footer"
 import Mostpopularcourse from "./Mostpopularcourse"
 import Ourteam from './Ourteam';
 import Chooseus from './Chooseus'
@@ -18,7 +18,7 @@ function Homepage() {
       <Mostpopularcourse/>
       <Chooseus/>
       <Ourteam/>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   )
 }

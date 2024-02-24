@@ -4,6 +4,7 @@ import Nav from './Components/Nav';
 import Register from './Components/Register'
 import Contact from './Components/Contact'
 import Blog from './Components/Blog';
+import Footer from "./Components/Footer"
 import './App.css'
 
 
@@ -24,6 +25,7 @@ function App() {
        
         
         </Routes>
+        <Footer />
       </Router>
       
 

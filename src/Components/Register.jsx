@@ -1,4 +1,4 @@
-import Footer from "./Footer"
+
 import '../Css/Register.css'
 
 import pic from '../Images/reg.png'
@@ -74,7 +74,7 @@ function Register() {
                         </div>
                     </div>
             </section>
-            <Footer />
+           
         </>
     )
 }

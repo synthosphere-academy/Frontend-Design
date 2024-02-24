@@ -15,9 +15,7 @@ function Footer() {
                             <li className='pe-4'>Courses</li>
                             <li className='pe-4'>Privacy policy</li>
                         </ul>
-                       <br/> <span className='text-white'>Copyright Synthosphere team © 2024. All rights reserved.</span>
-
-
+                        
                         </div>
                         <div className="col-lg-6 me-auto">
                             <div className='float-lg-end'>
@@ -28,6 +26,9 @@ function Footer() {
                             </div>
                         </div>
 
+                    </div>
+                    <div className='row'>
+                        <div className='col-lg-12 text-center'><span className='text-white'>Copyright Synthosphere team © 2024. All rights reserved.</span></div>
                     </div>
                     </div>
                 </div>
