@@ -5,6 +5,8 @@ import Register from './Components/Register'
 import Contact from './Components/Contact'
 import Blog from './Components/Blog';
 import Footer from "./Components/Footer"
+import Forgotpage from "./Components/Forgotpage"
+import Courses from './Components/Courses'
 import './App.css'
 
 
@@ -22,9 +24,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog/>} />
-       
-        
-        </Routes>
+        <Route path='/forgotpassword' element={<Forgotpage/>}/>
+        <Route path='/course' element={<Courses/>}/>
+       </Routes>
         <Footer />
       </Router>
       

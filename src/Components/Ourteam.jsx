@@ -1,60 +1,59 @@
 import '../Css/Ourteam.css'
 function Ourteam() {
+    const ourteamInfo = [
+        {
+            image:["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"],
+            team_member:"Anna Deynah",
+            team_member_role:"UX Designer",
+            team_member_description: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur."
+
+        },
+        {
+        image:["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"],
+        team_member:"Sourav",
+        team_member_role:"Trainer",
+        team_member_description: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur."
+        },
+        {
+            image:["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
+            team_member:"Maria Kate",
+            team_member_role:"Photographer",
+            team_member_description: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur."
+    
+        },
+        {
+            image:["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
+            team_member:"Maria Kate",
+            team_member_role:"Photographer",
+            team_member_description: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur."
+
+        },
+       
+    ];
+     const renderteam=(card,index)=>{
+        return(
+            <article className='grid-body text-center' key={index}>
+                <img className="rounded-circle shadow-1-strong mb-4"
+                            src={card.image} alt="avatar"
+                            style={{ width: "44%" }} />
+                             <h5 className="mb-3">{card.team_member}</h5>
+                        <p >
+                            {card.team_member_role}
+                        </p>
+                        <p className="text-muted">
+                            <i className="fa fa-quote-left pe-2"></i>
+                            {card.team_member_description}
+                        </p>
+                </article>  
+        )
+     }
     return (
         <div>
             <div className="container py-2">
                 <h2 className='display-4 text-center fw-bold'>Our team is the best in the business</h2>
                 <main className="grid team">
-                    <article className='grid-body text-center'>
-                        <img className="rounded-circle shadow-1-strong mb-4"
-                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" alt="avatar"
-                            style={{ width: "44%" }} />
-                        <h5 className="mb-3">Anna Deynah</h5>
-                        <p >UX Designer</p>
-                        <p className="text-muted">
-                            <i className="fa fa-quote-left pe-2"></i>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id
-                            officiis hic tenetur quae quaerat ad velit ab hic tenetur.
-                        </p>
-                    </article>
-                    <article className='grid-body text-center'>
-                        <img className="rounded-circle shadow-1-strong mb-4"
-                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar"
-                            style={{ width: "44%" }} />
-                        <h5 className="mb-3">Anna Deynah</h5>
-                        <p >UX Designer</p>
-                        <p className="text-muted">
-                            <i className="fa fa-quote-left pe-2"></i>
-                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-                            suscipit laboriosam, nisi ut aliquid commodi.
-                        </p>
-
-                    </article>
-                    <article className='grid-body text-center'>
-                        <img className="rounded-circle shadow-1-strong mb-4"
-                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar"
-                            style={{ width: "44%" }} />
-                        <h5 className="mb-3">Maria Kate</h5>
-                        <p>Photographer</p>
-                        <p className="text-muted">
-                            <i className="fa fa-quote-left pe-2"></i>
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                            praesentium voluptatum deleniti atque corrupti.
-                        </p>
-
-                    </article>
-                    {/* <article className='grid-body text-center'>
-                        <img className="rounded-circle shadow-1-strong mb-4"
-                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(6).webp" alt="avatar"
-                            style={{ width: "44%" }} />
-                        <h5 className="mb-3">Anna Deynah</h5>
-                        <p>UX Designer</p>
-                        <p className="text-muted">
-                            <i className="fa fa-quote-left pe-2"></i>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id
-                            officiis hic tenetur quae quaerat ad velit ab hic tenetur.
-                        </p>
-                    </article> */}
+                 {ourteamInfo.map(renderteam)}
+   
                 </main>
 
             </div>

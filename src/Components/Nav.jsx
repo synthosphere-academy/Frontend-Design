@@ -25,17 +25,12 @@ function Nav() {
            Categories
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a className="dropdown-item" href="/course">All</a></li>
             <li><a className="dropdown-item" href="#">Blockchain</a></li>
             <li><a className="dropdown-item" href="#">Python</a></li>
             <li><a className="dropdown-item" href="#">Music</a></li>
           </ul>
-        </li>
-       
-
-       
-        {/* <li className="nav-item pe-2">
-          <a className="nav-link text-white" href="#">Courses</a>
-        </li> */}
+        </li>        
         <li className="nav-item pe-2">
           <a className="nav-link text-white" href="/blog">
            Article
