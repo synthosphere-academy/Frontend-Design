@@ -1,0 +1,8 @@
+*{
+   
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor:url('./Images/penfinal.png'), auto;
+}
+* :hover{
+    cursor:url('./Images/penfinal.png'), auto;
+}

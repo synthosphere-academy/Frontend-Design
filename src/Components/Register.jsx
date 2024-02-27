@@ -64,9 +64,10 @@ function Register() {
 
                                                 </div>
                                         </div>
-                                        <div className="col-md-6 col-lg-5 d-md-block mt-5 text-center">
+                                        <div className="col-md-6 col-lg-5 d-flex justify-content-center mt-5">
+                                            
                                             <img src={pic}
-                                                alt="loginform" className="img-fluid" width="50%" height="110%" />
+                                                alt="loginform" className="img-fluid" width="50%" height="auto" />
                                         </div>
                                     </div>
                                 </div>

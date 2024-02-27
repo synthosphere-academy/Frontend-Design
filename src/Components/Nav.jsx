@@ -49,7 +49,8 @@ function Nav() {
         </li>
       </ul>
       <span className="navbar-text pe-4" >
-      <i className="fa fa-shopping-cart cart" style={{fontSize:"30px"}}></i>
+        <a href='/addtocart'>
+      <i className="fa fa-shopping-cart cart" style={{fontSize:"30px"}}></i></a>
       </span>
       <span>
        <Link to="/login"><button className="btn btn btn-success" id='loginbutton' type="submit" >Login</button></Link>

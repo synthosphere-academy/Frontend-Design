@@ -4,6 +4,7 @@ import logo from '../Images/academy.png'
 function Footer() {
     return (
         <>
+        
             <div id="footerbackground">
                 <div className="container">
                     <div className="row py-4">
@@ -33,7 +34,7 @@ function Footer() {
                     </div>
                 </div>
 
-           
+                
         </>
     )
 }

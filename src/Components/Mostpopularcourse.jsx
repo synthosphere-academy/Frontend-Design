@@ -12,7 +12,7 @@ function Mostpopularcourse() {
     {
       image:["https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg"],
       coursename:"Music Course",
-      coursedetails:"Expand your music composition skills through learning universal music theory principles, mindset, and ear training.",
+      coursedetails:"Expand your music composition skills through learning universal music theory principles, mindset, and ear training.You will learn  basic essential techniques that will allow you to play any song in any style!",
       coursereview:"4",
       course_currentprice:"₹799",
       course_price:"₹999"
@@ -21,6 +21,14 @@ function Mostpopularcourse() {
     image:["https://cdn.eduonix.com/assets/images/header_img/2020091906114212289.jpg"],
       coursename:"The Complete Stock market course",
       coursedetails:"Master Stock Market Investing & Trading in the Stock Market.Apply best practices and techniques to make better stock choices.Invest & Trade!",
+      coursereview:"4",
+      course_currentprice:"₹799",
+      course_price:"₹999"
+    },
+    {
+      image:["https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg"],
+      coursename:"Music Course",
+      coursedetails:"Expand your music composition skills through learning universal music theory principles, mindset, and ear training.You will learn  basic essential techniques that will allow you to play any song in any style!",
       coursereview:"4",
       course_currentprice:"₹799",
       course_price:"₹999"
