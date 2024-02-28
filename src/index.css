@@ -1,8 +1,9 @@
 *{
    
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    cursor:url('./Images/penfinal.png'), auto;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    cursor:url('./Images/pen2.png'), auto;
 }
 * :hover{
-    cursor:url('./Images/penfinal.png'), auto;
+    cursor:url('./Images/pen2.png'), auto;
 }

@@ -24,12 +24,12 @@ function Register() {
                                                 <h5 className="fw-normal mb-3 pb-3 text-white">Register Here</h5>
                                                 <div className="form-group  mb-4">
                                                     <label className="text-white" htmlFor="exampleInputEmail1">Name</label>
-                                                    <input type="text" className="form-control form-control-lg" id="name" name="name" placeholder="Enter Your email" />
+                                                    <input type="text" className="form-control form-control-lg" id="name" name="name" placeholder="Enter Your Name" />
                                                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                                                 </div>
                                                 <div className="form-group  mb-4">
                                                     <label className="text-white" htmlFor="exampleInputEmail1">Phone Number</label>
-                                                    <input type="email" className="form-control form-control-lg" id="phono" placeholder="Enter Your email" />
+                                                    <input type="email" className="form-control form-control-lg" id="phono" placeholder="Enter Your Phone Number" />
                                                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                                                 </div>
                                                 <div className="form-group mb-4">
