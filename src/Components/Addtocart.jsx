@@ -89,24 +89,24 @@ function Addtocart() {
                             </div>
                             <div className='bg-white  ms-2 mt-4 p-4'>
                                 <form>
-                                    <div className="search">
+                                    <div className="search inputfield" >
                                         <i className="fa fa-envelope position-absolute mt-4 ms-3 "></i>
                                         <input type="text" className="form-control inputstyle" placeholder="Email" />
                                     </div>
-                                    <div className="search mt-3">
+                                    <div className="search mt-3 inputfield">
                                         <i className="fa fa-lock position-absolute mt-4 ms-3 "></i>
                                         <input type="text" className="form-control  inputstyle" placeholder="Password" />
                                     </div>
-                                    <div className="search mt-3">
+                                    <div className="search mt-3 inputfield">
                                         <i className="fa fa-credit-card position-absolute mt-4 ms-3 "></i>
                                         <input type="text" className="form-control  inputstyle" placeholder="Card Number" />
                                     </div>
                                     <div className="d-flex">
-                                        <div className="search" >
+                                        <div className="search inputfield" >
                                         <i className="fa fa-calendar position-absolute mt-4 ms-3 "></i>
                                             <input type="text" className="form-control inputstyle" placeholder="MM/YY" aria-label="First name"/>
                                         </div>
-                                        <div className="search">
+                                        <div className="search inputfield">
                                         <i className="fa fa-lock position-absolute mt-4 ms-3 "></i>
                                             <input type="text" className="form-control inputstyle" placeholder="CVC" aria-label="Last name"/>
                                         </div>

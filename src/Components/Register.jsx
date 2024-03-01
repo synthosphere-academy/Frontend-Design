@@ -57,7 +57,7 @@ function Register() {
 
                                                         
 
-                                                            <span className="mb-5 pb-lg-2 text-white register_text" >Have an account? <a className="reg" href="/login"
+                                                            <span className="mb-5 pb-lg-2 text-white register_text" >Have an account? <a className="reg text-success" href="/login"
                                                             >Login</a></span>
                                                         
                                                     </form>

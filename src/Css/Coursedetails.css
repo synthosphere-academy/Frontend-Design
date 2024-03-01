@@ -1,0 +1,11 @@
+#buybutton{
+    color: rgb(6, 128, 6);
+    border-color: rgb(6, 128, 6);
+}
+#cartpart{
+    background-color: rgb(238, 233, 233);
+}
+.couponbutton{
+    box-shadow: none;
+    
+}

@@ -90,8 +90,8 @@ function Contact() {
                   <h5 className="card-title text-center">Socials</h5>
                   <h6 className="card-text text-center">
                     <img src={face}/>
-                    <img src={twitter}/>
-                    <img src={link}/>
+                    <img className='ms-2' src={twitter}/>
+                    <img  className='ms-2'src={link}/>
                   </h6>
                   
                 </div>

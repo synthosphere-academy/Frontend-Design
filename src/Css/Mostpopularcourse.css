@@ -31,3 +31,7 @@
   .checked{
     color:rgb(239, 239, 15);
     }
+ 
+    button{
+      cursor:url('./Images/pen2.png'), auto;
+  }

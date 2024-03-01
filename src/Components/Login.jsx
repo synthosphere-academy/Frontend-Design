@@ -42,8 +42,8 @@ function Login() {
                     <button className="btn btn-lg btn-success w-50 " type="button">Login</button>
                   </div>
                   <div className="d-flex">
-                  <a  href="/forgotpassword">Forgot password?</a>
-                  <span className="mb-5 pb-lg-2 text-white register_text" >Do not have an account? <a className="reg" href="/register"
+                  <a className='text-success' href="/forgotpassword">Forgot password?</a>
+                  <span className="mb-5 pb-lg-2 text-white register_text" >Do not have an account? <a className="reg text-success" href="/register"
                       >Register here</a></span>
                   </div>
                 </form>

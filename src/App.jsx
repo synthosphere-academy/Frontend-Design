@@ -8,6 +8,7 @@ import Footer from "./Components/Footer"
 import Forgotpage from "./Components/Forgotpage"
 import Courses from './Components/Courses'
 import Addtocart from './Components/Addtocart'
+import Coursedetails from './Components/Coursedetails'
 import './App.css'
 
 
@@ -28,6 +29,7 @@ function App() {
         <Route path='/forgotpassword' element={<Forgotpage/>}/>
         <Route path='/course' element={<Courses/>}/>
         <Route path='/addtocart' element={<Addtocart/>}/>
+        <Route path='/coursedetails' element={<Coursedetails/>}/>
        </Routes>
         <Footer />
       </Router>

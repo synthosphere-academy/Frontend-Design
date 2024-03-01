@@ -12,7 +12,7 @@ function Banner() {
                             <span className='para'>An academy is a fancy school, often one devoted to one subject or discipline, such as music or science. You can also use academy to describe the world of higher learning.</span><br /><br />
                             <div className="search ">
                                 <i className="fa fa-search mt-1"></i>
-                                <input type="text" className="form-control " placeholder="Have a question? Ask Now" />
+                                <input type="text" className="form-control " placeholder="Have any question ?" />
                                 <button className="btn btn-success">Search</button>
                             </div>
                         </div>

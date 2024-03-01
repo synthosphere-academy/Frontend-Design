@@ -3,7 +3,7 @@
     color: #5c0e47;
 }
 .payment{
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(238, 233, 233);
 }
 #iconpaypal{
     font-size: 34px;
@@ -21,14 +21,14 @@
 .fa-envelope{
     font-size: 15px;
 }
-.search input{
+.inputfield input{
     text-indent: 36px;
     border: none;
     border-radius: 8px;
 }
-.search{
+.inputfield{
     box-shadow: none;
 }
 .inputstyle{
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(238, 233, 233);
 }

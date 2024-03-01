@@ -8,7 +8,7 @@ a{
     box-shadow: none;
 }
 .navbar-brand{
-    cursor:url(./src/Images/penfinal.png), auto;
+    cursor:url(./src/Images/pen2.png), auto;
 }
 .navbar-toggler-icon{
     
@@ -16,11 +16,11 @@ a{
     background-image: url(../Images/navbar.png);
 }
 #loginbutton:hover{
-    cursor: url(../Images/penfinal.png), auto;
+    cursor: url(../Images/pen2.png), auto;
 }
 .dropdown-item{
-    cursor: url(../Images/penfinal.png), auto;
+    cursor: url(../Images/pen2.png), auto;
 }
 .nav-link:hover{
-    cursor: url(../Images/penfinal.png), auto;
+    cursor: url(../Images/pen2.png), auto;
 }

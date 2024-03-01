@@ -1,9 +1,9 @@
 .input{
     margin-left: 3%;
-    cursor:url(./src/Images/penfinal.png), auto;
+    cursor:url(./src/Images/pen2.png), auto;
 }
 input:hover{
-    cursor:url(./src/Images/penfinal.png), auto;
+    cursor:url(./src/Images/pen2.png), auto;
 }
 .img-fluid{
     height:"auto"
