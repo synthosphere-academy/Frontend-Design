@@ -11,10 +11,10 @@ function Footer() {
                         <div className="col-lg-6">
                         <h5 className="widget-title text-white"> <img src={logo} alt='noimage' width="8%" /> Synthosphere Academy</h5>
                         <ul className='list'>
-                            <li className='pe-4'>Home</li>
-                            <li className='pe-4'>Contact</li>
-                            <li className='pe-4'>Courses</li>
-                            <li className='pe-4'>Privacy policy</li>
+                            <a href='/'><li className='pe-4'>Home</li></a>
+                           <a href='/contact'><li className='pe-4'>Contact</li></a> 
+                           <a href='/course'> <li className='pe-4'>Courses</li></a>
+                            {/* <li className='pe-4'>Privacy policy</li> */}
                         </ul>
                         
                         </div>

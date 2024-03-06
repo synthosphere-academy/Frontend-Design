@@ -43,12 +43,17 @@
      height: 50px;
      width: 110px;
      border-radius: 5px;
+     cursor:url('./Images/pen2.png'), auto;
+    }
+   .search:hover{
+        cursor:url('./Images/pen2.png'), auto;
     }
     .para{
         color: white;
         
     }
-    .waves {
+    /* waves */
+     .waves {
         position: absolute;
         width: 100%;
         height: 15vh;
@@ -90,7 +95,7 @@
         100% {
             transform: translate3d(85px, 0, 0);
         }
-    }
+    } 
     
     
     /*Shrinking for mobile*/

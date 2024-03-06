@@ -1,5 +1,6 @@
 import '../Css/Coursedetails.css'
-import  pic from '../Images/music.jpg';
+// import  pic from '../Images/music.jpg';
+import pic from '../Images/Classroom.png'
 function Coursedetails() {
   const courseInfo = [
     {
@@ -83,10 +84,11 @@ function Coursedetails() {
     <>
       <div className="container mb-5">
         <div className="row">
-          <div className="col-lg-7 mt-5">
-            <div className='w-75' >
+          <div className="col-lg-7  mt-5">
+          <img src={pic} width="95%"/>
+            {/* <div className='w-75' >
               <img src={pic}/>
-            </div>
+            </div> */}
             <div><span>Course information</span></div>
             <hr className="w-100" />
             <div>
@@ -125,7 +127,7 @@ function Coursedetails() {
 
             </div>
           </div>
-          <div className="col-lg-4 mt-5">
+          <div className="col-lg-4  mt-5">
             <div className="border" id='cartpart'>
               <div className="ms-4 mt-4">
                 <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>

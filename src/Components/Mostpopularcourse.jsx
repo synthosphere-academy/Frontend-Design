@@ -71,7 +71,7 @@ function Mostpopularcourse() {
   ];
   const redercoursecard = (card,index)=>{
     return(
-      <div className='col-lg-4'>
+      <div className='col-lg-4 mt-4'>
       <div className="card" key={index}>
         <img className="card-img-top" src={card.image} alt="Sample photo" />
         <div className="card-body">
@@ -116,7 +116,7 @@ function Mostpopularcourse() {
       <div >
         <div className="container">
           <h2 className='display-4 text-center fw-bold '>Most Popular Courses</h2>
-          <div className="container mt-5 mb-5">
+          <div className="container mt-4 mb-5">
             <div className="row">
               
               {courseInfo.map(redercoursecard)}
