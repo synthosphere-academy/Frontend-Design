@@ -14,7 +14,7 @@ function Register() {
 
     const [emailerror, setemailerror] = useState(false)
     const [mobilenoerror, setmobileerror] = useState(false)
-    const [passerror , setpasserror] = useState(false)
+    const [passwordError , setpasserror] = useState('')
     const [confirmpasserror , setconfirmpasserror] = useState(false)
 
     function isValidEmail(email) {
@@ -38,10 +38,20 @@ function Register() {
     }
     function passwordHandler(e){
         let item = e.target.value;
-        if (item.length > 8) {
-            setpasserror(false);
-        }else{
-            setpasserror(true)
+        if (!/[A-Z]/.test(item)){
+            setpasserror("Password must contain one uppercase letter");
+        }
+        else if (!/[!@#$%^&*(),.?":{}|<>]/.test(item)) {
+            setpasserror("Password must contain one Special character");
+          }
+          else if (!/\d/.test(item)) {
+            setpasserror('Password must contain at least one number');
+          }
+        else if (item.length < 8) {
+            setpasserror('Password must be at least 8 characters long');
+        }
+        else{
+            setpasserror("")
         }
     }
     function confirmpasswordHandler(e){
@@ -62,12 +72,15 @@ function Register() {
             swal("Opps!", "Please fill out all required fields!", "error");
 
         }
+        else if (setemailerror === "true" || setmobileerror === "true" || setpasserror !== ""){
+            swal("Opps!", "give valid inputs!", "error");
+        }
         else {
             event.preventDefault();
             axios.post('http://localhost:8081/auth/', { fullname, phoneno, adult, email, password })
                 .then(res => {
                     console.log(res);
-                    swal("Inserted!", "Registration sucessfully completed!", "success");
+                    swal("Thank You!", "Registration sucessfully completed!", "success");
                 })
                 .catch(err=>{
                     console.log(err);
@@ -128,7 +141,8 @@ function Register() {
                                                     <label className="text-white" htmlFor="exampleInputEmail1">Password</label> 
                                                     <input type="text"  className="form-control form-control-lg" id="password" name="password" 
                                                       onKeyUp={passwordHandler}  placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
-                                                      {passerror?<span className='link-warning'>Password invalid</span>:""} 
+                                                       {passwordError && <span className='link-warning'>{passwordError}</span>}
+                                                      {/* {passerror?<span className='link-warning'>Password must me 8 character, one Uppercase, one special character</span>:""}  */}
                                                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                                                 </div>
                                                 <div>

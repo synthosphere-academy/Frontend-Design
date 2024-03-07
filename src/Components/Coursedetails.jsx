@@ -168,7 +168,7 @@ function Coursedetails() {
             <div className='border rounded mt-4'>
               <div className='ms-4 mt-2 mb-4'>
                 <h6 className='fw-bold mt-4'>Apply Coupon</h6>
-                <div className="search couponbutton mt-4 me-4 ">
+                <div className="search couponbutton mt-4  ">
                                
                                 <input type="text" className="form-control " placeholder="Enter coupon" />
                                 <button className="btn btn-success">Apply</button>

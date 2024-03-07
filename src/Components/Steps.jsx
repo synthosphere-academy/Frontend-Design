@@ -26,8 +26,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span>Create Account</span><br/>
-                                <span>First, You have to create an account</span>
+                                <span>Choose Course</span><br/>
+                                <span>Choose any course</span>
                             </div>
                         </div>
                         <div className='row  py-3'>
@@ -36,8 +36,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span>Create Account</span><br/>
-                                <span>First, You have to create an account</span>
+                                <span>Enjoy Learning</span><br/>
+                                <span>Buy and enjoy learning</span>
                             </div>
                         </div>
                         
