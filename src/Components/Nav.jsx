@@ -53,6 +53,10 @@ function Nav() {
       <i className="fa fa-shopping-cart cart" style={{fontSize:"30px"}}></i></a>
       </span>
       <span>
+       <Link to="/register"><button className="btn btn btn-success" id='loginbutton' type="submit" >Signup</button></Link>
+      
+      </span>
+      <span>
        <Link to="/login"><button className="btn btn btn-success" id='loginbutton' type="submit" >Login</button></Link>
       
       </span>

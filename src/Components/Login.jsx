@@ -12,7 +12,7 @@ function Login() {
   const [password, setPassword] = useState('')
 
   const [emailerror, setemailerror] = useState(false)
-  const [passerror, setPasserror] = useState(false)
+  // const [passerror, setPasserror] = useState(false)
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -25,39 +25,39 @@ function Login() {
       setemailerror(false);
     }
   }
-  function passwordHandler(e) {
-    let item = e.target.value;
-    if (item.length > 8) {
-      setPasserror(false);
-    } else {
-      setPasserror(true)
-    }
-  }
+  // function passwordHandler(e) {
+  //   let item = e.target.value;
+  //   if (item.length >= 8) {
+  //     setPasserror(false);
+  //   } else {
+  //     setPasserror(true)
+  //   }
+  // }
 
   const navigate = useNavigate();
   const handleSubmit = (event) => {
-
+   
 
     if (email === "" || password === "") {
       swal("Opps!", "Please fill out all required fields!", "error");
     }
     else {
       event.preventDefault();
-      //  alert("submit");
-      axios.post('http://localhost:8081/auth/login', { email, password })
+        // alert("submit");
+      axios.post('http://localhost:8081/api/v1/login', { email, password })
         .then(res => {
           console.log(res);
-        
+
           swal("Sucessfully login!", "login sucessfully!", "success");
           // navigate('/login');
           navigate('/course');
 
         })
-        .catch(err=>{
+        .catch(err => {
           console.log(err);
-          alert("not loged in");
+          swal("Opps!", "Email or password icorrect!", "error");
 
-      })
+        })
 
 
     }
@@ -95,8 +95,8 @@ function Login() {
                         </div>
                         <div className="form-group mb-4">
                           <label className="text-white" htmlFor="exampleInputEmail1">Password</label>
-                          <input type="Password" className="form-control form-control-lg" id="password" name='password' onKeyUp={passwordHandler} placeholder="Enter  Your Password" onChange={e => setPassword(e.target.value)} />
-                          {passerror ? <span className='link-warning'>Password invalid</span> : ""}
+                          <input type="Password" className="form-control form-control-lg" id="password" name='password'  placeholder="Enter  Your Password" onChange={e => setPassword(e.target.value)} />
+                          {/* {passerror ? <span className='link-warning'>Password invalid</span> : ""} */}
                         </div>
 
                         <div className="pt-1 mb-4 text-center">

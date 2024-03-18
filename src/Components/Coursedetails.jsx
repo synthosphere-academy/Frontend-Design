@@ -12,7 +12,7 @@ function Coursedetails() {
       course_price: "₹1899",
       teacher_image: ["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
       teachername: "David Noman",
-      teacherdept: "teacher"
+      teacherdept: "Teacher"
 
     },
     {
@@ -24,7 +24,7 @@ function Coursedetails() {
       course_price: "₹999",
       teacher_image: ["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
       teachername: "Kesto Das",
-      teacherdept: "teacher"
+      teacherdept: "Teacher"
     },
     {
       image: ["https://cdn.eduonix.com/assets/images/header_img/2020091906114212289.jpg"],
@@ -35,7 +35,7 @@ function Coursedetails() {
       course_price: "₹999",
       teacher_image: ["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
       teachername: "Dipan Das",
-      teacherdept: "teacher"
+      teacherdept: "Teacher"
     }
   ]
   const redercoursecard = (card, index) => {

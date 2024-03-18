@@ -5,7 +5,7 @@ function Courses() {
     const courseInfo = [
         {
             image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
-            coursename: "The Full Cryptocurrency Investment Course",
+            coursename: "The Cryptocurrency Investment Course",
             // coursedetails: "Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!",
             coursereview: "4.5",
             course_currentprice: "₹899",

@@ -7,10 +7,59 @@ import phoneicon from '../Images/phoneicon.png';
 import socialicon from '../Images/socialicon.png'
 import face from '../Images/facebook.png';
 import twitter from '../Images/twitter.png';
-
-
 import link from '../Images/linkdln.png';
+import axios from 'axios';
+import swal from 'sweetalert';
+import { useState } from 'react';
+
+
+
+
 function Contact() {
+  const[name , setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  const [emailerror, setemailerror] = useState(false)
+
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+  function emailHandler(e) {
+    let item = e.target.value;
+    if (!isValidEmail(item)) {
+      setemailerror(true);
+    } else {
+      setemailerror(false);
+    }
+  }
+
+  const handleSubmit=(event)=>{
+    if ( name === "" || email === "" || message === "") {
+      swal("Opps!", "Please fill out all required fields!", "error");
+    }
+    else {
+
+      event.preventDefault();
+      //  alert("submit");
+      axios.post('http://localhost:8081/auth/contactus', { name,email, message })
+        .then(res => {
+          console.log(res);
+
+          swal("thank you", "For Contacting us!", "success");
+          // navigate('/login');
+        
+        })
+        .catch(err => {
+          console.log(err);
+          swal("Opps!", "Not inserted !", "error");
+        })
+
+
+    }
+  }
+
+  
   return (
     <>
       <div>
@@ -29,22 +78,23 @@ function Contact() {
                 <form>
                   <div className="form-group  mb-4">
                     <label className="text-white" htmlFor="exampleInputEmail1">Name</label>
-                    <input type="text" className="form-control form-control-lg" id="name" name="name" placeholder="Enter your name" />
+                    <input type="text" className="form-control form-control-lg" id="name" name="name" placeholder="Enter your name" onChange={e => setName(e.target.value)} />
                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                   </div>
                   <div className="form-group  mb-4">
                     <label className="text-white" htmlFor="exampleInputEmail1">Email Address</label>
-                    <input type="text" className="form-control form-control-lg" id="name" name="name" placeholder="Enter your email address" />
+                    <input type="text" className="form-control form-control-lg" onKeyUp={emailHandler} name="email" placeholder="Enter your email address"  onChange={e => setEmail(e.target.value)} />
+                    {emailerror ? <span className='link-warning'>Email invalid</span> : ""}
                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                   </div>
                   <div className="form-group  mb-4">
                     <label className="text-white" htmlFor="exampleInputEmail1">Message</label>
-                    <input type="text" className="form-control form-control-lg" id="message" name="message" placeholder="Enter your message" />
+                    <input type="text" className="form-control form-control-lg" id="message" name="message" placeholder="Enter your message"  onChange={e => setMessage(e.target.value)} />
                    
                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                   </div>
                   <div className="pt-1 mb-4 text-center">
-                    <button className="btn btn-lg btn-success w-50 " type="button">Sign up</button>
+                    <button className="btn btn-lg btn-success w-50 " type="submit" onClick={handleSubmit}>Submit</button>
                   </div>
 
                 </form>

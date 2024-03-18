@@ -30,6 +30,7 @@ function App() {
         <Route path='/course' element={<Courses/>}/>
         <Route path='/addtocart' element={<Addtocart/>}/>
         <Route path='/coursedetails' element={<Coursedetails/>}/>
+        <Route path='*' element={<div>page not found</div>}/>
        </Routes>
         <Footer />
       </Router>
