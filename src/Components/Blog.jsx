@@ -1,46 +1,32 @@
-
+import { useEffect , useState } from 'react';
+import axios from 'axios';
 import img1 from '../Images/Image.png';
-import img2 from '../Images/Image2.png';
-import img3 from '../Images/Image3.png';
+// import img2 from '../Images/Image2.png';
+// import img3 from '../Images/Image3.png';
 
 import '../Css/blog.css'
+
 function Blog() {
-const cardInfo=[
-  {image:[img1],
-    title:"text",
-    text:"This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+ 
 
-  },
-  {image:[img2],
-    title:"text",
-    text:"This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-    
-  },
-  {image:[img3],
-    title:"text",
-    text:"This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-    
-  },
-  {image:[img1],
-    title:"text",
-    text:"This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-    
-  },
-  {image:[img2],
-    title:"text",
-    text:"This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-    
-  }
+  const [ blogdata, setblogdata] = useState([])
+  useEffect(() => {
+    // const apiUrl = process.env.REACT_APP_API_URL;
+    axios.get( 'http://localhost:8081/api/v1/blog')
+    .then(blogdata => setblogdata(blogdata.data.data))
+    .catch(err => console.log(err))
+   
+}, []);
 
-];
-const renderCard =(card,index)=>{
+
+
+const renderCard =(blogdata)=>{
  return( 
-
-<div className="card" key={index}>
-<img src={card.image} className="card-img-top" alt="..." />
+<div className="card" >
+<img src={img1} className="card-img-top" alt="..." />
 <div className="card-body">
-  <h5 className="card-title">{card.title}</h5>
-  <p className="card-text">{card.text}</p>
+  <h5 className="card-title">{blogdata.text}</h5>
+  <p className="card-text">{blogdata.description}</p>
 </div>
 </div>
  )
@@ -53,7 +39,7 @@ const renderCard =(card,index)=>{
       <div className="container mt-5 mb-5">
         <div className="row row-cols-1 row-cols-md-3 ">
           {/* <div className="col"> */}
-            {cardInfo.map(renderCard)} 
+            {blogdata.map(renderCard)} 
         </div>
       </div>    
     </>
