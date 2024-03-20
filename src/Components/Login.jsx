@@ -4,7 +4,7 @@ import '../Css/Login.css'
 import { useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
@@ -34,7 +34,7 @@ function Login() {
   //   }
   // }
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleSubmit = (event) => {
    
 
@@ -49,8 +49,8 @@ function Login() {
           console.log(res);
 
           swal("Sucessfully login!", "login sucessfully!", "success");
-          // navigate('/login');
-          navigate('/course');
+          //  navigate('/userdashboard');
+          // navigate('/course');
 
         })
         .catch(err => {

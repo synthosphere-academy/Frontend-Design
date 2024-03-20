@@ -9,6 +9,7 @@ import Forgotpage from "./Components/Forgotpage"
 import Courses from './Components/Courses'
 import Addtocart from './Components/Addtocart'
 import Coursedetails from './Components/Coursedetails'
+import Userdashboard from './Components/Userdashboard'
 import './App.css'
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path='/course' element={<Courses/>}/>
         <Route path='/addtocart' element={<Addtocart/>}/>
         <Route path='/coursedetails' element={<Coursedetails/>}/>
+        <Route path='/userdashboard' element={<Userdashboard/>}/>
         <Route path='*' element={<div>page not found</div>}/>
        </Routes>
         <Footer />
