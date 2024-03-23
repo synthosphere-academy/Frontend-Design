@@ -22,7 +22,7 @@ function Nav() {
         </li>
         <li className="nav-item dropdown ">
           <a className="nav-link  text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Categories
+           Courses
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a className="dropdown-item" href="/course">All</a></li>
