@@ -72,7 +72,7 @@ function Courses() {
     ];
     const redercoursecard = (card, index) => {
         return (
-            <div className='col-lg-4'>
+            <div className='col-lg-4' key={index}>
       <div className="card" key={index}>
         <img className="card-img-top" src={card.image} alt="Sample photo" />
         <div className="card-body">

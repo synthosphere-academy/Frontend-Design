@@ -1,3 +1,4 @@
+
 import Homepage from './Components/Homepage'
 import Login from './Components/Login'
 import Nav from './Components/Nav';
@@ -16,14 +17,16 @@ import './App.css'
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { useState } from 'react';
 
 function App() {
+  //  const [cart , setcart] = useState([])
 
 
   return (
     <>
       <Router>
-      <Nav/>
+      <Nav />
         <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />

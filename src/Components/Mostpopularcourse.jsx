@@ -15,8 +15,8 @@ function Mostpopularcourse() {
 
   const redercoursecard = (productdata)=>{
     return(
-      <div className='col-lg-4 mt-4'>
-      <div className="card" >
+      <div className='col-lg-4 mt-4' key={productdata._id} >
+      <div className="card"  >
         <img className="card-img-top" src="https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg" alt="Sample photo" />
         <div className="card-body">
           <div className='row'>
@@ -64,7 +64,7 @@ function Mostpopularcourse() {
             <div className="row">
               
                {productdata.map(redercoursecard)} 
-              {/* {data.map(redercoursecard)} */}
+             
               </div>
            </div>
            </div>

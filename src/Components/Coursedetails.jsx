@@ -2,6 +2,9 @@ import '../Css/Coursedetails.css'
 // import  pic from '../Images/music.jpg';
 import pic from '../Images/Classroom.png'
 function Coursedetails() {
+  const handleclicked=()=>{
+    alert ("clicked");
+  }
   const courseInfo = [
     {
       image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
@@ -40,8 +43,8 @@ function Coursedetails() {
   ]
   const redercoursecard = (card, index) => {
     return (
-      <div className='col-lg-4'>
-        <div className="card" key={index}>
+      <div className='col-lg-4' key={index}>
+        <div className="card" >
           <img className="card-img-top" src={card.image} alt="Sample photo" />
           <div className="card-body">
             <div className='row'>
@@ -132,7 +135,7 @@ function Coursedetails() {
               <div className="ms-4 mt-4">
                 <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>
               </div>
-              <div className=" text-center mt-4"><button className="btn btn-success  w-75">Add to cart</button></div>
+              <div className=" text-center mt-4"><button className="btn btn-success  w-75" onClick={handleclicked} >Add to cart</button></div>
               <div className=" text-center mt-4"><button className="btn w-75" id="buybutton">Buy now</button></div>
               <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
             </div>

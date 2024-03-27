@@ -1,6 +1,6 @@
+const Entrolled =() => {
 
-const Wishlist =() => {
-    const courseInfo = [
+    const EntrolledcourseInfo = [
         {
           image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
           coursename: "The Cryptocurrency Course",
@@ -23,11 +23,10 @@ const Wishlist =() => {
             teacher_image: ["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
             teachername: "Kesto Das",
             teacherdept: "Teacher"
-          },
+          }
          
     ]
-    
-      const redercourse = (card, index)=>{
+    const rederentrollcourse = (card, index)=>{
         return(
           <div className='col-lg-5 mt-4'>
           <div className="card" key={index} >
@@ -70,16 +69,16 @@ const Wishlist =() => {
         )
        }
 
+    
   return (
-    <>
-    <h3>Wishlist </h3>
+   <>
+    <h3>Enrolled Courses</h3>
     <div className="row">
 
-    {courseInfo.map(redercourse)}
+    {EntrolledcourseInfo.map(rederentrollcourse)}
   </div>
-  </>
-   
+   </>
   )
 }
 
-export default Wishlist
+export default Entrolled

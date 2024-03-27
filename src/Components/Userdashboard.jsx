@@ -1,38 +1,35 @@
+import { useState } from "react"
 import Sidenavbar from "./Userdashboard/Sidenavbar"
 import '../Css/Userdashboard.css'
 
- //import Dashboard from '../Components/Userdashboard/Dashboard'
- import Myprofile from '../Components/Userdashboard/Myprofile'
- //import Wishlist from "./Userdashboard/Wishlist"
-//import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Dashboard from '../Components/Userdashboard/Dashboard'
 function Userdashboard() {
+  const [currentContent, setCurrentContent] = useState('home');
+
+  const changeDashboardContent = (content) => {
+    setCurrentContent(content);
+  };
   return (
     <>
       <div className="container">
         <div className="row">
-          
-            <div className="col-lg-3 mb-2">
-              <Sidenavbar />
-            </div>
-            <div className="col-lg-9 mt-4">
-            {/* <Dashboard/> */}
-             <Myprofile/>
-            {/* <Wishlist/>  */}
-              </div>
-        
+
+          <div className="col-lg-3 mb-2">
+            <Sidenavbar changeDashboardContent={changeDashboardContent} />
+
+
           </div>
+          <div className="col-lg-9 mt-4">
+            <Dashboard currentContent={currentContent} />
+
+          </div>
+
         </div>
-        {/* <Router>
-      <div style={{ display: 'flex' }}>
-        <Sidenavbar />
-        <Switch>
-          <Route path="Dashboard" component={Dashboard} />
-         
-        </Switch>
       </div>
-    </Router> */}
-      
-    
+
+
+
     </>
 
   )

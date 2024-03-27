@@ -2,7 +2,8 @@
 import logo from '../Images/academy.png'
 import '../Css/Nav.css'
 import { Link } from 'react-router-dom';
-function Nav() {
+
+const Nav=()=> {
  
 
  
@@ -51,6 +52,7 @@ function Nav() {
       <span className="navbar-text pe-4" >
         <a href='/addtocart'>
       <i className="fa fa-shopping-cart cart" style={{fontSize:"30px"}}></i></a>
+      <sup><span className="badge bg-danger">5</span></sup>
       </span>
       <span>
        <Link to="/register"><button className="btn btn btn-success" id='loginbutton' type="submit" >Signup</button></Link>
@@ -70,5 +72,6 @@ function Nav() {
            </>
     )
 }
+
 
 export default Nav
