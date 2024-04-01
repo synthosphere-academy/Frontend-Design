@@ -15,8 +15,8 @@ function Mostpopularcourse() {
 
   const redercoursecard = (productdata)=>{
     return(
-      <div className='col-lg-4 mt-4' key={productdata._id} >
-      <div className="card"  >
+      <div className='col' key={productdata._id} >
+      <div className="card h-100 w-75"  >
         <img className="card-img-top" src="https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg" alt="Sample photo" />
         <div className="card-body">
           <div className='row'>
@@ -41,11 +41,12 @@ function Mostpopularcourse() {
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
         <hr/>
         <div className="row">
-          <div className='col-2'><img className='rounded-circle w-75' src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+          <div className='col d-flex'><img className='rounded-circle ' width={40} height={40} src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+          <span className='teachername ms-1 mt-2'>{productdata.teacher_name}</span>
             </div>
-          <div className='col-4'><span>{productdata.teacher_name}</span>
-          <br/><span>{productdata.teacher_dept}</span></div>
-          <div className='col-6'><a className='buttonlearnmore' href='/coursedetails'><button className="btn btn-primary btn-sm ">Learn More</button></a></div>
+          
+          {/* <br/><span>{productdata.teacher_dept}</span></div> */}
+          <div className='col'><a className='buttonlearnmore' href='/coursedetails'><button className="btn btn-primary btn-sm learnmore ">Learn More</button></a></div>
           
 
         </div>
@@ -57,11 +58,14 @@ function Mostpopularcourse() {
    }
   return (
     <>
-      <div >
-        <div className="container">
-          <h2 className='display-4 text-center fw-bold '>Most Popular Courses</h2>
-          <div className="container mt-4 mb-5">
-            <div className="row">
+      <div className='mostpopular' >
+        <div className="container py-5">
+        <h1 className="display-4 text-center fw-bold heading" id='mostcourse'>
+        Most Popular Courses
+                    </h1>
+         
+          <div className="container py-5">
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
               
                {productdata.map(redercoursecard)} 
              

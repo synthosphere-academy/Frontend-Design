@@ -2,6 +2,7 @@
 import logo from '../Images/academy.png'
 import '../Css/Nav.css'
 import { Link } from 'react-router-dom';
+import icon from '../Images/icon.svg'
 
 const Nav=()=> {
  
@@ -10,9 +11,10 @@ const Nav=()=> {
   
     return (
         <>
-          <nav className="navbar navbar-expand-lg" style={{backgroundColor:"#5c0e47"}}>
+          <nav className="navbar navbar-expand-lg" style={{backgroundColor:"rgba(14, 18, 85, 1)"}}>
   <div className="container-fluid">
     <a className="navbar-brand" href="#"><img src={logo} width={60}/></a>
+    <span className='text-white logoname'>Sythosphere Academy</span>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -49,19 +51,24 @@ const Nav=()=> {
           <a className="nav-link text-white" href='/contact'>Contact</a>
         </li>
       </ul>
-      <span className="navbar-text pe-4" >
+      <span className="navbar-text  cartstyle me-4" >
         <a href='/addtocart'>
-      <i className="fa fa-shopping-cart cart" style={{fontSize:"30px"}}></i></a>
-      <sup><span className="badge bg-danger">5</span></sup>
+          <img width={28} src={icon} className='cartphoto'/>
+      </a>
+      {/* <sup><span className="badge bg-danger">5</span></sup> */}
       </span>
-      <span>
+      {/* <span>
        <Link to="/register"><button className="btn btn btn-success" id='loginbutton' type="submit" >Signup</button></Link>
       
       </span>
       <span>
        <Link to="/login"><button className="btn btn btn-success" id='loginbutton' type="submit" >Login</button></Link>
       
-      </span>
+      </span> */}
+      <button className='buttonstyle btn btn-sm buttonstyle text-white'>
+      <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
+      <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
+      </button>
       {/* <form className="d-flex ml-2" role="search">
         <i className="fa fa-shopping-cart" style={{fontSize:"30px"}}></i>
         <button className="btn btn-outline-success" type="submit">Login</button>

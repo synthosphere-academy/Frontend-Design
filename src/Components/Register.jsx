@@ -18,15 +18,54 @@ function Register() {
     // const [date, setDate] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const[DropdownValue_state,setDropdownValue_state] = useState('')
+    const [DropdownValue_state, setDropdownValue_state] = useState('')
     const [DropdownValue, setDropdownValue] = useState('')
+    const [image, setImage] = useState(null)
     const [Date, setDate] = useState(null);
+    
 
 
     const [emailerror, setemailerror] = useState(false)
     const [mobilenoerror, setmobileerror] = useState(false)
     const [passwordError, setpasserror] = useState('')
     const [confirmpasserror, setconfirmpasserror] = useState(false)
+    const [imagefileerror, setimagefileerror] = useState('')
+
+    
+    
+    //convert iamge to base64
+    const convertToBase64 = (file) => {
+        console.log(file);
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        const data = new Promise((resolve, reject) => {
+            reader.onload = () => resolve(reader.result)
+            reader.onerror = (err) => {
+                reject(err)
+            }
+        })
+        return data;
+    }
+    //for image handlefilechange
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+        const image = await convertToBase64(file)
+        setImage(image);
+        const fileName = document.getElementById("fileName").value;
+        const idxDot = fileName.lastIndexOf(".") + 1;
+        const extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (file.size >= 500000) {
+            setimagefileerror("file size not more than 500kb");
+        }
+        else if (extFile === "jpg" || extFile === "jpeg" || extFile === "png" ) {
+            setimagefileerror("")
+        }
+       
+        else {
+            setimagefileerror("file not allowed")
+        }
+        // console.log(image);
+    };
 
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
@@ -84,18 +123,19 @@ function Register() {
     };
 
 
-    const handleSubmit = (event) => {
+    //hadlesubmit
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        if (fullname === "" || phoneno === "" || Date === ""|| DropdownValue === "" || email === "" || password === "") {
+        if (fullname === "" || phoneno === "" || Date === "" || DropdownValue_state === "" || DropdownValue === "" || image === "" || email === "" || password === "") {
             swal("Opps!", "Please fill out all required fields!", "error");
 
         }
-        else if (emailerror != "" || mobilenoerror != "" || passwordError != "") {
+        else if (emailerror != "" || mobilenoerror != "" || passwordError != "" || imagefileerror != "") {
             swal("Opps!", "give valid inputs!", "error");
         }
         else {
 
-            axios.post('http://localhost:8081/api/v1/register/new', { fullname, phoneno, Date, DropdownValue_state, DropdownValue, email, password })
+            await axios.post('http://localhost:8081/api/v1/register/new', { fullname, phoneno, Date, DropdownValue_state, DropdownValue, email, password, image })
                 .then(res => {
                     console.log(res);
                     swal("Thank You!", "Registration sucessfully completed!", "success");
@@ -142,19 +182,13 @@ function Register() {
                                                 </div>
 
 
-                                                {/* <div className="form-group mb-4">
-                                                    <label className="text-white" >Age (18+) </label>
-                                                    <input className="input" type="radio" name="adult" value="Yes" onChange={e => setAdult(e.target.value)} />
-                                                    <label className="text-white" htmlFor="html">Yes</label>
-                                                    <input className="input" type="radio" name="adult" value="No" onChange={e => setAdult(e.target.value)} />
-                                                    <label className="text-white">No</label>
-                                                </div> */}
+
                                                 <div className="form-group  mb-4">
                                                     <label className="text-white" htmlFor="exampleInputEmail1">Date of birth </label>
-                                                    <span className='ms-3'><DatePicker  value={Date} className="bg-white" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
+                                                    <span className='ms-3'><DatePicker value={Date} className="bg-white" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
                                                 </div>
                                                 <div className="form-group  mb-4">
-                                                <label className="text-white" htmlFor="exampleInputEmail1">State</label>
+                                                    <label className="text-white" htmlFor="exampleInputEmail1">State</label>
                                                     <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" value={DropdownValue_state} onChange={handleDropdownChange_state}>
                                                         <option value="Choose State" label=' Enter your city'></option>
                                                         <option value="West bengal " label='West Bengal'></option>
@@ -163,7 +197,7 @@ function Register() {
                                                     </select>
                                                 </div>
                                                 <div className="form-group  mb-4">
-                                                <label className="text-white" htmlFor="exampleInputEmail1">City</label>
+                                                    <label className="text-white" htmlFor="exampleInputEmail1">City</label>
                                                     <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" value={DropdownValue} onChange={handleDropdownChange}>
                                                         <option value="Choose city" label=' Enter your city'></option>
                                                         <option value="Kolkata" label='Kolkata'></option>
@@ -171,6 +205,33 @@ function Register() {
                                                         <option value="Hoogly" label='Hoogly'></option>
                                                     </select>
                                                 </div>
+                                                <div className="form-group  mb-4 ">
+                                                <label className="text-white" htmlFor="fileName">Student Image</label>
+                                                <div className="input-group custom-file-button input-group-lg ">
+                                                    <label className="input-group-text text-white " htmlFor="fileName">Browse</label>
+                                                    <input type="file" className=" form-control" name='image' accept=".png, .jpg, .jpeg" id="fileName"  onChange={handleFileChange} />
+                                                </div>
+                                                </div>
+                                                <div>
+                                                        { 
+                                                                 imagefileerror ?  "" : <img width={90} height={90} src={image} />
+                                                        }
+                                                        
+                                                       
+                                                    </div>
+                                                {imagefileerror ? <span className='link-warning'>{imagefileerror}</span> : ""}
+
+                                                {/* <div className="form-group  mb-4 ">
+                                                    <label className="text-white me-3" htmlFor="fileName">Student image</label>
+
+                                                    <input type="file" name='image' accept=".png, .jpg, .jpeg" id="fileName" className=" form-control-lg text-white" onChange={handleFileChange} />
+
+                                                    <div>
+                                                        {image ? <img width={90} height={90} src={image} /> : <span className='text-white border'>no image</span>}
+                                                    </div>
+                                                </div> */}
+                                             
+
 
                                                 <div className="form-group  mb-4">
                                                     <label className="text-white" htmlFor="exampleInputEmail1">Email address</label>

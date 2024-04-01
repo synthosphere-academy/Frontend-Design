@@ -23,7 +23,7 @@ function Footer() {
 
                             <span className='text-white'>Get the App</span><br />
 
-                            <a className="btn btn-google" href="#" title="Google Play">Google Play</a>
+                            <a className=" btnfooter btn btn-google" href="#" title="Google Play">Google Play</a>
                             </div>
                         </div>
 

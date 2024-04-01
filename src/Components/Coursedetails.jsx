@@ -135,7 +135,7 @@ function Coursedetails() {
               <div className="ms-4 mt-4">
                 <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>
               </div>
-              <div className=" text-center mt-4"><button className="btn btn-success  w-75" onClick={handleclicked} >Add to cart</button></div>
+              <div className=" text-center mt-4"><button className="btn btn-success  w-75" id='cartbutton' onClick={handleclicked} >Add to cart</button></div>
               <div className=" text-center mt-4"><button className="btn w-75" id="buybutton">Buy now</button></div>
               <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
             </div>

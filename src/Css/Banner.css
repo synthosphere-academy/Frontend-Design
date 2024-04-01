@@ -1,4 +1,15 @@
+@font-face {
+    font-family: myfont;
+    src: url('../fontstyle/SFPRODISPLAYBOLD.OTF');
+}
+@font-face {
+    font-family: secondfont;
+    src: url('../fontstyle/SFPRODISPLAYREGULAR.OTF');
+}
+
+
 .text{
+    font-family: myfont;
     color: white;
   
     font-weight: 400;
@@ -11,26 +22,24 @@
 
     .search input{
 
-     height: 60px;
-     text-indent: 25px;
+      height: 70px;
+     text-indent: 50px;
      border: 2px solid #d6d4d4;
+     border-radius: 15px;
 
 
     }
-
-
-    .search input:focus{
-
-     box-shadow: none;
-     border: 2px solid blue;
-
-
+    .banner{
+        padding: 45px 0;
     }
+    /* .search i{
+        font-size: 25px;
+    } */
 
-    .search .fa-search{
+    .searchicon{
 
      position: absolute;
-     top: 20px;
+     top: 25px;
      left: 16px;
 
     }
@@ -38,17 +47,24 @@
     .search button{
 
      position: absolute;
-     top: 1px;
-     right: 0px;
-     height: 50px;
-     width: 110px;
-     border-radius: 5px;
-     cursor:url('./Images/pen2.png'), auto;
+     top: 8px;
+     right: 8px;
+     height: 55px;
+     width: 150px;
+     border-radius: 10px;
+     font-size:18px;
+    line-height:1.3333333;
+    padding:10px 16px;
+    text-transform: none;
+    background-color: #b43f95;
+     /* cursor:url('./Images/pen2.png'), auto; */
     }
-   .search:hover{
-        cursor:url('./Images/pen2.png'), auto;
-    }
+   .search button:hover{
+    background-color: #6d2259;
+    color: white;
+   }
     .para{
+        font-family: secondfont;
         color: white;
         
     }
@@ -96,7 +112,6 @@
             transform: translate3d(85px, 0, 0);
         }
     } 
-    
     
     /*Shrinking for mobile*/
     

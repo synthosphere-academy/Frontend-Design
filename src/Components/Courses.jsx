@@ -1,5 +1,6 @@
 import pic from '../Images/courseimage.png'
 import '../Css/Course.css'
+import icon from '../Images/Search.svg';
 
 function Courses() {
     const courseInfo = [
@@ -122,14 +123,17 @@ function Courses() {
                             <div className='ms-4'>
                                 <div className='mt-5 '>
                                     <h4 className='display-4 text fw-bold'>Many Useful Courses For you</h4><br />
-                                    <span className='para '>An academy is a fancy school, often one devoted to one subject or discipline, such as music or science. You can also use academy to describe the world of higher learning.The online classes were very helpful to all students, teachers, and institutions. They are also beneficial to students who wish to pursue long-distance courses.</span><br /><br />
+                                    <span className='para '>
+Explore a myriad of courses designed to enhance your understanding of synthesis. From foundational principles to advanced techniques, our offerings cater to diverse skill levels, ensuring a comprehensive learning experience in the dynamic realm of sound design and electronic music production.</span><br /><br />
 
                                 </div>
                                 <div className="search">
-                                    <i className="fa fa-search mt-1"></i>
-                                    <input type="text" className="form-control" placeholder="Search For a course" />
-                                    <button className="btn btn-success">Search</button>
-                                </div>
+                            <img className='searchicon' src={icon} width={20}/>
+                                {/* <i className="fa fa-search mt-1 ms-3"></i> */}
+                                <input type="text" className="form-control  input" placeholder="Search for a course ?" />
+                               
+                                <button className="btn btn-success ">Search Course</button>
+                            </div>
                             </div>
                         </div>
                         <div className="col-lg-6">

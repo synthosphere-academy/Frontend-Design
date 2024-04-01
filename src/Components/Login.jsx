@@ -100,7 +100,7 @@ function Login() {
                         </div>
 
                         <div className="pt-1 mb-4 text-center">
-                          <button className="btn btn-lg btn-success w-50 " type="submit" onClick={handleSubmit}>Login</button>
+                          <button className=" btn-lg  w-50 loginbutton " type="submit" onClick={handleSubmit}>Login</button>
                         </div>
                         <div className="d-flex">
                           <a className='text-success' href="/forgotpassword">Forgot password?</a>

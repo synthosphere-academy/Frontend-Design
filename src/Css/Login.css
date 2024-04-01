@@ -1,7 +1,29 @@
+
+@font-face {
+    font-family: loginstyle;
+    src: url('../fontstyle/SFPRODISPLAYREGULAR.OTF');
+}
+*{
+    font-family: loginstyle;
+}
+
 #loginform{
-    background-color: #5c0e47;
+    background-color: rgba(14, 18, 85, 1);
 }
 .register_text{
     margin-left: auto;
 }
-
+.loginbutton{
+    border-radius: 10px;
+    font-size:18px;
+   line-height:1.3333333;
+   padding:10px 16px;
+   text-transform: none;
+   background-color: #b43f95;
+   color: white;
+   border: none;
+}
+.loginbutton:hover{
+    background-color: #6d2259;
+    color: white;
+   }

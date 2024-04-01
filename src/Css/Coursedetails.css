@@ -1,6 +1,18 @@
 #buybutton{
     color: rgb(6, 128, 6);
     border-color: rgb(6, 128, 6);
+    border-radius: 10px;
+    font-size:18px;
+    line-height:1.3333333;
+    padding:10px 16px;
+    margin:5px;
+}
+#cartbutton{
+    border-radius: 10px;
+    font-size:18px;
+    line-height:1.3333333;
+    padding:10px 16px;
+    margin:5px;
 }
 #cartpart{
     background-color: rgb(238, 233, 233);

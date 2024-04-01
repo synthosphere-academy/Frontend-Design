@@ -6,7 +6,7 @@ function Steps() {
     return (
         <>
             <div className="container py-1"  style={{ backgroundColor: "rgb(255,255,255)" }}>
-                <h1 className="display-4 fw-bold ">
+                <h1 className="display-4 fw-bold mt-5 heading">
                     Learning Steps For You</h1>
                 <div className="row py-4">
                     <div className="col-lg-6">
@@ -16,8 +16,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span>Create Account</span><br/>
-                                <span>First, You have to create an account</span>
+                                <span className='font-text'>Create Account</span><br/>
+                                <span className='font-text'>Have to create an account</span>
                             </div>
                         </div>
                         <div className='row py-3'>
@@ -26,8 +26,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span>Choose Course</span><br/>
-                                <span>Choose any course</span>
+                                <span className='font-text'>Choose Course</span><br/>
+                                <span className='font-text'>Choose any course</span>
                             </div>
                         </div>
                         <div className='row  py-3'>
@@ -36,8 +36,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span>Enjoy Learning</span><br/>
-                                <span>Buy and enjoy learning</span>
+                                <span className='font-text'>Enjoy Learning</span><br/>
+                                <span className='font-text'>Buy and enjoy learning</span>
                             </div>
                         </div>
                         

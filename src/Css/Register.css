@@ -1,5 +1,5 @@
 .input{
-    margin-left: 3%;
+    /* margin-left: 3%; */
     cursor:url(./src/Images/pen2.png), auto;
 }
 input:hover{
@@ -7,4 +7,16 @@ input:hover{
 }
 .img-fluid{
     height:"auto"
+}
+.custom-file-button {
+	input[type="file"] {
+		margin-left: -2px !important;
+
+		&::-webkit-file-upload-button {
+			display: none;
+		}
+		&::file-selector-button {
+			display: none;
+		}
+	}
 }
