@@ -1,3 +1,12 @@
+@font-face {
+    font-family: teamstylebold;
+    src: url('../fontstyle/SFPRODISPLAYBOLD.OTF');
+  }
+  
+  @font-face {
+    font-family: teamstyle;
+    src: url('../fontstyle/SFPRODISPLAYREGULAR.OTF');
+  }
 
 @font-face{font-family:"fontfutura";src:url("https://fonts.googleapis.com/css?family=Open+Sans") format("ttf");font-weight:normal;font-style:normal;}
 a.btn-google{color:#fff}
@@ -13,6 +22,8 @@ a.btn-google{color:#fff}
 
 .list{
     list-style: none;
+    font-family: teamstyle;
+
 }
 .list li{
     float: left;
@@ -21,4 +32,13 @@ a.btn-google{color:#fff}
 #footerbackground{
     background-color:  rgba(35, 39, 60, 1);
   
+}
+.footerstyle{
+    font-family: teamstylebold;
+}
+.copyright{
+    font-family: teamstyle;
+}
+.btnfooter{
+    font-family: teamstyle;
 }

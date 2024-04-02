@@ -74,8 +74,8 @@ function Courses() {
     const redercoursecard = (card, index) => {
         return (
             <div className='col-lg-4' key={index}>
-      <div className="card" key={index}>
-        <img className="card-img-top" src={card.image} alt="Sample photo" />
+      <div className="card h-100" key={index}>
+        <img className="card-img-top cardimage" src={card.image} alt="Sample photo" />
         <div className="card-body">
           <div className='row'>
             <div className='col-6'>
@@ -99,11 +99,11 @@ function Courses() {
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
         <hr/>
         <div className="row">
-          <div className='col-2'><img className='rounded-circle w-75' src='https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp' />
+          <div className='col-2'><img className='rounded-circle w-75' width={40} height={40} src='https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp' />
             </div>
           <div className='col-4'><span>David Noman</span>
           <br/><span>Teacher</span></div>
-          <div className='col-6'><a href='/coursedetails'><button className="btn btn-primary btn-sm" type='button'>Learn More</button></a></div>
+          <div className='col-6'><a href='/coursedetails'><button className="btn btn-primary btn-sm learnmore" type='button'>Learn More</button></a></div>
           
 
         </div>
@@ -132,7 +132,7 @@ Explore a myriad of courses designed to enhance your understanding of synthesis.
                                 {/* <i className="fa fa-search mt-1 ms-3"></i> */}
                                 <input type="text" className="form-control  input" placeholder="Search for a course ?" />
                                
-                                <button className="btn btn-success ">Search Course</button>
+                                <button className="btn searchbutton">Search Course</button>
                             </div>
                             </div>
                         </div>
@@ -145,11 +145,11 @@ Explore a myriad of courses designed to enhance your understanding of synthesis.
                 </div>
             </div>
             <div className='text-center display-4 fw-bold mt-5'>
-                Courses</div>
+               All Courses</div>
 
 
-            <div className="container mt-5 mb-5">
-            <div className="row">
+            <div className="container mt-5 mb-5 coursecontainer">
+            <div className="row g-3">
               
               {courseInfo.map(redercoursecard)}
               </div>

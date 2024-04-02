@@ -2,8 +2,8 @@ import '../Css/Coursedetails.css'
 // import  pic from '../Images/music.jpg';
 import pic from '../Images/Classroom.png'
 function Coursedetails() {
-  const handleclicked=()=>{
-    alert ("clicked");
+  const handleclicked = () => {
+    alert("clicked");
   }
   const courseInfo = [
     {
@@ -88,28 +88,28 @@ function Coursedetails() {
       <div className="container mb-5">
         <div className="row">
           <div className="col-lg-7  mt-5">
-          <img src={pic} width="95%"/>
+            <img src={pic} width="95%" />
             {/* <div className='w-75' >
               <img src={pic}/>
             </div> */}
-            <div><span>Course information</span></div>
+            <div><h4 className='fw-bold'>Course information</h4></div>
             <hr className="w-100" />
             <div>
               <h5>Beginners Landing Page Course</h5>
             </div>
             <div>
-              <p>Digital marketing course encompasses the tools and technologies required to help a business grow itself with the help of digital marketing. The purpose of digital marketing is to build a digital campaign to promote a business on the internet and social media platforms. Digital marketing is, alternatively, also known as Internet marketing.
+              <p className='paratext'>Digital marketing course encompasses the tools and technologies required to help a business grow itself with the help of digital marketing. The purpose of digital marketing is to build a digital campaign to promote a business on the internet and social media platforms. Digital marketing is, alternatively, also known as Internet marketing.
                 As the industry transitions from conventional business techniques to new digital versions, digital marketing enters the equation to play a significant role. A short while ago, businesses mainly relied on conventional marketing techniques to promote their brands. As the global application of the world wide web increased, traditional marketing began to display its shortcomings. The industry transcended national boundaries and went global. Since digital marketing has evolved into a simple approach to entering the worldwide market, the demand for digital marketing experts has been rising.
               </p>
             </div>
             <div>
-              <p>Digital marketing course encompasses the tools and technologies required to help a business grow itself with the help of digital marketing. The purpose of digital marketing is to build a digital campaign to promote a business on the internet and social media platforms. Digital marketing is, alternatively, also known as Internet marketing.
+              <p className='paratext'>Digital marketing course encompasses the tools and technologies required to help a business grow itself with the help of digital marketing. The purpose of digital marketing is to build a digital campaign to promote a business on the internet and social media platforms. Digital marketing is, alternatively, also known as Internet marketing.
                 As the industry transitions from conventional business techniques to new digital versions, digital marketing enters the equation to play a significant role. A short while ago, businesses mainly relied on conventional marketing techniques to promote their brands. As the global application of the world wide web increased, traditional marketing began to display its shortcomings. The industry transcended national boundaries and went global. Since digital marketing has evolved into a simple approach to entering the worldwide market, the demand for digital marketing experts has been rising.
               </p>
 
             </div>
             <div>
-              <h5>What will you learn?</h5>
+              <h5 className='fw-bold'>What will you learn?</h5>
               <div className="row">
                 <div className="col-6">
                   <ul>
@@ -129,23 +129,109 @@ function Coursedetails() {
               </div>
 
             </div>
+            <div>
+              <h4 className='fw-bold'>Course Content</h4>
+              <div className="accordion" id="accordionExample">
+                <div className="accordion-item accordionitem">
+                  <h2 className="accordion-header">
+                    <button className="accordion-button collapsed accordionitem fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+
+                      <div>Content 1</div>
+
+
+                    </button>
+                  </h2>
+                  <div id="collapseOne" className="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                      <div className='row'>
+                        <div className='col'>
+                          <i className="fa fa-play-circle iconplay"></i>
+                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                        </div>
+                        <div className='col text-end'>10:05</div>
+                      </div>
+                      <div className='row mt'>
+                        <div className='col'>
+                          <i className="fa fa-play-circle iconplay"></i>
+                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                        </div>
+                        <div className='col text-end'>15:05</div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+                <div className="accordion-item">
+                  <h2 className="accordion-header">
+                    <button className="accordion-button collapsed accordionitem fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Content 2
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                    <div className='row'>
+                        <div className='col'>
+                          <i className="fa fa-play-circle"></i>
+                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                        </div>
+                        <div className='col text-end'>10:05</div>
+                      </div>
+                      <div className='row mt'>
+                        <div className='col'>
+                          <i className="fa fa-play-circle iconplay"></i>
+                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                        </div>
+                        <div className='col text-end'>15:05</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="accordion-item">
+                  <h2 className="accordion-header">
+                    <button className="accordion-button collapsed accordionitem fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Content 3
+                    </button>
+                  </h2>
+                  <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                    <div className='row'>
+                        <div className='col'>
+                          <i className="fa fa-play-circle iconplay"></i>
+                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                        </div>
+                        <div className='col text-end'>10:05</div>
+                      </div>
+                      <div className='row mt'>
+                        <div className='col'>
+                          <i className="fa fa-play-circle iconplay"></i>
+                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                        </div>
+                        <div className='col text-end'>15:05</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
           <div className="col-lg-4  mt-5">
             <div className="border" id='cartpart'>
               <div className="ms-4 mt-4">
                 <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>
               </div>
-              <div className=" text-center mt-4"><button className="btn btn-success  w-75" id='cartbutton' onClick={handleclicked} >Add to cart</button></div>
-              <div className=" text-center mt-4"><button className="btn w-75" id="buybutton">Buy now</button></div>
+              <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={handleclicked} >Add to cart</button></div>
+              <div className=" text-center mt-4"><button className="btn w-75" id="buybutton">Enroll Now</button></div>
               <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
             </div>
             <div className=' border rounded'>
               <div className='ms-4 mt-2 mb-4'>
-                <div><i className="fa fa-book" ></i><span className='fw-bold ms-2'>Beginner Level</span></div>
-                <div className='mt-2'><i className="fa fa-book" ></i><span className='fw-bold ms-2 '>90 students enrolled</span></div>
-                <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2'>6 hour 34 min duration</span></div>
+                <div><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext'>Beginner Level</span></div>
+                <div className='mt-2'><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext '>90 students enrolled</span></div>
+                <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2 paratext'>6 hour 34 min duration</span></div>
                 <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2'>10 nov,2023 last updated </span></div>
-                <div className='mt-2'><i className='fa fa-certificate'></i><span className='fw-bold ms-2'>Certificate of completion </span></div>
+                <div className='mt-2'><i className='fa fa-certificate'></i><span className='fw-bold ms-2 paratext'>Certificate of completion </span></div>
               </div>
             </div>
             <div className='border rounded mt-4'>
@@ -172,10 +258,9 @@ function Coursedetails() {
               <div className='ms-4 mt-2 mb-4'>
                 <h6 className='fw-bold mt-4'>Apply Coupon</h6>
                 <div className="search couponbutton mt-4  ">
-                               
-                                <input type="text" className="form-control " placeholder="Enter coupon" />
-                                <button className="btn btn-success">Apply</button>
-                            </div>
+                  <input type="text" className="form-control" placeholder="Enter coupon" />
+                  <button className="btn">Apply</button>
+                </div>
               </div>
 
 

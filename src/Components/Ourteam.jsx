@@ -52,7 +52,7 @@ function Ourteam() {
      }
     return (
         <div style={{backgroundColor:"rgba(244, 238, 238, 0.975)"}}>
-            <div className="container py-2">
+            <div className="container py-5">
                 <h4 className='display-4 text-center mt-5 teamheading'>Our team is the best for the academy</h4>
                 <main className="grid team mt-3">
                  {ourteamInfo.map(renderteam)}

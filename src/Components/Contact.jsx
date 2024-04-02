@@ -69,7 +69,7 @@ function Contact() {
             <div className='row'>
               <div className='col-lg-8'>
               </div>
-              <div className='col-lg-4' style={{ backgroundColor: "#5c0e47" }} >
+              <div className='col-lg-4' style={{ backgroundColor: "rgba(14, 18, 85, 1)" }} >
                 <div className='text-center'>
                   <img src={icon} alt='noicon' /><br />
                   <span className='touch text-white'>Get in touch</span>
@@ -77,24 +77,24 @@ function Contact() {
 
                 <form>
                   <div className="form-group  mb-4">
-                    <label className="text-white" htmlFor="exampleInputEmail1">Name</label>
-                    <input type="text" className="form-control form-control-lg" id="name" name="name" placeholder="Enter your name" onChange={e => setName(e.target.value)} />
+                    <label className="text-white lablestyle" htmlFor="exampleInputEmail1">Name</label>
+                    <input type="text" className="form-control form-control-lg inputstyle" id="name" name="name" placeholder="Enter your name" onChange={e => setName(e.target.value)} />
                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                   </div>
                   <div className="form-group  mb-4">
                     <label className="text-white" htmlFor="exampleInputEmail1">Email Address</label>
-                    <input type="text" className="form-control form-control-lg" onKeyUp={emailHandler} name="email" placeholder="Enter your email address"  onChange={e => setEmail(e.target.value)} />
+                    <input type="text" className="form-control form-control-lg inputstyle" onKeyUp={emailHandler} name="email" placeholder="Enter your email address"  onChange={e => setEmail(e.target.value)} />
                     {emailerror ? <span className='link-warning'>Email invalid</span> : ""}
                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                   </div>
                   <div className="form-group  mb-4">
-                    <label className="text-white" htmlFor="exampleInputEmail1">Message</label>
+                    <label className="text-white" htmlFor="exampleInputEmail1 inputstyle">Message</label>
                     <input type="text" className="form-control form-control-lg" id="message" name="message" placeholder="Enter your message"  onChange={e => setMessage(e.target.value)} />
                    
                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
                   </div>
                   <div className="pt-1 mb-4 text-center">
-                    <button className="btn btn-lg btn-success w-50 " type="submit" onClick={handleSubmit}>Submit</button>
+                    <button className="submitbutton btn btn-lg w-50 " id='submitbutton' type="submit" onClick={handleSubmit}>Submit</button>
                   </div>
 
                 </form>
@@ -114,8 +114,8 @@ function Contact() {
                 <div className='text-center'> <img className="img " src={emailicon} width="15%" alt="100%x280" /></div>
 
                 <div className="card-body">
-                  <h5 className="card-title text-center">Email</h5>
-                  <h6 className="card-text text-center">Synthosphere@gmail.com</h6>
+                  <h5 className="card-title text-center cardtitle">Email</h5>
+                  <h6 className="card-text text-center cardtext">Synthosphere@gmail.com</h6>
 
                 </div>
               </div>

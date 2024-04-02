@@ -1,0 +1,31 @@
+@font-face {
+    font-family: blogstyle ;
+    src: url('../fontstyle/SFPRODISPLAYBOLD.OTF');
+}
+@font-face {
+    font-family: blogparastyle;
+    src: url('../fontstyle/SFPRODISPLAYREGULAR.OTF');
+}
+
+.blogheading{
+    font-family: blogstyle ;
+    color: white;
+
+}
+.indicatiorstyle{
+    margin-top: 20px;
+}
+.blogpara{
+    font-family: blogparastyle;
+    font-size: 13px;
+}
+.blogsection{
+    padding-bottom: 6%;
+}
+/* .prevbutton{
+    margin-left: -10%;
+    
+}
+.nextbutton{
+    margin-right: -10%;
+} */

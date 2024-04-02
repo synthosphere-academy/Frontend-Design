@@ -6,6 +6,7 @@ import Steps from './Steps'
 import Mostpopularcourse from "./Mostpopularcourse"
 import Ourteam from './Ourteam';
 import Chooseus from './Chooseus'
+import Ourblog from './Ourblog';
 
 
 function Homepage() {
@@ -17,6 +18,7 @@ function Homepage() {
       <Steps/>
       <Mostpopularcourse/>
       <Chooseus/>
+      <Ourblog/>
       <Ourteam/>
       {/* <Footer/> */}
     </>

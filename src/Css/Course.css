@@ -2,3 +2,12 @@
     background-color: rgba(14, 18, 85, 1);
     border-radius: 10px;
 }
+.searchbutton{
+    color: white;
+}
+.cardimage{
+    border-radius: 20px;
+}
+.coursecontainer{
+    width: 75%
+}

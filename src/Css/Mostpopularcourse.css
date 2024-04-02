@@ -29,6 +29,9 @@ font-family: courseheading ;
   font-size:14px;
 }
 
+.cardcontainer{
+  width: 85%;
+}
 
   
   .cardbody {

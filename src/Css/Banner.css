@@ -26,8 +26,9 @@
      text-indent: 50px;
      border: 2px solid #d6d4d4;
      border-radius: 15px;
-
-
+    }
+    .search input :hover{
+        border: none;
     }
     .banner{
         padding: 45px 0;
@@ -57,7 +58,9 @@
     padding:10px 16px;
     text-transform: none;
     background-color: #b43f95;
-     /* cursor:url('./Images/pen2.png'), auto; */
+    color: white;
+    border: none;
+    
     }
    .search button:hover{
     background-color: #6d2259;

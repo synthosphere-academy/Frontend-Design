@@ -9,7 +9,7 @@ function Footer() {
                 <div className="container">
                     <div className="row py-4">
                         <div className="col-lg-6">
-                        <h5 className="widget-title text-white"> <img src={logo} alt='noimage' width="8%" /> Synthosphere Academy</h5>
+                        <h5 className="widget-title text-white footerstyle"> <img src={logo} alt='noimage' width="8%" /> Synthosphere Academy</h5>
                         <ul className='list'>
                             <a href='/'><li className='pe-4'>Home</li></a>
                            <a href='/contact'><li className='pe-4'>Contact</li></a> 
@@ -21,7 +21,7 @@ function Footer() {
                         <div className="col-lg-6 me-auto">
                             <div className='float-lg-end'>
 
-                            <span className='text-white'>Get the App</span><br />
+                            <span className='text-white '>Get the App</span><br />
 
                             <a className=" btnfooter btn btn-google" href="#" title="Google Play">Google Play</a>
                             </div>
@@ -29,7 +29,7 @@ function Footer() {
 
                     </div>
                     <div className='row'>
-                        <div className='col-lg-12 text-center'><span className='text-white'>Copyright Synthosphere team © 2024. All rights reserved.</span></div>
+                        <div className='col-lg-12 text-center'><span className='text-white copyright'>Copyright Synthosphere team © 2024. All rights reserved.</span></div>
                     </div>
                     </div>
                 </div>

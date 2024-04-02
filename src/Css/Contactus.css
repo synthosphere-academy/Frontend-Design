@@ -1,10 +1,31 @@
+@font-face {
+    font-family: contactstyle;
+    src: url('../fontstyle/SFPRODISPLAYBOLD.OTF');
+}
+@font-face {
+    font-family: contactregularstyle;
+    src: url('../fontstyle/SFPRODISPLAYREGULAR.OTF');
+}
+.cardtitle{
+    font-family: contactstyle;
+}
+.cardtext{
+    font-family: contactregularstyle;
+}
+.lablestyle{
+    font-family: contactstyle;
+}
+::placeholder{
+    font-family: contactregularstyle;
+    font-size: 16px;
+}
 .heading{
-    
+    font-family: contactstyle;
     font-weight: bold;
     color: black;
 }
 .touch{
-  
+    font-family: contactregularstyle;
     font-weight: 700;
 }
 .background{
@@ -14,10 +35,27 @@
 }
 .contactcard{
     box-shadow: none;
+    border: none;
 }
 .ratio{
     width: 50%;
 }
+
+.submitbutton{
+    border-radius: 10px;
+     font-size:18px;
+    line-height:1.3333333;
+    padding:10px 16px;
+    font-family: contactregularstyle;
+    text-transform: none;
+    background-color: #b43f95;
+    color: white;
+}
+#submitbutton:hover{
+    background-color: #6d2259;
+    color: white;
+}
+
 /* #map{
     /* background-image: url('../Images/Background.png'); 
 } */
