@@ -172,7 +172,7 @@ function Coursedetails() {
                     <div className="accordion-body">
                     <div className='row'>
                         <div className='col'>
-                          <i className="fa fa-play-circle"></i>
+                          <i className="fa fa-play-circle iconplay"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
                         </div>
                         <div className='col text-end'>10:05</div>
@@ -238,14 +238,14 @@ function Coursedetails() {
               <div className='ms-4 mt-2 mb-2'>
                 <h6 className='fw-bold'>A course by</h6>
                 <div className="row">
-                  <div className='col-3'><img className='rounded-circle w-75' src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+                  <div className='col-3'><img className='rounded-circle w-50' src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
                   </div>
                   <div className='col-6'><span>Dipan Das</span>
                     <br /><span>Teacher</span></div>
 
                 </div>
                 <div className="row mt-2">
-                  <div className='col-3'><img className='rounded-circle w-75' src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+                  <div className='col-3'><img className='rounded-circle w-50' src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
                   </div>
                   <div className='col-6'><span>Dipan Das</span>
                     <br /><span>Teacher</span></div>
@@ -258,7 +258,7 @@ function Coursedetails() {
               <div className='ms-4 mt-2 mb-4'>
                 <h6 className='fw-bold mt-4'>Apply Coupon</h6>
                 <div className="search couponbutton mt-4  ">
-                  <input type="text" className="form-control" placeholder="Enter coupon" />
+                  <input type="text" className="form-control couponinput " placeholder="Enter coupon" />
                   <button className="btn">Apply</button>
                 </div>
               </div>

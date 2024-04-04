@@ -11,7 +11,7 @@ import '../Css/Datepicker_style.css';
 
 
 // import pic from '../Images/reg.png'
-import pic from '../Images/reg_img.png'
+// import pic from '../Images/reg_img.png'
 function Register() {
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
@@ -22,7 +22,7 @@ function Register() {
     const [DropdownValue, setDropdownValue] = useState('')
     const [image, setImage] = useState(null)
     const [Date, setDate] = useState(null);
-    
+
 
 
     const [emailerror, setemailerror] = useState(false)
@@ -31,8 +31,8 @@ function Register() {
     const [confirmpasserror, setconfirmpasserror] = useState(false)
     const [imagefileerror, setimagefileerror] = useState('')
 
-    
-    
+
+
     //convert iamge to base64
     const convertToBase64 = (file) => {
         console.log(file);
@@ -57,10 +57,10 @@ function Register() {
         if (file.size >= 500000) {
             setimagefileerror("file size not more than 500kb");
         }
-        else if (extFile === "jpg" || extFile === "jpeg" || extFile === "png" ) {
+        else if (extFile === "jpg" || extFile === "jpeg" || extFile === "png") {
             setimagefileerror("")
         }
-       
+
         else {
             setimagefileerror("file not allowed")
         }
@@ -151,9 +151,97 @@ function Register() {
     }
     return (
         <>
-            <section >
-                <div className="container py-5">
-                    <div className="row d-flex justify-content-center align-items-center ">
+            <section  >
+                <div className="container formcontainer  mt-5 mb-5 ">
+                    <form className='row g-3 py-2'>
+                        <div className="col-lg-6">
+                            <label className='form-label text-white' htmlFor="name">Name </label>
+                            <input type="text" className="form-control form-control-lg" id="name" name="fullname" placeholder="Enter Your Name" onChange={e => setName(e.target.value)} />
+
+                        </div>
+                        <div className="col-lg-6">
+                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Phone Number</label>
+                            <input type="text" className="form-control form-control-lg" id="phoneno" onKeyUp={mobileHandler}
+                                name="phoneno" placeholder="Enter Your Phone Number" onChange={e => setPhoneno(e.target.value)} />
+                        </div>
+                        <div className='col-lg-3'>
+                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Date of birth </label>
+                            <span className='form-control h-50'><DatePicker value={Date} className="" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
+
+                        </div>
+                        <div className='col-lg-4'>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">State</label>
+                            <select className="form-select form-control-lg mb-3 h-50" aria-label=".form-select-lg example" value={DropdownValue_state} onChange={handleDropdownChange_state}>
+                                <option value="Choose State" label='Enter your city'></option>
+                                <option value="West bengal" label='West Bengal'></option>
+                                <option value="Delhi" label='delhi'></option>
+                                <option value="Mumai" label='Mumbai'></option>
+                            </select>
+                        </div>
+                        
+                        <div className='col-lg-5'>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">City</label>
+                            <select className="form-select form-control-lg h-50 mb-3" aria-label=".form-select-lg example" value={DropdownValue} onChange={handleDropdownChange}>
+                                <option value="Choose city" label=' Enter your city'></option>
+                                <option value="Kolkata" label='Kolkata'></option>
+                                <option value="Howrah" label='Howrah'></option>
+                                <option value="Hoogly" label='Hoogly'></option>
+                            </select>
+                        </div>
+                        <div className='col-lg-8'>
+                            <label className="form-label text-white" htmlFor="fileName">Student Image</label>
+                            <div className="input-group custom-file-button  ">
+                                <label className="input-group-text " htmlFor="fileName">Browse</label>
+                                <input type="file" className=" form-control form-control-lg" name='image' accept=".png, .jpg, .jpeg" id="fileName" onChange={handleFileChange} />
+                            </div>
+                            {imagefileerror ? <span className='link-warning'>{imagefileerror}</span> : ""}
+                        </div>
+                       
+
+                        <div className='col-lg-4'> {
+                            imagefileerror ? "" : <img width={100} height={100} src={image} />
+                        }
+                        </div>
+                        <div className='col-lg-4'>
+                        <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address</label>
+                                                    <input type="email" className="form-control form-control-lg" id="email" name="email"
+                                                        onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
+                                                    {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
+                                                    
+
+                        </div>
+                        <div className='col-lg-4'>
+                        <label className="form-label text-white" htmlFor="exampleInputEmail1">Password</label>
+                                                    <input type="text" className="form-control form-control-lg" id="password" name="password"
+                                                        onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
+                                                    {passwordError && <span className='link-danger'>{passwordError}</span>}
+                                                     {passwordError?<span className='link-danger'>Password must me 8 character, one Uppercase, one special character</span>:""}
+
+                        </div>
+                        <div className='col-lg-4'>
+                        <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password</label>
+                                                    <input type="text" className="form-control form-control-lg" id="confirmpassword" name="confirmpassword"
+                                                        onKeyUp={confirmpasswordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
+                                                    {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}
+
+                        </div>
+                        <span  className='text-white'><input type="checkbox" /> I agree all statements in Terms of service</span>
+
+                                                <div className="pt-1  text-center">
+                                                    <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>
+                                                </div>
+
+
+
+                                                <span className="mb-5 pb-lg-2 text-center register_text text-white" >Have an account? <a className="reg text-success" href="/login"
+                                                >Login</a></span>
+
+                        
+
+                    </form>
+
+
+                    {/* <div className="row d-flex justify-content-center align-items-center ">
                         <div className="col col-xl-10">
                             <div className="card" >
                                 <div className="row g-0">
@@ -172,14 +260,14 @@ function Register() {
                                                     <label className="text-white" htmlFor="exampleInputEmail1">Name </label>
                                                     <input type="text" className="form-control form-control-lg" id="name" name="fullname" placeholder="Enter Your Name" onChange={e => setName(e.target.value)} />
                                                     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
-                                                </div>
+                    {/* </div>
                                                 <div className="form-group  mb-4">
                                                     <label className="text-white" htmlFor="exampleInputEmail1">Phone Number</label>
                                                     <input type="text" className="form-control form-control-lg" id="phoneno" onKeyUp={mobileHandler}
                                                         name="phoneno" placeholder="Enter Your Phone Number" onChange={e => setPhoneno(e.target.value)} />
                                                     {mobilenoerror ? <span className='link-warning'>Mobile number invalid</span> : ""}
-                                                    {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
-                                                </div>
+                                                    {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> 
+                                                </div> 
 
 
 
@@ -208,7 +296,7 @@ function Register() {
                                                 <div className="form-group  mb-4 ">
                                                 <label className="text-white" htmlFor="fileName">Student Image</label>
                                                 <div className="input-group custom-file-button input-group-lg ">
-                                                    <label className="input-group-text text-white " htmlFor="fileName">Browse</label>
+                                                    <label className="input-group-text " htmlFor="fileName">Browse</label>
                                                     <input type="file" className=" form-control" name='image' accept=".png, .jpg, .jpeg" id="fileName"  onChange={handleFileChange} />
                                                 </div>
                                                 </div>
@@ -229,7 +317,7 @@ function Register() {
                                                     <div>
                                                         {image ? <img width={90} height={90} src={image} /> : <span className='text-white border'>no image</span>}
                                                     </div>
-                                                </div> */}
+                                                </div> 
                                              
 
 
@@ -238,7 +326,7 @@ function Register() {
                                                     <input type="email" className="form-control form-control-lg" id="email" name="email"
                                                         onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
                                                     {emailerror ? <span className='link-warning'>Email invalid</span> : ""}
-                                                    {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
+                                                    {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> 
                                                 </div>
                                                 <div className="form-group  mb-4">
                                                     <label className="text-white" htmlFor="exampleInputEmail1">Password</label>
@@ -246,8 +334,8 @@ function Register() {
                                                         onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
                                                     {passwordError && <span className='link-warning'>{passwordError}</span>}
                                                     {/* {passerror?<span className='link-warning'>Password must me 8 character, one Uppercase, one special character</span>:""}  */}
-                                                    {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
-                                                </div>
+                    {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
+                    {/* </div>
                                                 <div>
                                                     <label className='text-white' htmlFor='exampleInputEmail1'>Confirm Password</label>
                                                     <input type="text" className="form-control form-control-lg" id="confirmpassword" name="confirmpassword"
@@ -277,8 +365,8 @@ function Register() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div> 
+                    </div> */}
                 </div>
             </section>
 

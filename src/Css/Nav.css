@@ -71,3 +71,9 @@ a{
 .cartphoto{
     margin-left: 11px;
 }
+.iconnav{
+    color: white;
+}
+.togglebutton :hover{
+border: none;
+}

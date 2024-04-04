@@ -15,7 +15,7 @@ function Banner() {
                             <div className="search mt-5">
                             <img className='searchicon' src={icon} width={20}/>
                                 {/* <i className="fa fa-search mt-1 ms-3"></i> */}
-                                <input type="text" className="form-control  input" placeholder="Search for a course ?" />
+                                <input type="text" className="form-control  searchinput" placeholder="Search for a course ?" />
                                
                                 <button className="btn btn-success ">Search Course</button>
                             </div>

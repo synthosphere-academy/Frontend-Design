@@ -13,10 +13,10 @@ const Nav=()=> {
         <>
           <nav className="navbar navbar-expand-lg" style={{backgroundColor:"rgba(14, 18, 85, 1)"}}>
   <div className="container-fluid">
-    <a className="navbar-brand" href="#"><img src={logo} width={60}/></a>
-    <span className='text-white logoname'>Sythosphere Academy</span>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
+    <a className="navbar-brand" href="/"><img src={logo} width={60}/></a>
+    <a href='/' className="text-decoration-none"><span className='text-white logoname'>Sythosphere Academy</span></a>
+    <button className="navbar-toggler togglebutton" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <i className="fa fa-navicon iconnav"></i>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mb-2 mb-lg-0 mx-auto">

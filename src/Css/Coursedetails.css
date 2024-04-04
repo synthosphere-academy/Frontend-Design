@@ -50,3 +50,22 @@
     background-color: #6d2259;
     color: white;
 }
+
+.couponinput{
+    text-indent: 10px;
+
+
+        height: 70px;
+       
+       border: 2px solid #d6d4d4;
+       border-radius: 15px;
+      }
+      .couponinput :hover{
+          border: none;
+      }
+
+      @media screen and (max-width: 640px) {
+        .couponinput {
+          background-color: lightgreen;
+        }
+      }

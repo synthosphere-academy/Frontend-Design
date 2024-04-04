@@ -14,7 +14,7 @@ const Ourblog = () => {
    
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <div className="row ">
+              <div className="row g-5">
                 <div className='col-lg-4 '>
                   <div className="card">
                   <div className='container mt-3'>
