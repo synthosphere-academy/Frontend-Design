@@ -39,32 +39,21 @@ const Nav=()=> {
            Article
           </a>
           </li>
-          <li>
-          {/* <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><hr className="dropdown-divider"/></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
-          </ul> */}
-        </li>
+          
         <li className="nav-item pe-2">
           <a className="nav-link text-white" href='/contact'>Contact</a>
         </li>
       </ul>
-      <span className="navbar-text  cartstyle me-4" >
+      <div className='me-2'>
+      <div className="navbar-text  cartstyle text-center" >
         <a href='/addtocart'>
-          <img width={28} src={icon} className='cartphoto'/>
+          <img  src={icon} className='carticon'/>
       </a>
       {/* <sup><span className="badge bg-danger">5</span></sup> */}
-      </span>
-      {/* <span>
-       <Link to="/register"><button className="btn btn btn-success" id='loginbutton' type="submit" >Signup</button></Link>
+      </div>
+      </div>
       
-      </span>
-      <span>
-       <Link to="/login"><button className="btn btn btn-success" id='loginbutton' type="submit" >Login</button></Link>
       
-      </span> */}
       <button className='buttonstyle btn btn-sm buttonstyle text-white'>
       <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
       <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>

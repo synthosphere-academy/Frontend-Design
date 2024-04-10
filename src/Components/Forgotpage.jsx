@@ -1,4 +1,6 @@
 import pic from '../Images/forgot.png';
+import '../Css/Forgotpage.css'
+
 function Forgotpage() {
   return (
     
@@ -31,7 +33,7 @@ function Forgotpage() {
   
 
                   <div className="pt-1 mb-4 text-center">
-                    <button className="btn btn-lg btn-success w-50 " type="button">sign up</button>
+                    <button className=" btn-lg  w-50 loginbutton " type="button">Sumit</button>
                   </div>
                   <div className="d-flex">
                   

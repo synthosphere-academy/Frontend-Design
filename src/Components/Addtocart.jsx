@@ -90,25 +90,25 @@ function Addtocart() {
                             <div className='bg-white  ms-2 mt-4 p-4'>
                                 <form>
                                     <div className="search inputfield" >
-                                        <i className="fa fa-envelope position-absolute mt-4 ms-3 "></i>
-                                        <input type="text" className="form-control inputstyle" placeholder="Email" />
+                                        <i className="fa fa-envelope position-absolute mt-3 ms-3 "></i>
+                                        <input type="text" className="form-control form-control-lg  inputstyle" placeholder="Email" />
                                     </div>
                                     <div className="search mt-3 inputfield">
-                                        <i className="fa fa-lock position-absolute mt-4 ms-3 "></i>
-                                        <input type="text" className="form-control  inputstyle" placeholder="Password" />
+                                        <i className="fa fa-lock position-absolute mt-3 ms-3 "></i>
+                                        <input type="text" className="form-control form-control-lg inputstyle" placeholder="Password" />
                                     </div>
                                     <div className="search mt-3 inputfield">
-                                        <i className="fa fa-credit-card position-absolute mt-4 ms-3 "></i>
-                                        <input type="text" className="form-control  inputstyle" placeholder="Card Number" />
+                                        <i className="fa fa-credit-card position-absolute mt-3 ms-3 "></i>
+                                        <input type="text"  id="cardinput"className=" inputmm form-control form-control-lg" placeholder="Card Number" />
                                     </div>
                                     <div className="d-flex">
                                         <div className="search inputfield" >
-                                        <i className="fa fa-calendar position-absolute mt-4 ms-3 "></i>
-                                            <input type="text" className="form-control inputstyle" placeholder="MM/YY" aria-label="First name"/>
+                                        <i className="fa fa-calendar position-absolute mt-3 ms-3 "></i>
+                                            <input type="text" id='monthinput'  className="form-control form-control-lg inputmm" placeholder="MM/YY"/>
                                         </div>
                                         <div className="search inputfield">
-                                        <i className="fa fa-lock position-absolute mt-4 ms-3 "></i>
-                                            <input type="text" className="form-control inputstyle" placeholder="CVC" aria-label="Last name"/>
+                                        <i className="fa fa-lock position-absolute mt-3 ms-3 "></i>
+                                            <input type="text" id='cvcinput' className="form-control form-control-lg inputmm" placeholder="CVC" />
                                         </div>
                                     </div>
 
@@ -117,7 +117,7 @@ function Addtocart() {
                                     Your card will be charged <span className='fw-bold'> ₹899 </span>
                                 </div>
                                 <div className='text-center mt-3'>
-                                    <button className='btn btn-success w-100'>Pay Now</button>
+                                    <button className='btn paynow w-75'>Pay Now</button>
                                 </div>
                             </div>
 

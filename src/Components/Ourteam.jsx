@@ -35,7 +35,7 @@ function Ourteam() {
     ];
      const renderteam=(card,index)=>{
         return(
-            <article className='grid-body text-center' key={index}>
+            <article className='grid-body text-center teamcard' key={index}>
                 <img className="rounded-circle shadow-1-strong mb-4"
                             src={card.image} alt="avatar"
                             style={{ width: "44%" }} />

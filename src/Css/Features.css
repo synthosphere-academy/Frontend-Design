@@ -57,3 +57,29 @@ h1 {
 #feature4{
     background-color: rgba(253, 184, 20, 1);
 }
+.carddesign1:hover{
+    cursor: pointer;
+    background-color: rgba(34, 197, 94, 1);
+    color: white;
+
+}
+.carddesign2:hover{
+    cursor: pointer;
+    background-color: rgba(143, 87, 247, 1);
+    color: white;
+    
+}
+.carddesign3:hover{
+    cursor: pointer;
+    background-color:  rgba(246, 119, 97, 1);
+    color: white;
+   
+}
+.carddesign4:hover{
+    cursor: pointer;
+    background-color: rgba(253, 184, 20, 1);
+    color: white;
+    
+}
+
+
