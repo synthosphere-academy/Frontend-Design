@@ -13,17 +13,17 @@ const Ourblog = () => {
     },
     {
       blog_title: "hiiii",
-      blog_text: "its blog 1",
+      blog_text: "its blog 2",
     },
     {
       blog_title: "hiiii",
-      blog_text: "its blog 1",
+      blog_text: "its blog 3",
 
     },
     {
 
       blog_title: "hiiii",
-      blog_text: "its blog 1",
+      blog_text: "its blog 4",
 
     },
 

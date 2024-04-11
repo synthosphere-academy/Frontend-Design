@@ -153,6 +153,7 @@ function Register() {
         <>
             <section  >
                 <div className="container formcontainer  mt-5 mb-5 ">
+                    <div className='display-5 text-white text-center'>Register Here!</div>
                     <form className='row g-3 py-2'>
                         <div className="col-lg-6">
                             <label className='form-label text-white' htmlFor="name">Name </label>
