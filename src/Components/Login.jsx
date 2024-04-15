@@ -72,7 +72,7 @@ function Login() {
             <div className="col col-xl-10">
               <div className="card" >
                 <div className="row g-0">
-                  <div className="col-md-6 col-lg-5 d-md-block mt-5">
+                  <div className="col-md-6 col-lg-5 d-md-block mt-5 loginimage">
                     <img src={pic}
                       alt="loginform" className="img-fluid" />
                   </div>
@@ -104,7 +104,7 @@ function Login() {
                         </div>
                         <div className="d-flex">
                           <a className='text-success' href="/forgotpassword">Forgot password?</a>
-                          <span className="mb-5 pb-lg-2 text-white register_text" >Do not have an account? <a className="reg text-success" href="/register"
+                          <span className="mb-5 pb-lg-2 pb-sm-2 text-white register_text" >Do not have an account? <a className="reg text-success" href="/register"
                           >Register here</a></span>
                         </div>
                       </form>

@@ -30,8 +30,10 @@
    }
 .formcontainer{
 	 width: 65%;
+	
 	 padding: 2%;
 	 background-color: rgb(14, 18, 85);
+	 border-radius: 12px;
 }
 .custom-file-button {
 	input[type="file"] {
@@ -44,4 +46,11 @@
 			display: none;
 		}
 	}
+}
+
+
+@media (max-width: 600px) {
+    .formcontainer{
+		width: 95%;
+    }
 }

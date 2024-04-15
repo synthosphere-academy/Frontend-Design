@@ -1,9 +1,8 @@
 import '../Css/blog.css';
 import img1 from '../Images/Image.png';
 import Slider from "react-slick";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick-theme.css'
+ import 'slick-carousel/slick/slick.css';
+ import 'slick-carousel/slick/slick-theme.css';
 
 const Ourblog = () => {
   const blogInfo = [
@@ -33,7 +32,7 @@ const Ourblog = () => {
     return (
       <div className="card" key={index}>
         <div className='container mt-3'>
-          <img src={img1} className="card-img-top d-block w-100" alt="noimage" />
+          <img src={img1} className="card-img-top d-block" alt="noimage" />
           <div className="card-body">
             <h5 className="card-title">{card.blog_title}</h5>
             <p className="card-text">{card.blog_text}</p>
@@ -48,7 +47,23 @@ const Ourblog = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024, // Adjust settings for screen widths less than 1024px
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600, // Adjust settings for screen widths less than 600px
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
   };
 
   return (
@@ -56,7 +71,7 @@ const Ourblog = () => {
       <h4 className='display-4 text-center pt-5 blogheading'>Resources & Insight</h4>
       <h6 className='text-white text-center blogpara'>Engage with a rich array of thought leadership, expert insights, and emerging trends through our diverse</h6>
       <h6 className='text-white text-center blogpara'>and dynamic blog platform inspiring continuous learning and innovation</h6>
-      <div className="container py-5">
+      <div className="container py-5 w-75 ">
       <Slider {...settings}>
       {blogInfo.map(renderblog)}
       </Slider>

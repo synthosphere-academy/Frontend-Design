@@ -29,7 +29,7 @@ const Wishlist =() => {
     
       const redercourse = (card, index)=>{
         return(
-          <div className='col-lg-5 mt-4'>
+          <div className='col-lg-5 mt-3'>
           <div className="card" key={index} >
             <img className="card-img-top"  src={card.image} alt="Sample photo" />
             <div className="card-body">
@@ -72,8 +72,9 @@ const Wishlist =() => {
 
   return (
     <>
-    <h3>Wishlist </h3>
-    <div className="row">
+    <h3 className="fw-bold">Wishlist</h3>
+    
+    <div className="row cardrow">
 
     {courseInfo.map(redercourse)}
   </div>

@@ -1,6 +1,7 @@
 import '../Css/Mostpopularcourse.css'
  import  { useState, useEffect } from 'react';
  import axios from 'axios';
+ import pic1 from '../Images/firstcourse.jpeg'
 
 function Mostpopularcourse() {
  
@@ -17,7 +18,7 @@ function Mostpopularcourse() {
     return(
       <div className='col' key={productdata._id} >
       <div className="card h-100">
-        <img className="card-img-top cardimage" src="https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg" alt="Sample photo" />
+        <img className="card-img-top cardimage " src={pic1} alt="Sample photo" />
         <div className="card-body">
           <div className='row'>
             <div className='col-6'>

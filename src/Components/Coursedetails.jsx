@@ -92,20 +92,48 @@ function Coursedetails() {
             {/* <div className='w-75' >
               <img src={pic}/>
             </div> */}
-            <div><h4 className='fw-bold'>Course information</h4></div>
+            <div><h4 className='fw-bold'>Course Description</h4></div>
             <hr className="w-100" />
             <div>
-              <h5>Beginners Landing Page Course</h5>
+              <h5>How this course look like together? We have module 1 and
+                module 2.</h5>
             </div>
             <div>
-              <p className='paratext'>Digital marketing course encompasses the tools and technologies required to help a business grow itself with the help of digital marketing. The purpose of digital marketing is to build a digital campaign to promote a business on the internet and social media platforms. Digital marketing is, alternatively, also known as Internet marketing.
-                As the industry transitions from conventional business techniques to new digital versions, digital marketing enters the equation to play a significant role. A short while ago, businesses mainly relied on conventional marketing techniques to promote their brands. As the global application of the world wide web increased, traditional marketing began to display its shortcomings. The industry transcended national boundaries and went global. Since digital marketing has evolved into a simple approach to entering the worldwide market, the demand for digital marketing experts has been rising.
-              </p>
+              <p className='paratext text-start'>
+                <span className='fw-bold'>Module 1: </span>
+                So we have 1st module , where you will learn how blockchain
+                run in realtime world. What is cryptocurrency? How to be a
+                crypto trader? You will learn the basic things about blockchain
+                and crypto world, like what is NFT? What are the rules for
+                became a crypto trader. Learn various type of time frame in
+                trading.Step by step you will know about exchanges, how to open
+                your 1st trading account in there. Indian government rules for
+                cryptocurrency, and what is trading? How to make profit?
+                Not only practicals, we will discuss about deep blockchain
+                knowledge, like what is mining? How it works? What is the
+                consensus protocols? How crypto is born and listed in any
+                exchanges? After that we will cover smart contracts to
+                decentralised wallets. Also we are covering a small part of
+                technical analysis, indicators, candles.</p>
             </div>
             <div>
-              <p className='paratext'>Digital marketing course encompasses the tools and technologies required to help a business grow itself with the help of digital marketing. The purpose of digital marketing is to build a digital campaign to promote a business on the internet and social media platforms. Digital marketing is, alternatively, also known as Internet marketing.
-                As the industry transitions from conventional business techniques to new digital versions, digital marketing enters the equation to play a significant role. A short while ago, businesses mainly relied on conventional marketing techniques to promote their brands. As the global application of the world wide web increased, traditional marketing began to display its shortcomings. The industry transcended national boundaries and went global. Since digital marketing has evolved into a simple approach to entering the worldwide market, the demand for digital marketing experts has been rising.
-              </p>
+              <p className='paratext'><span className='fw-bold'>Module 2: </span>
+                In the next module. we will go deep into the blockchain and
+                crypto knowledge.
+                Here we know about some protocols, security of holding
+                wallets, secrets of technicals and fundamental analysis, not
+                only in basic level, we will go through advance level. Not just
+                blockchain knowledge, in this module 2, you will know about
+                many types of trading, including future trade, no loss strategy,
+                and also some crypto history, case studies. Case study in
+                various type of cryptocurrency in different fields. And at last
+                we have some gem coin suggestions for upto 50x profit in long
+                term.
+                So, are you ready to unlock the potential of blockchain and
+                cryptocurrency? Join us on this exciting journey as we explore
+                the possibilities, challenge the status quo, and embrace the
+                future of decentralized technology as well as be a master
+                trader with no loss strategy. </p>
 
             </div>
             <div>
@@ -113,16 +141,16 @@ function Coursedetails() {
               <div className="row">
                 <div className="col-6">
                   <ul>
-                    <li>Understand the core concepts</li>
-                    <li>Understand the core concepts</li>
-                    <li>Understand the core concepts</li>
+                    <li>Basic cryptocurrency knowledge</li>
+                    <li>Basic blockchain knowledge</li>
+                    <li>Cryptocurrency trading strategy</li>
                   </ul>
                 </div>
                 <div className="col-6">
                   <ul>
-                    <li>Understand the core concepts</li>
-                    <li>Understand the core concepts</li>
-                    <li>Understand the core concepts</li>
+                    <li>Fundamental analysis of cryptocurrency</li>
+                    <li>Technical analysis of cryptocurrency</li>
+                    <li>Deep blockchain knowledge</li>
                   </ul>
                 </div>
 
@@ -170,7 +198,7 @@ function Coursedetails() {
                   </h2>
                   <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                    <div className='row'>
+                      <div className='row'>
                         <div className='col'>
                           <i className="fa fa-play-circle iconplay"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
@@ -195,7 +223,7 @@ function Coursedetails() {
                   </h2>
                   <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                    <div className='row'>
+                      <div className='row'>
                         <div className='col'>
                           <i className="fa fa-play-circle iconplay"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>

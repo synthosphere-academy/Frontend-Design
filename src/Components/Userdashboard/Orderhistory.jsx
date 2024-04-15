@@ -49,7 +49,7 @@ const Orderhistory= () => {
     }
   return (
     <>
-    <h3>Order History</h3>
+    <h3 className="fw-bold">Order History</h3>
     <div className="container mt-4">
     <div className="row">
 

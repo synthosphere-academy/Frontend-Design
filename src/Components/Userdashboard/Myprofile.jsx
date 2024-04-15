@@ -2,7 +2,7 @@
 function Myprofile() {
   return (
     <div>
-      <h3>My Profile</h3>
+      <h3 className="fw-bold">My Profile</h3>
       <div className="row mt-4">
         <div className="col-lg-3">
           <span>Registration Date</span>

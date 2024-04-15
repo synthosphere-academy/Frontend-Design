@@ -1,3 +1,5 @@
+import "../../Css/Entrolled.css"
+
 const Entrolled =() => {
 
     const EntrolledcourseInfo = [
@@ -28,7 +30,7 @@ const Entrolled =() => {
     ]
     const rederentrollcourse = (card, index)=>{
         return(
-          <div className='col-lg-5 mt-4'>
+          <div className='col-lg-5 mt-3'>
           <div className="card" key={index} >
             <img className="card-img-top"  src={card.image} alt="Sample photo" />
             <div className="card-body">
@@ -72,12 +74,14 @@ const Entrolled =() => {
     
   return (
    <>
-    <h3>Enrolled Courses</h3>
-    <div className="row">
+    
+   
+    <h3 className="fw-bold">Enrolled Courses</h3>
+    <div className="row cardrow">
 
     {EntrolledcourseInfo.map(rederentrollcourse)}
   </div>
-   </>
+    </>
   )
 }
 

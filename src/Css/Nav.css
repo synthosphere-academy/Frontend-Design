@@ -83,3 +83,21 @@ border: none;
     margin-bottom: 7%;
 
 }
+@media (max-width: 600px) {
+    .cartpart{
+      margin-left:44% ;
+
+    }
+    .buttonstyle{
+        margin-left:35% ;
+    }
+}
+@media (max-width: 800px) {
+    .cartpart{
+      margin-left:46% ;
+
+    }
+    .buttonstyle{
+        margin-left:30% ;
+    }
+}

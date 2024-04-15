@@ -9,6 +9,7 @@
 
 #loginform{
     background-color: rgba(14, 18, 85, 1);
+    border-radius: 0px 20px 20px 0px;
 }
 .register_text{
     margin-left: auto;
@@ -27,3 +28,14 @@
     background-color: #6d2259;
     color: white;
    }
+
+   @media (max-width: 600px) {
+    .loginimage{
+      display: none;
+
+    }
+    #loginform{
+        border-radius: 20px 20px 20px 20px; 
+    }
+  }
+  
