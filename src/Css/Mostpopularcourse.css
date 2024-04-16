@@ -19,6 +19,14 @@ font-family: courseheading ;
   margin:5px;
   font-family: buttostyle;
   text-transform: none;
+   background-color: #b43f95;
+   color: white;
+   border: none;
+}
+.learnmore:hover{
+  color: white;
+  background-color: #6d2259;
+  border: none;
 }
 .mostpopular{
   background-color: rgba(244, 238, 238, 0.975);
@@ -58,6 +66,9 @@ font-family: courseheading ;
   }
   .checked{
     color:rgb(239, 239, 15);
+    }
+    .notchecked{
+      color: rgba(14, 18, 85, 1);
     }
  
   

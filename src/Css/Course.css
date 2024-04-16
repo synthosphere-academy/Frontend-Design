@@ -4,9 +4,11 @@
 }
 .searchbutton{
     color: white;
+    width: 142px;
+    font-size:16px;
 }
 .cardimage{
-    border-radius: 20px;
+    border-radius: 20px 20px 0px 0px;
 }
 .coursecontainer{
     width: 75%

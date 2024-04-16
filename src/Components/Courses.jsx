@@ -1,118 +1,60 @@
 import pic from '../Images/courseimage.png'
 import '../Css/Course.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import icon from '../Images/Search.svg';
+import lessonicon from '../Images/lesson.svg'
 
 function Courses() {
-    const courseInfo = [
-        {
-            image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
-            coursename: "The Cryptocurrency Investment Course",
-            // coursedetails: "Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!",
-            coursereview: "4.5",
-            course_currentprice: "₹899",
-            course_price: "₹1899"
-        },
-        {
-            image: ["https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg"],
-            coursename: "Music Course",
-            // coursedetails: "Expand your music composition skills through learning universal music theory principles, mindset, and ear training.You will learn  basic essential techniques that will allow you to play any song in any style!",
-            coursereview: "4",
-            course_currentprice: "₹799",
-            course_price: "₹999"
-        },
-        {
-            image: ["https://cdn.eduonix.com/assets/images/header_img/2020091906114212289.jpg"],
-            coursename: "The Complete Stock market course",
-            // coursedetails: "Master Stock Market Investing & Trading in the Stock Market.Apply best practices and techniques to make better stock choices.Invest & Trade!",
-            coursereview: "4",
-            course_currentprice: "₹799",
-            course_price: "₹999"
-        },
-        {
-            image: ["https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg"],
-            coursename: "Music Course",
-            // coursedetails: "Expand your music composition skills through learning universal music theory principles, mindset, and ear training.You will learn  basic essential techniques that will allow you to play any song in any style!",
-            coursereview: "4",
-            course_currentprice: "₹799",
-            course_price: "₹999"
-        },
-        {
-            image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
-            coursename: "The Full Cryptocurrency Investment Course",
-            // coursedetails: "Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!",
-            coursereview: "4.5",
-            course_currentprice: "₹899",
-            course_price: "₹1899"
-        },
-        {
-            image: ["https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg"],
-            coursename: "Music Course",
-            // coursedetails: "Expand your music composition skills through learning universal music theory principles, mindset, and ear training.You will learn  basic essential techniques that will allow you to play any song in any style!",
-            coursereview: "4",
-            course_currentprice: "₹799",
-            course_price: "₹999"
-        },
-        {
-            image: ["https://cdn.eduonix.com/assets/images/header_img/2020091906114212289.jpg"],
-            coursename: "The Complete Stock market course",
-            // coursedetails: "Master Stock Market Investing & Trading in the Stock Market.Apply best practices and techniques to make better stock choices.Invest & Trade!",
-            coursereview: "4",
-            course_currentprice: "₹799",
-            course_price: "₹999"
-        },
-        {
-            image: ["https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg"],
-            coursename: "Music Course",
-            // coursedetails: "Expand your music composition skills through learning universal music theory principles, mindset, and ear training.You will learn  basic essential techniques that will allow you to play any song in any style!",
-            coursereview: "4",
-            course_currentprice: "₹799",
-            course_price: "₹999"
-        }
-
-
-    ];
-    const redercoursecard = (card, index) => {
+    const [coursedata, setcoursedata] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:8081/api/v1/product')
+          .then(coursedata => setcoursedata(coursedata.data.data))
+          .catch(err => console.log(err))
+    
+      }, []);
+    
+    const redercoursecard = (coursedata) => {
         return (
-            <div className='col-lg-4' key={index}>
-      <div className="card h-100" key={index}>
-        <img className="card-img-top cardimage" src={card.image} alt="Sample photo" />
-        <div className="card-body">
-          <div className='row'>
-            <div className='col-6'>
-            <i className='fa fa-graduation-cap'></i>
-            <span className='ms-2'>26 lessons</span>
+          <div className='col' key={coursedata._id} >
+            <div className="card h-100">
+              <img className="card-img-top cardimage " src={coursedata.image} alt="Sample photo" />
+              <div className="card-body">
+                <div className='row'>
+                  <div className='col-6'>
+                    <img src={lessonicon} width={20} height={20} />
+                    <span className='ms-2'>{coursedata.total_video} videos</span>
+                  </div>
+                  <div className='col-6 text-end'>
+                    <span className='fw-bold'>{coursedata.course_review}</span>
+    
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star notchecked"></span>
+                  </div>
+                </div>
+                <h5 className='mt-3'>{coursedata.course_name}</h5>
+                {/* <p>{card.coursedetails}</p> */}
+    
+                {/* <span className='fw-bold'>{card.course_currentprice}</span>
+            <label className='text-decoration-line-through'>{card.course_price}</label> */}
+                <hr />
+                <div className="row">
+                  <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+                    <span className='teachername ms-1 mt-2'>{coursedata.teacher_name}</span>
+                  </div>
+    
+                  {/* <br/><span>{productdata.teacher_dept}</span></div> */}
+                  <div className='col-lg-6 col-sm-6'><a className='buttonlearnmore' href='/coursedetails'><button className=" btn-sm learnmore ">Learn More</button></a></div>
+                </div>
+    
+              </div>
             </div>
-            <div className='col-6 text-end'>
-                      <span className='fw-bold'>{card.coursereview}</span>
-                      
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star"></span>
-        </div>
           </div>
-        <h5 className='mt-3'>{card.coursename}</h5>
-        {/* <p>{card.coursedetails}</p> */}
-        
-        {/* <span className='fw-bold'>{card.course_currentprice}</span>
-        <label className='text-decoration-line-through'>{card.course_price}</label> */}
-        <hr/>
-        <div className="row">
-          <div className='col-2'><img className='rounded-circle' width={40} height={40} src='https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp' />
-            </div>
-          <div className='col-4'><span>David Noman</span>
-          <br/><span>Teacher</span></div>
-          <div className='col-6'><a href='/coursedetails'><button className="btn btn-primary btn-sm learnmore" type='button'>Learn More</button></a></div>
-          
-
-        </div>
-        {/* <div><a href="#" className="btn btn-primary btn-block">buy now</a></div> */}
-        </div>
-      </div>
-      </div>
         )
-    }
+      }
     return (
         <>
 
@@ -147,13 +89,14 @@ Explore a myriad of courses designed to enhance your understanding of synthesis.
             <div className='text-center display-4 fw-bold mt-5'>
                All Courses</div>
 
+               <div className="container py-5 cardcontainer">
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
 
-            <div className="container mt-5 mb-5 coursecontainer">
-            <div className="row g-3">
-              
-              {courseInfo.map(redercoursecard)}
-              </div>
+              {coursedata.map(redercoursecard)}
+
             </div>
+          </div>
+            
 
 
 
