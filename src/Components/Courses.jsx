@@ -72,7 +72,7 @@ Explore a myriad of courses designed to enhance your understanding of synthesis.
                                 <div className="search">
                             <img className='searchicon' src={icon} width={20}/>
                                 {/* <i className="fa fa-search mt-1 ms-3"></i> */}
-                                <input type="text" className="form-control  searchinput" placeholder="Search for a course ?" />
+                                <input type="text" className="form-control  searchinput" placeholder="Search for a course?" />
                                
                                 <button className="btn searchbutton">Search Course</button>
                             </div>
