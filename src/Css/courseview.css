@@ -1,0 +1,23 @@
+@font-face {
+    font-family: coursestyle;
+    src: url('../fontstyle/SFPRODISPLAYREGULAR.OTF');
+}
+*{
+    font-family: coursestyle; 
+}
+
+.chapter{
+    cursor: pointer;
+    height: 48px;
+    font-size: 18px;
+    font-family: coursestyle;
+    padding: 2%;
+
+}
+.chapter:hover{
+
+    background-color: rgb(189, 194, 198);
+}
+.accordion-body{
+padding: 0%;
+}

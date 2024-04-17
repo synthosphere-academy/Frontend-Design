@@ -1,7 +1,15 @@
 import '../Css/Coursedetails.css'
 // import  pic from '../Images/music.jpg';
 import pic from '../Images/Classroom.png'
+import { useNavigate } from 'react-router-dom';
+
+
 function Coursedetails() {
+  const navigate = useNavigate()
+  
+  const entroll_handler =()=>{
+    navigate('/courseview');
+  }
   const handleclicked = () => {
     alert("clicked");
   }
@@ -160,6 +168,7 @@ function Coursedetails() {
             <div>
               <h4 className='fw-bold'>Course Content</h4>
               <div className="accordion" id="accordionExample">
+                
                 <div className="accordion-item accordionitem">
                   <h2 className="accordion-header">
                     <button className="accordion-button collapsed accordionitem fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -250,7 +259,7 @@ function Coursedetails() {
                 <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>
               </div>
               <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={handleclicked} >Add to cart</button></div>
-              <div className=" text-center mt-4"><button className="btn w-75" id="buybutton">Enroll Now</button></div>
+              <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}>Enroll Now</button></div>
               <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
             </div>
             <div className=' border rounded'>
