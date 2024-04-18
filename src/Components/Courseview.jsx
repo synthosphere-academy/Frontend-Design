@@ -4,7 +4,7 @@ import '../Css/courseview.css'
 const Courseview = () => {
     const [videoSource, setVideoSource] = useState('https://www.youtube.com/watch?v=LXb3EKWsInQ');
 
-    const handleChapterClick = (event,newVideoSource) => {
+    const handleChapterClick = (event, newVideoSource) => {
         console.log(newVideoSource)
         setVideoSource(newVideoSource);
     };
@@ -22,7 +22,7 @@ const Courseview = () => {
                                                 <h3 className='fw-bold'>Introduction to music course</h3>
                                             </div>
                                             <div className="vp-video mb-4">
-                                                <ReactPlayer  controls width="100%" height="450px" url={videoSource} />
+                                                <ReactPlayer controls width="100%" height="450px" url={videoSource} />
                                             </div>
                                         </div>
                                         <div className='content-wrapper'>
@@ -64,6 +64,35 @@ const Courseview = () => {
 
 
                                             </div>
+                                            <div className='course_imp'>
+                                                <h5 className='fw-bold'>What will you learn?</h5>
+                                                <div className="row">
+                                                    <div className="col-6">
+                                                        <ul>
+                                                            <li>Basic cryptocurrency knowledge</li>
+                                                            <li>Basic blockchain knowledge</li>
+                                                            <li>Cryptocurrency trading strategy</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div className="col-6">
+                                                        <ul>
+                                                            <li>Fundamental analysis of cryptocurrency</li>
+                                                            <li>Technical analysis of cryptocurrency</li>
+                                                            <li>Deep blockchain knowledge</li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div>
+                                            <h5 className='fw-bold'>Who this course is for:</h5>
+                                            <ul>
+                                                            <li>Any students in college who want to start a career in Blockchain & Cryptos</li>
+                                                            <li>Any Blockchain, Bitcoin & Cryptos enthusiast</li>
+                                                            <li>Anyone interested in building their own Blockchain</li>
+                                                            <li>Anyone interested in Blockchain and its applications</li>
+                                                        </ul>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -90,22 +119,22 @@ const Courseview = () => {
                                                         <div id="collapseOne" className="accordion-collapse collapse " data-bs-parent="#accordionExample">
                                                             <div className="accordion-body">
                                                                 <div className='chapter'>
-                                                                    <div className='row'>
-                                                                    <div className='col' onClick={e=>handleChapterClick(e,'https://youtu.be/kVAJO9AghjM?si=pWpKJBKIy0oziHNG')}>
-                                                                        <i className="fa fa-play-circle iconplay"></i>
-                                                                        <span className='ms-3'>Introduction</span>
-                                                                    </div>
-                                                                    <div className='col text-end'>10:05</div>
+                                                                    <div className='row' onClick={e => handleChapterClick(e, 'https://youtu.be/kVAJO9AghjM?si=pWpKJBKIy0oziHNG')}>
+                                                                        <div className='col' >
+                                                                            <i className="fa fa-play-circle iconplay"></i>
+                                                                            <span className='ms-3'>Introduction</span>
+                                                                        </div>
+                                                                        <div className='col text-end'>10:05</div>
                                                                     </div>
                                                                 </div>
                                                                 <div className='chapter'>
-                                                                <div className='row'>
-                                                                    <div className='col' onClick={e => handleChapterClick(e , 'https://youtu.be/zFSqskyqEXg?si=PR4DO2_4a_5wS0U8')}>
-                                                                        <i className="fa fa-play-circle iconplay"></i>
-                                                                        <span className='ms-3'>Introduction</span>
+                                                                    <div className='row' onClick={e => handleChapterClick(e, 'https://youtu.be/zFSqskyqEXg?si=PR4DO2_4a_5wS0U8')}>
+                                                                        <div className='col' >
+                                                                            <i className="fa fa-play-circle iconplay"></i>
+                                                                            <span className='ms-3'>Introduction</span>
+                                                                        </div>
+                                                                        <div className='col text-end'>15:05</div>
                                                                     </div>
-                                                                    <div className='col text-end'>15:05</div>
-                                                                </div>
                                                                 </div>
 
 
@@ -120,19 +149,23 @@ const Courseview = () => {
                                                         </h2>
                                                         <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                                             <div className="accordion-body">
-                                                                <div className='row'>
-                                                                    <div className='col'>
-                                                                        <i className="fa fa-play-circle iconplay"></i>
-                                                                        <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                                                                <div className='chapter'>
+                                                                    <div className='row'  onClick={e => handleChapterClick(e, 'https://youtu.be/ny7ZWVt3ymo?si=6onEl2HZhn59CN2o')}>
+                                                                        <div className='col'>
+                                                                            <i className="fa fa-play-circle iconplay"></i>
+                                                                            <span className='ms-3'>Introduction</span>
+                                                                        </div>
+                                                                        <div className='col text-end'>10:05</div>
                                                                     </div>
-                                                                    <div className='col text-end'>10:05</div>
                                                                 </div>
-                                                                <div className='row mt'>
-                                                                    <div className='col'>
-                                                                        <i className="fa fa-play-circle iconplay"></i>
-                                                                        <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                                                                <div className='chapter'>
+                                                                    <div className='row mt'  onClick={e => handleChapterClick(e, 'https://youtu.be/0awA5Uw6SJE?si=rLQPbwbM5L0cnnUA')}>
+                                                                        <div className='col'>
+                                                                            <i className="fa fa-play-circle iconplay"></i>
+                                                                            <span className='ms-3'>Introduction</span>
+                                                                        </div>
+                                                                        <div className='col text-end'>15:05</div>
                                                                     </div>
-                                                                    <div className='col text-end'>15:05</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -145,19 +178,24 @@ const Courseview = () => {
                                                         </h2>
                                                         <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                                             <div className="accordion-body">
-                                                                <div className='row'>
-                                                                    <div className='col'>
-                                                                        <i className="fa fa-play-circle iconplay"></i>
-                                                                        <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                                                                <div className='chapter'>
+                                                                    <div className='row'  onClick={e => handleChapterClick(e, 'https://youtu.be/0awA5Uw6SJE?si=rLQPbwbM5L0cnnUA')}>
+                                                                        <div className='col' >
+                                                                            <i className="fa fa-play-circle iconplay"></i>
+                                                                            <span className='ms-3'>Introduction</span>
+                                                                        </div>
+                                                                        <div className='col text-end'>10:05</div>
                                                                     </div>
-                                                                    <div className='col text-end'>10:05</div>
                                                                 </div>
-                                                                <div className='row mt'>
-                                                                    <div className='col'>
-                                                                        <i className="fa fa-play-circle iconplay"></i>
-                                                                        <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
+                                                                <div className='chapter'>
+
+                                                                    <div className='row mt' onClick={e => handleChapterClick(e, 'https://www.youtube.com/live/4diUcRCwbt8?si=FaC31waKtZN2bzYN')}  >
+                                                                        <div className='col' >
+                                                                            <i className="fa fa-play-circle iconplay"></i>
+                                                                            <span className='ms-3'>Introduction</span>
+                                                                        </div>
+                                                                        <div className='col text-end'>15:05</div>
                                                                     </div>
-                                                                    <div className='col text-end'>15:05</div>
                                                                 </div>
                                                             </div>
                                                         </div>

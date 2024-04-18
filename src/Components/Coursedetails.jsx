@@ -2,6 +2,7 @@ import '../Css/Coursedetails.css'
 // import  pic from '../Images/music.jpg';
 import pic from '../Images/Classroom.png'
 import { useNavigate } from 'react-router-dom';
+import teacherpic from '../Images/teacherpic.jpg'
 
 
 function Coursedetails() {
@@ -275,14 +276,14 @@ function Coursedetails() {
               <div className='ms-4 mt-2 mb-2'>
                 <h6 className='fw-bold'>A course by</h6>
                 <div className="row">
-                  <div className='col-3'><img className='rounded-circle w-50' src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+                  <div className='col-3'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
                   </div>
                   <div className='col-6'><span>Dipan Das</span>
                     <br /><span>Teacher</span></div>
 
                 </div>
                 <div className="row mt-2">
-                  <div className='col-3'><img className='rounded-circle w-50' src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+                  <div className='col-3'><img className="rounded-circle" width={40} height={40} src={teacherpic} />
                   </div>
                   <div className='col-6'><span>Dipan Das</span>
                     <br /><span>Teacher</span></div>

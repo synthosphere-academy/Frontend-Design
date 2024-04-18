@@ -56,7 +56,7 @@ const Entrolled =() => {
             <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr/>
             <div className="row">
-              <div className='col-2'><img className='rounded-circle w-75' src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+              <div className='col-2'><img className='rounded-circle' width={35} height={35} src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
                 </div>
               <div className='col-4'><span>{card.teachername}</span>
               <br/><span>{card.teacherdept}</span></div>

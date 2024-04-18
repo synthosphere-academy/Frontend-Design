@@ -2,6 +2,7 @@ import '../Css/Mostpopularcourse.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import lessonicon from '../Images/lesson.svg'
+import teacherpic from '../Images/teacherpic.jpg'
 //  import pic1 from '../Images/course1.jpg'
 
 function Mostpopularcourse() {
@@ -43,7 +44,7 @@ function Mostpopularcourse() {
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr />
             <div className="row">
-              <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+              <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src={teacherpic} />
                 <span className='teachername ms-1 mt-2'>{productdata.teacher_name}</span>
               </div>
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import icon from '../Images/Search.svg';
 import lessonicon from '../Images/lesson.svg'
+import teacherpic from '../Images/teacherpic.jpg'
 
 function Courses() {
     const [coursedata, setcoursedata] = useState([])
@@ -42,7 +43,7 @@ function Courses() {
             <label className='text-decoration-line-through'>{card.course_price}</label> */}
                 <hr />
                 <div className="row">
-                  <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" />
+                  <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src={teacherpic} />
                     <span className='teachername ms-1 mt-2'>{coursedata.teacher_name}</span>
                   </div>
     
