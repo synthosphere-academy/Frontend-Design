@@ -30,6 +30,13 @@ a{
     background-color: #6d2259;
     box-shadow: none;
 } 
+.buttonstyle:active{
+    color: white;
+    background-color: #6d2259;
+    box-shadow: none;
+} 
+
+
 .childbutton{
     border: none;
     box-shadow: none;

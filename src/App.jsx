@@ -12,6 +12,9 @@ import Addtocart from './Components/Addtocart'
 import Coursedetails from './Components/Coursedetails'
 import Userdashboard from './Components/Userdashboard'
 import Courseview from './Components/Courseview'
+import Terms from './Components/Terms';
+import Privatepolicy from './Components/Privatepolicy'
+import Refundpolicy from './Components/Refundpolicy'
 
 import './App.css'
 
@@ -40,7 +43,9 @@ function App() {
         <Route path='/coursedetails' element={<Coursedetails/>}/>
         <Route path='/userdashboard' element={<Userdashboard/>}/>
         <Route path='/courseview' element={<Courseview/>}/>
-       
+        <Route path='/terms' element={<Terms/>}/>
+        <Route path='/Privatepolicy' element={<Privatepolicy/>}/>
+        <Route path='/Refundpolicy' element={<Refundpolicy/>}/>
         <Route path='*' element={<div>page not found</div>}/>
        </Routes>
         <Footer />

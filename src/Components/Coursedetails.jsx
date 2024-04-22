@@ -308,7 +308,7 @@ function Coursedetails() {
         <hr />
         <div>
           <h4 className="fw-bold mb-4">Related Courses</h4>
-          <div className="row">
+          <div className="row g-4">
 
             {courseInfo.map(redercoursecard)}
           </div>

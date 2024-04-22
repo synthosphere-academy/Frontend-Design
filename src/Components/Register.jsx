@@ -8,6 +8,8 @@ import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
+import { Link } from 'react-router-dom';
+
 
 
 // import pic from '../Images/reg.png'
@@ -29,7 +31,11 @@ function Register() {
     const [mobilenoerror, setmobileerror] = useState(false)
     const [passwordError, setpasserror] = useState('')
     const [confirmpasserror, setconfirmpasserror] = useState(false)
+
+    
+    
     // const [imagefileerror, setimagefileerror] = useState('')
+
 
 
 
@@ -226,7 +232,7 @@ function Register() {
                                                     {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}
 
                         </div>
-                        <span  className='text-white'><input type="checkbox" /> I agree all statements in Terms of service</span>
+                        <span  className='text-white'><input type="checkbox" /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
 
                                                 <div className="pt-1  text-center">
                                                     <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>

@@ -64,8 +64,8 @@
           border: none;
       }
 
-      @media screen and (max-width: 640px) {
+      /* @media screen and (max-width: 640px) {
         .couponinput {
           background-color: lightgreen;
         }
-      }
+      } */
