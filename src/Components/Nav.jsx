@@ -18,17 +18,20 @@ const Nav = () => {
               <li className="nav-item pe-2 ">
                 <a className="nav-link active text-white" aria-current="page" href="/">Home</a>
               </li>
-              <li className="nav-item dropdown ">
-                <a className="nav-link  text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li className="nav-item pe-2 ">
+                <a className="nav-link active text-white" aria-current="page" href="/course">Courses</a>
+              </li>
+              {/* <li className="nav-item dropdown ">
+                {/* <a className="nav-link  text-white" href="/course" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Courses
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                </a> */}
+                {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a className="dropdown-item" href="/course">All</a></li>
                   <li><a className="dropdown-item" href="#">Blockchain</a></li>
                   <li><a className="dropdown-item" href="#">Python</a></li>
                   <li><a className="dropdown-item" href="#">Music</a></li>
-                </ul>
-              </li>
+                </ul> */}
+              {/* </li> */}
               <li className="nav-item pe-2">
                 <a className="nav-link text-white" href="/blog">
                   Article

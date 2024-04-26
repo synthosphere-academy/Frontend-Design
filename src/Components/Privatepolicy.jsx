@@ -29,12 +29,7 @@ use to access Synthosphere Academy, including device type, operating system, bro
 type, and IP address.
                 </li>
             </ul>
-            
-
-
-
-
-<li> How We Use Your Information:</li>
+            <li> How We Use Your Information:</li>
 <ul className="submenu">
     <li>
     Providing Services: We use the information we collect to provide and improve our 

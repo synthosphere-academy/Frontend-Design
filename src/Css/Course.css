@@ -1,3 +1,8 @@
+
+@font-face {
+    font-family: myfont;
+    src: url('../fontstyle/SFPRODISPLAYBOLD.OTF');
+}
 #containerbox{
     background-color: rgba(14, 18, 85, 1);
     border-radius: 10px;
@@ -12,4 +17,27 @@
 }
 .coursecontainer{
     width: 75%
+}
+.filter{
+   
+    color: black;
+    border: none;
+    background: none;
+    font-weight: 600;
+    
+}
+.filter:hover{
+    color: rgba(14, 18, 85, 1);
+    background-color: rgb(204, 199, 199);
+    height: 35px;
+     width: 140px;
+     border-radius: 25px;
+     font-size:15px;
+     line-height:1.3333333;
+    border: none;
+    font-weight: 400;
+}
+.filtercontainer{
+    width: 45%;
+    height: 56px;
 }

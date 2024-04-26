@@ -33,7 +33,7 @@ function Forgotpage() {
   
 
                   <div className="pt-1 mb-4 text-center">
-                    <button className=" btn-lg  w-50 loginbutton " type="button">Sumit</button>
+                    <button className=" btn-lg  w-50 loginbutton " type="button">Submit</button>
                   </div>
                   <div className="d-flex">
                   
