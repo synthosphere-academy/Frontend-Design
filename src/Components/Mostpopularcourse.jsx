@@ -18,7 +18,7 @@ function Mostpopularcourse() {
 
   const redercoursecard = (productdata) => {
     return (
-      <div className='col' key={productdata._id} >
+      <div className='col' key={productdata.course_id} >
         <div className="card h-100">
           <img className="card-img-top cardimage " src={productdata.image} alt="Sample photo" />
           <div className="card-body">
@@ -49,7 +49,7 @@ function Mostpopularcourse() {
               </div>
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-              <div className='col-lg-6 col-sm-6'><a className='buttonlearnmore' href='/coursedetails'><button className=" btn-sm learnmore ">Learn More</button></a></div>
+              <div className='col-lg-6 col-sm-6'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
             </div>
 
           </div>

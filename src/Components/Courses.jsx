@@ -5,14 +5,23 @@ import axios from 'axios';
 import icon from '../Images/Search.svg';
 import lessonicon from '../Images/lesson.svg'
 import teacherpic from '../Images/teacherpic.jpg'
+import Preloader from './Preloader';
+
 
 function Courses() {
   const [coursedata, setcoursedata] = useState([])
-  useEffect(() => {
-    axios.get('http://localhost:8081/api/v1/product')
-      .then(coursedata => setcoursedata(coursedata.data.data))
-      .catch(err => console.log(err))
+  const [loading, setLoading] = useState(true);
 
+ 
+  useEffect(() => {
+  
+    axios.get('http://localhost:8081/api/v1/product')
+    
+      .then(coursedata => {setcoursedata(coursedata.data.data)
+        setLoading(false);
+      })
+      
+      .catch(err => console.log(err))
   }, []);
 
   const redercoursecard = (coursedata) => {
@@ -91,36 +100,39 @@ function Courses() {
       <div className='text-center display-4 fw-bold mt-5'>
         All Courses
       </div>
-      
-        <div className=' filtercontainer d-flex justify-content-between container mt-3'>
-          <div className=''><button className='filter'>Music</button></div>
-          <div  className=''><button className='filter'>Karate</button></div>
-         <div  className=''> <button className='filter'>Blockchain</button></div>
-         <div  className=''> <button className='filter'>Cooking</button></div>
-         <div  className=''> <button className='filter'>Blockchain</button></div>
-      
-          
-          
-        </div>
 
-      
-
-
-
-      <div className="container py-5 cardcontainer mt-3">
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
-
-          {coursedata.map(redercoursecard)}
-
+      <div className=' filtercontainer d-flex justify-content-end container mt-3'>
+        <div className='row'>
+          <div className='col '><a className='filter'>Music</a></div>
+          <div className='col'><a className='filter'>Karate</a></div>
+          <div className='col'> <a className='filter'>blockchain</a></div>
+          <div className='col'> <a className='filter'>Cooking</a></div>
+          <div className='col'> <a className='filter'>Music</a></div>
         </div>
       </div>
 
 
 
 
+
+
+
+
+      <div className="container py-5 cardcontainer mt-5">
+      {loading && <Preloader />}
+      {!loading && (
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
+        
+            {coursedata.map(redercoursecard)} </div> )}
+      {/* {coursedata ?
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
+            {coursedata.map(redercoursecard)}   </div> : <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span></div>
+          
+          }  */}
+      </div>
     </>
 
   )
 }
-
 export default Courses

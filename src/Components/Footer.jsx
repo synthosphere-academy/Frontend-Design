@@ -14,10 +14,10 @@ function Footer() {
                             <a href='/'><li className='pe-4'>Home</li></a>
                            <a href='/contact'><li className='pe-4'>Contact</li></a> 
                            <a href='/course'> <li className='pe-4'>Courses</li></a>
-                           <a href='/terms'> <li className='pe-4'>Terms & Conditions</li></a>
+                           <a href='/terms' target='_blank'> <li className='pe-4'>Terms & Conditions</li></a>
 
-                           <a href='/Privatepolicy'> <li className='pe-4'>Privacy policy</li> </a> 
-                           <a href='/Refundpolicy'> <li className='pe-4'>Refund Policy</li></a>
+                           <a href='/Privatepolicy'target='_blank'> <li className='pe-4'>Privacy policy</li> </a> 
+                           <a href='/Refundpolicy' target='_blank'> <li className='pe-4'>Refund Policy</li></a>
                         </ul>
                         
                         </div>

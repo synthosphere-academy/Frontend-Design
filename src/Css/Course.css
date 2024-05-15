@@ -23,21 +23,28 @@
     color: black;
     border: none;
     background: none;
-    font-weight: 600;
+    font-weight: 200;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: myfont;
     
 }
 .filter:hover{
-    color: rgba(14, 18, 85, 1);
-    background-color: rgb(204, 199, 199);
-    height: 35px;
-     width: 140px;
-     border-radius: 25px;
-     font-size:15px;
-     line-height:1.3333333;
+    /* color: rgba(14, 18, 85, 1); */
+    color: #b43f95;
+    
+    
+  
+    /* padding: 15%;
+    width: 12px;
+     border-radius: 25px; */
+     font-size: 18px;
+     /* line-height:1.3333333; */
     border: none;
-    font-weight: 400;
+    font-family: myfont;
+    cursor: pointer;
 }
-.filtercontainer{
+/* .filtercontainer{
     width: 45%;
-    height: 56px;
-}
+    height: 50px;
+} */

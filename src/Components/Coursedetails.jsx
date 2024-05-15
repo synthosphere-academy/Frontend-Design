@@ -2,13 +2,32 @@ import '../Css/Coursedetails.css'
 // import  pic from '../Images/music.jpg';
 import pic from '../Images/Classroom.png'
 import { useNavigate } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
 import teacherpic from '../Images/teacherpic.jpg'
+// import { useParams } from 'react-router-dom';
+// import axios from 'axios';
 
 
 function Coursedetails() {
   const navigate = useNavigate()
+  // const { course_id } = useParams();
+  // const [coursedetails, setcoursedetails] = useState([])
+  // useEffect(() => {
+  //   const fetchCourse = async () => {
+  //     try {
+  //       const response = await axios.get(`http://localhost:8081/api/v1/product/`);
+  //       setcoursedetails(response.data);
+  //       console.log(course_id)
+  //     } catch (error) {
+  //       console.error('Error fetching course details:', error);
+  //     }
+  //   };
+  //   fetchCourse();
+  // }, [course_id]);
   
-  const entroll_handler =()=>{
+
+
+  const entroll_handler = () => {
     navigate('/courseview');
   }
   const handleclicked = () => {
@@ -96,6 +115,8 @@ function Coursedetails() {
     <>
       <div className="container mb-5">
         <div className="row">
+          {/* {coursedetails ? (
+            <> */}
           <div className="col-lg-7  mt-5">
             <img src={pic} width="95%" />
             {/* <div className='w-75' >
@@ -108,7 +129,9 @@ function Coursedetails() {
                 module 2.</h5>
             </div>
             <div>
-              <p className='paratext text-start'>
+              {/* <p>{coursedetails.course_description}</p>
+              <h2>{coursedetails.teacher_name}</h2> */}
+              {/* <p className='paratext text-start'>
                 <span className='fw-bold'>Module 1: </span>
                 So we have 1st module , where you will learn how blockchain
                 run in realtime world. What is cryptocurrency? How to be a
@@ -123,7 +146,7 @@ function Coursedetails() {
                 consensus protocols? How crypto is born and listed in any
                 exchanges? After that we will cover smart contracts to
                 decentralised wallets. Also we are covering a small part of
-                technical analysis, indicators, candles.</p>
+                technical analysis, indicators, candles.</p> */}
             </div>
             <div>
               <p className='paratext'><span className='fw-bold'>Module 2: </span>
@@ -254,6 +277,10 @@ function Coursedetails() {
 
             </div>
           </div>
+          {/* </>
+          ): (
+            <div>othig</div>
+              )} */}
           <div className="col-lg-4  mt-5">
             <div className="border" id='cartpart'>
               <div className="ms-4 mt-4">
@@ -305,6 +332,8 @@ function Coursedetails() {
             </div>
           </div>
         </div>
+       
+        
         <hr />
         <div>
           <h4 className="fw-bold mb-4">Related Courses</h4>
