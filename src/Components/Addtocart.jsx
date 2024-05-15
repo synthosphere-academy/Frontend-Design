@@ -1,6 +1,8 @@
 import '../Css/addtocart.css'
 import paypal from '../Images/PayPal.svg';
 import visa from '../Images/Visa.svg';
+
+import { Link } from 'react-router-dom';
 function Addtocart() {
     return (
 
@@ -117,7 +119,7 @@ function Addtocart() {
                                     Your card will be charged <span className='fw-bold'> ₹899 </span>
                                 </div>
                                 <div className='text-center mt-3'>
-                                    <button className='btn paynow w-75'>Pay Now</button>
+                                  <Link to='/Invoice'> <button className='btn paynow w-75' >Pay Now</button></Link>  
                                 </div>
                             </div>
 

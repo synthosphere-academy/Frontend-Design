@@ -99,12 +99,33 @@ border: none;
         margin-left:35% ;
     }
 }
+
 @media (max-width: 800px) {
     .cartpart{
       margin-left:46% ;
 
     }
     .buttonstyle{
-        margin-left:30% ;
+        margin-left:35% ;
     }
+}
+@media (max-width: 900px) {
+    .cartpart{
+      margin-left:46% ;
+
+    }
+    .buttonstyle{
+        margin-left:28% ;
+    }
+
+}
+@media (max-width: 1000px) {
+    .cartpart{
+      margin-left:46% ;
+
+    }
+    .buttonstyle{
+        margin-left:40% ;
+    }
+
 }

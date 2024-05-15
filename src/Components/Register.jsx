@@ -9,6 +9,7 @@ import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
 import { Link } from 'react-router-dom';
+import { ROOT_URL } from './Localhost';
 
 
 
@@ -141,7 +142,7 @@ function Register() {
         }
         else {
 
-            await axios.post('http://localhost:8081/api/v1/register/new', { fullname, phoneno, Date, DropdownValue_state, DropdownValue, email, password })
+            await axios.post(ROOT_URL+'/register/new', { fullname, phoneno, Date, DropdownValue_state, DropdownValue, email, password })
                 .then(res => {
                     console.log(res);
                     swal("Thank You!", "Registration sucessfully completed!", "success");

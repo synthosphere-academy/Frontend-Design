@@ -55,6 +55,11 @@
     background-color: #6d2259;
     color: white;
 }
+@media (max-width: 600px) {
+    .background{
+        background-image:none;
+    }
+}
 
 /* #map{
     /* background-image: url('../Images/Background.png'); 

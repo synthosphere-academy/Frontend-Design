@@ -22,7 +22,7 @@ function Footer() {
                         
                         </div>
                         <div className="col-lg-4 me-auto">
-                            <div className='float-lg-end'>
+                            <div className='float-lg-end googleapp'>
 
                             <span className='text-white '>Get the App</span><br/>
 

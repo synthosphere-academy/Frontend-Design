@@ -52,12 +52,17 @@ function Courses() {
             <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr />
             <div className="row">
-              <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src={teacherpic} />
+              {/* <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src={teacherpic} />
                 <span className='teachername ms-1 mt-2'>{coursedata.teacher_name}</span>
+              </div> */}
+              <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
               </div>
+              <div className='col-4 mt-2'><span>{coursedata.teacher_name}</span>
+              </div>
+                
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-              <div className='col-lg-6 col-sm-6'><a className='buttonlearnmore' href='/coursedetails'><button className=" btn-sm learnmore ">Learn More</button></a></div>
+              <div className='col-6 text-end'><a className='buttonlearnmore' href='/coursedetails'><button className=" btn-sm learnmore  ">Learn More</button></a></div>
             </div>
 
           </div>
@@ -82,7 +87,7 @@ function Courses() {
                 <div className="search">
                   <img className='searchicon' src={icon} width={20} />
                   {/* <i className="fa fa-search mt-1 ms-3"></i> */}
-                  <input type="text" className="form-control  searchinput" placeholder="Search for a course?" />
+                  <input type="text" className="form-control  searchcourseinput" placeholder="Search for a course?" />
 
                   <button className="btn searchbutton">Search Course</button>
                 </div>
@@ -110,13 +115,6 @@ function Courses() {
           <div className='col'> <a className='filter'>Music</a></div>
         </div>
       </div>
-
-
-
-
-
-
-
 
       <div className="container py-5 cardcontainer mt-5">
       {loading && <Preloader />}

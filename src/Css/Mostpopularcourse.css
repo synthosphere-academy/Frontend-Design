@@ -70,5 +70,11 @@ font-family: courseheading ;
     .notchecked{
       color: rgba(14, 18, 85, 1);
     }
- 
+    @media (max-width: 600px) {
+      .cardcontainer{
+        width: 87%;
+  
+      }
+      
+  }
   

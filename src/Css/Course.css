@@ -12,6 +12,16 @@
     width: 142px;
     font-size:16px;
 }
+.searchcourseinput{
+
+    height: 70px;
+   text-indent: 32px;
+   border: 2px solid #d6d4d4;
+   border-radius: 15px;
+  }
+  .searchcourseinput :hover{
+      border: none;
+  }
 .cardimage{
     border-radius: 20px 20px 0px 0px;
 }
@@ -44,7 +54,4 @@
     font-family: myfont;
     cursor: pointer;
 }
-/* .filtercontainer{
-    width: 45%;
-    height: 50px;
-} */
+

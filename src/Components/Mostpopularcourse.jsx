@@ -3,14 +3,20 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import lessonicon from '../Images/lesson.svg'
 import teacherpic from '../Images/teacherpic.jpg'
+import { ROOT_URL } from '../Components/Localhost'
+
+
 //  import pic1 from '../Images/course1.jpg'
 
 function Mostpopularcourse() {
 
+
   const [productdata, setproduct] = useState([])
+ 
 
   useEffect(() => {
-    axios.get('http://localhost:8081/api/v1/product')
+    
+    axios.get(ROOT_URL+'/product')
       .then(productdata => setproduct(productdata.data.data))
       .catch(err => console.log(err))
 
@@ -44,12 +50,16 @@ function Mostpopularcourse() {
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr />
             <div className="row">
-              <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src={teacherpic} />
+              {/* <div className='col-lg-6 col-sm-6  d-flex'><img className='rounded-circle ' width={40} height={40} src={teacherpic} />
                 <span className='teachername ms-1 mt-2'>{productdata.teacher_name}</span>
+              </div> */}
+              <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
+              </div>
+              <div className='col-4 mt-2'><span>{productdata.teacher_name}</span>
               </div>
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-              <div className='col-lg-6 col-sm-6'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
+              <div className='col-6 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
             </div>
 
           </div>

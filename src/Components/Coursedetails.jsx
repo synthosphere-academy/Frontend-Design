@@ -41,7 +41,7 @@ function Coursedetails() {
       coursereview: "4.5",
       course_currentprice: "₹899",
       course_price: "₹1899",
-      teacher_image: ["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
+      teacher_image: [teacherpic],
       teachername: "David Noman",
       teacherdept: "Teacher"
 
@@ -53,7 +53,7 @@ function Coursedetails() {
       coursereview: "4",
       course_currentprice: "₹799",
       course_price: "₹999",
-      teacher_image: ["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
+      teacher_image: [teacherpic],
       teachername: "Kesto Das",
       teacherdept: "Teacher"
     },
@@ -64,7 +64,7 @@ function Coursedetails() {
       coursereview: "4",
       course_currentprice: "₹799",
       course_price: "₹999",
-      teacher_image: ["https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"],
+      teacher_image: [teacherpic],
       teachername: "Dipan Das",
       teacherdept: "Teacher"
     }
@@ -97,11 +97,11 @@ function Coursedetails() {
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr />
             <div className="row">
-              <div className='col-2'><img className='rounded-circle w-75' src={card.teacher_image} />
+              <div className='col-2'><img className='rounded-circle' width={40} height={40} src={card.teacher_image} />
               </div>
               <div className='col-4'><span>{card.teachername}</span>
                 <br /><span>{card.teacherdept}</span></div>
-              <div className='col-6'><a href='/coursedetails'><button className="btn btn-primary btn-sm learnmore" type='button'>Learn More</button></a></div>
+              <div className='col-6 text-end'><a href='/coursedetails'><button className="btn btn-primary btn-sm learnmore" type='button'>Learn More</button></a></div>
 
 
             </div>
@@ -205,18 +205,18 @@ function Coursedetails() {
                   <div id="collapseOne" className="accordion-collapse collapse " data-bs-parent="#accordionExample">
                     <div className="accordion-body">
                       <div className='row'>
-                        <div className='col'>
-                          <i className="fa fa-play-circle iconplay"></i>
+                        <div className='col mt-2'>
+                          <i className="fa fa-play-circle iconplay ms-2"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
                         </div>
-                        <div className='col text-end'>10:05</div>
+                        <div className='col text-end mt-2 me-2'>10:05</div>
                       </div>
                       <div className='row mt'>
                         <div className='col'>
-                          <i className="fa fa-play-circle iconplay"></i>
+                          <i className="fa fa-play-circle iconplay ms-2"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
                         </div>
-                        <div className='col text-end'>15:05</div>
+                        <div className='col text-end mt-2 me-2'>15:05</div>
                       </div>
 
 
@@ -232,18 +232,18 @@ function Coursedetails() {
                   <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
                       <div className='row'>
-                        <div className='col'>
-                          <i className="fa fa-play-circle iconplay"></i>
+                        <div className='col mt-2'>
+                          <i className="fa fa-play-circle iconplay ms-2"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
                         </div>
-                        <div className='col text-end'>10:05</div>
+                        <div className='col text-end  mt-2 me-2'>10:05</div>
                       </div>
                       <div className='row mt'>
                         <div className='col'>
-                          <i className="fa fa-play-circle iconplay"></i>
+                          <i className="fa fa-play-circle iconplay ms-2"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
                         </div>
-                        <div className='col text-end'>15:05</div>
+                        <div className='col text-end me-2 '>15:05</div>
                       </div>
                     </div>
                   </div>
@@ -257,18 +257,18 @@ function Coursedetails() {
                   <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
                       <div className='row'>
-                        <div className='col'>
-                          <i className="fa fa-play-circle iconplay"></i>
+                        <div className='col mt-2'>
+                          <i className="fa fa-play-circle iconplay ms-2"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
                         </div>
-                        <div className='col text-end'>10:05</div>
+                        <div className='col text-end mt-2 me-2'>10:05</div>
                       </div>
                       <div className='row mt'>
                         <div className='col'>
-                          <i className="fa fa-play-circle iconplay"></i>
+                          <i className="fa fa-play-circle iconplay ms-2"></i>
                           <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
                         </div>
-                        <div className='col text-end'>15:05</div>
+                        <div className='col text-end me-2'>15:05</div>
                       </div>
                     </div>
                   </div>

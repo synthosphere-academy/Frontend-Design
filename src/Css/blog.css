@@ -22,6 +22,9 @@
 .blogsection{
     padding-bottom: 6%;
 }
+.blogcontent{
+    text-decoration: none;
+}
 /* .prevbutton{
     margin-left: -10%;
     

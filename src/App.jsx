@@ -15,6 +15,7 @@ import Courseview from './Components/Courseview'
 import Terms from './Components/Terms';
 import Privatepolicy from './Components/Privatepolicy'
 import Refundpolicy from './Components/Refundpolicy'
+import Invoice from './Components/Invoice'
 
 import './App.css'
 
@@ -46,6 +47,9 @@ function App() {
         <Route path='/terms' element={<Terms/>}/>
         <Route path='/Privatepolicy' element={<Privatepolicy/>}/>
         <Route path='/Refundpolicy' element={<Refundpolicy/>}/>
+        <Route path='/Invoice' element={<Invoice/>}/>
+        <Route path='/Refundpolicy' element={<Refundpolicy/>}/>
+
         <Route path='*' element={<div>page not found</div>}/>
        </Routes>
         <Footer />

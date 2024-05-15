@@ -4,7 +4,9 @@ import '../Css/Login.css'
 import { useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
+import { ROOT_URL } from './Localhost';
 import { useNavigate } from 'react-router-dom';
+
 
 
 function Login() {
@@ -44,7 +46,7 @@ function Login() {
     else {
       event.preventDefault();
         // alert("submit");
-      axios.post('http://localhost:8081/api/v1/login', { email, password })
+      axios.post(ROOT_URL+'/login', { email, password })
         .then(res => {
           console.log(res);
 

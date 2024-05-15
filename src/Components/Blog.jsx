@@ -3,7 +3,7 @@ import axios from 'axios';
 import img1 from '../Images/Image.png';
 // import img2 from '../Images/Image2.png';
 // import img3 from '../Images/Image3.png';
-
+import { ROOT_URL } from '../Components/Localhost'
 import '../Css/blog.css'
 
 function Blog() {
@@ -12,7 +12,7 @@ function Blog() {
   const [blogdata, setblogdata] = useState([])
   useEffect(() => {
     // const apiUrl = process.env.REACT_APP_API_URL;
-    axios.get('http://localhost:8081/api/v1/blog')
+    axios.get(ROOT_URL+'/blog')
       .then(blogdata => setblogdata(blogdata.data.data))
       .catch(err => console.log(err))
 
