@@ -5,12 +5,12 @@ import axios from 'axios';
 import icon from '../Images/Search.svg';
 import lessonicon from '../Images/lesson.svg'
 import teacherpic from '../Images/teacherpic.jpg'
-import Preloader from './Preloader';
+// import Preloader from './Preloader';
 
 
 function Courses() {
   const [coursedata, setcoursedata] = useState([])
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
  
   useEffect(() => {
@@ -18,7 +18,7 @@ function Courses() {
     axios.get('http://localhost:8081/api/v1/product')
     
       .then(coursedata => {setcoursedata(coursedata.data.data)
-        setLoading(false);
+        // setLoading(false);
       })
       
       .catch(err => console.log(err))
@@ -117,11 +117,13 @@ function Courses() {
       </div>
 
       <div className="container py-5 cardcontainer mt-5">
-      {loading && <Preloader />}
-      {!loading && (
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
+      {/* {loading && <Preloader />}
+      {!loading && ( */}
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         
-            {coursedata.map(redercoursecard)} </div> )}
+            {coursedata.map(redercoursecard)} 
+            </div>
+           {/* )} */}
       {/* {coursedata ?
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
             {coursedata.map(redercoursecard)}   </div> : <div className="spinner-border text-primary" role="status">
