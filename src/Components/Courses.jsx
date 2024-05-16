@@ -87,9 +87,9 @@ function Courses() {
                 <div className="search">
                   <img className='searchicon' src={icon} width={20} />
                   {/* <i className="fa fa-search mt-1 ms-3"></i> */}
-                  <input type="text" className="form-control  searchcourseinput" placeholder="Search for a course?" />
+                  <input type="text" className="form-control  searchcourseinput" placeholder="Find a course?" />
 
-                  <button className="btn searchbutton">Search Course</button>
+                  <button className="btn searchbutton">Search course</button>
                 </div>
               </div>
             </div>
