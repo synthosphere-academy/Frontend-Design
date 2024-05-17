@@ -11,6 +11,7 @@ import link from '../Images/linkdln.png';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { useState } from 'react';
+import { ROOT_URL } from './Localhost';
 
 
 
@@ -35,14 +36,15 @@ function Contact() {
   }
 
   const handleSubmit=(event)=>{
+    event.preventDefault();
     if ( name === "" || email === "" || message === "") {
       swal("Opps!", "Please fill out all required fields!", "error");
     }
     else {
 
-      event.preventDefault();
+      
       //  alert("submit");
-      axios.post('http://localhost:8081/auth/contactus', { name,email, message })
+      axios.post(ROOT_URL+'/contactus', { name,email, message })
         .then(res => {
           console.log(res);
 
