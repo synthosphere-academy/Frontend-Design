@@ -180,9 +180,9 @@ function Register() {
                         <div className='col-lg-4'>
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">State</label>
                             <select className="form-select form-control-lg mb-3 h-50" aria-label=".form-select-lg example" value={DropdownValue_state} onChange={handleDropdownChange_state}>
-                                <option value="Choose State" label='Enter your city'></option>
+                                <option value="Choose State" label='Enter your State'></option>
                                 <option value="West bengal" label='West Bengal'></option>
-                                <option value="Delhi" label='delhi'></option>
+                                <option value="Delhi" label='Delhi'></option>
                                 <option value="Mumai" label='Mumbai'></option>
                             </select>
                         </div>
@@ -190,10 +190,27 @@ function Register() {
                         <div className='col-lg-5'>
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">City</label>
                             <select className="form-select form-control-lg h-50 mb-3" aria-label=".form-select-lg example" value={DropdownValue} onChange={handleDropdownChange}>
-                                <option value="Choose city" label=' Enter your city'></option>
+                                <option selected value="Choose city" label=' Enter your city'></option>
                                 <option value="Kolkata" label='Kolkata'></option>
-                                <option value="Howrah" label='Howrah'></option>
-                                <option value="Hoogly" label='Hoogly'></option>
+                                <option value="Asansol" label='Asansol'></option>
+                                <option value="Siliguri" label='Siliguri'></option>
+                                <option value="Durgapur" label='Durgapur'></option>
+                                <option value="Bardhaman" label='Bardhaman'></option>
+                                <option value="Habra" label='Habra'></option>
+                                <option value="Kharagpur" label='Kharagpur'></option>
+                                <option value="Dankuni" label='Dankuni'></option>
+                                <option value="Krishnanagar" label='Krishnanagar'></option>
+                                <option value="Nabadwip" label='Nabadwip'></option>
+                                <option value="Basirhat" label='Basirhat'></option>
+                                <option value="Bankura" label='Bankura'></option>
+                                <option value="Jalpaiguri" label='Jalpaiguri'></option>
+                                <option value="Darjeeling" label='Darjeeling'></option>
+                                <option value="Alipurduar" label='Alipurduar'></option>
+                                <option value="Purulia" label='Purulia'></option>
+                                <option value="Jangipur" label='Jangipur'></option>
+                                <option value="Cooch Behar" label='Cooch Behar'></option>
+                                <option value="	Bangaon" label='Bangaon'></option>
+                                
                             </select>
                         </div>
                         {/* <div className='col-lg-8'>

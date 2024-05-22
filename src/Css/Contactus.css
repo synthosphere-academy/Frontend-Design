@@ -21,8 +21,22 @@
 }
 .heading{
     font-family: contactstyle;
-    font-weight: bold;
+    
     color: black;
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 800;
+}
+.contacttitile{
+    height: 15vh;
+}
+.contactdescri{
+    font-family: contactregularstyle;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 70%;
+    margin: 0px;
 }
 .touch{
     font-family: contactregularstyle;
@@ -31,7 +45,7 @@
 .background{
     background-size: cover;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 580px;
 }
 .contactcard{
     box-shadow: none;

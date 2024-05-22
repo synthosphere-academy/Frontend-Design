@@ -2,8 +2,12 @@ import logo from '../Images/academy.png'
 import '../Css/Nav.css'
 import { Link } from 'react-router-dom';
 import icon from '../Images/icon.svg'
+import { useSelector } from 'react-redux';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Nav = () => {
+  const items = useSelector(state => state);
+  console.log('Items', items);
   return (
     <>
       <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "rgba(14, 18, 85, 1)" }}>
@@ -25,7 +29,7 @@ const Nav = () => {
                 {/* <a className="nav-link  text-white" href="/course" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Courses
                 </a> */}
-                {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a className="dropdown-item" href="/course">All</a></li>
                   <li><a className="dropdown-item" href="#">Blockchain</a></li>
                   <li><a className="dropdown-item" href="#">Python</a></li>
@@ -42,16 +46,17 @@ const Nav = () => {
                 <a className="nav-link text-white" href='/contact'>Contact</a>
               </li>
             </ul>
-            <div className='me-2 cartpart'>
+            <div className='me-4 cartpart'>
+              
               <div className="navbar-text  cartstyle text-center" >
-                <a href='/addtocart'>
-                  <img src={icon} className='carticon' />
+              
+                <a href='/addtocart' id='cartitem'>
+                  <img src={icon} className='carticon'/><sup ><span className="badge bg-danger overflow-auto">{items.cart.length}</span></sup>
                 </a>
-                {/* <sup><span className="badge bg-danger">5</span></sup> */}
+               
               </div>
+              
             </div>
-
-            
             <button className='buttonstyle btn btn-sm text-white'>
               <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
               <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>

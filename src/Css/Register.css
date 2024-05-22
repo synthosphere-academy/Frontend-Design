@@ -5,6 +5,11 @@
 *{
 	font-family: formtyle;
 }
+input{
+
+	font-family: formtyle;
+	font-size: 42px;
+}
 .form-select{
 	font-family: formtyle;
 }

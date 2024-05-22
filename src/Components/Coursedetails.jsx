@@ -1,14 +1,16 @@
 import '../Css/Coursedetails.css'
-// import  pic from '../Images/music.jpg';
 import pic from '../Images/Classroom.png'
 import { useNavigate } from 'react-router-dom';
 // import { useState, useEffect } from 'react';
 import teacherpic from '../Images/teacherpic.jpg'
 // import { useParams } from 'react-router-dom';
 // import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addItem } from './redux/slices/cartSlice';
 
 
 function Coursedetails() {
+  const dispatch = useDispatch();
   const navigate = useNavigate()
   // const { course_id } = useParams();
   // const [coursedetails, setcoursedetails] = useState([])
@@ -30,9 +32,9 @@ function Coursedetails() {
   const entroll_handler = () => {
     navigate('/courseview');
   }
-  const handleclicked = () => {
-    alert("clicked");
-  }
+  // const handleclicked = () => {
+  //   alert("clicked");
+  // }
   const courseInfo = [
     {
       image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
@@ -286,7 +288,7 @@ function Coursedetails() {
               <div className="ms-4 mt-4">
                 <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>
               </div>
-              <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={handleclicked} >Add to cart</button></div>
+              <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={()=> dispatch(addItem({price:"200"}))} >Add to cart</button></div>
               <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}>Enroll Now</button></div>
               <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
             </div>
