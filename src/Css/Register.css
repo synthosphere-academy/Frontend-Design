@@ -5,10 +5,10 @@
 *{
 	font-family: formtyle;
 }
-input{
+.inputform{
 
 	font-family: formtyle;
-	font-size: 42px;
+	
 }
 .form-select{
 	font-family: formtyle;
