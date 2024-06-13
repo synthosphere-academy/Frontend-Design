@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../Css/Register.css'
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -9,7 +9,7 @@ import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
 import { Link } from 'react-router-dom';
-import { ROOT_URL } from './Localhost';
+// import { ROOT_URL } from './Localhost';
 
 
 
@@ -21,10 +21,16 @@ function Register() {
     // const [date, setDate] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [DropdownValue_state, setDropdownValue_state] = useState('')
-    const [DropdownValue, setDropdownValue] = useState('')
+    const [state, setDropdownValue_state] = useState([])
+    
+    const [city, setDropdownValue] = useState([])
+    const [cities, setSelectedcities] = useState([])
     // const [image, setImage] = useState(null)
-    const [Date, setDate] = useState(null);
+    const [date, setDate] = useState(null);
+    const [token, setToken] = useState(null);
+    const [States, setSelectedState] = useState('');
+    // const [error, setError] = useState(null);
+    // const [selectedState, setSelectedState] = useState('');
 
 
 
@@ -32,47 +38,81 @@ function Register() {
     const [mobilenoerror, setmobileerror] = useState(false)
     const [passwordError, setpasserror] = useState('')
     const [confirmpasserror, setconfirmpasserror] = useState(false)
+    const API_TOKEN = 'C2dy7lLSGxWm63T6Oem2N9jeUlaE5Y9M59MInjwjc-FksoqRsWk0pa-iKk1LzSfEFy0';
 
+    //for state dropdow
+    useEffect(() => {
+        const getAuthToken = async () => {
+            try {
+                const response = await axios.get("https://www.universal-tutorial.com/api/getaccesstoken", {
+                    headers: {
+                        'api-token': API_TOKEN,
+                        'user-email': 'srijani.banerjee2000@gmail.com',
+                    }
+                });
+                setToken(response.data.auth_token);
+            } catch (error) {
+                console.log(error);
+                // setError(error);
+            }
+        };
+
+        getAuthToken();
+    }, []);
+    useEffect(() => {
+        if (token) {
+            const getStates = async () => {
+                try {
+                    
+                    const response = await axios.get('https://www.universal-tutorial.com/api/states/India', {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Accept': 'application/json'
+                        }
+                    });
+                    console.log(response.data);
+                    setDropdownValue_state(response.data);
+
+                } catch (error) {
+                    // setError(error);
+                    console.log(error);
+
+                }
+            };
+
+            getStates();
+        }
+    }, [token]);
+
+    //city
+    useEffect(() => {
+        if (States) {
+          const getCities = async () => {
+           
+            try {
+              const response = await axios.get(`https://www.universal-tutorial.com/api/cities/${States}`, {
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Accept': 'application/json'
+                }
+              });
+              console.log('Cities response:', response.data);
+              setDropdownValue(response.data);
+              
+            } catch (error) {
+              console.error('Error fetching cities:', error);
+              
+              
+            }
+          };
     
-    
-    // const [imagefileerror, setimagefileerror] = useState('')
+          getCities();
+        }
+      }, [States, token]);
 
 
 
 
-    //convert iamge to base64
-    // const convertToBase64 = (file) => {
-    //     console.log(file);
-    //     const reader = new FileReader();
-    //     reader.readAsDataURL(file);
-    //     const data = new Promise((resolve, reject) => {
-    //         reader.onload = () => resolve(reader.result)
-    //         reader.onerror = (err) => {
-    //             reject(err)
-    //         }
-    //     })
-    //     return data;
-    // }
-    //for image handlefilechange
-    // const handleFileChange = async (e) => {
-    //     const file = e.target.files[0];
-    //     const image = await convertToBase64(file)
-    //     setImage(image);
-    //     const fileName = document.getElementById("fileName").value;
-    //     const idxDot = fileName.lastIndexOf(".") + 1;
-    //     const extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-    //     if (file.size >= 500000) {
-    //         setimagefileerror("file size not more than 500kb");
-    //     }
-    //     else if (extFile === "jpg" || extFile === "jpeg" || extFile === "png") {
-    //         setimagefileerror("")
-    //     }
-
-    //     else {
-    //         setimagefileerror("file not allowed")
-    //     }
-    //     // console.log(image);
-    // };
 
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
@@ -122,27 +162,28 @@ function Register() {
             setconfirmpasserror(false)
         }
     }
-    const handleDropdownChange = (event) => {
-        setDropdownValue(event.target.value);
+    const handleDropdownChange_city = (event) => {
+        setSelectedcities(event.target.value);
     };
     const handleDropdownChange_state = (event) => {
-        setDropdownValue_state(event.target.value);
+        
+        setSelectedState(event.target.value);
     };
 
 
     //hadlesubmit
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (fullname === "" || phoneno === "" || Date === "" || DropdownValue_state === "" || DropdownValue === ""  || email === "" || password === "") {
+        if (fullname === "" || phoneno === "" || date === "" || States === "" || cities === "" || email === "" || password === "") {
             swal("Opps!", "Please fill out all required fields!", "error");
 
         }
-        else if (emailerror != "" || mobilenoerror != "" || passwordError != "" ) {
+        else if (emailerror != "" || mobilenoerror != "" || passwordError != "") {
             swal("Opps!", "give valid inputs!", "error");
         }
         else {
 
-            await axios.post(ROOT_URL+'/register/new', { fullname, phoneno, Date, DropdownValue_state, DropdownValue, email, password })
+            await axios.post('http://localhost:3000/api/auth/register', { fullname, phoneno, date, States, cities, email, password })
                 .then(res => {
                     console.log(res);
                     swal("Thank You!", "Registration sucessfully completed!", "success");
@@ -152,7 +193,6 @@ function Register() {
                     swal("Opps!", "Not inserted !", "error");
 
                 })
-
         }
 
     }
@@ -171,27 +211,32 @@ function Register() {
                             <label className='form-label text-white' htmlFor="exampleInputEmail1">Phone Number</label>
                             <input type="text" className="form-control form-control-lg inputform" id="phoneno" onKeyUp={mobileHandler}
                                 name="phoneno" placeholder="Enter Your Phone Number" onChange={e => setPhoneno(e.target.value)} />
+                            {mobilenoerror ? <span className='link-danger'>phone no invalid</span> : ""}
                         </div>
                         <div className='col-lg-3'>
                             <label className='form-label text-white' htmlFor="exampleInputEmail1">Date of birth </label>
-                            <span className='form-control h-50'><DatePicker value={Date} className="" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
+                            <span className='form-control h-50'><DatePicker value={date} className="" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
 
                         </div>
                         <div className='col-lg-4'>
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">State</label>
-                            <select className="form-select form-control-lg mb-3 h-50 inputform" aria-label=".form-select-lg example" value={DropdownValue_state} onChange={handleDropdownChange_state}>
-                                <option value="Choose State" label='Enter your State'></option>
-                                <option value="West bengal" label='West Bengal'></option>
-                                <option value="Delhi" label='Delhi'></option>
-                                <option value="Mumai" label='Mumbai'></option>
+                            <select className="form-select form-control-lg mb-3 h-50 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_state}>
+                                <option value="" label='Enter your State'></option>
+                                {Array.isArray(state) && state.map(state => (
+                                    <option key={state.state_name} value={state.state_name}>{state.state_name}</option>
+                                ))}
                             </select>
                         </div>
-                        
+
                         <div className='col-lg-5'>
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">City</label>
-                            <select className="form-select form-control-lg h-50 mb-3 inputform" aria-label=".form-select-lg example" value={DropdownValue} onChange={handleDropdownChange}>
-                                <option selected value="Choose city" label=' Enter your city'></option>
-                                <option value="Kolkata" label='Kolkata'></option>
+                            <select className="form-select form-control-lg h-50 mb-3 inputform" aria-label=".form-select-lg example"  onChange={handleDropdownChange_city}>
+                                <option value="Choose city" label=' Enter your city'></option>
+                                {Array.isArray(city) && city.map(city => (
+              <option key={city.city_name} value={city.city_name}>{city.city_name}</option>
+            ))}
+
+                                {/* <option value="Kolkata" label='Kolkata'></option>
                                 <option value="Asansol" label='Asansol'></option>
                                 <option value="Siliguri" label='Siliguri'></option>
                                 <option value="Durgapur" label='Durgapur'></option>
@@ -206,11 +251,11 @@ function Register() {
                                 <option value="Jalpaiguri" label='Jalpaiguri'></option>
                                 <option value="Darjeeling" label='Darjeeling'></option>
                                 <option value="Alipurduar" label='Alipurduar'></option>
-                                <option value="Purulia" label='Purulia'></option>
-                                <option value="Jangipur" label='Jangipur'></option>
+                                <option value="Purulia" label='Purulia'></option> */}
+                                {/* <option value="Jangipur" label='Jangipur'></option>
                                 <option value="Cooch Behar" label='Cooch Behar'></option>
-                                <option value="	Bangaon" label='Bangaon'></option>
-                                
+                                <option value="	Bangaon" label='Bangaon'></option> */}
+
                             </select>
                         </div>
                         {/* <div className='col-lg-8'>
@@ -221,45 +266,45 @@ function Register() {
                             </div>
                             {imagefileerror ? <span className='link-warning'>{imagefileerror}</span> : ""}
                         </div> */}
-                       
+
 
                         {/* <div className='col-lg-4'> {
                             imagefileerror ? "" : <img width={100} height={100} src={image} />
                         }
                         </div> */}
                         <div className='col-lg-4'>
-                        <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address</label>
-                                                    <input type="email" className="form-control form-control-lg inputform" id="email" name="email"
-                                                        onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
-                                                    {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
-                                                    
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address</label>
+                            <input type="email" className="form-control form-control-lg inputform" id="email" name="email"
+                                onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
+                            {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
+
 
                         </div>
                         <div className='col-lg-4'>
-                        <label className="form-label text-white" htmlFor="exampleInputEmail1">Password</label>
-                                                    <input type="text" className="form-control form-control-lg inputform" id="password" name="password"
-                                                        onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
-                                                    {passwordError && <span className='link-danger'>{passwordError}</span>}
-                                                     {passwordError?<span className='link-danger'>Password must me 8 character, one Uppercase, one special character</span>:""}
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Password</label>
+                            <input type="text" className="form-control form-control-lg inputform" id="password" name="password"
+                                onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
+                            {passwordError && <span className='link-danger'>{passwordError}</span>}
+                            {passwordError ? <span className='link-danger'>Password must me 8 character, one Uppercase, one special character</span> : ""}
 
                         </div>
                         <div className='col-lg-4'>
-                        <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password</label>
-                                                    <input type="text" className="form-control form-control-lg inputform" id="confirmpassword" name="confirmpassword"
-                                                        onKeyUp={confirmpasswordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
-                                                    {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}
+                            <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password</label>
+                            <input type="text" className="form-control form-control-lg inputform" id="confirmpassword" name="confirmpassword"
+                                onKeyUp={confirmpasswordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
+                            {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}
 
                         </div>
-                        <span  className='text-white'><input type="checkbox" /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
+                        <span className='text-white'><input type="checkbox" /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
 
-                                                <div className="pt-1  text-center">
-                                                    <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>
-                                                </div>
+                        <div className="pt-1  text-center">
+                            <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>
+                        </div>
 
 
 
-                                                <span className="mb-5 pb-lg-2 text-center register_text text-white" >Have an account? <a className="reg text-success" href="/login"
-                                                >Login</a></span>
+                        <span className="mb-5 pb-lg-2 text-center register_text text-white" >Have an account? <a className="reg text-success" href="/login"
+                        >Login</a></span>
                     </form>
 
 

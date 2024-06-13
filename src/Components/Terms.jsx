@@ -75,6 +75,7 @@ function Terms() {
           </p>
 
           
+        <button className='btn btn-primary btn-lg' >Ok</button>
         </div>
 
       </div>

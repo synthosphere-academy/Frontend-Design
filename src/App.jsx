@@ -1,11 +1,11 @@
 
 import Homepage from './Components/Homepage'
 import Login from './Components/Login'
-import Nav from './Components/Nav';
+// import Nav from './Components/Nav';
 import Register from './Components/Register'
 import Contact from './Components/Contact'
 import Blog from './Components/Blog';
-import Footer from "./Components/Footer"
+// import Footer from "./Components/Footer"
 import Forgotpage from "./Components/Forgotpage"
 import Courses from './Components/Courses'
 import Addtocart from './Components/Addtocart'
@@ -16,43 +16,47 @@ import Terms from './Components/Terms';
 import Privatepolicy from './Components/Privatepolicy'
 import Refundpolicy from './Components/Refundpolicy'
 import Invoice from './Components/Invoice'
+import { Userlayout } from './Components/Userlayout';
+//  import Admin from './Components/admin/layout/DefaultLayout'
 
+ 
 import './App.css'
 
 
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
 
 function App() {
-  //  const [cart , setcart] = useState([])
 
-
+  
   return (
     <>
       <Router>
-      <Nav />
+     
+      {/* <Nav /> */}
         <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/blog" element={<Blog/>} />
-        <Route path='/forgotpassword' element={<Forgotpage/>}/>
-        <Route path='/course' element={<Courses/>}/>
-        <Route path='/addtocart' element={<Addtocart/>}/>
-        <Route path='/coursedetails' element={<Coursedetails/>}/>
-        <Route path='/userdashboard' element={<Userdashboard/>}/>
-        <Route path='/courseview' element={<Courseview/>}/>
-        <Route path='/terms' element={<Terms/>}/>
-        <Route path='/Privatepolicy' element={<Privatepolicy/>}/>
-        <Route path='/Refundpolicy' element={<Refundpolicy/>}/>
-        <Route path='/Invoice' element={<Invoice/>}/>
-        <Route path='/Refundpolicy' element={<Refundpolicy/>}/>
-
-        <Route path='*' element={<div>page not found</div>}/>
+        <Route path="/" element={<Userlayout><Homepage /></Userlayout>} />
+        <Route path="/login" element={<Userlayout><Login /></Userlayout>} />
+        <Route path="/register" element={<Userlayout><Register /></Userlayout>} />
+        <Route path="/contact" element={<Userlayout><Contact /></Userlayout>} />
+        <Route path="/blog" element={<Userlayout><Blog/></Userlayout>} />
+        <Route path='/forgotpassword' element={<Userlayout><Forgotpage/></Userlayout>}/>
+        <Route path='/course' element={<Userlayout><Courses/></Userlayout>}/>
+        <Route path='/addtocart' element={<Userlayout><Addtocart/></Userlayout>}/>
+        <Route path='/coursedetails' element={<Userlayout><Coursedetails/></Userlayout>}/>
+        <Route path='/userdashboard' element={<Userlayout><Userdashboard/></Userlayout>}/>
+        <Route path='/courseview' element={<Userlayout><Courseview/></Userlayout>}/>
+        <Route path='/terms' element={<Userlayout><Terms/></Userlayout>}/>
+        <Route path='/Privatepolicy' element={<Userlayout><Privatepolicy/></Userlayout>}/>
+        <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
+        <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/>
+        <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
+        {/* <Route path='/admin/*' element={<Admin/>}/> */}
+       
+        <Route path='*' element={<div className='text-center h1'>page not found</div>}/>
        </Routes>
-        <Footer />
+        {/* <Footer /> */}
+      
       </Router>
       
 

@@ -187,7 +187,6 @@ function Coursedetails() {
                     <li>Deep blockchain knowledge</li>
                   </ul>
                 </div>
-
               </div>
 
             </div>
@@ -278,6 +277,18 @@ function Coursedetails() {
               </div>
 
             </div>
+            <div className='mt-4'>
+            <h4 className='fw-bold'>Teacher Description </h4>
+            <hr className="w-100" />
+            <div>
+            <p className='paratext'>Dipan Das, a crypto teacher at an academy, possesses a strong educational background in finance, economics, computer science, or related fields, 
+            often complemented by certifications in blockchain technology and cryptocurrency. He has extensive industry knowledge, encompassing blockchain technology, various cryptocurrencies, 
+            trading, investing strategies, and relevant regulatory and legal aspects. His teaching experience includes simplifying complex concepts for diverse student
+             groups and proficiency in both in-person and online instructional methods. Technically adept, he uses digital tools for teaching and demonstrates the use of crypto wallets, exchanges, and other blockchain technologies. Passionate about cryptocurrencies, Dipan Das possesses excellent communication skills and remains analytical and detail-oriented. His role involves developing and delivering comprehensive curricula, conducting lectures and workshops, providing practical training, and continuously updating his knowledge to keep the curriculum relevant. 
+            These attributes ensure that he can effectively educate and inspire students in the dynamic world of cryptocurrencies</p>
+            </div>
+
+            </div>
           </div>
           {/* </>
           ): (
@@ -340,7 +351,6 @@ function Coursedetails() {
         <div>
           <h4 className="fw-bold mb-4">Related Courses</h4>
           <div className="row g-4">
-
             {courseInfo.map(redercoursecard)}
           </div>
         </div>

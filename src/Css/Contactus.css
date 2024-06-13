@@ -46,6 +46,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: 580px;
+    background-image: url('../Images/co2.jpg');
 }
 .contactcard{
     box-shadow: none;

@@ -20,14 +20,14 @@
       
     }
 
-    .searchinput{
+    #searchinput{
 
       height: 70px;
      text-indent: 50px;
      border: 2px solid #d6d4d4;
      border-radius: 15px;
     }
-    .searchinput :hover{
+    #searchinput :hover{
         border: none;
     }
     .banner{

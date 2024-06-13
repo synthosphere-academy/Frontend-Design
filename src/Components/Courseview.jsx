@@ -1,13 +1,29 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 import ReactPlayer from 'react-player'
 import '../Css/courseview.css'
 const Courseview = () => {
-    const [videoSource, setVideoSource] = useState('https://www.youtube.com/watch?v=LXb3EKWsInQ');
+    const [data, setData] = useState(null);
+    // const [videoSource, setVideoSource] = useState('https://player.vimeo.com/video/944794803?h=2e98c42f1c');
 
     const handleChapterClick = (event, newVideoSource) => {
         console.log(newVideoSource)
-        setVideoSource(newVideoSource);
+        // setVideoSource(newVideoSource);
     };
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get('https://v1.nocodeapi.com/souravbasak/vimeo/FMGQOaXQnIdOqCgf/videoInfo?video_id=944794803'); 
+            const datalink = response.data.link;
+            console.log(datalink)
+            setData(datalink);
+          } catch (error) {
+            console.log(error);
+          } 
+        };
+    
+        fetchData();
+      }, []);
     return (
         <>
             <div className="container">
@@ -22,7 +38,9 @@ const Courseview = () => {
                                                 <h3 className='fw-bold'>Introduction to music course</h3>
                                             </div>
                                             <div className="vp-video mb-4">
-                                                <ReactPlayer controls width="100%" height="450px" url={videoSource} />
+                                                <ReactPlayer 
+                                                controls 
+                                                width="100%" height="450px" url={data} />
                                             </div>
                                         </div>
                                         <div className='content-wrapper'>

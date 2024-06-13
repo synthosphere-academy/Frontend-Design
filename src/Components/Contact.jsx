@@ -1,6 +1,5 @@
 
 import '../Css/Contactus.css'
-import background from '../Images/co2.jpg';
 import icon from '../Images/Icons.png';
 import emailicon from '../Images/emailicon.png';
 import phoneicon from '../Images/phoneicon.png';
@@ -69,7 +68,8 @@ function Contact() {
         <h2 className="heading text-center ">Contact Us</h2>
         <p className='text-center contactdescri'>Reach out for admissions, queries, or support. We are here to help you achieve academic success!</p>
         </div>
-        <div className="background mt-3" style={{ backgroundImage: `url(${background})` }}>
+        <div className="background mt-3" >
+        {/* style={{ backgroundImage: `url(${background})` }}> */}
           <div className='container'>
             <div className='row'>
               <div className='col-lg-8'>

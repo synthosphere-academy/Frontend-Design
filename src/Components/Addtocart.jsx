@@ -119,7 +119,7 @@ function Addtocart() {
                                     Your card will be charged <span className='fw-bold'> ₹899 </span>
                                 </div>
                                 <div className='text-center mt-3'>
-                                  <Link to='/Invoice'> <button className='btn paynow w-75' >Pay Now</button></Link>  
+                                  <Link to='/userinvoice'> <button className='btn paynow w-75' >Pay Now</button></Link>  
                                 </div>
                             </div>
 
