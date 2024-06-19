@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import icon from '../Images/icon.svg'
 import { useSelector } from 'react-redux';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import Blink from 'react-blink-text';
 
 const Nav = () => {
   const items = useSelector(state => state);
@@ -45,11 +46,13 @@ const Nav = () => {
               <li className="nav-item pe-2">
                 <a className="nav-link text-white" href='/contact'>Contact</a>
               </li>
+              <li className="nav-item pe-2">
+                <a className="nav-link" href='/offlineregister'><span className="blink" >Offline register <i className="fa fa-bell"></i>  
+                    </span> </a>
+              </li>
             </ul>
             <div className='me-4 cartpart'>
-              
               <div className="navbar-text  cartstyle text-center" >
-              
                 <a href='/addtocart' id='cartitem'>
                   <img src={icon} className='carticon'/><sup ><span className="badge bg-danger overflow-auto">{items.cart.length}</span></sup>
                 </a>

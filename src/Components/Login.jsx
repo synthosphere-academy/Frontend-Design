@@ -6,6 +6,10 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import { ROOT_URL } from './Localhost';
 import { useNavigate } from 'react-router-dom';
+const token = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
+const config = {
+  headers: { Authorization: `Bearer ${token}` }
+};
 
 
 
@@ -38,15 +42,15 @@ function Login() {
 
   const navigate = useNavigate();
   const handleSubmit = (event) => {
-   
-
+    event.preventDefault();
     if (email === "" || password === "") {
       swal("Opps!", "Please fill out all required fields!", "error");
     }
+   
     else {
-      event.preventDefault();
-        // alert("submit");
-      axios.post(ROOT_URL+'/login', { email, password })
+      
+        //  alert("submit");
+      axios.post(ROOT_URL+'/login', { email, password },config)
         .then(res => {
           console.log(res);
 

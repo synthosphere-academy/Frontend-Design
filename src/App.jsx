@@ -17,6 +17,7 @@ import Privatepolicy from './Components/Privatepolicy'
 import Refundpolicy from './Components/Refundpolicy'
 import Invoice from './Components/Invoice'
 import { Userlayout } from './Components/Userlayout';
+import Offlineregister from './Components/Offlineregister';
 //  import Admin from './Components/admin/layout/DefaultLayout'
 
  
@@ -51,6 +52,7 @@ function App() {
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
         <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/>
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
+        <Route path='/Offlineregister' element={<Userlayout><Offlineregister/></Userlayout>}/>
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
        
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>

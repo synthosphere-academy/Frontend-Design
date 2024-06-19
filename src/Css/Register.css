@@ -59,3 +59,16 @@
 		width: 95%;
     }
 }
+/* offlireg-------- */
+.paybutton{
+	height: 56%;
+}
+#courseselect{
+	height: 55%;
+}
+.paybutton:focus{
+	background-color:#0275d8;
+	border: none;
+	color: white;
+
+}

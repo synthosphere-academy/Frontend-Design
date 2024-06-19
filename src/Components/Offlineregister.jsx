@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import '../Css/Register.css'
 import axios from 'axios';
@@ -8,23 +7,26 @@ import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
+import nailart from '../Images/nailartpayment.jpg'
+import guitar from '../Images/guitercourse.jpg'
+import vio from '../Images/violinclasses.jpg'
 import { Link } from 'react-router-dom';
-// import { ROOT_URL } from './Localhost';
-
-function Register() {
+const Offlineregister = () => {
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
     // const [date, setDate] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    // const [password, setPassword] = useState('')
     const [state, setDropdownValue_state] = useState([])
 
     const [city, setDropdownValue] = useState([])
     const [cities, setSelectedcities] = useState([])
+    const [course, setcourse] = useState([])
     // const [image, setImage] = useState(null)
     const [date, setDate] = useState(null);
     const [token, setToken] = useState(null);
     const [States, setSelectedState] = useState('');
+    const [image, setImage] = useState(null);
     // const [error, setError] = useState(null);
     // const [selectedState, setSelectedState] = useState('');
 
@@ -32,15 +34,45 @@ function Register() {
 
     const [emailerror, setemailerror] = useState(false)
     const [mobilenoerror, setmobileerror] = useState(false)
-    const [passwordError, setpasserror] = useState('')
-    const [confirmpasserror, setconfirmpasserror] = useState(false)
+    // const [passwordError, setpasserror] = useState('')
+    // const [confirmpasserror, setconfirmpasserror] = useState(false)
     //for state city api token
     const API_TOKEN = 'C2dy7lLSGxWm63T6Oem2N9jeUlaE5Y9M59MInjwjc-FksoqRsWk0pa-iKk1LzSfEFy0';
     //for authentication
-    const token_auth = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
-    const config = {
-        headers: { Authorization: `Bearer ${token_auth}` }
+    // const token_auth = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
+    // const config = {
+    //     headers: { Authorization: `Bearer ${token_auth}` }
+    // };
+
+
+
+    const images = {
+        nailart: [nailart],
+        GuitarClass: [guitar],
+        ViolinClass: [vio]
+      };
+    //image
+    const convertToBase64 = (file) => {
+        console.log(file);
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        const data = new Promise((resolve, reject) => {
+            reader.onload = () => resolve(reader.result)
+            reader.onerror = (err) => {
+                reject(err)
+            }
+        })
+        return data;
+    }
+
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+        const image = await convertToBase64(file)
+        setImage(image);
+         console.log(image);
     };
+
+
     //for state dropdow
     useEffect(() => {
         const getAuthToken = async () => {
@@ -60,6 +92,7 @@ function Register() {
 
         getAuthToken();
     }, []);
+
     useEffect(() => {
         if (token) {
             const getStates = async () => {
@@ -84,7 +117,6 @@ function Register() {
             getStates();
         }
     }, [token]);
-
     //city
     useEffect(() => {
         if (States) {
@@ -111,10 +143,6 @@ function Register() {
         }
     }, [States, token]);
 
-
-
-
-
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
     }
@@ -134,35 +162,7 @@ function Register() {
             setmobileerror(false)
         }
     }
-    function passwordHandler(e) {
-        let item = e.target.value;
-        if (!/[A-Z]/.test(item)) {
-            setpasserror("Password must contain one uppercase letter");
-        }
-        else if (!/[!@#$%^&*(),.?":{}|<>]/.test(item)) {
-            setpasserror("Password must contain one Special character");
-        }
-        else if (!/\d/.test(item)) {
-            setpasserror('Password must contain at least one number');
-        }
-        else if (item.length < 8) {
-            setpasserror('Password must be at least 8 characters long');
-        }
-        else {
-            setpasserror("")
-        }
-    }
-    function confirmpasswordHandler(e) {
-        let item = e.target.value;
-        let password_value = document.getElementById('password').value;
 
-        if (password_value !== item) {
-            setconfirmpasserror(true);
-
-        } else {
-            setconfirmpasserror(false)
-        }
-    }
     const handleDropdownChange_city = (event) => {
         setSelectedcities(event.target.value);
     };
@@ -170,21 +170,23 @@ function Register() {
 
         setSelectedState(event.target.value);
     };
+    const handlecoursechange = (event) => {
 
-
+        setcourse(event.target.value);
+    };
     //hadlesubmit
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (fullname === "" || phoneno === "" || date === "" || States === "" || cities === "" || email === "" || password === "") {
+        if (fullname === "" || phoneno === "" || date === "" || States === "" || cities === "" || email === "" || course === "" || image === "") {
             swal("Opps!", "Please fill out all required fields!", "error");
 
         }
-        else if (emailerror != "" || mobilenoerror != "" || passwordError != "") {
+        else if (emailerror != "" || mobilenoerror != "") {
             swal("Opps!", "give valid inputs!", "error");
         }
         else {
 
-            await axios.post('http://localhost:3000/api/auth/register', { fullname, phoneno, date, States, cities, email, password }, config)
+            await axios.post('http://localhost:3000/api/auth/offlineregister', { fullname, phoneno, date, States, cities, email, course,image })
                 .then(res => {
                     console.log(res);
                     swal("Thank You!", "Registration sucessfully completed!", "success");
@@ -197,11 +199,12 @@ function Register() {
         }
 
     }
+
     return (
         <>
             <section  >
                 <div className="container formcontainer  mt-5 mb-5 ">
-                    <div className='display-5 text-white text-center'>Register Here!</div>
+                    <div className='display-5 text-white text-center'> Offline Register Here!</div>
                     <form className='row g-3 py-2'>
                         <div className="col-lg-6">
                             <label className='form-label text-white' htmlFor="name">Name </label>
@@ -216,7 +219,7 @@ function Register() {
                         </div>
                         <div className='col-lg-3'>
                             <label className='form-label text-white' htmlFor="exampleInputEmail1">Date of birth </label>
-                            <span className='form-control h-50'><DatePicker value={date} className="" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
+                            <span className='form-control'><DatePicker value={date} className="" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
 
                         </div>
                         <div className='col-lg-4'>
@@ -237,57 +240,70 @@ function Register() {
                                     <option key={city.city_name} value={city.city_name}>{city.city_name}</option>
                                 ))}
 
-                               
+
 
                             </select>
                         </div>
-                        {/* <div className='col-lg-8'>
-                            <label className="form-label text-white" htmlFor="fileName">Student Image</label>
-                            <div className="input-group custom-file-button  ">
-                                <label className="input-group-text " htmlFor="fileName">Browse</label>
-                                <input type="file" className=" form-control form-control-lg" name='image' accept=".png, .jpg, .jpeg" id="fileName" onChange={handleFileChange} />
-                            </div>
-                            {imagefileerror ? <span className='link-warning'>{imagefileerror}</span> : ""}
-                        </div> */}
 
-
-                        {/* <div className='col-lg-4'> {
-                            imagefileerror ? "" : <img width={100} height={100} src={image} />
-                        }
-                        </div> */}
                         <div className='col-lg-4'>
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" className="form-control form-control-lg inputform" id="email" name="email"
+                            <input type="email" className="form-control form-control-lg inputform " id="email" name="email"
                                 onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
                             {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
 
 
                         </div>
-                        <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Password</label>
-                            <input type="text" className="form-control form-control-lg inputform" id="password" name="password"
-                                onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
-                            {passwordError && <span className='link-danger'>{passwordError}</span>}
-                            {passwordError ? <span className='link-danger'>Password must me 8 character, one Uppercase, one special character</span> : ""}
 
+
+                        <div className='col-lg-4'>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Select any course</label>
+                            <select className="form-select form-control mb-3  inputform " id='courseselect' aria-label=".form-select-lg example" onChange={handlecoursechange}>
+                                <option value="" label='Enter your course'></option>
+                                <option value="nailart" label='Nail Art'></option>
+                                <option value="GuitarClass" label='Guitar Class'></option>
+                                <option value="ViolinClass" label='Violin Class'></option>
+                                {/* <option value="TablaClass" label='Tabla Class'></option> */}
+
+                            </select>
                         </div>
                         <div className='col-lg-4'>
-                            <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password</label>
-                            <input type="text" className="form-control form-control-lg inputform" id="confirmpassword" name="confirmpassword"
-                                onKeyUp={confirmpasswordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
-                            {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}
+                            <label className="form-label text-white" >Pay from here</label>
+                            <button type="button" className=" btn btn-primary  paybutton form-control" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Pay Now
+                            </button>
 
+                            <div className="modal" id="myModal">
+                                <div className="modal-dialog modal-lg">
+                                    <div className="modal-content">
+
+                                        <div className="modal-body text-center">
+                                        {course && <img src={images[course]} alt="Selected" width="50%" height="80%" />}
+                                            {/* <img src={nailart} alt='img' width="50%" height="80%" /> */}
+                                        </div>
+
+
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-success" data-bs-dismiss="modal">Done</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className='col-lg-4'>
+                            <label className="form-label text-white" htmlFor="fileName">Upload screenshot</label>
+                            <div className="input-group custom-file-button  ">
+                                <label className="input-group-text " htmlFor="fileName">Browse</label>
+                                <input type="file" className=" form-control form-control-lg" name='image' accept=".png, .jpg, .jpeg" id="fileName" onChange={handleFileChange} />
+                            </div>
+                            {/* {imagefileerror ? <span className='link-warning'>{imagefileerror}</span> : ""} */}
                         </div>
                         <span className='text-white'><input type="checkbox" /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
 
                         <div className="pt-1  text-center">
                             <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>
                         </div>
-
-
-
-                        <span className="mb-5 pb-lg-2 text-center register_text text-white" >Have an account? <a className="reg text-success" href="/login"
-                        >Login</a></span>
                     </form>
 
 
@@ -298,4 +314,4 @@ function Register() {
     )
 }
 
-export default Register
+export default Offlineregister

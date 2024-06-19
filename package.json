@@ -26,6 +26,7 @@
     "prettier": "^3.2.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-blink-text": "^1.0.5",
     "react-calendar": "^4.8.0",
     "react-content-loader": "^7.0.0",
     "react-date-picker": "^10.6.0",
