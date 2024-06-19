@@ -22,7 +22,6 @@ const Offlineregister = () => {
     const [city, setDropdownValue] = useState([])
     const [cities, setSelectedcities] = useState([])
     const [course, setcourse] = useState([])
-    // const [image, setImage] = useState(null)
     const [date, setDate] = useState(null);
     const [token, setToken] = useState(null);
     const [States, setSelectedState] = useState('');
