@@ -37,10 +37,10 @@ function Register() {
     //for state city api token
     const API_TOKEN = 'C2dy7lLSGxWm63T6Oem2N9jeUlaE5Y9M59MInjwjc-FksoqRsWk0pa-iKk1LzSfEFy0';
     //for authentication
-    const token_auth = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
-    const config = {
-        headers: { Authorization: `Bearer ${token_auth}` }
-    };
+    // const token_auth = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
+    // const config = {
+    //     headers: { Authorization: `Bearer ${token_auth}` }
+    // };
     //for state dropdow
     useEffect(() => {
         const getAuthToken = async () => {
@@ -174,6 +174,7 @@ function Register() {
 
     //hadlesubmit
     const handleSubmit = async (event) => {
+        // alert("sumit")
         event.preventDefault();
         if (fullname === "" || phoneno === "" || date === "" || States === "" || cities === "" || email === "" || password === "") {
             swal("Opps!", "Please fill out all required fields!", "error");
@@ -184,7 +185,7 @@ function Register() {
         }
         else {
 
-            await axios.post('http://localhost:3000/api/auth/register', { fullname, phoneno, date, States, cities, email, password }, config)
+            await axios.post('http://localhost:3000/api/auth/register', { fullname, phoneno, date, States, cities, email, password })
                 .then(res => {
                     console.log(res);
                     swal("Thank You!", "Registration sucessfully completed!", "success");
