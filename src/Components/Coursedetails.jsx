@@ -1,32 +1,30 @@
 import '../Css/Coursedetails.css'
-import pic from '../Images/Classroom.png'
+// import pic from '../Images/Classroom.png'
 import { useNavigate } from 'react-router-dom';
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import teacherpic from '../Images/teacherpic.jpg'
 // import { useParams } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addItem } from './redux/slices/cartSlice';
+import { ROOT_URL } from '../Components/Localhost'
+
 
 
 function Coursedetails() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   // const { course_id } = useParams();
-  // const [coursedetails, setcoursedetails] = useState([])
-  // useEffect(() => {
-  //   const fetchCourse = async () => {
-  //     try {
-  //       const response = await axios.get(`http://localhost:8081/api/v1/product/`);
-  //       setcoursedetails(response.data);
-  //       console.log(course_id)
-  //     } catch (error) {
-  //       console.error('Error fetching course details:', error);
-  //     }
-  //   };
-  //   fetchCourse();
-  // }, [course_id]);
-  
+  const [coursedetails, setcoursedetails] = useState([])
+  useEffect(() => {
+
+    axios.get(ROOT_URL + '/get_course')
+      .then(coursedata => setcoursedetails(coursedata.data.data))
+      .catch(err => console.log(err))
+
+  }, []);
+
+
 
 
   const entroll_handler = () => {
@@ -115,62 +113,104 @@ function Coursedetails() {
   }
   return (
     <>
-      <div className="container mb-5">
-        <div className="row">
-          {/* {coursedetails ? (
-            <> */}
-          <div className="col-lg-7  mt-5">
-            <img src={pic} width="95%" />
-            {/* <div className='w-75' >
-              <img src={pic}/>
-            </div> */}
+
+      {coursedetails.length > 0 ? (
+        <div className="container mb-5">
+          {
+            coursedetails.map(course => (
+              <div className="row" key={course._id}>
+                <div className="col-lg-7  mt-5" >
+                  <img src={course.image} width="95%" />
+                  <div className='mt-2'><h4 className='fw-bold'>Course Description</h4></div>
+                  <hr className="w-100" />
+                  <div>
+                    <p className='paratext'dangerouslySetInnerHTML={{ __html: course.course_description }}></p>
+                  </div>
+                  <div>
+                    <h5 className='fw-bold'>What will you learn?</h5>
+                    <div className="row">
+                      <div className="col-6"
+                      dangerouslySetInnerHTML={{ __html: course.wewilllearn }}>
+                      </div>
+                      {/* <div className="col-6">
+                        <ul>
+                          <li>{course.wewilllearn}</li>
+                        </ul>
+                      </div> */}
+                    </div>
+
+                  </div>
+                </div>
+                {/* col --2 */}
+                <div className="col-lg-4  mt-5">
+                  <div className="border" id='cartpart'>
+                    <div className="ms-4 mt-4">
+                      <span className="fw-bold h2 ">₹{course.course_price}</span>
+                      {/* <span className="text-decoration-line-through ms-2">₹999</span> */}
+                    </div>
+                    <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={() => dispatch(addItem({ price: "200" }))} >Add to cart</button></div>
+                    <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}> Buy Now</button></div>
+                    <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
+                  </div>
+                  <div className=' border rounded'>
+                    <div className='ms-4 mt-2 mb-4'>
+                      <div><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext'>Beginner Level</span></div>
+                      <div className='mt-2'><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext '>90 students enrolled</span></div>
+                      <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2 paratext'>6 hour 34 min duration</span></div>
+                      <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2'>10 nov,2023 last updated </span></div>
+                      <div className='mt-2'><i className='fa fa-certificate'></i><span className='fw-bold ms-2 paratext'>Certificate of completion </span></div>
+                    </div>
+                  </div>
+
+                  <div className='border rounded mt-4'>
+                    <div className='ms-4 mt-2 mb-4'>
+                      <h6 className='fw-bold mt-4'>Apply Coupon</h6>
+                      <div className="search couponbutton mt-4  ">
+                        <input type="text" className="form-control couponinput " placeholder="Enter coupon" />
+                        <button className="btn">Apply</button>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+
+              </div>
+            ))
+          }
+             <hr />
+      <div >
+        <h4 className="fw-bold mb-4">Related Courses</h4>
+        <div className="row g-4">
+          {courseInfo.map(redercoursecard)}
+        </div>
+      </div>
+        </div>
+      ) : (
+        <p>No courses available</p>
+      )}
+      <div className="row">
+
+
+        <div className="col-lg-7  mt-5">
+
+          {/* <img src={pic} width="95%" />
+
             <div><h4 className='fw-bold'>Course Description</h4></div>
             <hr className="w-100" />
             <div>
               <h5>How this course look like together? We have module 1 and
                 module 2.</h5>
             </div>
-            <div>
-              {/* <p>{coursedetails.course_description}</p>
-              <h2>{coursedetails.teacher_name}</h2> */}
-              {/* <p className='paratext text-start'>
-                <span className='fw-bold'>Module 1: </span>
-                So we have 1st module , where you will learn how blockchain
-                run in realtime world. What is cryptocurrency? How to be a
-                crypto trader? You will learn the basic things about blockchain
-                and crypto world, like what is NFT? What are the rules for
-                became a crypto trader. Learn various type of time frame in
-                trading.Step by step you will know about exchanges, how to open
-                your 1st trading account in there. Indian government rules for
-                cryptocurrency, and what is trading? How to make profit?
-                Not only practicals, we will discuss about deep blockchain
-                knowledge, like what is mining? How it works? What is the
-                consensus protocols? How crypto is born and listed in any
-                exchanges? After that we will cover smart contracts to
-                decentralised wallets. Also we are covering a small part of
-                technical analysis, indicators, candles.</p> */}
-            </div>
+
             <div>
               <p className='paratext'><span className='fw-bold'>Module 2: </span>
-                In the next module. we will go deep into the blockchain and
-                crypto knowledge.
-                Here we know about some protocols, security of holding
-                wallets, secrets of technicals and fundamental analysis, not
-                only in basic level, we will go through advance level. Not just
-                blockchain knowledge, in this module 2, you will know about
-                many types of trading, including future trade, no loss strategy,
-                and also some crypto history, case studies. Case study in
-                various type of cryptocurrency in different fields. And at last
-                we have some gem coin suggestions for upto 50x profit in long
-                term.
-                So, are you ready to unlock the potential of blockchain and
-                cryptocurrency? Join us on this exciting journey as we explore
-                the possibilities, challenge the status quo, and embrace the
-                future of decentralized technology as well as be a master
-                trader with no loss strategy. </p>
+                In the next module.
+                 </p>
 
-            </div>
-            <div>
+            </div> */}
+          {/* <div>
               <h5 className='fw-bold'>What will you learn?</h5>
               <div className="row">
                 <div className="col-6">
@@ -189,8 +229,9 @@ function Coursedetails() {
                 </div>
               </div>
 
-            </div>
-            <div>
+            </div> */}
+          {/* course Content---------*/}
+          {/* <div>
               <h4 className='fw-bold'>Course Content</h4>
               <div className="accordion" id="accordionExample">
                 
@@ -276,9 +317,11 @@ function Coursedetails() {
                 </div>
               </div>
 
-            </div>
-            <div className='mt-4'>
-            <h4 className='fw-bold'>Teacher Description </h4>
+            </div> */}
+          {/* end course Content---------*/}
+          {/* <div className='mt-4'>
+              ---------------teacher description------------
+              <h4 className='fw-bold'>Teacher Description </h4>
             <hr className="w-100" />
             <div>
             <p className='paratext'>Dipan Das, a crypto teacher at an academy, possesses a strong educational background in finance, economics, computer science, or related fields, 
@@ -288,31 +331,28 @@ function Coursedetails() {
             These attributes ensure that he can effectively educate and inspire students in the dynamic world of cryptocurrencies</p>
             </div>
 
+            </div> */}
+        </div>
+
+        {/* <div className="col-lg-4  mt-5">
+          <div className="border" id='cartpart'>
+            <div className="ms-4 mt-4">
+              <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>
             </div>
-          </div>
-          {/* </>
-          ): (
-            <div>othig</div>
-              )} */}
-          <div className="col-lg-4  mt-5">
-            <div className="border" id='cartpart'>
-              <div className="ms-4 mt-4">
-                <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>
-              </div>
-              <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={()=> dispatch(addItem({price:"200"}))} >Add to cart</button></div>
-              <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}>Enroll Now</button></div>
-              <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
+            <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={() => dispatch(addItem({ price: "200" }))} >Add to cart</button></div>
+            <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}> Buy Now</button></div>
+            <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
+          </div> */}
+        {/* <div className=' border rounded'>
+            <div className='ms-4 mt-2 mb-4'>
+              <div><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext'>Beginner Level</span></div>
+              <div className='mt-2'><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext '>90 students enrolled</span></div>
+              <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2 paratext'>6 hour 34 min duration</span></div>
+              <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2'>10 nov,2023 last updated </span></div>
+              <div className='mt-2'><i className='fa fa-certificate'></i><span className='fw-bold ms-2 paratext'>Certificate of completion </span></div>
             </div>
-            <div className=' border rounded'>
-              <div className='ms-4 mt-2 mb-4'>
-                <div><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext'>Beginner Level</span></div>
-                <div className='mt-2'><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext '>90 students enrolled</span></div>
-                <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2 paratext'>6 hour 34 min duration</span></div>
-                <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2'>10 nov,2023 last updated </span></div>
-                <div className='mt-2'><i className='fa fa-certificate'></i><span className='fw-bold ms-2 paratext'>Certificate of completion </span></div>
-              </div>
-            </div>
-            <div className='border rounded mt-4'>
+          </div> */}
+        {/* <div className='border rounded mt-4'>
               <div className='ms-4 mt-2 mb-2'>
                 <h6 className='fw-bold'>A course by</h6>
                 <div className="row">
@@ -331,30 +371,23 @@ function Coursedetails() {
                 </div>
 
               </div>
-            </div>
-            <div className='border rounded mt-4'>
-              <div className='ms-4 mt-2 mb-4'>
-                <h6 className='fw-bold mt-4'>Apply Coupon</h6>
-                <div className="search couponbutton mt-4  ">
-                  <input type="text" className="form-control couponinput " placeholder="Enter coupon" />
-                  <button className="btn">Apply</button>
-                </div>
+            </div> */}
+        {/* <div className='border rounded mt-4'>
+            <div className='ms-4 mt-2 mb-4'>
+              <h6 className='fw-bold mt-4'>Apply Coupon</h6>
+              <div className="search couponbutton mt-4  ">
+                <input type="text" className="form-control couponinput " placeholder="Enter coupon" />
+                <button className="btn">Apply</button>
               </div>
-
-
             </div>
+
+
           </div>
-        </div>
-       
-        
-        <hr />
-        <div>
-          <h4 className="fw-bold mb-4">Related Courses</h4>
-          <div className="row g-4">
-            {courseInfo.map(redercoursecard)}
-          </div>
-        </div>
+        </div> */}
       </div>
+
+
+
     </>
   )
 }

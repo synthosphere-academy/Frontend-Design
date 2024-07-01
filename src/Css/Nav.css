@@ -21,7 +21,7 @@ a{
     font-size:18px;
     line-height:1.3333333;
     padding:10px 16px;
-    margin:5px;
+    margin:11px;
     background-color: #b43f95;
     box-shadow: none;
 }
@@ -106,6 +106,9 @@ border: none;
     .buttonstyle{
         margin-left:35% ;
     }
+    .userdrop{
+        margin-left:43%
+    }
 }
 
 @media (max-width: 800px) {
@@ -116,6 +119,9 @@ border: none;
     .buttonstyle{
         margin-left:35% ;
     }
+    .userdrop{
+        margin-left:43%
+    }
 }
 @media (max-width: 900px) {
     .cartpart{
@@ -124,6 +130,9 @@ border: none;
     }
     .buttonstyle{
         margin-left:28% ;
+    }
+    .userdrop{
+        margin-left:43%
     }
 
 }
@@ -135,6 +144,9 @@ border: none;
     .buttonstyle{
         margin-left:29% ;
     }
+    .userdrop{
+        margin-left:43%
+    }
 
 }
 /* Offline register */
@@ -145,6 +157,11 @@ border: none;
     font-family: myfont;
 
   } 
+  .dropdown-menu[data-bs-popper] {
+    top: 140%; /* Adjusted position */
+    left: -18px; /* Centered horizontally */
+    
+}
   
     
   @keyframes blink-animation { 

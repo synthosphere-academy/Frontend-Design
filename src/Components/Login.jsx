@@ -4,12 +4,12 @@ import '../Css/Login.css'
 import { useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
-import { ROOT_URL } from './Localhost';
+// import { ROOT_URL } from './Localhost';
 import { useNavigate } from 'react-router-dom';
-const token = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
-const config = {
-  headers: { Authorization: `Bearer ${token}` }
-};
+// const token = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
+// const config = {
+//   headers: { Authorization: `Bearer ${token}` }
+// };
 
 
 
@@ -50,12 +50,15 @@ function Login() {
     else {
       
         //  alert("submit");
-      axios.post(ROOT_URL+'/login', { email, password },config)
+      axios.post('http://localhost:3000/api/auth/login', { email, password })
         .then(res => {
           console.log(res);
+          const { email: studentemail } = res.data;
+          sessionStorage.setItem('userEmail', studentemail);
+          
 
           swal("Sucessfully login!", "login sucessfully!", "success");
-            navigate('/userdashboard');
+            navigate('/');
           // navigate('/course');
 
         })
@@ -64,8 +67,6 @@ function Login() {
           swal("Opps!", "Email or password icorrect!", "error");
 
         })
-
-
     }
   }
 

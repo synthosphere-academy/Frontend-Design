@@ -175,13 +175,17 @@ const Offlineregister = () => {
     };
     //hadlesubmit
     const handleSubmit = async (event) => {
+        let checkbox = document.getElementById('checkbox');
         event.preventDefault();
         if (fullname === "" || phoneno === "" || date === "" || States === "" || cities === "" || email === "" || course === "" || image === "") {
             swal("Opps!", "Please fill out all required fields!", "error");
-
         }
         else if (emailerror != "" || mobilenoerror != "") {
             swal("Opps!", "give valid inputs!", "error");
+        }
+        else if(!checkbox.checked){
+            swal("Opps!","You must agree to the terms and conditions before submitting!","error");
+            return false;
         }
         else {
 
@@ -276,10 +280,9 @@ const Offlineregister = () => {
                                     <div className="modal-content">
 
                                         <div className="modal-body text-center">
-                                        {course && <img src={images[course]} alt="Selected" width="50%" height="80%" />}
+                                        {course && <img src={images[course]} alt="Select any course" width="50%" height="80%" />}
                                             {/* <img src={nailart} alt='img' width="50%" height="80%" /> */}
                                         </div>
-
 
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-success" data-bs-dismiss="modal">Done</button>
@@ -291,14 +294,14 @@ const Offlineregister = () => {
                         </div>
                         
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="fileName">Upload screenshot</label>
+                            <label className="form-label text-white" htmlFor="fileName">Upload payment received screenshot</label>
                             <div className="input-group custom-file-button  ">
                                 <label className="input-group-text " htmlFor="fileName">Browse</label>
                                 <input type="file" className=" form-control form-control-lg" name='image' accept=".png, .jpg, .jpeg" id="fileName" onChange={handleFileChange} />
                             </div>
                             {/* {imagefileerror ? <span className='link-warning'>{imagefileerror}</span> : ""} */}
                         </div>
-                        <span className='text-white'><input type="checkbox" /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
+                        <span className='text-white'><input type="checkbox" id='checkbox'  /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
 
                         <div className="pt-1  text-center">
                             <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>

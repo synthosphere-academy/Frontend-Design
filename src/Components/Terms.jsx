@@ -1,7 +1,12 @@
 
 import '../Css/Terms.css'
+import { useNavigate } from 'react-router-dom'
 
 function Terms() {
+  const navigate = useNavigate();
+  const handlersumit=()=>{
+    navigate('/Offlineregister');
+  }
   return (
     <>
       <div>
@@ -75,7 +80,7 @@ function Terms() {
           </p>
 
           
-        <button className='btn btn-primary btn-lg' >Ok</button>
+        <button className='btn btn-primary btn-lg' onClick={handlersumit} >Ok</button>
         </div>
 
       </div>

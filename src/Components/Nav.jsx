@@ -5,11 +5,18 @@ import icon from '../Images/icon.svg'
 import { useSelector } from 'react-redux';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import Blink from 'react-blink-text';
+//  import pic from '../Images/user.png';
 
 const Nav = () => {
   const items = useSelector(state => state);
   console.log('Items', items);
-  return (
+
+  const handleLogout =(e) =>{
+    e.preventDefault();
+    sessionStorage.removeItem('userEmail');
+    window.location.assign("/")
+  }
+    return (
     <>
       <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "rgba(14, 18, 85, 1)" }}>
         <div className="container-fluid">
@@ -47,23 +54,45 @@ const Nav = () => {
                 <a className="nav-link text-white" href='/contact'>Contact</a>
               </li>
               <li className="nav-item pe-2">
-                <a className="nav-link" href='/offlineregister'><span className="blink" >Offline register <i className="fa fa-bell"></i>  
-                    </span> </a>
+                <a className="nav-link" href='/offlineregister'><span className="blink" >Offline register <i className="fa fa-bell"></i>
+                </span> </a>
               </li>
             </ul>
             <div className='me-4 cartpart'>
               <div className="navbar-text  cartstyle text-center" >
                 <a href='/addtocart' id='cartitem'>
-                  <img src={icon} className='carticon'/><sup ><span className="badge bg-danger overflow-auto">{items.cart.length}</span></sup>
+                  <img src={icon} className='carticon' /><sup ><span className="badge bg-danger overflow-auto">{items.cart.length}</span></sup>
                 </a>
-               
+
               </div>
-              
+
             </div>
-            <button className='buttonstyle btn btn-sm text-white'>
+            
+            {
+              sessionStorage.getItem("userEmail") ?
+
+                <div className=" userdrop dropdown me-4">
+                  <div className=" dropdown-toggle text-white" type='button'  data-bs-toggle="dropdown" aria-expanded="false">
+                    Hi, {sessionStorage.getItem("userEmail")}
+                    {/* <img src={pic} width="10%" height="20%"/> */}
+                  </div>
+                  <ul className="dropdown-menu">
+                    <li><a className="dropdown-item" href="/userdashboard">Dashboard</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a></li>
+                   
+                  </ul>
+                </div>
+
+                : <button className='buttonstyle btn btn-sm text-white'>
+                  <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
+                  <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
+                </button>
+            }
+            
+            {/* <button className='buttonstyle btn btn-sm text-white'>
               <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
               <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
-            </button>
+            </button> */}
 
           </div>
         </div>

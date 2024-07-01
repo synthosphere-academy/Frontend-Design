@@ -5,6 +5,8 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import DatePicker from 'react-date-picker';
 
+
+
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
@@ -34,8 +36,13 @@ function Register() {
     const [mobilenoerror, setmobileerror] = useState(false)
     const [passwordError, setpasserror] = useState('')
     const [confirmpasserror, setconfirmpasserror] = useState(false)
+    
+   
     //for state city api token
     const API_TOKEN = 'C2dy7lLSGxWm63T6Oem2N9jeUlaE5Y9M59MInjwjc-FksoqRsWk0pa-iKk1LzSfEFy0';
+    
+    
+    
     //for authentication
     // const token_auth = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
     // const config = {
