@@ -80,7 +80,7 @@ function Terms() {
           </p>
 
           
-        <button className='btn btn-primary btn-lg' onClick={handlersumit} >Ok</button>
+        {/* <button className='btn btn-primary btn-lg' onClick={handlersumit} >Ok</button> */}
         </div>
 
       </div>
