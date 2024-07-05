@@ -1,9 +1,9 @@
 import '../Css/Mostpopularcourse.css'
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 // import axios from 'axios';
 import lessonicon from '../Images/lesson.svg'
 // import teacherpic from '../Images/teacherpic.jpg'
-import { ROOT_URL } from '../Components/Localhost'
+// import { ROOT_URL } from '../Components/Localhost'
 import pic1 from '../Images/Music.jpg'
 
 
