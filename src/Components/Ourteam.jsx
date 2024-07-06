@@ -19,7 +19,7 @@ function Ourteam() {
         },
         {
             image:[face3],
-            team_member:"Figo Daas",
+            team_member:"Kalyan Das",
             team_member_role:"Trainer",
             team_member_description: "Unlock the potential of tomorrow's innovators with our transformative courses tailored for the digital age."
     
