@@ -19,7 +19,7 @@ function Addtocart() {
                             <div className="row main align-items-center">
                                 <div className="col-3"><img className="img-fluid" src="https://www.shutterstock.com/image-photo/golden-coins-bitcoin-logo-rise-600nw-2052110753.jpg" /></div>
                                 <div className="col-3 ms-2">
-                                    <div className="row ">The Full Cryptocurrency Investment Course</div>
+                                    <div className="row ">The Full Cryptocurrency Education Course</div>
                                     <div className="row">16 videoes</div>
                                 </div>
                                 <div className="col">
