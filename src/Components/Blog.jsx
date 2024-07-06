@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import img1 from '../Images/Image.png';
+
 // import img2 from '../Images/Image2.png';
 // import img3 from '../Images/Image3.png';
 import { ROOT_URL } from '../Components/Localhost'
@@ -12,7 +12,7 @@ function Blog() {
   const [blogdata, setblogdata] = useState([])
   useEffect(() => {
     // const apiUrl = process.env.REACT_APP_API_URL;
-    axios.get(ROOT_URL+'/blog')
+    axios.get(ROOT_URL+'/get_blog')
       .then(blogdata => setblogdata(blogdata.data.data))
       .catch(err => console.log(err))
 
@@ -25,10 +25,10 @@ function Blog() {
       <div className='col-lg-4 '>
         <div className="card h-100">
           <div className='container mt-3'>
-            <img src={img1} className="card-img-top d-block w-100" alt="..." />
+            <img src={blogdata.image} className="card-img-top d-block w-100" alt="..." />
             <div className="card-body">
-              <h5 className="card-title">{blogdata.text}</h5>
-              <p className="card-text">{blogdata.description}</p>
+              <h5 className="card-title">{blogdata.blogtitle}</h5>
+              <p className="card-text"dangerouslySetInnerHTML={{ __html: blogdata.blogdescription }}></p>
             </div>
           </div>
         </div>

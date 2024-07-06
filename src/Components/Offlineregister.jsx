@@ -3,6 +3,7 @@ import '../Css/Register.css'
 import axios from 'axios';
 import swal from 'sweetalert';
 import DatePicker from 'react-date-picker';
+import { Auth_URL } from './Localhost';
 
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
@@ -85,6 +86,7 @@ const Offlineregister = () => {
                 setToken(response.data.auth_token);
             } catch (error) {
                 console.log(error);
+
                 // setError(error);
             }
         };
@@ -175,8 +177,9 @@ const Offlineregister = () => {
     };
     //hadlesubmit
     const handleSubmit = async (event) => {
-        let checkbox = document.getElementById('checkbox');
         event.preventDefault();
+        let checkbox = document.getElementById('checkbox');
+        
         if (fullname === "" || phoneno === "" || date === "" || States === "" || cities === "" || email === "" || course === "" || image === "") {
             swal("Opps!", "Please fill out all required fields!", "error");
         }
@@ -188,15 +191,17 @@ const Offlineregister = () => {
             return false;
         }
         else {
-
-            await axios.post('http://localhost:3000/api/auth/offlineregister', { fullname, phoneno, date, States, cities, email, course,image })
+            
+            await axios.post(Auth_URL+'/offlineregister', { fullname, phoneno, date, States, cities, email, course,image })
                 .then(res => {
                     console.log(res);
                     swal("Thank You!", "Registration sucessfully completed!", "success");
+                    
                 })
-                .catch(err => {
-                    console.log(err);
-                    swal("Opps!", "Not inserted !", "error");
+                .catch(error=> {
+                    console.log(error);
+                    swal("Opps!",  "not inserted","error" );
+                    
 
                 })
         }

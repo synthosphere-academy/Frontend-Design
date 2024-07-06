@@ -4,7 +4,7 @@ import '../Css/Login.css'
 import { useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
-// import { ROOT_URL } from './Localhost';
+import { Auth_URL } from './Localhost';
 import { useNavigate } from 'react-router-dom';
 // const token = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
 // const config = {
@@ -50,7 +50,7 @@ function Login() {
     else {
       
         //  alert("submit");
-      axios.post('http://localhost:3000/api/auth/login', { email, password })
+      axios.post(Auth_URL+'/login', { email, password })
         .then(res => {
           console.log(res);
           const { email: studentemail } = res.data;

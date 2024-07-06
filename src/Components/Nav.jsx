@@ -58,15 +58,7 @@ const Nav = () => {
                 </span> </a>
               </li>
             </ul>
-            <div className='me-4 cartpart'>
-              <div className="navbar-text  cartstyle text-center" >
-                <a href='/addtocart' id='cartitem'>
-                  <img src={icon} className='carticon' /><sup ><span className="badge bg-danger overflow-auto">{items.cart.length}</span></sup>
-                </a>
-
-              </div>
-
-            </div>
+            
             
             {
               sessionStorage.getItem("userEmail") ?
@@ -87,6 +79,16 @@ const Nav = () => {
                   <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
                   <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
                 </button>
+            }
+            {
+              sessionStorage.getItem("userEmail") ?
+            <div className='me-4 cartpart'>
+              <div className="navbar-text  cartstyle text-center" >
+                <a href='/addtocart' id='cartitem'>
+                  <img src={icon} className='carticon' /><sup ><span className="badge bg-danger overflow-auto">{items.cart.length}</span></sup>
+                </a>
+              </div>
+            </div>: ""
             }
             
             {/* <button className='buttonstyle btn btn-sm text-white'>

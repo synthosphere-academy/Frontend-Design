@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { addItem } from './redux/slices/cartSlice';
 import { ROOT_URL } from '../Components/Localhost'
 
+import lessonicon from '../Images/lesson.svg';
 
 
 function Coursedetails() {
@@ -16,6 +17,7 @@ function Coursedetails() {
   const navigate = useNavigate()
   // const { course_id } = useParams();
   const [coursedetails, setcoursedetails] = useState([])
+  const [productdata, setproduct] = useState([])
   useEffect(() => {
 
     axios.get(ROOT_URL + '/get_course')
@@ -23,94 +25,77 @@ function Coursedetails() {
       .catch(err => console.log(err))
 
   }, []);
+  useEffect(() => {
+    
+    axios.get(ROOT_URL+'/get_course')
+      .then(productdata => setproduct(productdata.data.data))
+      .catch(err => console.log(err))
 
+  }, []);
+  
 
 
 
   const entroll_handler = () => {
     navigate('/courseview');
   }
-  // const handleclicked = () => {
-  //   alert("clicked");
-  // }
-  const courseInfo = [
-    {
-      image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
-      coursename: "The Cryptocurrency Education Course",
-      // coursedetails:"Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!",
-      coursereview: "4.5",
-      course_currentprice: "₹899",
-      course_price: "₹1899",
-      teacher_image: [teacherpic],
-      teachername: "David Noman",
-      teacherdept: "Teacher"
-
-    },
-    {
-      image: ["https://cdn.elearningindustry.com/wp-content/uploads/2020/08/how-online-course-are-changing-music-education.jpg"],
-      coursename: "Music Course",
-      // coursedetails:"Expand your music composition skills through learning universal music theory principles, mindset, and ear training.You will learn  basic essential techniques that will allow you to play any song in any style!",
-      coursereview: "4",
-      course_currentprice: "₹799",
-      course_price: "₹999",
-      teacher_image: [teacherpic],
-      teachername: "Kesto Das",
-      teacherdept: "Teacher"
-    },
-    {
-      image: ["https://cdn.eduonix.com/assets/images/header_img/2020091906114212289.jpg"],
-      coursename: "The Complete Stock market course",
-      // coursedetails:"Master Stock Market Investing & Trading in the Stock Market.Apply best practices and techniques to make better stock choices.Invest & Trade!",
-      coursereview: "4",
-      course_currentprice: "₹799",
-      course_price: "₹999",
-      teacher_image: [teacherpic],
-      teachername: "Dipan Das",
-      teacherdept: "Teacher"
-    }
-  ]
-  const redercoursecard = (card, index) => {
+  const redercoursecard = (productdata) => {
     return (
-      <div className='col-lg-4' key={index}>
-        <div className="card" >
-          <img className="card-img-top" src={card.image} alt="Sample photo" />
+      <div className='col' key={productdata._id} >
+        <div className="card h-100">
+          <img className="card-img-top cardimage " src={productdata.image} alt="Sample photo" />
           <div className="card-body">
             <div className='row'>
               <div className='col-6'>
-                <i className='fa fa-graduation-cap'></i>
-                <span className='ms-2'>26 lessons</span>
+                <img src={lessonicon} width={20} height={20} />
+                <span className='ms-2'>{productdata.videos} videos</span>
               </div>
-              <div className='col-6 text-end'>
-                <span className='fw-bold'>{card.coursereview}</span>
+              {/* <div className='col-6 text-end'>
+                <span className='fw-bold'>{productdata.course_review}</span>
 
                 <span className="fa fa-star checked"></span>
                 <span className="fa fa-star checked"></span>
                 <span className="fa fa-star checked"></span>
                 <span className="fa fa-star checked"></span>
-                <span className="fa fa-star"></span>
-              </div>
+                <span className="fa fa-star notchecked"></span>
+              </div> */}
             </div>
-            <h5 className='mt-3'>{card.coursename}</h5>
+            <h5 className='mt-3'>{productdata.course_name}</h5>
             {/* <p>{card.coursedetails}</p> */}
 
             {/* <span className='fw-bold'>{card.course_currentprice}</span>
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr />
             <div className="row">
-              <div className='col-2'><img className='rounded-circle' width={40} height={40} src={card.teacher_image} />
+              
+              {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
+              </div> */}
+              <div className='col-7 mt-2'><span>{productdata.teacher_name}</span>
               </div>
-              <div className='col-4'><span>{card.teachername}</span>
-                <br /><span>{card.teacherdept}</span></div>
-              <div className='col-6 text-end'><a href='/coursedetails'><button className="btn btn-primary btn-sm learnmore" type='button'>Learn More</button></a></div>
 
-
+              {/* <br/><span>{productdata.teacher_dept}</span></div> */}
+              <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
             </div>
 
           </div>
         </div>
       </div>
-    )
-  }
+    )}
+
+  // const courseInfo = [
+  //   {
+  //     image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
+  //     coursename: "The Cryptocurrency Education Course",
+  //     // coursedetails:"Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!",
+  //     coursereview: "4.5",
+  //     course_currentprice: "₹899",
+  //     course_price: "₹1899",
+  //     teacher_image: [teacherpic],
+  //     teachername: "David Noman",
+  //     teacherdept: "Teacher"
+
+  //   }]
+    
   return (
     <>
 
@@ -148,9 +133,11 @@ function Coursedetails() {
                       <span className="fw-bold h2 ">₹{course.course_price}</span>
                       {/* <span className="text-decoration-line-through ms-2">₹999</span> */}
                     </div>
-                    <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={() => dispatch(addItem({ price: "200" }))} >Add to cart</button></div>
+                    <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' >Coming Soon </button></div>
+                    {/* <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={() => dispatch(addItem({ price: "200" }))} >Add to cart</button></div>
                     <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}> Buy Now</button></div>
-                    <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
+                    */}
+                    <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div> 
                   </div>
                   <div className=' border rounded'>
                     <div className='ms-4 mt-2 mb-4'>
@@ -182,9 +169,17 @@ function Coursedetails() {
              <hr />
       <div >
         <h4 className="fw-bold mb-4">Related Courses</h4>
-        <div className="row g-4">
-          {courseInfo.map(redercoursecard)}
-        </div>
+        <div className='container'>
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
+
+              {productdata.map(redercoursecard)}
+              {/* {CourseInfo.map(rendercourse)} */}
+
+            </div>
+            </div>
+        {/* <div className="row g-4">
+        {productdata.map(redercoursecard)}
+        </div> */}
       </div>
         </div>
       ) : (

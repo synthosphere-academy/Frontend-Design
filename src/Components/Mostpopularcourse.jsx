@@ -1,126 +1,118 @@
 import '../Css/Mostpopularcourse.css'
-// import { useState, useEffect } from 'react';
-// import axios from 'axios';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import lessonicon from '../Images/lesson.svg'
 // import teacherpic from '../Images/teacherpic.jpg'
-// import { ROOT_URL } from '../Components/Localhost'
+import { ROOT_URL } from '../Components/Localhost'
 import pic1 from '../Images/Music.jpg'
 
 
 //  import pic1 from '../Images/course1.jpg'
 
 function Mostpopularcourse() {
-  const CourseInfo = [
-    {
-      image: [pic1],
-      video: "20",
-      course_name:"The Complete Music Course",
-      course_price: "499",
-      teacher_name:"Synthosphere Academy"
+  // const CourseInfo = [
+  //   {
+  //     image: [pic1],
+  //     video: "20",
+  //     course_name:"The Complete Music Course",
+  //     course_price: "499",
+  //     teacher_name:"Synthosphere Academy"
 
-    }
-  ]
+  //   }
+  // ]
     
 
 
-  // const [productdata, setproduct] = useState([])
+  const [productdata, setproduct] = useState([])
  
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   axios.get(ROOT_URL+'/get_course')
-  //     .then(productdata => setproduct(productdata.data.data))
-  //     .catch(err => console.log(err))
+    axios.get(ROOT_URL+'/get_course')
+      .then(productdata => setproduct(productdata.data.data))
+      .catch(err => console.log(err))
 
-  // }, []);
+  }, []);
 
-  // const redercoursecard = (productdata) => {
-  //   return (
-      // <div className='col' key={productdata._id} >
-      //   <div className="card h-100">
-      //     <img className="card-img-top cardimage " src={productdata.image} alt="Sample photo" />
-      //     <div className="card-body">
+  const redercoursecard = (productdata) => {
+    return (
+      <div className='col' key={productdata._id} >
+        <div className="card h-100">
+          <img className="card-img-top cardimage " src={productdata.image} alt="Sample photo" />
+          <div className="card-body">
+            <div className='row'>
+              <div className='col-6'>
+                <img src={lessonicon} width={20} height={20} />
+                <span className='ms-2'>{productdata.videos} videos</span>
+              </div>
+              {/* <div className='col-6 text-end'>
+                <span className='fw-bold'>{productdata.course_review}</span>
+
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star checked"></span>
+                <span className="fa fa-star notchecked"></span>
+              </div> */}
+            </div>
+            <h5 className='mt-3'>{productdata.course_name}</h5>
+            {/* <p>{card.coursedetails}</p> */}
+
+            {/* <span className='fw-bold'>{card.course_currentprice}</span>
+        <label className='text-decoration-line-through'>{card.course_price}</label> */}
+            <hr />
+            <div className="row">
+              
+              {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
+              </div> */}
+              <div className='col-7 mt-2'><span>{productdata.teacher_name}</span>
+              </div>
+
+              {/* <br/><span>{productdata.teacher_dept}</span></div> */}
+              <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    )}
+      //for static
+      // const rendercourse = (card, index) => {
+      //   return (
+      //     <div className='col' key={index} >
+      // <div className="card h-100">
+      //     <img className="card-img-top cardimage " src={card.image} alt="Sample photo" />
+      //      <div className="card-body">
       //       <div className='row'>
       //         <div className='col-6'>
-      //           <img src={lessonicon} width={20} height={20} />
-      //           <span className='ms-2'>{productdata.videos} videos</span>
-      //         </div>
-      //         {/* <div className='col-6 text-end'>
-      //           <span className='fw-bold'>{productdata.course_review}</span>
-
-      //           <span className="fa fa-star checked"></span>
-      //           <span className="fa fa-star checked"></span>
-      //           <span className="fa fa-star checked"></span>
-      //           <span className="fa fa-star checked"></span>
-      //           <span className="fa fa-star notchecked"></span>
-      //         </div> */}
+      //            <img src={lessonicon} width={20} height={20} />
+      //           <span className='ms-2'>{card.video} videos</span>
+      //          </div>
+      //        
       //       </div>
-      //       <h5 className='mt-3'>{productdata.course_name}</h5>
+      //        <h5 className='mt-3'>{card.course_name}</h5>
       //       {/* <p>{card.coursedetails}</p> */}
 
       //       {/* <span className='fw-bold'>{card.course_currentprice}</span>
-      //   <label className='text-decoration-line-through'>{card.course_price}</label> */}
-      //       <hr />
-      //       <div className="row">
+      // //   <label className='text-decoration-line-through'>{card.course_price}</label> */}
+      //        <hr />
+      //      <div className="row">
               
       //         {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
-      //         </div> */}
-      //         <div className='col-7 mt-2'><span>{productdata.teacher_name}</span>
-      //         </div>
+      //        </div> */}
+      //         <div className='col-7 mt-2'><span>{card.teacher_name}</span>
+      //          </div>
 
       //         {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-      //         <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
+      //          {/* <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div> */}
       //       </div>
 
       //     </div>
       //   </div>
       // </div>
 
-      //for static
-      const rendercourse = (card, index) => {
-        return (
-          <div className='col' key={index} >
-      <div className="card h-100">
-          <img className="card-img-top cardimage " src={card.image} alt="Sample photo" />
-           <div className="card-body">
-            <div className='row'>
-              <div className='col-6'>
-                 <img src={lessonicon} width={20} height={20} />
-                <span className='ms-2'>{card.video} videos</span>
-               </div>
-              {/* <div className='col-6 text-end'>
-      //           <span className='fw-bold'>{productdata.course_review}</span>
-
-      //           <span className="fa fa-star checked"></span>
-      //           <span className="fa fa-star checked"></span>
-      //           <span className="fa fa-star checked"></span>
-      //           <span className="fa fa-star checked"></span>
-      //           <span className="fa fa-star notchecked"></span>
-      //         </div> */}
-            </div>
-             <h5 className='mt-3'>{card.course_name}</h5>
-            {/* <p>{card.coursedetails}</p> */}
-
-            {/* <span className='fw-bold'>{card.course_currentprice}</span>
-      //   <label className='text-decoration-line-through'>{card.course_price}</label> */}
-             <hr />
-           <div className="row">
-              
-              {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
-             </div> */}
-              <div className='col-7 mt-2'><span>{card.teacher_name}</span>
-               </div>
-
-              {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-               {/* <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div> */}
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-        )
-      }
+      //   )
+      // }
       //end static
   return (
     <>
@@ -133,8 +125,8 @@ function Mostpopularcourse() {
           <div className="container py-5 cardcontainer">
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
 
-              {/* {productdata.map(redercoursecard)} */}
-              {CourseInfo.map(rendercourse)}
+              {productdata.map(redercoursecard)}
+              {/* {CourseInfo.map(rendercourse)} */}
 
             </div>
           </div>

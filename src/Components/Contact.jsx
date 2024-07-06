@@ -10,7 +10,7 @@ import link from '../Images/linkdln.png';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { useState } from 'react';
-import { ROOT_URL } from './Localhost';
+import { Contact_URL } from './Localhost';
 
 
 
@@ -43,7 +43,7 @@ function Contact() {
 
       
       //  alert("submit");
-      axios.post(ROOT_URL+'/contactus', { name,email, message })
+      axios.post(Contact_URL+'/contactus', { name,email, message })
         .then(res => {
           console.log(res);
 
