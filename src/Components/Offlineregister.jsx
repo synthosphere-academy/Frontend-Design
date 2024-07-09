@@ -43,7 +43,7 @@ const Offlineregister = () => {
 
 
     const pay = {
-        nailart: "1",
+        nailart: "1000",
         GuitarClass: "2000",
         ViolinClass: "3000"
       };
@@ -213,11 +213,11 @@ const Offlineregister = () => {
                         image: pic1,
                         order_id: res.data.order.id, 
                         callback_url: Auth_URL+'/paymentverification',
-                //         handler: function (response){
+                //        handler: function (response){
                 //         swal('Payment successful! Payment ID: ' + response.razorpay_payment_id);
                         
-                //     // You can also call a function to handle successful payment logic
-                // },
+                // //     // You can also call a function to handle successful payment logic
+                //  },
                         prefill: {
                             name: fullname,
                             email: email,
@@ -234,8 +234,8 @@ const Offlineregister = () => {
                     const razor = new window.Razorpay(options);
                     razor.open();
                     
-                   // swal("Thank You!", "Registration completed sucessfully!", "success");
-                    // window.location.reload();
+                    // swal("Thank You!", "Registration completed sucessfully!", "success");
+                    //  window.location.reload();
                     
                 })
                 .catch(error=> {

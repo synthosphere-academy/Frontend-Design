@@ -19,7 +19,7 @@ import Invoice from './Components/Invoice'
 import { Userlayout } from './Components/Userlayout';
 import Offlineregister from './Components/Offlineregister';
 //  import Admin from './Components/admin/layout/DefaultLayout'
-
+import PaymentSucess from './Components/PaymentSucess'
  
 import './App.css'
 
@@ -53,6 +53,7 @@ function App() {
         <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/>
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
         <Route path='/Offlineregister' element={<Userlayout><Offlineregister/></Userlayout>}/>
+        <Route path='/PaymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
        
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>
