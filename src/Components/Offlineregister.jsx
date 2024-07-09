@@ -4,20 +4,18 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import DatePicker from 'react-date-picker';
 import { Auth_URL } from './Localhost';
-
+import pic1 from '../Images/icon1.png';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
-import nailart from '../Images/nailartpayment.jpg'
-import guitar from '../Images/guitercourse.jpg'
-import vio from '../Images/violinclasses.jpg'
+// import nailart from '../Images/nailartpayment.jpg'
+// import guitar from '../Images/guitercourse.jpg'
+// import vio from '../Images/violinclasses.jpg'
 import { Link } from 'react-router-dom';
 const Offlineregister = () => {
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
-    // const [date, setDate] = useState('')
     const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
     const [state, setDropdownValue_state] = useState([])
 
     const [city, setDropdownValue] = useState([])
@@ -26,14 +24,12 @@ const Offlineregister = () => {
     const [date, setDate] = useState(null);
     const [token, setToken] = useState(null);
     const [States, setSelectedState] = useState('');
-    const [image, setImage] = useState(null);
-    // const [error, setError] = useState(null);
-    // const [selectedState, setSelectedState] = useState('');
-
-
+    const[amount ,setamount] = useState('');
+    // const [image, setImage] = useState(null);
 
     const [emailerror, setemailerror] = useState(false)
     const [mobilenoerror, setmobileerror] = useState(false)
+    
     // const [passwordError, setpasserror] = useState('')
     // const [confirmpasserror, setconfirmpasserror] = useState(false)
     //for state city api token
@@ -46,31 +42,31 @@ const Offlineregister = () => {
 
 
 
-    const images = {
-        nailart: [nailart],
-        GuitarClass: [guitar],
-        ViolinClass: [vio]
+    const pay = {
+        nailart: "1",
+        GuitarClass: "2000",
+        ViolinClass: "3000"
       };
     //image
-    const convertToBase64 = (file) => {
-        console.log(file);
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        const data = new Promise((resolve, reject) => {
-            reader.onload = () => resolve(reader.result)
-            reader.onerror = (err) => {
-                reject(err)
-            }
-        })
-        return data;
-    }
+    // const convertToBase64 = (file) => {
+    //     console.log(file);
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(file);
+    //     const data = new Promise((resolve, reject) => {
+    //         reader.onload = () => resolve(reader.result)
+    //         reader.onerror = (err) => {
+    //             reject(err)
+    //         }
+    //     })
+    //     return data;
+    // }
 
-    const handleFileChange = async (e) => {
-        const file = e.target.files[0];
-        const image = await convertToBase64(file)
-        setImage(image);
-         console.log(image);
-    };
+    // const handleFileChange = async (e) => {
+    //     const file = e.target.files[0];
+    //     const image = await convertToBase64(file)
+    //     setImage(image);
+    //      console.log(image);
+    // };
 
 
     //for state dropdow
@@ -177,30 +173,74 @@ const Offlineregister = () => {
     };
     //hadlesubmit
     const handleSubmit = async (event) => {
+       
         event.preventDefault();
+        const amount =document.getElementById('amount').value;
+        // console.log(amount);
+       
         let checkbox = document.getElementById('checkbox');
         
-        if (fullname === "" || phoneno === "" || date === "" || States === "" || cities === "" || email === "" || course === "" || image === "") {
+        if (fullname === "" || phoneno === "" || date === "" || States === "" || cities === "" || email === "" || course === "" || amount ==="") {
             swal("Opps!", "Please fill out all required fields!", "error");
         }
         else if (emailerror != "" || mobilenoerror != "") {
-            swal("Opps!", "give valid inputs!", "error");
+            swal("Opps!", "Please give valid inputs!", "error");
         }
+        // else if(image === ""){
+        //     setimageerror(true);
+        //     return false;
+        // }
         else if(!checkbox.checked){
             swal("Opps!","You must agree to the terms and conditions before submitting!","error");
             return false;
         }
+       
         else {
-            
-            await axios.post(Auth_URL+'/offlineregister', { fullname, phoneno, date, States, cities, email, course,image })
+           
+            await axios.post(Auth_URL+'/offlineregister', { fullname, phoneno, date, States, cities, email, course,amount })
                 .then(res => {
                     console.log(res);
-                    swal("Thank You!", "Registration sucessfully completed!", "success");
+                    //console.log(res.data.order.amount);
+
+
+                    const options = {
+                        // key: "rzp_live_xh5zAIy7sL0nMK", // Enter the Key ID generated from the Dashboard
+                        key:"rzp_test_FEdsKrhgE2fdCF",
+                        amount: res.data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                        currency: "INR",
+                        name: "Srijani banerjee",
+                        description: "Test Transaction",
+                        image: pic1,
+                        order_id: res.data.order.id, 
+                        callback_url: Auth_URL+'/paymentverification',
+                //         handler: function (response){
+                //         swal('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+                        
+                //     // You can also call a function to handle successful payment logic
+                // },
+                        prefill: {
+                            name: fullname,
+                            email: email,
+                            contact: phoneno
+                        },
+                        notes: {
+                           
+                            address: "Razorpay Corporate Office"
+                        },
+                        theme: {
+                            color: "#3399cc"
+                        }
+                    };
+                    const razor = new window.Razorpay(options);
+                    razor.open();
+                    
+                   // swal("Thank You!", "Registration completed sucessfully!", "success");
+                    // window.location.reload();
                     
                 })
                 .catch(error=> {
                     console.log(error);
-                    swal("Opps!",  "not inserted","error" );
+                    swal("Opps!",  "registration is not completed successfully","error" );
                     
 
                 })
@@ -275,18 +315,18 @@ const Offlineregister = () => {
                             </select>
                         </div>
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" >Pay from here</label>
-                            <button type="button" className=" btn btn-primary  paybutton form-control" data-bs-toggle="modal" data-bs-target="#myModal">
-                                Pay Now
-                            </button>
+                            <label className="form-label text-white" >Pay For the course</label>
+                            {course && <input type='text'className="form-control form-control-lg" readOnly name='amount'  id="amount"
+                            value={pay[course]} />}
+                            
 
-                            <div className="modal" id="myModal">
+                            {/* <div className="modal" id="myModal">
                                 <div className="modal-dialog modal-lg">
                                     <div className="modal-content">
 
                                         <div className="modal-body text-center">
                                         {course && <img src={images[course]} alt="Select any course" width="50%" height="80%" />}
-                                            {/* <img src={nailart} alt='img' width="50%" height="80%" /> */}
+                                            <img src={nailart} alt='img' width="50%" height="80%" />
                                         </div>
 
                                         <div className="modal-footer">
@@ -295,21 +335,22 @@ const Offlineregister = () => {
 
                                     </div>
                                 </div>
-                            </div>
+                                </div> */}
+                        
                         </div>
                         
-                        <div className='col-lg-4'>
+                        {/* <div className='col-lg-4'>
                             <label className="form-label text-white" htmlFor="fileName">Upload payment received screenshot</label>
                             <div className="input-group custom-file-button  ">
                                 <label className="input-group-text " htmlFor="fileName">Browse</label>
                                 <input type="file" className=" form-control form-control-lg" name='image' accept=".png, .jpg, .jpeg" id="fileName" onChange={handleFileChange} />
                             </div>
-                            {/* {imagefileerror ? <span className='link-warning'>{imagefileerror}</span> : ""} */}
-                        </div>
+                             {imageerror ? <span className='link-warning'>"Please upload the screenshot of payment "</span> : ""}
+                        </div> */}
                         <span className='text-white'><input type="checkbox" id='checkbox'  /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
 
                         <div className="pt-1  text-center">
-                            <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>
+                            <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Submit</button>
                         </div>
                     </form>
 
