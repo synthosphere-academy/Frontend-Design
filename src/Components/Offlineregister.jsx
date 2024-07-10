@@ -212,12 +212,25 @@ const Offlineregister = () => {
                         description: "Test Transaction",
                         image: pic1,
                         order_id: res.data.order.id, 
-                        callback_url: Auth_URL+'/paymentverification',
-                //        handler: function (response){
-                //         swal('Payment successful! Payment ID: ' + response.razorpay_payment_id);
-                        
-                // //     // You can also call a function to handle successful payment logic
-                //  },
+                        handler: function (response) {
+                            // Call your backend to verify the payment and store data
+                            axios.post(Auth_URL+'/paymentverification', {
+                              razorpay_order_id: response.razorpay_order_id,
+                              razorpay_payment_id: response.razorpay_payment_id,
+                              razorpay_signature: response.razorpay_signature,
+                              fullname,phoneno,course,amount
+                              // Pass the user ID for backend processing
+                            }).then(() => {
+                             console.log(response);
+                             swal("Payment successful and data saved.");
+                            //  window.location.reload();
+                            }).catch(() => {
+                              swal('Payment verification failed.');
+                            });
+                          },
+                        // callback_url: Auth_URL+'/paymentverification',
+           
+               
                         prefill: {
                             name: fullname,
                             email: email,
@@ -347,7 +360,7 @@ const Offlineregister = () => {
                             </div>
                              {imageerror ? <span className='link-warning'>"Please upload the screenshot of payment "</span> : ""}
                         </div> */}
-                        <span className='text-white'><input type="checkbox" id='checkbox'  /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
+                        <span className='text-white'><input type="checkbox" id='checkbox'  /> I agree all statements in <a href="/terms" target='_blank' >Terms and conditions</a></span>
 
                         <div className="pt-1  text-center">
                             <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Submit</button>
