@@ -35,9 +35,14 @@ function Coursedetails() {
   
 
 
-
-  const entroll_handler = () => {
-    navigate('/courseview');
+const addtocarthandler = () =>{
+  navigate('/login');
+}
+  // const entroll_handler = () => {
+  //   navigate('/courseview');
+  // }
+  const checkout_handler=() =>{
+    navigate('/checkout');
   }
   const redercoursecard = (productdata) => {
     return (
@@ -133,10 +138,25 @@ function Coursedetails() {
                       <span className="fw-bold h2 ">₹{course.course_price}</span>
                       {/* <span className="text-decoration-line-through ms-2">₹999</span> */}
                     </div>
-                    <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' >Coming Soon </button></div>
-                    {/* <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={() => dispatch(addItem({ price: "200" }))} >Add to cart</button></div>
-                    <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}> Buy Now</button></div>
-                    */}
+                    {/* <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' >Coming Soon </button></div> */}
+                  {
+                    sessionStorage.getItem("userEmail") ?
+                    <>
+                    <div className=" text-center mt-4">
+                    <button className="  w-75" id='cartbutton' onClick={() => dispatch(addItem({ price: "200" }))} >Add to cart</button>
+                    </div>
+                    </>
+                    :
+                    <>
+                    <div className=" text-center mt-4">
+                    <button className="  w-75" id='cartbutton' onClick={ addtocarthandler} >Add to cart</button>
+                    </div>
+                    
+                    </>
+                  }
+                  
+                  <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={checkout_handler}> Buy Now</button>
+                  </div>
                     <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div> 
                   </div>
                   <div className=' border rounded'>

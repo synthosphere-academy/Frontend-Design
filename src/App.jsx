@@ -18,6 +18,7 @@ import Refundpolicy from './Components/Refundpolicy'
 import Invoice from './Components/Invoice'
 import { Userlayout } from './Components/Userlayout';
 import Offlineregister from './Components/Offlineregister';
+import Checkout from './Components/Checkout';
 //  import Admin from './Components/admin/layout/DefaultLayout'
 import PaymentSucess from './Components/PaymentSucess'
  
@@ -53,6 +54,7 @@ function App() {
         <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/>
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
         <Route path='/Offlineregister' element={<Userlayout><Offlineregister/></Userlayout>}/>
+        <Route path='/checkout' element={<Userlayout><Checkout/></Userlayout>}/>
         <Route path='/PaymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
        

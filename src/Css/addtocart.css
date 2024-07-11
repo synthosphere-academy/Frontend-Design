@@ -1,3 +1,16 @@
+.shoppingcart{
+    /* background-color:  rgba(244, 238, 238, 0.975); */
+    width: 78%;
+}
+.itemcart{
+    background-color:  rgba(244, 238, 238, 0.975);
+    border-radius: 6px;
+}
+.imgitem{
+    border-radius: 5px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
 .iconstyle{
     font-size: 34px;
     color: #b43f95;
