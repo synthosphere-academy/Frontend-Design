@@ -45,7 +45,7 @@ function App() {
         <Route path='/forgotpassword' element={<Userlayout><Forgotpage/></Userlayout>}/>
         <Route path='/course' element={<Userlayout><Courses/></Userlayout>}/>
         <Route path='/addtocart' element={<Userlayout><Addtocart/></Userlayout>}/>
-        <Route path='/coursedetails' element={<Userlayout><Coursedetails/></Userlayout>}/>
+        <Route path='/coursedetails/:id' element={<Userlayout><Coursedetails/></Userlayout>}/>
         <Route path='/userdashboard' element={<Userlayout><Userdashboard/></Userlayout>}/>
         <Route path='/courseview' element={<Userlayout><Courseview/></Userlayout>}/>
         <Route path='/terms' element={<Userlayout><Terms/></Userlayout>}/>

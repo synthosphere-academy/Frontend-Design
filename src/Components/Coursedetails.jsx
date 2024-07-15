@@ -1,9 +1,8 @@
+import {useParams,useNavigate} from "react-router-dom";
 import '../Css/Coursedetails.css'
 // import pic from '../Images/Classroom.png'
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import teacherpic from '../Images/teacherpic.jpg'
-// import { useParams } from 'react-router-dom';
+// import teacherpic from '../Images/teacherpic.jpg'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addItem } from './redux/slices/cartSlice';
@@ -13,25 +12,39 @@ import lessonicon from '../Images/lesson.svg';
 
 
 function Coursedetails() {
+  const { id } = useParams();
+  // console.log(id);
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  // const { course_id } = useParams();
+   
   const [coursedetails, setcoursedetails] = useState([])
   const [productdata, setproduct] = useState([])
   useEffect(() => {
 
-    axios.get(ROOT_URL + '/get_course')
-      .then(coursedata => setcoursedetails(coursedata.data.data))
-      .catch(err => console.log(err))
-
-  }, []);
+  //   axios.get(ROOT_URL + `/getcoursebyid/${id}`)
+  //     .then(coursedata => setcoursedetails(coursedata.data))
+     
+  //     .catch(err => console.log(err))
+  //     console.log(coursedetails);
+  // }, [id]);
+  axios.get(ROOT_URL + `/getcoursebyid/${id}`) 
+  .then(response => {
+    setcoursedetails(response.data.data);
+    console.log(coursedetails)
+      
+  })
+  .catch(error => {
+      console.error('Error fetching course details:', error);
+      
+  });
+}, [id])
   useEffect(() => {
     
-    axios.get(ROOT_URL+'/get_course')
+    axios.get( ROOT_URL+'/get_course')
       .then(productdata => setproduct(productdata.data.data))
       .catch(err => console.log(err))
 
-  }, []);
+  },  []);
   
 
 
@@ -104,7 +117,7 @@ const addtocarthandler = () =>{
   return (
     <>
 
-      {coursedetails.length > 0 ? (
+      {coursedetails ? (
         <div className="container mb-5">
           {
             coursedetails.map(course => (
@@ -406,5 +419,4 @@ const addtocarthandler = () =>{
     </>
   )
 }
-
-export default Coursedetails
+export default Coursedetails;

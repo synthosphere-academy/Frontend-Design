@@ -30,8 +30,9 @@ const Ourblog = () => {
 
   const renderblog = (card, index) => {
     return (
-      <a className = "blogcontent" href='/blog'>
-      <div className="card" key={index}>
+
+      <a  key={index} className = "blogcontent" href='/blog'>
+      <div className="card">
         <div className='container mt-3'>
           <img src={img1} className="card-img-top d-block" alt="noimage" />
           <div className="card-body">

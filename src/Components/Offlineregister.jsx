@@ -13,6 +13,7 @@ import '../Css/Datepicker_style.css';
 // import vio from '../Images/violinclasses.jpg'
 import { Link } from 'react-router-dom';
 const Offlineregister = () => {
+ 
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
     const [email, setEmail] = useState('')
@@ -223,6 +224,7 @@ const Offlineregister = () => {
                             }).then(() => {
                              console.log(response);
                              swal("Payment successful and data saved.");
+                            
                             //  window.location.reload();
                             }).catch(() => {
                               swal('Payment verification failed.');

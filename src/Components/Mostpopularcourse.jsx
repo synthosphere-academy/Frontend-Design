@@ -2,6 +2,7 @@ import '../Css/Mostpopularcourse.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import lessonicon from '../Images/lesson.svg'
+
 // import teacherpic from '../Images/teacherpic.jpg'
 import { ROOT_URL } from '../Components/Localhost'
 import pic1 from '../Images/Music.jpg'
@@ -20,30 +21,28 @@ function Mostpopularcourse() {
 
   //   }
   // ]
-    
-
 
   const [productdata, setproduct] = useState([])
- 
 
   useEffect(() => {
     
     axios.get(ROOT_URL+'/get_course')
-      .then(productdata => setproduct(productdata.data.data))
+      .then(productdata =>  
+        setproduct(productdata.data.data))
       .catch(err => console.log(err))
 
   }, []);
 
   const redercoursecard = (productdata) => {
     return (
-      <div className='col' key={productdata._id} >
+      <div className='col' key={productdata.objectid} >
         <div className="card h-100">
           <img className="card-img-top cardimage " src={productdata.image} alt="Sample photo" />
           <div className="card-body">
             <div className='row'>
               <div className='col-6'>
                 <img src={lessonicon} width={20} height={20} />
-                <span className='ms-2'>{productdata.videos} videos</span>
+                <span className='ms-2'>{productdata.total_video} videos</span>
               </div>
               {/* <div className='col-6 text-end'>
                 <span className='fw-bold'>{productdata.course_review}</span>
@@ -69,7 +68,7 @@ function Mostpopularcourse() {
               </div>
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-              <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
+              <div className='col-5 text-end'><a className='buttonlearnmore' href={`/coursedetails/${productdata._id}`}><button className=" btn-sm learnmore ">Learn More</button></a></div>
             </div>
 
           </div>
