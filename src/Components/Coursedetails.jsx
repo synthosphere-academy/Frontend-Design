@@ -1,72 +1,84 @@
-import {useParams,useNavigate} from "react-router-dom";
-import '../Css/Coursedetails.css'
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import "../Css/Coursedetails.css";
 // import pic from '../Images/Classroom.png'
-import { useState, useEffect } from 'react';
+
 // import teacherpic from '../Images/teacherpic.jpg'
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { addItem } from './redux/slices/cartSlice';
-import { ROOT_URL } from '../Components/Localhost'
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addItem } from "./redux/slices/cartSlice";
+import { ROOT_URL } from "../Components/Localhost";
 
-import lessonicon from '../Images/lesson.svg';
-
+import lessonicon from "../Images/lesson.svg";
 
 function Coursedetails() {
   const { id } = useParams();
   // console.log(id);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-   
-  const [coursedetails, setcoursedetails] = useState([])
-  const [productdata, setproduct] = useState([])
-  useEffect(() => {
+  const navigate = useNavigate();
 
-  //   axios.get(ROOT_URL + `/getcoursebyid/${id}`)
-  //     .then(coursedata => setcoursedetails(coursedata.data))
-     
-  //     .catch(err => console.log(err))
-  //     console.log(coursedetails);
-  // }, [id]);
-  axios.get(ROOT_URL + `/getcoursebyid/${id}`) 
-  .then(response => {
-    setcoursedetails(response.data.data);
-    console.log(coursedetails)
-      
-  })
-  .catch(error => {
-      console.error('Error fetching course details:', error);
-      
-  });
-}, [id])
+  const [coursedetails, setcoursedetails] = useState([]);
+  const [productdata, setproduct] = useState([]);
+
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(ROOT_URL + `/getcoursebyid/${id}`); // Use courseId in the endpoint
+        console.log('API response:', response.data); // Log the data specifically
+
+        // Set the course details
+        setcoursedetails(response.data);
+        console.log(coursedetails);
+      } catch (error) {
+        console.error('Error fetching course details:', error);
+      }
+    };
+
+     fetchData();
     
-    axios.get( ROOT_URL+'/get_course')
-      .then(productdata => setproduct(productdata.data.data))
-      .catch(err => console.log(err))
+  }, [id]); 
+   
+  //   axios.get(ROOT_URL + `/getcoursebyid/${id}`)
+  //     .then((response) => {
+       
+  //       setcoursedetails(response.data.data);
+  //       console.log(response.data.data);
+  //       console.log(coursedetails);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching course details:", error);
+  //     });
+  // }, [id]);
+  useEffect(() => {
+    axios
+      .get(ROOT_URL + "/get_course")
+      .then((productdata) => setproduct(productdata.data.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-  },  []);
-  
-
-
-const addtocarthandler = () =>{
-  navigate('/login');
-}
+  const addtocarthandler = () => {
+    navigate("/login");
+  };
   // const entroll_handler = () => {
   //   navigate('/courseview');
   // }
-  const checkout_handler=() =>{
-    navigate('/checkout');
-  }
+  const checkout_handler = () => {
+    navigate("/checkout");
+  };
   const redercoursecard = (productdata) => {
     return (
-      <div className='col' key={productdata._id} >
+      <div className="col" key={productdata._id}>
         <div className="card h-100">
-          <img className="card-img-top cardimage " src={productdata.image} alt="Sample photo" />
+          <img
+            className="card-img-top cardimage "
+            src={productdata.image}
+            alt="Sample photo"
+          />
           <div className="card-body">
-            <div className='row'>
-              <div className='col-6'>
+            <div className="row">
+              <div className="col-6">
                 <img src={lessonicon} width={20} height={20} />
-                <span className='ms-2'>{productdata.videos} videos</span>
+                <span className="ms-2">{productdata.videos} videos</span>
               </div>
               {/* <div className='col-6 text-end'>
                 <span className='fw-bold'>{productdata.course_review}</span>
@@ -78,27 +90,31 @@ const addtocarthandler = () =>{
                 <span className="fa fa-star notchecked"></span>
               </div> */}
             </div>
-            <h5 className='mt-3'>{productdata.course_name}</h5>
+            <h5 className="mt-3">{productdata.course_name}</h5>
             {/* <p>{card.coursedetails}</p> */}
 
             {/* <span className='fw-bold'>{card.course_currentprice}</span>
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr />
             <div className="row">
-              
               {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
               </div> */}
-              <div className='col-7 mt-2'><span>{productdata.teacher_name}</span>
+              <div className="col-7 mt-2">
+                <span>{productdata.teacher_name}</span>
               </div>
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-              <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
+              <div className="col-5 text-end">
+                <a className="buttonlearnmore" href="/coursedetails">
+                  <button className=" btn-sm learnmore ">Learn More</button>
+                </a>
+              </div>
             </div>
-
           </div>
         </div>
       </div>
-    )}
+    );
+  };
 
   // const courseInfo = [
   //   {
@@ -113,116 +129,164 @@ const addtocarthandler = () =>{
   //     teacherdept: "Teacher"
 
   //   }]
-    
+
   return (
     <>
-
-      {coursedetails ? (
+      {
+        coursedetails.map((course) => {
+            return <div>
+            <div>{course.course_name}</div>
+            </div>
+          })
+         }
+      {/* {coursedetails ? (
         <div className="container mb-5">
-          {
-            coursedetails.map(course => (
+          {coursedetails.map((course) => {
+            return (
               <div className="row" key={course._id}>
-                <div className="col-lg-7  mt-5" >
+                <div className="col-lg-7  mt-5">
                   <img src={course.image} width="95%" />
-                  <div className='mt-2'><h4 className='fw-bold'>Course Description</h4></div>
+                  <div className="mt-2">
+                    <h4 className="fw-bold">Course Description</h4>
+                  </div>
                   <hr className="w-100" />
                   <div>
-                    <p className='paratext'dangerouslySetInnerHTML={{ __html: course.course_description }}></p>
+                    <p
+                      className="paratext"
+                      dangerouslySetInnerHTML={{
+                        __html: course.course_description,
+                      }}
+                    ></p>
                   </div>
                   <div>
-                    <h5 className='fw-bold'>What will you learn?</h5>
+                    <h5 className="fw-bold">What will you learn?</h5>
                     <div className="row">
-                      <div className="col-6"
-                      dangerouslySetInnerHTML={{ __html: course.wewilllearn }}>
-                      </div>
-                      {/* <div className="col-6">
-                        <ul>
-                          <li>{course.wewilllearn}</li>
-                        </ul>
-                      </div> */}
+                      <div
+                        className="col-6"
+                        dangerouslySetInnerHTML={{ __html: course.wewilllearn }}
+                      ></div>
                     </div>
-
                   </div>
                 </div>
-                {/* col --2 */}
+
                 <div className="col-lg-4  mt-5">
-                  <div className="border" id='cartpart'>
+                  <div className="border" id="cartpart">
                     <div className="ms-4 mt-4">
-                      <span className="fw-bold h2 ">₹{course.course_price}</span>
-                      {/* <span className="text-decoration-line-through ms-2">₹999</span> */}
+                      <span className="fw-bold h2 ">
+                        ₹{course.course_price}
+                      </span>
                     </div>
-                    {/* <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' >Coming Soon </button></div> */}
-                  {
-                    sessionStorage.getItem("userEmail") ?
-                    <>
+                    {sessionStorage.getItem("userEmail") ? (
+                      <>
+                        <div className=" text-center mt-4">
+                          <button
+                            className="  w-75"
+                            id="cartbutton"
+                            onClick={() => dispatch(addItem({ price: "200" }))}
+                          >
+                            Add to cart
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className=" text-center mt-4">
+                          <button
+                            className="  w-75"
+                            id="cartbutton"
+                            onClick={addtocarthandler}
+                          >
+                            Add to cart
+                          </button>
+                        </div>
+                      </>
+                    )}
+
                     <div className=" text-center mt-4">
-                    <button className="  w-75" id='cartbutton' onClick={() => dispatch(addItem({ price: "200" }))} >Add to cart</button>
+                      <button
+                        className="btn w-75"
+                        id="buybutton"
+                        onClick={checkout_handler}
+                      >
+                        {" "}
+                        Buy Now
+                      </button>
                     </div>
-                    </>
-                    :
-                    <>
-                    <div className=" text-center mt-4">
-                    <button className="  w-75" id='cartbutton' onClick={ addtocarthandler} >Add to cart</button>
+                    <div className="ms-4 text-center mt-4 mb-4">
+                      30-Day Money-Back Guarantee
                     </div>
-                    
-                    </>
-                  }
-                  
-                  <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={checkout_handler}> Buy Now</button>
                   </div>
-                    <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div> 
-                  </div>
-                  <div className=' border rounded'>
-                    <div className='ms-4 mt-2 mb-4'>
-                      <div><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext'>Beginner Level</span></div>
-                      <div className='mt-2'><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext '>90 students enrolled</span></div>
-                      <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2 paratext'>6 hour 34 min duration</span></div>
-                      <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2'>10 nov,2023 last updated </span></div>
-                      <div className='mt-2'><i className='fa fa-certificate'></i><span className='fw-bold ms-2 paratext'>Certificate of completion </span></div>
+                  <div className=" border rounded">
+                    <div className="ms-4 mt-2 mb-4">
+                      <div>
+                        <i className="fa fa-book"></i>
+                        <span className="fw-bold ms-2 paratext">
+                          Beginner Level
+                        </span>
+                      </div>
+                      <div className="mt-2">
+                        <i className="fa fa-book"></i>
+                        <span className="fw-bold ms-2 paratext ">
+                          90 students enrolled
+                        </span>
+                      </div>
+                      <div className="mt-2">
+                        <i className="fa fa-clock-o"></i>
+                        <span className="fw-bold ms-2 paratext">
+                          6 hour 34 min duration
+                        </span>
+                      </div>
+                      <div className="mt-2">
+                        <i className="fa fa-clock-o"></i>
+                        <span className="fw-bold ms-2">
+                          10 nov,2023 last updated{" "}
+                        </span>
+                      </div>
+                      <div className="mt-2">
+                        <i className="fa fa-certificate"></i>
+                        <span className="fw-bold ms-2 paratext">
+                          Certificate of completion{" "}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className='border rounded mt-4'>
-                    <div className='ms-4 mt-2 mb-4'>
-                      <h6 className='fw-bold mt-4'>Apply Coupon</h6>
+                  <div className="border rounded mt-4">
+                    <div className="ms-4 mt-2 mb-4">
+                      <h6 className="fw-bold mt-4">Apply Coupon</h6>
                       <div className="search couponbutton mt-4  ">
-                        <input type="text" className="form-control couponinput " placeholder="Enter coupon" />
+                        <input
+                          type="text"
+                          className="form-control couponinput "
+                          placeholder="Enter coupon"
+                        />
                         <button className="btn">Apply</button>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
-
-
               </div>
-            ))
-          }
-             <hr />
-      <div >
+            );
+          })}
+          <hr />
+        </div>
+      ) : (
+        <p>No courses available</p>
+      )} */}
+      <div>
         <h4 className="fw-bold mb-4">Related Courses</h4>
-        <div className='container'>
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
-
-              {productdata.map(redercoursecard)}
-              {/* {CourseInfo.map(rendercourse)} */}
-
-            </div>
-            </div>
+        <div className="container">
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
+            {productdata.map(redercoursecard)}
+            {/* {CourseInfo.map(rendercourse)} */}
+          </div>
+        </div>
         {/* <div className="row g-4">
         {productdata.map(redercoursecard)}
         </div> */}
       </div>
-        </div>
-      ) : (
-        <p>No courses available</p>
-      )}
       <div className="row">
-
-
         <div className="col-lg-7  mt-5">
-
           {/* <img src={pic} width="95%" />
 
             <div><h4 className='fw-bold'>Course Description</h4></div>
@@ -231,7 +295,6 @@ const addtocarthandler = () =>{
               <h5>How this course look like together? We have module 1 and
                 module 2.</h5>
             </div>
-
             <div>
               <p className='paratext'><span className='fw-bold'>Module 2: </span>
                 In the next module.
@@ -413,10 +476,7 @@ const addtocarthandler = () =>{
           </div>
         </div> */}
       </div>
-
-
-
     </>
-  )
+  );
 }
 export default Coursedetails;
