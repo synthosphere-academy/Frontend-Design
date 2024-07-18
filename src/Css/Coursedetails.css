@@ -10,7 +10,7 @@
 .iconplay{
     font-size: 18px;
 }
-#buybutton{
+/* #buybutton{
     color: #b43f95;
     border-color: #b43f95;
     border-radius: 10px;
@@ -18,8 +18,8 @@
     line-height:1.3333333;
     padding:10px 16px;
     margin:5px;
-}
-#cartbutton{
+} */
+.cartbutton{
     border-radius: 10px;
     font-size:18px;
     line-height:1.3333333;
@@ -36,7 +36,7 @@
 .accordionitem{
     background-color: rgba(244, 238, 238, 0.395);
 }
-#cartbutton{
+.cartbutton{
     border-radius: 10px;
     font-size:18px;
    line-height:1.3333333;
@@ -46,7 +46,7 @@
    border: none;
    color: white;
 }
-#cartbutton:hover{
+.cartbutton:hover{
     background-color: #6d2259;
     color: white;
 }

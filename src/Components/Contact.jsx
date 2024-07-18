@@ -65,16 +65,18 @@ function Contact() {
     <>
       <div>
         <div className='container contacttitile d-flex justify-content-center flex-column'>
-        <h2 className="heading text-center ">Contact Us</h2>
+        <h2 className="heading text-center mt-3">Contact Us</h2>
         <p className='text-center contactdescri'>Reach out for admissions, queries, or support. We are here to help you achieve academic success!</p>
         </div>
-        <div className="background mt-3" >
+        <div className="mt-3" >
         {/* style={{ backgroundImage: `url(${background})` }}> */}
-          <div className='container'>
-            <div className='row'>
-              <div className='col-lg-8'>
+          <div className='container mt-3'>
+         
+            <div className='row '>
+              <div className='col-lg-8 background text-start'>
               </div>
-              <div className='col-lg-4' style={{ backgroundColor: "rgba(14, 18, 85, 1)" }} >
+              <div className='col-lg-4 contact_form ' style={{ backgroundColor: "rgba(14, 18, 85, 1)" }} >
+              <div className='container contactcontainer'>
                 <div className='text-center'>
                   <img src={icon} alt='noicon' /><br />
                   <span className='touch text-white'>Get in touch</span>
@@ -103,7 +105,9 @@ function Contact() {
                   </div>
 
                 </form>
-              </div>
+              
+            </div>
+            </div>
             </div>
 
           </div>

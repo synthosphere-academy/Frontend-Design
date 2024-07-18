@@ -13,14 +13,14 @@ function Userdashboard() {
   return (
     <>
       <div className="container">
-        <div className="row">
+        <div className="row py-4">
 
-          <div className="col-lg-3 mb-2">
+          <div className="col-lg-3">
             <Sidenavbar changeDashboardContent={changeDashboardContent} />
 
 
           </div>
-          <div className="col-lg-9 mt-4">
+          <div className="col-lg-9">
             <Dashboard currentContent={currentContent} />
 
           </div>

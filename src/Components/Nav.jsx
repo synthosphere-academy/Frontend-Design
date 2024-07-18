@@ -1,19 +1,19 @@
 import logo from '../Images/academy.png'
 import '../Css/Nav.css'
 import { Link } from 'react-router-dom';
-import icon from '../Images/icon.svg'
-import { useSelector } from 'react-redux';
+// import icon from '../Images/icon.svg'
+
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import Blink from 'react-blink-text';
 //  import pic from '../Images/user.png';
 
 const Nav = () => {
-  const items = useSelector(state => state);
-  console.log('Items', items);
+ 
 
   const handleLogout =(e) =>{
     e.preventDefault();
-    sessionStorage.removeItem('userEmail');
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('userid');
     window.location.assign("/")
   }
     return (
@@ -61,26 +61,28 @@ const Nav = () => {
             
             
             {
-              sessionStorage.getItem("userEmail") ?
-
-                <div className=" userdrop dropdown me-4">
-                  <div className=" dropdown-toggle text-white" type='button'  data-bs-toggle="dropdown" aria-expanded="false">
-                    Hi, {sessionStorage.getItem("userEmail")}
+              sessionStorage.getItem("username") ?
+                <div>
+                <div className="me-5 userdrop dropdown">
+                  <div className="buttonstyle dropdown-toggle text-white" type='button'  data-bs-toggle="dropdown" aria-expanded="false">
+                    Hi,{sessionStorage.getItem("username")}
                     {/* <img src={pic} width="10%" height="20%"/> */}
                   </div>
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="/userdashboard">Dashboard</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a></li>
+                    <li><a className="dropdown-item p-2" href="/userdashboard">Dashboard</a></li>
+                    <li><a className="dropdown-item p-2" href="#" onClick={handleLogout}>Logout</a></li>
                    
                   </ul>
                 </div>
+                </div>
+              
 
                 : <button className='buttonstyle btn btn-sm text-white'>
                   <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
                   <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
                 </button>
             }
-            {
+            {/* {
               sessionStorage.getItem("userEmail") ?
             <div className='me-4 cartpart'>
               <div className="navbar-text  cartstyle text-center" >
@@ -89,7 +91,7 @@ const Nav = () => {
                 </a>
               </div>
             </div>: ""
-            }
+            } */}
             
             {/* <button className='buttonstyle btn btn-sm text-white'>
               <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/

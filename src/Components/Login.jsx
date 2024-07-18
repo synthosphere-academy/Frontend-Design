@@ -53,8 +53,10 @@ function Login() {
       axios.post(Auth_URL+'/login', { email, password })
         .then(res => {
           console.log(res);
-          const { fullname: studentemail } = res.data;
-          sessionStorage.setItem('userEmail', studentemail);
+          const { fullname: userfullname } = res.data;
+          const {user_id : userid} =res.data;
+          sessionStorage.setItem('username', userfullname);
+          sessionStorage.setItem('userid', userid);
           
 
           swal("Sucessfully login!", "login sucessfully!", "success");

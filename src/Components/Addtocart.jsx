@@ -31,7 +31,7 @@ function Addtocart() {
                 </div>
                 <div className="row">16 videoes</div>
               </div>
-              <div className="col"></div>
+              
 
               <div className="col">₹899</div>
             </div>

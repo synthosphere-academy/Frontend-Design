@@ -1,61 +1,67 @@
 
-
+import { useState , useEffect} from 'react';
+import axios from "axios";
+import { Auth_URL } from "../Localhost";
+import "../../Css/Userdasboard/orderhistory.css";
 const Orderhistory= () => {
-    const Courseinfo = [
-        {
-            
-                image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
-                coursename: "The Cryptocurrency Course",
-                // coursedetails:"Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!",
-                course_currentprice: "₹899", 
-                total_video:"20",
-                teachername: "David Das",
-               
-          
-              
-        },
-        {
-            
-            image: ["https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F26d8c986-c9fd-468b-b4be-660691f4aa48.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"],
-            coursename: "The Cryptocurrency Course",
-            // coursedetails:"Learn  about Cryptocurrency: From the Blockchain and Bitcoin to Cryptocurrency investing techniques!",
-            course_currentprice: "₹899", 
-            total_video:"20",
-            teachername: "David Das",
-        },
-        
-    ]
-    const rendercourse=(card , index)=>{
-        return(
-            <div className="col-lg-12">
-                  <div className="row" key={index}>
-                            <div className="row align-items-center">
-                                <div className="col-lg-3"><img className="img-fluid" src={card.image} /></div>
-                                <div className="col-lg-6">
-                                    <div className="row fw-bold "> {card.coursename}</div>
-                                    <div className="row"> By {card.teachername}</div>
-                                    <div className="row"> {card.total_video} total videos</div>
-                                </div>
-                                <div className="col-lg-3"> {card.course_currentprice}/-</div>
-                                
-
-                            </div>
-                            
-
-                        </div>
-                        <hr className='mt-4' />
-            </div>
-        )
-    }
+    const [orderdata, setorderdata] = useState([]);
+    useEffect(() => {
+        const userId = sessionStorage.getItem('userid');
+        console.log(userId);
+           axios
+          .get(Auth_URL + `/orderdetails/${userId}`)
+          .then((orderdetail) => {
+            setorderdata(orderdetail.data);
+            console.log(orderdata);
+          })
+          .catch((err) => console.log(err));
+      }, []);
+    
+    
   return (
     <>
-    <h3 className="fw-bold">Order History</h3>
-    <div className="container mt-4">
-    <div className="row">
+    
+    <div>
+    <h4 className='fw-bold'>Order History</h4>
+    <div className='container py-2'>
+    <div className="row align-items-center">
+              <div className="col-2 fw-bold text-center h5"> Order id   
+              </div>
+              <div className="col-5 fw-bold text-center h5">
+              
+                Course Name
+                
+              </div>
+              <div className="col-2 fw-bold text-center h5">
+                
+                Course Amount
+                
+              </div>
+              <div className="col-3 text-center fw-bold h5">Payment id</div>
+            </div>
+    {orderdata ? (
+        orderdata.map((order) => (
+          <div key={order.id} className="row align-items-center orderdesign">
+            <div className="col-2 text-center ">
+              <span>{order.razorpay_order_id}</span>
+            </div>
+            <div className="col-5 text-center">
+              <span>{order.courses}</span>
+            </div>
+            <div className="col-2 text-center">
+              {order.amount}
+            </div>
+            <div className="col-3 text-center">{order.razorpay_payment_id}</div>
+          </div>
+        ))
+      ) : (<div> No orders available.</div>)}
 
-    {Courseinfo.map(rendercourse)}
-  </div>
-  </div>
+    
+    
+     
+      </div>
+      </div>
+    
     </>
   )
 }

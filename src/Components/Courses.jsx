@@ -42,17 +42,11 @@ function Courses() {
             <div className='row'>
               <div className='col-6'>
                 <img src={lessonicon} width={20} height={20} />
-                <span className='ms-2'>{coursedata.videos} videos</span>
+                <span className='ms-2'>{coursedata.total_video} videos</span>
               </div>
-              {/* <div className='col-6 text-end'>
-                <span className='fw-bold'>{productdata.course_review}</span>
-
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star notchecked"></span>
-              </div> */}
+              <div className='col-6 text-end'>
+                <span className=' h5'>{coursedata.course_price}/-</span> 
+              </div>
             </div>
             <h5 className='mt-3'>{coursedata.course_name}</h5>
             {/* <p>{card.coursedetails}</p> */}
@@ -68,7 +62,7 @@ function Courses() {
               </div>
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-              <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div>
+              <div className='col-5 text-end'><a className='buttonlearnmore' href={`/coursedetails/${coursedata._id}`}><button className=" btn-sm learnmore ">Learn More</button></a></div>
             </div>
 
           </div>
@@ -162,7 +156,7 @@ function Courses() {
         </div>
       </div> */}
 
-      <div className="container py-5 cardcontainer mt-5">
+      <div className="container py-5 cardcontainer ">
       {/* {loading && <Preloader />}
       {!loading && ( */}
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

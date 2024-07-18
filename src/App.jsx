@@ -47,15 +47,16 @@ function App() {
         <Route path='/addtocart' element={<Userlayout><Addtocart/></Userlayout>}/>
         <Route path='/coursedetails/:id' element={<Userlayout><Coursedetails/></Userlayout>}/>
         <Route path='/userdashboard' element={<Userlayout><Userdashboard/></Userlayout>}/>
-        <Route path='/courseview' element={<Userlayout><Courseview/></Userlayout>}/>
+        <Route path='/courseview/:id' element={<Userlayout><Courseview/></Userlayout>}/>
         <Route path='/terms' element={<Userlayout><Terms/></Userlayout>}/>
         <Route path='/Privatepolicy' element={<Userlayout><Privatepolicy/></Userlayout>}/>
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
         <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/>
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
         <Route path='/Offlineregister' element={<Userlayout><Offlineregister/></Userlayout>}/>
-        <Route path='/checkout' element={<Userlayout><Checkout/></Userlayout>}/>
-        <Route path='/PaymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
+        {/* <Route path='/checkout' element={<Userlayout><Checkout/></Userlayout>}/> */}
+        <Route path='/checkout/:id' element={<Userlayout><Checkout/></Userlayout>}/>
+        <Route path='/paymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
        
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>

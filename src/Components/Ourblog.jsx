@@ -32,7 +32,7 @@ const Ourblog = () => {
     return (
 
       <a  key={index} className = "blogcontent" href='/blog'>
-      <div className="card">
+      <div className="card" style={{padding:"0 10px "}}>
         <div className='container mt-3'>
           <img src={img1} className="card-img-top d-block" alt="noimage" />
           <div className="card-body">
@@ -72,7 +72,7 @@ const Ourblog = () => {
   return (
     <div style={{ backgroundColor: "rgba(14, 18, 85, 1)" }} className='blogsection'>
       <h4 className='display-4 text-center pt-5 blogheading'>Resources & Insight</h4>
-      <h6 className='text-white text-center blogpara'>Engage with a rich array of thought leadership, expert insights, and emerging trends through our diverse</h6>
+      <h5 className='text-white text-center blogpara'>Engage with a rich array of thought leadership, expert insights, and emerging trends through our diverse</h5>
       <h6 className='text-white text-center blogpara'>and dynamic blog platform inspiring continuous learning and innovation</h6>
       <div className="container py-5 w-75 ">
       <Slider {...settings}>

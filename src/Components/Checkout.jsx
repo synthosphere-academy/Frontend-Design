@@ -1,11 +1,14 @@
-import React,{ useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import React,{ useState, useEffect } from "react";
+import { useNavigate , useParams} from 'react-router-dom';
 import axios from 'axios';
 import { Auth_URL } from './Localhost';
 import pic1 from '../Images/icon1.png';
+import { ROOT_URL } from "../Components/Localhost";
 import "../Css/checkout.css";
 const Checkout = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [course_details, setCoursedetails] = useState([]);
   const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
     const [email, setEmail] = useState('')
@@ -14,6 +17,20 @@ const Checkout = () => {
 
     const [emailerror, setemailerror] = useState(false);
     const [mobilenoerror, setmobileerror] = useState(false);
+
+// useeffect for get coursedetails
+
+useEffect(() => {
+  axios
+    .get(ROOT_URL + `/getcoursebyid/${id}`)
+    .then((coursedetail) => {
+      setCoursedetails(coursedetail.data);
+      console.log(course_details);
+    })
+    .catch((err) => console.log(err));
+}, [id]);
+
+////////////////////////////////////////////////////////////////
     function isValidEmail(email) {
       return /\S+@\S+\.\S+/.test(email);
   }
@@ -34,10 +51,14 @@ const Checkout = () => {
     }
 }
 const handleSubmit = async (event) => {
+  const userId = sessionStorage.getItem('userid');
+  console.log(userId);
   event.preventDefault();
   const amount = document.getElementById('totalamount').innerHTML;
   console.log(amount)
+
   const courses = document.getElementById('courses').innerHTML;
+  console.log(courses)
   if (fullname === "" || phoneno === "" || email === "" || state === "" || city === "" ) {
     swal("Opps!", "Please fill out all required fields!", "error");
 }
@@ -45,16 +66,15 @@ else if (emailerror != "" || mobilenoerror != "") {
     swal("Opps!", "Please give valid inputs!", "error");
 }
 else{
-  await axios.post(Auth_URL+'/checkout',{fullname,phoneno,email,state,city,amount})
+  await axios.post(Auth_URL+'/checkout',{fullname,phoneno,email,state,city,amount,id,userId})
                 .then(res => {
                     console.log(res);
                     //console.log(res.data.order.amount);
 
-
                     const options = {
                         // key: "rzp_live_xh5zAIy7sL0nMK", // Enter the Key ID generated from the Dashboard
                         key:"rzp_test_FEdsKrhgE2fdCF",
-                        amount:  res.data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                        amount :  res.data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                         currency: "INR",
                         name: "Srijani banerjee",
                         description: "Test Transaction",
@@ -66,12 +86,11 @@ else{
                               razorpay_order_id: response.razorpay_order_id,
                               razorpay_payment_id: response.razorpay_payment_id,
                               razorpay_signature: response.razorpay_signature,
-                              fullname,phoneno,email,state,city,courses,amount
+                              fullname,phoneno,email,id,userId,state,city,courses,amount
                               // Pass the user ID for backend processing
                             }).then(() => {
                              console.log(response);
-                             swal("Payment successful and data saved.");
-                             //navigate('/paymentSuccess');
+                             navigate('/paymentSucess');
                             //  window.location.reload();
                             }).catch(() => {
                               swal('Payment verification failed.');
@@ -112,27 +131,33 @@ else{
     <>
       <div>
         <div className="container">
-          <div className="py-5 text-center">
+          <div className="py-2 text-center">
             <h1>Checkout Form</h1>
           </div>
 
-          <div className="container w-75 checkoutform mb-3">
+          <div className="container  checkoutform mb-3">
             <form>
-              <div className="row pt-3 pb-3">
-              <div className="col">
-              <h6>
-              Course Name :-<span id="courses">Guitar course for beginner</span>
-                 
-                </h6>
+            {course_details ? (
+              <div className="row align-items-center">
+              <div className="col-3 imgitem">
+                <img
+                  className="img-fluid imgitem"
+                  src={course_details.image}  />
               </div>
-               <div className="col">
-               <h6 className="text-end">
-               Total Price :-<span id="totalamount">799</span>
-                </h6>
-               </div>
+              <div className="col-6">
+                <p className="h4 mt-1">
+                <span id="courses">{course_details.course_name}</span>
                 
+                </p>
+                <div className="row ms-1">{course_details.total_video} Videos</div>
               </div>
-              <hr className="mb-3"/>
+              <div className="col-3 text-center"><span id="totalamount">{course_details.course_price}</span>/-</div>
+            </div>
+              
+            ) : (
+              <span>No course available</span>
+            )}
+                  <hr className="mb-3"/>
               <div className="order-1">
                 <h4 className="mb-3">Billing Address</h4>
 
@@ -262,9 +287,9 @@ else{
             </div> */}
                 </div>
 
-                <div className="d-grid gap-2">
-                  <button className="btn btn-primary w-25 mb-3" type="button"  onClick={handleSubmit}>
-                    Continue to Checkout
+                <div className="text-center">
+                  <button className="btn btn-primary w-50 mb-3" type="button"  onClick={handleSubmit}>
+                     Checkout
                   </button>
                 </div>
               </div>

@@ -1,14 +1,34 @@
+import { useState , useEffect} from 'react';
+import axios from "axios";
+import { Auth_URL } from "../Localhost";
 
 function Myprofile() {
+  
+  
+  const [userdata, setuserdata] = useState([]);
+  useEffect(() => {
+    const userId = sessionStorage.getItem('userid');
+    console.log(userId);
+       axios
+      .get(Auth_URL + `/getuser/${userId}`)
+      .then((userdetail) => {
+        setuserdata(userdetail.data);
+        console.log(userdata);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
+   
     <div>
+     {userdata ? (
+      <div>
       <h3 className="fw-bold">My Profile</h3>
       <div className="row mt-4">
         <div className="col-lg-3">
           <span>Registration Date</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>24-03-2024</span>
+          <span>{userdata.createdAt}</span>
         </div>
       </div>
       <div className="row mt-4">
@@ -16,7 +36,7 @@ function Myprofile() {
           <span>Full Name</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>Srijani banerjee</span>
+          <span>{userdata.fullname}</span>
         </div>
       </div>
       <div className="row mt-4">
@@ -24,15 +44,15 @@ function Myprofile() {
           <span>Phone no</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>8584062451</span>
+          <span>{userdata.phoneno}</span>
         </div>
       </div>
       <div className="row mt-4">
         <div className="col-lg-3">
-          <span>Date</span>
+          <span>Date of birth</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>2024-03-06</span>
+          <span>{userdata. date}</span>
         </div>
       </div>
       <div className="row mt-4">
@@ -40,7 +60,7 @@ function Myprofile() {
           <span>state</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>West Bengal</span>
+          <span>{userdata.States}</span>
         </div>
       </div>
       <div className="row mt-4">
@@ -48,7 +68,7 @@ function Myprofile() {
           <span>City</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>Howrah</span>
+          <span>{userdata.cities}</span>
         </div>
       </div>
       <div className="row mt-4">
@@ -56,17 +76,22 @@ function Myprofile() {
           <span>Email</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>Srijani.2000@gmail.com</span>
+          <span>{userdata.email}</span>
         </div>
       </div>
-      <div className="row mt-4">
+      </div>
+     ) : (
+      <div>No User Details Available </div>
+      
+     )}
+      {/* <div className="row mt-4">
         <div className="col-lg-3">
           <span>Password</span>
         </div>
         <div className="col-lg-9 fw-bold">
           <span>De@12345</span>
         </div>
-      </div>
+      </div> */}
 
 
 

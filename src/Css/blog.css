@@ -17,13 +17,14 @@
 }
 .blogpara{
     font-family: blogparastyle;
-    font-size: 13px;
+    font-size: 15px;
 }
 .blogsection{
     padding-bottom: 6%;
 }
 .blogcontent{
     text-decoration: none;
+    padding: 0 10px;
 }
 /* .prevbutton{
     margin-left: -10%;

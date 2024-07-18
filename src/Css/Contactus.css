@@ -9,6 +9,12 @@
 .cardtitle{
     font-family: contactstyle;
 }
+.contact_form{
+    border-radius: 15px;
+    box-shadow: 1px 10px 20px rgb(31, 34, 79);
+    
+}
+
 .cardtext{
     font-family: contactregularstyle;
 }
@@ -45,8 +51,8 @@
 .background{
     background-size: cover;
     background-repeat: no-repeat;
-    height: 580px;
-    background-image: url('../Images/co2.jpg');
+    
+    background-image: url('../Images/contactus1.png');
 }
 .contactcard{
     box-shadow: none;
@@ -73,6 +79,9 @@
 @media (max-width: 600px) {
     .background{
         background-image:none;
+    }
+    .contact_form{
+       
     }
 }
 

@@ -4,26 +4,20 @@ import '../Css/Register.css'
 import axios from 'axios';
 import swal from 'sweetalert';
 import DatePicker from 'react-date-picker';
-
-
-
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
-import { Link } from 'react-router-dom';
 import { Auth_URL } from './Localhost';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
-    // const [date, setDate] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [state, setDropdownValue_state] = useState([])
-
     const [city, setDropdownValue] = useState([])
     const [cities, setSelectedcities] = useState([])
-    // const [image, setImage] = useState(null)
     const [date, setDate] = useState(null);
     const [token, setToken] = useState(null);
     const [States, setSelectedState] = useState('');
@@ -36,7 +30,7 @@ function Register() {
     const [mobilenoerror, setmobileerror] = useState(false)
     const [passwordError, setpasserror] = useState('')
     const [confirmpasserror, setconfirmpasserror] = useState(false)
-    
+    const navigate = useNavigate();
    
     //for state city api token
     const API_TOKEN = 'C2dy7lLSGxWm63T6Oem2N9jeUlaE5Y9M59MInjwjc-FksoqRsWk0pa-iKk1LzSfEFy0';
@@ -190,12 +184,18 @@ function Register() {
         else if (emailerror != "" || mobilenoerror != "" || passwordError != "") {
             swal("Opps!", "give valid inputs!", "error");
         }
+        else if(!checkbox_terms.checked){
+            swal("Opps!","You must agree to the terms and conditions before submitting!","error");
+            return false;
+        }
         else {
 
             await axios.post(Auth_URL+'/register', { fullname, phoneno, date, States, cities, email, password })
                 .then(res => {
                     console.log(res);
                     swal("Thank You!", "Registration sucessfully completed!", "success");
+                    navigate('/login');
+
                 })
                 .catch(err => {
                     console.log(err);
@@ -276,7 +276,7 @@ function Register() {
                             <input type="text" className="form-control form-control-lg inputform" id="password" name="password"
                                 onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
                             {passwordError && <span className='link-danger'>{passwordError}</span>}
-                            {passwordError ? <span className='link-danger'>Password must me 8 character, one Uppercase, one special character</span> : ""}
+                            {/* {passwordError ? <span className='link-danger'>Password must me 8 character, one Uppercase, one special character</span> : ""} */}
 
                         </div>
                         <div className='col-lg-4'>
@@ -286,7 +286,7 @@ function Register() {
                             {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}
 
                         </div>
-                        <span className='text-white'><input type="checkbox" /> I agree all statements in <Link to="/terms">Terms and conditions</Link></span>
+                        <span className='text-white'><input type="checkbox" id='checkbox_terms'/> I agree all statements in <a href="/terms" target='_blank'>Terms and conditions</a></span>
 
                         <div className="pt-1  text-center">
                             <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>
