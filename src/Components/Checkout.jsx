@@ -174,30 +174,8 @@ else{
                        onChange={e => setName(e.target.value)}
                     />
                   </div>
-                </div>
-
-                {/* <div className="input-group col mb-4">
-            <div className="input-group-text">@</div>
-            <input type="text" className="form-control" placeholder="Username"/>
-          </div> */}
-
-                <div className="mb-4">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="you@example.com"
-                    aria-label="email"
-                    id="email"
-                    name="email"
-                    onKeyUp={emailHandler}
-                    onChange={e => setEmail(e.target.value)}
-                  />
-                    {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="Address">Phone No</label>
+                  <div className="col mb-4">
+                  <label htmlFor="Phone no">Phone No</label>
                   <input
                     type="text"
                     className="form-control"
@@ -210,6 +188,14 @@ else{
                   />
                   {mobilenoerror ? <span className='link-danger'>phone no invalid</span> : ""}
                 </div>
+
+                </div>
+
+                {/* <div className="input-group col mb-4">
+            <div className="input-group-text">@</div>
+            <input type="text" className="form-control" placeholder="Username"/>
+          </div> */}
+
                 <div className="row">
                   
                   <div className="col mb-4">
@@ -278,17 +264,25 @@ else{
                 <input type="text" className="form-control"aria-label="card3"/>
               </div>
               
-              <div className="col mb-3">
-                <label for="Card4">
-                  CVV
-                </label>
-                <input type="text" className="form-control"  aria-label="Card4"/>
-              </div>
-            </div> */}
+              */}
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="text"
+                    className="form-control w-50"
+                    placeholder="you@example.com"
+                    aria-label="email"
+                    id="email"
+                    name="email"
+                    onKeyUp={emailHandler}
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                    {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
                 </div>
 
                 <div className="text-center">
-                  <button className="btn btn-primary w-50 mb-3" type="button"  onClick={handleSubmit}>
+                  <button className="checkoutbutton mb-3" type="button"  onClick={handleSubmit}>
                      Checkout
                   </button>
                 </div>

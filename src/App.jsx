@@ -41,7 +41,7 @@ function App() {
         <Route path="/login" element={<Userlayout><Login /></Userlayout>} />
         <Route path="/register" element={<Userlayout><Register /></Userlayout>} />
         <Route path="/contact" element={<Userlayout><Contact /></Userlayout>} />
-        <Route path="/blog" element={<Userlayout><Blog/></Userlayout>} />
+        <Route path="/blog/:id" element={<Userlayout><Blog/></Userlayout>} />
         <Route path='/forgotpassword' element={<Userlayout><Forgotpage/></Userlayout>}/>
         <Route path='/course' element={<Userlayout><Courses/></Userlayout>}/>
         <Route path='/addtocart' element={<Userlayout><Addtocart/></Userlayout>}/>

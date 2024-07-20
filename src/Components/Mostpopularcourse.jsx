@@ -4,29 +4,20 @@ import axios from 'axios';
 import lessonicon from '../Images/lesson.svg'
 
 // import teacherpic from '../Images/teacherpic.jpg'
-import { ROOT_URL } from '../Components/Localhost'
+
 import pic1 from '../Images/Music.jpg'
 
-
+const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 //  import pic1 from '../Images/course1.jpg'
 
 function Mostpopularcourse() {
-  // const CourseInfo = [
-  //   {
-  //     image: [pic1],
-  //     video: "20",
-  //     course_name:"The Complete Music Course",
-  //     course_price: "499",
-  //     teacher_name:"Synthosphere Academy"
 
-  //   }
-  // ]
 
   const [productdata, setproduct] = useState([])
 
   useEffect(() => {
     
-    axios.get(ROOT_URL+'/get_course')
+    axios.get(ROOT_URL+'/api/v1/get_course')
       .then(productdata =>  
         setproduct(productdata.data.data))
       .catch(err => console.log(err))

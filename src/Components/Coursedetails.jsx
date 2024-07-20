@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../Css/Coursedetails.css";
 // import pic from '../Images/Classroom.png'
 
 import teacherpic from "../Images/academy.png";
 import axios from "axios";
-import { useDispatch } from "react-redux";
 import { ROOT_URL, Auth_URL } from "../Components/Localhost";
 import lessonicon from "../Images/lesson.svg";
 
@@ -23,7 +22,6 @@ function Coursedetails() {
       .get(Auth_URL + `/orderdetails/${userId}`)
       .then((details_course) => {
         setviewcourse(details_course.data);
-        const courseview = details_course.data;
         console.log(details_course.data);
 
         ///console.log(viewcourse.course_name);
@@ -36,6 +34,7 @@ function Coursedetails() {
       .get(ROOT_URL + `/getcoursebyid/${id}`)
       .then((coursedetail) => {
         setcoursedetail(coursedetail.data);
+      
         console.log(coursedetails);
       })
       .catch((err) => console.log(err));
@@ -107,18 +106,9 @@ function Coursedetails() {
       </div>
     );
   };
-
+  const formattedDate = new Date(coursedetails.createdAt).toLocaleDateString();
   return (
     <>
-      {/* {coursedetails ? (
-        <div key={coursedetails._id}>
-          <h2>{coursedetails.course_name}</h2>
-          
-         
-        </div>
-      ) : (
-        <div>No course details available</div>
-      )} */}
       {coursedetails ? (
         <div className="container mb-5">
           <div className="row" key={coursedetails._id}>
@@ -341,24 +331,36 @@ function Coursedetails() {
                       Beginner Level
                     </span>
                   </div>
-                  <div className="mt-2">
+                  
+                  {/* <div className="mt-2">
                     <i className="fa fa-book"></i>
                     <span className="fw-bold ms-2 paratext ">
                       90 students enrolled
                     </span>
-                  </div>
+                  </div> */}
+                  
                   <div className="mt-2">
                     <i className="fa fa-clock-o"></i>
                     <span className="fw-bold ms-2 paratext">
-                      6 hour 34 min duration
+                      Lifetime access
                     </span>
                   </div>
                   <div className="mt-2">
-                    <i className="fa fa-clock-o"></i>
-                    <span className="fw-bold ms-2">
-                      10 nov,2023 last updated{" "}
+                    <i className="fa fa-book"></i>
+                    <span className="fw-bold ms-2 paratext">
+                    Requirements: Laptop/mobile & internet connection
                     </span>
                   </div>
+                  {coursedetails ? 
+                   
+                  <div className="mt-2">
+                    <i className="fa fa-book"></i>
+                    <span className="fw-bold ms-2 paratext ">
+                      {formattedDate} last updated
+                    </span>
+                  </div>
+                  : <div>no data</div>}
+                  
                   <div className="mt-2">
                     <i className="fa fa-certificate"></i>
                     <span className="fw-bold ms-2 paratext">

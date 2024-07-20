@@ -7,6 +7,16 @@
     src: url('../fontstyle/SFPRODISPLAYREGULAR.OTF');
 }
 
+.inputresult{
+    background-color: white;
+    padding: 5px;
+    
+
+}
+.inputresult a, a:hover, a:focus, a:active{
+    text-decoration: none;
+    color: inherit;
+}
 
 .text{
     font-family: myfont;

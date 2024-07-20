@@ -45,11 +45,10 @@ const Nav = () => {
                 </ul> */}
               {/* </li> */}
               <li className="nav-item pe-2">
-                <a className="nav-link text-white" href="/blog">
+                <a className="nav-link text-white" href="#articlesection">
                   Article
                 </a>
               </li>
-
               <li className="nav-item pe-2">
                 <a className="nav-link text-white" href='/contact'>Contact</a>
               </li>

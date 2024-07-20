@@ -13,6 +13,7 @@ const Courseview = () => {
   );
 
   const handleChapterClick = (event, newVideoSource) => {
+    event.preventDefault();
     console.log(newVideoSource);
     setVideoSource(newVideoSource);
   };

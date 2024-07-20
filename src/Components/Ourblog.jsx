@@ -3,51 +3,44 @@ import img1 from '../Images/Image.png';
 import Slider from "react-slick";
  import 'slick-carousel/slick/slick.css';
  import 'slick-carousel/slick/slick-theme.css';
+ import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Ourblog = () => {
-  const blogInfo = [
-    {
-      blog_title: "hiiii",
-      blog_text: "its blog 1",
-    },
-    {
-      blog_title: "hiiii",
-      blog_text: "its blog 2",
-    },
-    {
-      blog_title: "hiiii",
-      blog_text: "its blog 3",
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+  // console.log(ROOT_URL);
+  const [blogdata, setblogdata] = useState([])
+  useEffect(() => {
+    // const apiUrl = process.env.REACT_APP_API_URL;
+    axios.get(ROOT_URL+'/api/v1/get_blog')
+      .then(blogdata => setblogdata(blogdata.data.data))
+      
+      .catch(err => console.log(err))
+      // console.log(blogdata)
+  }, []);
 
-    },
-    {
-
-      blog_title: "hiiii",
-      blog_text: "its blog 4",
-
-    },
-
-  ]
-
-  const renderblog = (card, index) => {
-    return (
-
-      <a  key={index} className = "blogcontent" href='/blog'>
-      <div className="card" style={{padding:"0 10px "}}>
-        <div className='container mt-3'>
-          <img src={img1} className="card-img-top d-block" alt="noimage" />
-          <div className="card-body">
-            <h5 className="card-title">{card.blog_title}</h5>
-            <p className="card-text">{card.blog_text}</p>
-          </div>
-        </div>
-      </div>
-      </a>
-    )
-  }
+  // const renderblog = (blogdata) => {
+  //   return (
+  //     <div  className="row" key={blogdata._id}>
+  //     <a className = "blogcontent" href='/blog'>
+  //     <div className="card" style={{padding:"0 10px "}}>
+  //       <div className='container mt-3'>
+  //         <img src={blogdata.image} className="card-img-top d-block" alt="noimage" />
+  //         <div className="card-body">
+  //           <h5 className="card-title">{blogdata.blogtitle}</h5>
+  //           <p className="card-text">{blogdata.shortdescription}</p>
+  //         </div>
+  //       </div>
+  //     </div>
+  //     </a>
+  //     </div>
+      
+  //   )
+  // }
 
   var settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -55,7 +48,7 @@ const Ourblog = () => {
       {
         breakpoint: 1024, // Adjust settings for screen widths less than 1024px
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         }
       },
@@ -70,114 +63,35 @@ const Ourblog = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "rgba(14, 18, 85, 1)" }} className='blogsection'>
+    <div style={{ backgroundColor: "rgba(14, 18, 85, 1)" }} className='blogsection' id='articlesection'>
       <h4 className='display-4 text-center pt-5 blogheading'>Resources & Insight</h4>
       <h5 className='text-white text-center blogpara'>Engage with a rich array of thought leadership, expert insights, and emerging trends through our diverse</h5>
       <h6 className='text-white text-center blogpara'>and dynamic blog platform inspiring continuous learning and innovation</h6>
       <div className="container py-5 w-75 ">
+     
       <Slider {...settings}>
-      {blogInfo.map(renderblog)}
-      </Slider>
-
-
-        {/* <div id="carouselExampleIndicators" className="carousel slide ">
-
-
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <div className="row g-5">
-                <div className='col-lg-4 '>
-                  <div className="card">
-                    <div className='container mt-3'>
-                      <img src={img1} className="card-img-top d-block w-100" alt="noimage" />
-                      <div className="card-body">
-                        <h5 className="card-title">hiiiii</h5>
-                        <p className="card-text">byee</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className="card">
-                    <div className='container mt-3'>
-                      <img src={img1} className="card-img-top " width={50} alt="noimage" />
-                      <div className="card-body">
-                        <h5 className="card-title">hiiiii</h5>
-                        <p className="card-text">byee</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className="card" >
-                    <div className='container mt-3'>
-                      <img src={img1} className="card-img-top" alt="noimage" />
-                      <div className="card-body">
-                        <h5 className="card-title">hiiiii</h5>
-                        <p className="card-text">byee</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="row ">
-                <div className='col-lg-4 '>
-                  <div className="card " >
-                    <div className='container mt-3'>
-                      <img src={img1} className="card-img-top d-block w-100" alt="noimage" />
-                      <div className="card-body">
-                        <h5 className="card-title">hiiiii</h5>
-                        <p className="card-text">byee</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className="card" >
-                    <div className='container mt-3'>
-                      <img src={img1} className="card-img-top" alt="noimage" />
-                      <div className="card-body">
-                        <h5 className="card-title">hiiiii</h5>
-                        <p className="card-text">byee</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className="card" >
-                    <div className='container mt-3'>
-                      <img src={img1} className="card-img-top" alt="noimage" />
-                      <div className="card-body">
-                        <h5 className="card-title">hiiiii</h5>
-                        <p className="card-text">byee</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
+     
+      {blogdata.map((blog) =>(
+        <div key={blog._id}  style={{padding: "0 6px"}}>
+        <a className='blogcontent ' href={`/blog/${blog._id}`}>
+      <div className="card h-100"   >
+        <div className='container mt-3 h-100'>
+          <img src={blog.image} className="card-img-top d-block" alt="noimage" />
+          <div className="card-body h-100">
+            <h5 className="card-title">{blog.blogtitle}</h5>
+            <p className="card-text" dangerouslySetInnerHTML={{
+                    __html: blog.shortdescription}}></p>
           </div>
-          <span className="swiper-pagination"></span>
-          <span className="swiper-button-prev"></span>
-          <span className="swiper-button-next"></span>
-        </div> */}
-
-        {/* <button className="carousel-control-prev ms-5" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          
-          <button className="carousel-control-next ms-5" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button> */}
-
-
-
+        </div>
+      </div>
+      </a>
+      </div>
+      
+      
+      ))
+      }
+      </Slider>
+      
       </div>
     </div>
 
