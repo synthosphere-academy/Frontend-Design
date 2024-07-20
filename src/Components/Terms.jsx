@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Terms() {
   const navigate = useNavigate();
-  const handlersumit=()=>{
-    navigate('/Offlineregister');
-  }
+
   return (
     <>
       <div>

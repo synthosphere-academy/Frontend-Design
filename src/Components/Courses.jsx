@@ -10,6 +10,7 @@ import pic1 from '../Images/Music.jpg'
 import { ROOT_URL } from '../Components/Localhost'
 
 function Courses() {
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [coursedata, setcoursedata] = useState([])
   // const CourseInfo = [
@@ -27,7 +28,7 @@ function Courses() {
  
   useEffect(() => {
     
-    axios.get(ROOT_URL+'/get_course')
+    axios.get(ROOT_URL+'/api/v1/get_course')
       .then(coursedata => setcoursedata(coursedata.data.data))
       .catch(err => console.log(err))
 

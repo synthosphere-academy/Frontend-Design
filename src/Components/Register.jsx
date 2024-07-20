@@ -7,10 +7,10 @@ import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
-import { Auth_URL } from './Localhost';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
+    const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
     const [email, setEmail] = useState('')
@@ -190,7 +190,7 @@ function Register() {
         }
         else {
 
-            await axios.post(Auth_URL+'/register', { fullname, phoneno, date, States, cities, email, password })
+            await axios.post(ROOT_URL+'/api/auth/register', { fullname, phoneno, date, States, cities, email, password })
                 .then(res => {
                     console.log(res);
                     swal("Thank You!", "Registration sucessfully completed!", "success");

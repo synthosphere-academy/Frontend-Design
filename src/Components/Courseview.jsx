@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import "../Css/courseview.css";
 const Courseview = () => {
   const { id } = useParams();
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   // const [data, setData] = useState(null);
   const [coursedata, setcoursedata] = useState([]);
   const [videoSource, setVideoSource] = useState(
@@ -20,7 +21,7 @@ const Courseview = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(ROOT_URL + `/getcoursebyid/${id}`);
+        const response = await axios.get(ROOT_URL + `/api/v1/getcoursebyid/${id}`);
         setcoursedata(response.data);
         console.log(response.data);
       } catch (err) {

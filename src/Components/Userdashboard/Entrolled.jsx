@@ -1,18 +1,17 @@
 import "../../Css/Entrolled.css"
 import { useState , useEffect} from 'react';
 import axios from "axios";
-import { ROOT_URL } from "../Localhost";
 
 import lessonicon from "../../Images/lesson.svg"
 
 const Entrolled =() => {
-  
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
     const [enrollcourse, setenrollcourse] = useState([]);
     useEffect(() => {
         const userId = sessionStorage.getItem('userid');
         // console.log(userId);
            axios
-          .get(ROOT_URL + `/getenrolledcourse/${userId}`)
+          .get(ROOT_URL + `/api/v1/getenrolledcourse/${userId}`)
           .then((enrollcoursedetail) => {
             setenrollcourse(enrollcoursedetail.data);
             console.log(enrollcoursedetail.data);

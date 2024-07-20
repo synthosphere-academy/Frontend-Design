@@ -16,6 +16,7 @@ import { Contact_URL } from './Localhost';
 
 
 function Contact() {
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const[name , setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -43,7 +44,7 @@ function Contact() {
 
       
       //  alert("submit");
-      axios.post(Contact_URL+'/contactus', { name,email, message })
+      axios.post(ROOT_URL+'/api/v2/contactus', { name,email, message })
         .then(res => {
           console.log(res);
 

@@ -3,10 +3,10 @@ import { useNavigate , useParams} from 'react-router-dom';
 import axios from 'axios';
 import { Auth_URL } from './Localhost';
 import pic1 from '../Images/icon1.png';
-import { ROOT_URL } from "../Components/Localhost";
 import "../Css/checkout.css";
 const Checkout = () => {
   const { id } = useParams();
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const navigate = useNavigate();
   const [course_details, setCoursedetails] = useState([]);
   const [fullname, setName] = useState('')
@@ -22,7 +22,7 @@ const Checkout = () => {
 
 useEffect(() => {
   axios
-    .get(ROOT_URL + `/getcoursebyid/${id}`)
+    .get(ROOT_URL + `/api/v1/getcoursebyid/${id}`)
     .then((coursedetail) => {
       setCoursedetails(coursedetail.data);
       console.log(course_details);

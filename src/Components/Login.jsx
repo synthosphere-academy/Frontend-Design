@@ -4,7 +4,7 @@ import '../Css/Login.css'
 import { useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
-import { Auth_URL } from './Localhost';
+
 import { useNavigate } from 'react-router-dom';
 // const token = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
 // const config = {
@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -50,11 +51,13 @@ function Login() {
     else {
       
         //  alert("submit");
-      axios.post(Auth_URL+'/login', { email, password })
+      axios.post(ROOT_URL+'/api/auth/login', { email, password })
         .then(res => {
           console.log(res);
           const { fullname: userfullname } = res.data;
           const {user_id : userid} =res.data;
+          
+          localStorage.setItem('token', res.data.token);
           sessionStorage.setItem('username', userfullname);
           sessionStorage.setItem('userid', userid);
           

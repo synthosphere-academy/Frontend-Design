@@ -1,11 +1,7 @@
 import logo from '../Images/academy.png'
 import '../Css/Nav.css'
 import { Link } from 'react-router-dom';
-// import icon from '../Images/icon.svg'
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import Blink from 'react-blink-text';
-//  import pic from '../Images/user.png';
 
 const Nav = () => {
  

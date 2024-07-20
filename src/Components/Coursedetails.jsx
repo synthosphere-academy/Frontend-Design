@@ -5,10 +5,11 @@ import "../Css/Coursedetails.css";
 
 import teacherpic from "../Images/academy.png";
 import axios from "axios";
-import { ROOT_URL, Auth_URL } from "../Components/Localhost";
 import lessonicon from "../Images/lesson.svg";
 
 function Coursedetails() {
+
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [coursedetails, setcoursedetail] = useState([]);
   const [productdata, setproduct] = useState([]);
   const { id } = useParams();
@@ -19,7 +20,7 @@ function Coursedetails() {
     const userId = sessionStorage.getItem("userid");
     console.log(userId);
     axios
-      .get(Auth_URL + `/orderdetails/${userId}`)
+      .get(ROOT_URL + `/api/auth/orderdetails/${userId}`)
       .then((details_course) => {
         setviewcourse(details_course.data);
         console.log(details_course.data);
@@ -31,7 +32,7 @@ function Coursedetails() {
 
   useEffect(() => {
     axios
-      .get(ROOT_URL + `/getcoursebyid/${id}`)
+      .get(ROOT_URL + `/api/v1/getcoursebyid/${id}`)
       .then((coursedetail) => {
         setcoursedetail(coursedetail.data);
       
@@ -53,7 +54,7 @@ function Coursedetails() {
   // }, [id]);
   useEffect(() => {
     axios
-      .get(ROOT_URL + "/get_course")
+      .get(ROOT_URL + "/api/v1/get_course")
       .then((productdata) => setproduct(productdata.data.data))
       .catch((err) => console.log(err));
   }, []);

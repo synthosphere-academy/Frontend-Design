@@ -11,8 +11,9 @@ import '../Css/Datepicker_style.css';
 // import nailart from '../Images/nailartpayment.jpg'
 // import guitar from '../Images/guitercourse.jpg'
 // import vio from '../Images/violinclasses.jpg'
-import { Link } from 'react-router-dom';
+
 const Offlineregister = () => {
+    const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
  
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
@@ -198,7 +199,7 @@ const Offlineregister = () => {
        
         else {
            
-            await axios.post(Auth_URL+'/offlineregister', { fullname, phoneno, date, States, cities, email, course,amount })
+            await axios.post(ROOT_URL+'/api/auth/offlineregister', { fullname, phoneno, date, States, cities, email, course,amount })
                 .then(res => {
                     console.log(res);
                     //console.log(res.data.order.amount);

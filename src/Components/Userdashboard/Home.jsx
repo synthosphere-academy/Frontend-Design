@@ -1,17 +1,21 @@
 
 import { useState , useEffect} from 'react';
 import axios from "axios";
-import { ROOT_URL } from "../Localhost";
-
-
 
 function Home() {
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [totalcourse, settotalcourse] = useState([]);
   useEffect(() => {
     const userId = sessionStorage.getItem('userid');
-    // console.log(userId);
+    const token = localStorage.getItem('token');
+    //  console.log(token);
        axios
-      .get(ROOT_URL + `/getenrolledcourse/${userId}`)
+      .get(ROOT_URL + `/api/v1/getenrolledcourse/${userId}`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+ 
+      })
       .then((total_course) => {
         settotalcourse(total_course.data);
         console.log(total_course.data);

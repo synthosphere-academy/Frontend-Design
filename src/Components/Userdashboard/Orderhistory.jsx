@@ -1,15 +1,15 @@
 
 import { useState , useEffect} from 'react';
 import axios from "axios";
-import { Auth_URL } from "../Localhost";
 import "../../Css/Userdasboard/orderhistory.css";
 const Orderhistory= () => {
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
     const [orderdata, setorderdata] = useState([]);
     useEffect(() => {
         const userId = sessionStorage.getItem('userid');
         console.log(userId);
            axios
-          .get(Auth_URL + `/orderdetails/${userId}`)
+          .get(ROOT_URL + `/api/auth/orderdetails/${userId}`)
           .then((orderdetail) => {
             setorderdata(orderdetail.data);
             console.log(orderdata);

@@ -5,13 +5,13 @@ import lessonicon from '../Images/lesson.svg'
 
 // import teacherpic from '../Images/teacherpic.jpg'
 
-import pic1 from '../Images/Music.jpg'
 
-const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+
+
 //  import pic1 from '../Images/course1.jpg'
 
 function Mostpopularcourse() {
-
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [productdata, setproduct] = useState([])
 

@@ -3,14 +3,14 @@ import axios from "axios";
 import { Auth_URL } from "../Localhost";
 
 function Myprofile() {
-  
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   
   const [userdata, setuserdata] = useState([]);
   useEffect(() => {
     const userId = sessionStorage.getItem('userid');
     console.log(userId);
        axios
-      .get(Auth_URL + `/getuser/${userId}`)
+      .get(ROOT_URL + `/api/auth/getuser/${userId}`)
       .then((userdetail) => {
         setuserdata(userdetail.data);
         console.log(userdata);
