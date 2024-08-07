@@ -10,6 +10,7 @@ const Nav = () => {
     e.preventDefault();
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('userid');
+    localStorage.removeItem('token');
     window.location.assign("/")
   }
     return (
@@ -17,7 +18,14 @@ const Nav = () => {
       <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "rgba(14, 18, 85, 1)" }}>
         <div className="container-fluid">
           <a className="navbar-brand" href="/"><img src={logo} width={60} /></a>
-          <a href='/' className="text-decoration-none"><span className='text-white logoname'>Sythosphere Academy</span></a>
+          <a href='/' className="text-decoration-none">
+          <div className='d-flex flex-column'>
+          <span className='text-white logoname'>Sythosphere Academy</span>
+          <span className=' text-white isologo'>(ISO 9001:2015 Certified)</span>
+
+          </div>
+         
+          </a>
           <button className="navbar-toggler togglebutton" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i className="fa fa-navicon iconnav"></i>
           </button>

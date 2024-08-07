@@ -70,24 +70,19 @@ const Ourblog = () => {
       <div className="container py-5 w-75 ">
      
       <Slider {...settings}>
-     
-      {blogdata.map((blog) =>(
-        <div key={blog._id}  style={{padding: "0 6px"}}>
-        <a className='blogcontent ' href={`/blog/${blog._id}`}>
-      <div className="card h-100"   >
-        <div className='container mt-3 h-100'>
-          <img src={blog.image} className="card-img-top d-block" alt="noimage" />
-          <div className="card-body h-100">
-            <h5 className="card-title">{blog.blogtitle}</h5>
+      {blogdata.map((blog) =>( 
+        <a className='blogcontent' href={`/blog/${blog._id}`} key={blog._id} >
+        <div className="card h-100" >
+        <div className='container mt-3 '>
+  <img src={blog.image} className="card-img-top d-block cardimage " alt="noimage"/>
+  <div className="card-body">
+  <h5 className="card-title">{blog.blogtitle}</h5>
             <p className="card-text" dangerouslySetInnerHTML={{
                     __html: blog.shortdescription}}></p>
-          </div>
-        </div>
-      </div>
-      </a>
-      </div>
-      
-      
+  </div>
+  </div>
+</div>
+</a>    
       ))
       }
       </Slider>

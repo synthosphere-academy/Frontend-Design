@@ -10,6 +10,8 @@
 .inputresult{
     background-color: white;
     padding: 5px;
+    border-radius: 5px;
+    
     
 
 }
@@ -74,6 +76,10 @@
     
     }
    .search button:hover{
+    background-color: #6d2259;
+    color: white;
+   }
+   .search button:active{
     background-color: #6d2259;
     color: white;
    }

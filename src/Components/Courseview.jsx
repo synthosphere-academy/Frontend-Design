@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ReactPlayer from "react-player";
-import { ROOT_URL } from "../Components/Localhost";
+// import ReactPlayer from "react-player";
+import Vimeo from "@u-wave/react-vimeo";
 import { useParams } from "react-router-dom";
 import "../Css/courseview.css";
 const Courseview = () => {
@@ -10,7 +10,7 @@ const Courseview = () => {
   // const [data, setData] = useState(null);
   const [coursedata, setcoursedata] = useState([]);
   const [videoSource, setVideoSource] = useState(
-    "https://player.vimeo.com/video/944794803?h=2e98c42f1c"
+    "https://vimeo.com/988855316"
   );
 
   const handleChapterClick = (event, newVideoSource) => {
@@ -21,7 +21,9 @@ const Courseview = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(ROOT_URL + `/api/v1/getcoursebyid/${id}`);
+        const response = await axios.get(
+          ROOT_URL + `/api/v1/getcoursebyid/${id}`
+        );
         setcoursedata(response.data);
         console.log(response.data);
       } catch (err) {
@@ -31,20 +33,7 @@ const Courseview = () => {
 
     fetchCourses();
   }, [id]);
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await axios.get('https://v1.nocodeapi.com/souravbasak/vimeo/FMGQOaXQnIdOqCgf/videoInfo?video_id=944794803');
-  //         const datalink = response.data.link;
-  //         console.log(datalink)
-  //         setData(datalink);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }, []);
+ 
   return (
     <>
       <div className="container">
@@ -57,59 +46,19 @@ const Courseview = () => {
                     <div className="video-part">
                       {coursedata ? (
                         <div key={coursedata._id}>
-                          <h3 className="mt-3 fw-bold">{coursedata.course_name}</h3>
-                          <ReactPlayer
-                                        controls
-                                        width="100%"
-                                        height="450px"
-                                        url={videoSource}
-                                      />
+                          <h3 className="mt-3 fw-bold">
+                            {coursedata.course_name}
+                          </h3>
                           
-                          {/* {coursedata.sections &&
-                          coursedata.sections.length > 0 ? (
-                            coursedata.sections.map((section) => (
-                              <div key={section.section_id}>
-                                {section.chapters &&
-                                  section.chapters.length > 0 ? (
-                                    section.chapters.map((chapter) => (
-                                      <div  key={chapter.chapter_id}>
-                                    <div
-                                      className="vp-video mb-4">
-                                    <div>{chapter.chapter_name}</div>
-                                      <ReactPlayer
+                          <Vimeo key={videoSource} video={videoSource} controls 
+                                        height={360}  width={640} autoplay />
+                                      
+                          {/* <ReactPlayer
                                         controls
                                         width="100%"
                                         height="450px"
                                         url={videoSource}
-                                      />
-                                    </div>
-                                    </div>
-                                  ))
-                                ) : (
-                                  <div>noo</div>
-                                )}
-                              </div>
-                            ))
-                          ) : (
-                            <p>No sections available.</p>
-                          )} */}
-                          {/* {coursedata.sections ? (
-                        <div>{coursedata.sections.section_name}
-                        {section.chapters.map(
-                          (chapter) => (
-                            <div className="vp-video mb-4" key={chapter.chapter_id}>
-                            <ReactPlayer
-                                          controls
-                                          width="100%"
-                                          height="450px"
-                                          url={videoSource}
-                                        />
-                                      </div>
-                          ))}
-                       
-
-                        </div>
-                      ) : (<div>nooo</div>)} */}
+                                      /> */}
                         </div>
                       ) : (
                         <div>No data</div>
@@ -204,46 +153,62 @@ const Courseview = () => {
                       </div>
 
                       <div className="course-body">
-                         {coursedata.sections &&
-                          coursedata.sections.length > 0 ? (
-                            coursedata.sections.map((section) => (
-                              <div className="accordion" id="accordionExample" key={section.section_id}>
+                        {coursedata.sections &&
+                        coursedata.sections.length > 0 ? (
+                          coursedata.sections.map((section) => (
+                            <div
+                              className="accordion"
+                              id="accordionExample"
+                              key={section.section_id}
+                            >
                               <div className="accordion-item accordionitem">
-                              <h2 className="accordion-header">
-                                      <button
-                                        className="accordion-button collapsed accordionitem fw-bold"
-                                        type="button"
-                                        data-bs-toggle="collapse"
-                                        data-bs-target={`#${section.section_id}`}
-                                        aria-expanded="true"
-                                        aria-controls={section.section_id}>{section.section_name}
-                                      </button></h2>
-                                      <div id={`${section.section_id}`} className="accordion-collapse collapse" data-bs-parent="#accordionExample" >
-                                      {section.chapters &&
+                                <h2 className="accordion-header">
+                                  <button
+                                    className="accordion-button collapsed accordionitem fw-bold"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#${section.section_id}`}
+                                    aria-expanded="true"
+                                    aria-controls={section.section_id}
+                                  >
+                                    {section.section_name}
+                                  </button>
+                                </h2>
+                                <div
+                                  id={`${section.section_id}`}
+                                  className="accordion-collapse collapse"
+                                  data-bs-parent="#accordionExample"
+                                >
+                                  {section.chapters &&
                                   section.chapters.length > 0 ? (
                                     section.chapters.map((chapter) => (
-                                      <div className="accordion-body"  key={chapter.chapter_id}>
-                                <div className="chapter">
-                                <div onClick={(event) =>
-                                      handleChapterClick(
-                                        event,[chapter.Video_link]
-                                      )} > {chapter.chapter_name}</div>
-                                </div>
-                                </div>
-                                  ))
-                                ) : (
-                                  <div>noo</div>
-                                )}
-
+                                      <div
+                                        className="accordion-body"
+                                        key={chapter.chapter_id}
+                                      >
+                                        <div className="chapter">
+                                          <div
+                                            onClick={(event) =>
+                                              handleChapterClick(event, String(chapter.Video_link)   
+                                              )
+                                            }
+                                          >
+                                            {" "}
+                                            {chapter.chapter_name}
+                                          </div>
+                                        </div>
                                       </div>
-                                      
+                                    ))
+                                  ) : (
+                                    <div>noo</div>
+                                  )}
+                                </div>
                               </div>
-                               
-                              </div>
-                            ))
-                          ) : (
-                            <p>No sections available.</p>
-                          )} 
+                            </div>
+                          ))
+                        ) : (
+                          <p>No sections available.</p>
+                        )}
 
                         {/* {coursedata.map((course) => (
                               <div key={course._id}>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import '../Css/Register.css'
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -14,6 +15,7 @@ import '../Css/Datepicker_style.css';
 
 const Offlineregister = () => {
     const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+    const navigate = useNavigate();
  
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
@@ -45,9 +47,9 @@ const Offlineregister = () => {
 
 
     const pay = {
-        nailart: "1000",
-        GuitarClass: "2000",
-        ViolinClass: "3000"
+        nailart: "6500/-",
+        GuitarClass: "999/-",
+        ViolinClass: "1199/-"
       };
     //image
     // const convertToBase64 = (file) => {
@@ -224,7 +226,19 @@ const Offlineregister = () => {
                               // Pass the user ID for backend processing
                             }).then(() => {
                              console.log(response);
-                             swal("Payment successful and data saved.");
+                             swal({
+                                title: "Thank You!",
+                                text: "Registration completed sucessfully!",
+                                icon: "success",
+                                // buttons: true,
+                              }).then((willregister) => {
+                                if (willregister) {
+                                  
+                                   window.location.reload();
+                                  
+                                } 
+                              });
+                            //  swal("Payment successful and data saved.");
                             
                             //  window.location.reload();
                             }).catch(() => {
@@ -271,23 +285,23 @@ const Offlineregister = () => {
                     <div className='display-5 text-white text-center'> Offline Register Here!</div>
                     <form className='row g-3 py-2'>
                         <div className="col-lg-6">
-                            <label className='form-label text-white' htmlFor="name">Name </label>
+                            <label className='form-label text-white' htmlFor="name"> Full Name <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="name" name="fullname" placeholder="Enter Your Name" onChange={e => setName(e.target.value)} />
 
                         </div>
                         <div className="col-lg-6">
-                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Phone Number</label>
+                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Phone Number <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="phoneno" onKeyUp={mobileHandler}
                                 name="phoneno" placeholder="Enter Your Phone Number" onChange={e => setPhoneno(e.target.value)} />
                             {mobilenoerror ? <span className='link-danger'>phone no invalid</span> : ""}
                         </div>
                         <div className='col-lg-3'>
-                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Date of birth </label>
+                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Date of birth <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <span className='form-control'><DatePicker value={date} className="" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
 
                         </div>
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">State</label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">State <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <select className="form-select form-control-lg mb-3 h-50 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_state}>
                                 <option value="" label='Enter your State'></option>
                                 {Array.isArray(state) && state.map(state => (
@@ -297,7 +311,7 @@ const Offlineregister = () => {
                         </div>
 
                         <div className='col-lg-5'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">City</label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">City <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <select className="form-select form-control-lg h-50 mb-3 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_city}>
                                 <option value="Choose city" label=' Enter your city'></option>
                                 {Array.isArray(city) && city.map(city => (
@@ -310,7 +324,7 @@ const Offlineregister = () => {
                         </div>
 
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address</label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="email" className="form-control form-control-lg inputform " id="email" name="email"
                                 onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
                             {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
@@ -320,7 +334,7 @@ const Offlineregister = () => {
 
 
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Select any course</label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Select any course <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <select className="form-select form-control mb-3  inputform " id='courseselect' aria-label=".form-select-lg example" onChange={handlecoursechange}>
                                 <option value="" label='Enter your course'></option>
                                 <option value="nailart" label='Nail Art'></option>
@@ -331,7 +345,7 @@ const Offlineregister = () => {
                             </select>
                         </div>
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" >Pay For the course</label>
+                            <label className="form-label text-white" >Pay For the course <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             {course && <input type='text'className="form-control form-control-lg" readOnly name='amount'  id="amount"
                             value={pay[course]} />}
                             

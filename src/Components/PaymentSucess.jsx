@@ -18,7 +18,7 @@ function PaymentSucess() {
     <h3 className="card-title mb-2">Payment Successful!</h3>
     <div className='card-text'>
     <div className="">Thank you for your purchase!</div>
-    <span className="">Your Payment id: Pay123</span>
+  
     </div>
   
    

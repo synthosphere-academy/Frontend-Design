@@ -4,28 +4,57 @@ import { useState, useEffect } from 'react';
  import axios from 'axios';
 import icon from '../Images/Search.svg';
 import lessonicon from '../Images/lesson.svg'
-import teacherpic from '../Images/teacherpic.jpg'
+import teacherpic from '../Images/academy.png'
 // import Preloader from './Preloader';
 import pic1 from '../Images/Music.jpg'
 import { ROOT_URL } from '../Components/Localhost'
 
 function Courses() {
+  const [query, setQuery] = useState('');
+  const [courses, setCourses] = useState([]);
+  const handleInputfieldChange = (e) => {
+      setQuery(e.target.value);
+  };
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [coursedata, setcoursedata] = useState([])
-  // const CourseInfo = [
-  //   {
-  //     image: [pic1],
-  //     video: "20",
-  //     course_name:"The Complete Music Course",
-  //     course_price: "499",
-  //     teacher_name:"Synthosphere Academy"
 
-  //   }
-  // ]
-  // const [loading, setLoading] = useState(true);
+  //for search input
+  useEffect(() => {
+    const fetchCourses = async () => {
+  
+    if (query.length > 0) {
+        document.getElementById('searchresult').style.display = 'block';
+            axios.get( ROOT_URL+`/api/v1/searchcourse?q=${query}`)
+            .then((response) => {
+                if(response.data.length === 0){
+                    setCourses(['No_course_found']);      
+                }  else{
+                setCourses(response.data);
+                console.log(response.data);
+                }
+                
+              })
+              .catch((error) => {
+                console.log(error);
+             })
+            }
+            
 
- 
+            else {
+                document.getElementById('searchresult').style.display = 'none';
+                setCourses([]);
+                
+            }
+        }
+        const debounceFetch = setTimeout(fetchCourses, 300);
+            return () => clearTimeout(debounceFetch);
+            }, [query]);
+
+
+
+
+  //end search input
   useEffect(() => {
     
     axios.get(ROOT_URL+'/api/v1/get_course')
@@ -57,9 +86,9 @@ function Courses() {
             <hr />
             <div className="row">
               
-              {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
-              </div> */}
-              <div className='col-7 mt-2'><span>{coursedata.teacher_name}</span>
+              <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
+              </div>
+              <div className='col-5 mt-2'><span>{coursedata.teacher_name}</span>
               </div>
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}
@@ -128,9 +157,18 @@ function Courses() {
                 <div className="search">
                   <img className='searchicon' src={icon} width={20} />
                   {/* <i className="fa fa-search mt-1 ms-3"></i> */}
-                  <input type="text" className="form-control  searchcourseinput" placeholder="Find a course?" />
+                  <input type="text" className="form-control  searchcourseinput" placeholder="Find a course?"
+                  value={query}
+                  onChange={handleInputfieldChange}  />
 
-                  <button className="btn searchbutton">Search course</button>
+                  <button className=" searchbutton">Search course</button>
+                  <ul className="inputresult list-unstyled" id='searchresult'>
+                {courses.map(course => ( 
+                    <a href={`/coursedetails/${course._id}`}><li  className="p-2" key={course._id}>{course === "No_course_found" ? 'No course found': course.course_name}</li></a>
+                ))
+               
+                }
+            </ul>
                 </div>
               </div>
             </div>

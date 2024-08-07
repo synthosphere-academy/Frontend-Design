@@ -6,10 +6,6 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 import { useNavigate } from 'react-router-dom';
-// const token = 'H-iBBKtdo-9gr80UCAxoWI2oljM9yIuiAfejreeosPA';
-// const config = {
-//   headers: { Authorization: `Bearer ${token}` }
-// };
 
 
 
@@ -55,14 +51,14 @@ function Login() {
         .then(res => {
           console.log(res);
           const { fullname: userfullname } = res.data;
-          const {user_id : userid} =res.data;
+          const {user_id : userid} = res.data;
           
           localStorage.setItem('token', res.data.token);
           sessionStorage.setItem('username', userfullname);
           sessionStorage.setItem('userid', userid);
           
 
-          swal("Sucessfully login!", "login sucessfully!", "success");
+          swal("Login Successful!!", "Happy learning! Explore new courses now.", "success");
             navigate('/');
           // navigate('/course');
 

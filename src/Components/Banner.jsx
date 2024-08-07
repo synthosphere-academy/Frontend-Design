@@ -44,9 +44,6 @@ function Banner() {
                 }, [query]);
    
             
-   
-
-
     return (
         <>
             <div className="banner"style={{ backgroundColor: "rgba(14, 18, 85, 1)" }}>
@@ -55,7 +52,7 @@ function Banner() {
                         <div className="col-lg-6 mt-5">
                             <h1 className='display-2 text fw-bold'>Find your course</h1>
                             <h1 className='display-2 text fw-bold'>Change your life</h1><br />
-                            <span className='para'>Discover Synthosphere Academy:  Elevate Your Knowledge. Offering Expert-Led Programs, Innovative Resources, and a Vibrant Community, Empowering You to Thrive in the World of Synthesis and Beyond.</span><br /><br />
+                            <span className='para'>Discover Synthosphere Academy:  Elevate Your Knowledge. Offering Expert-Led Programs, Innovative Resources and a Vibrant Community, Empowering You to Thrive in the World of Synthesis and Beyond.</span><br /><br />
                             <div className="search mt-5">
                             <img className='searchicon' src={icon} width={20}/>
                                 {/* <i className="fa fa-search mt-1 ms-3"></i> */}
@@ -63,10 +60,9 @@ function Banner() {
                                  placeholder="Find a course ?"
                                  value={query}
                                  onChange={handleInputfieldChange} />
-                                <button className="btn btn-success" >Search Course</button>
+                                <button  >Search Course</button>
                                 <ul className="inputresult list-unstyled" id='inputresult'>
-                {courses.map(course => (
-                    
+                {courses.map(course => ( 
                     <a href={`/coursedetails/${course._id}`}><li  className="p-2" key={course._id}>{course === "No_course_found" ? 'No course found': course.course_name}</li></a>
                 ))
                

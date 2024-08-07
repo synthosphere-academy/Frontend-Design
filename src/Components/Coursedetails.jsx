@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Vimeo from "@u-wave/react-vimeo";
 import "../Css/Coursedetails.css";
 // import pic from '../Images/Classroom.png'
 
@@ -8,26 +9,31 @@ import axios from "axios";
 import lessonicon from "../Images/lesson.svg";
 
 function Coursedetails() {
-
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [coursedetails, setcoursedetail] = useState([]);
+
   const [productdata, setproduct] = useState([]);
+  const navigate = useNavigate();
+
   const { id } = useParams();
-  const user_id = sessionStorage.getItem("userid");
+  const userId = sessionStorage.getItem("userid");
   // console.log(id);
   const [viewcourse, setviewcourse] = useState([]);
-  useEffect(() => {
-    const userId = sessionStorage.getItem("userid");
-    console.log(userId);
+  const checkPurchaseStatus = async () => {
     axios
       .get(ROOT_URL + `/api/auth/orderdetails/${userId}`)
       .then((details_course) => {
         setviewcourse(details_course.data);
+        console.log(viewcourse);
         console.log(details_course.data);
-
-        ///console.log(viewcourse.course_name);
       })
       .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    console.log(userId);
+    if (userId) {
+      checkPurchaseStatus();
+    }
   }, []);
 
   useEffect(() => {
@@ -35,23 +41,12 @@ function Coursedetails() {
       .get(ROOT_URL + `/api/v1/getcoursebyid/${id}`)
       .then((coursedetail) => {
         setcoursedetail(coursedetail.data);
-      
+
         console.log(coursedetails);
       })
       .catch((err) => console.log(err));
   }, [id]);
 
-  //   axios.get(ROOT_URL + `/getcoursebyid/${id}`)
-  //     .then((response) => {
-
-  //       setcoursedetails(response.data.data);
-  //       console.log(response.data.data);
-  //       console.log(coursedetails);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching course details:", error);
-  //     });
-  // }, [id]);
   useEffect(() => {
     axios
       .get(ROOT_URL + "/api/v1/get_course")
@@ -59,9 +54,14 @@ function Coursedetails() {
       .catch((err) => console.log(err));
   }, []);
 
-  // const entroll_handler = () => {
-  //   navigate('/courseview');
-  // }
+  const handleButtonClick = () => {
+    if (!userId) {
+      navigate("/login");
+    } else if (!hasPurchased) {
+      navigate(`/checkout/${coursedetails._id}`);
+    }
+  };
+  const hasPurchased = viewcourse && viewcourse.some((view) => view.id === id);
 
   const redercoursecard = (productdata) => {
     return (
@@ -86,14 +86,21 @@ function Coursedetails() {
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr />
             <div className="row">
-              {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
-              </div> */}
-              <div className="col-7 mt-2">
+              <div className="col-lg-2">
+                <img
+                  className="rounded-circle"
+                  width={40}
+                  height={40}
+                  src={teacherpic}
+                />
+              </div>
+              <div className="col-lg-6 mt-2">
                 <span>{productdata.teacher_name}</span>
+                <br /><span>Teacher</span>
               </div>
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-              <div className="col-5 text-end">
+              <div className="col-lg-4 text-end">
                 <a
                   className="buttonlearnmore"
                   href={`/coursedetails/${productdata._id}`}
@@ -115,7 +122,20 @@ function Coursedetails() {
           <div className="row" key={coursedetails._id}>
             <div className="col-lg-7  mt-5">
               <h2>{coursedetails.course_name}</h2>
-              <img className="mt-2" src={coursedetails.image} width="95%" />
+              {/* <ReactPlayer
+                controls
+                width="100%"
+                height="450px"
+                url={coursedetails.introduction_video}
+              /> */}
+              <Vimeo
+                video={coursedetails.introduction_video}
+                controls
+                autoplay={false}
+                height={360}
+                width={640}
+              />
+
               <div className="mt-2">
                 <h4 className="fw-bold">Course Description</h4>
               </div>
@@ -221,103 +241,30 @@ function Coursedetails() {
                     </div>
                   </>
                 )} */}
-                {/* {sessionStorage.getItem("userid") ? (
-                  <>
-                    <div className=" text-center mt-4">
-                      <a href={`/checkout/${coursedetails._id}`}>
-                        <button className=" w-75 cartbutton" id="buybutton">
-                          Buy Now
-                        </button>
-                      </a>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className=" text-center mt-4">
-                      <a href="/login">
-                        <button className=" w-75 cartbutton" id="buybutton">
-                          Buy Now
-                        </button>
-                      </a>
-                    </div>
-                  </>
-                )} */}
-                {/* { user_id ? ( 
-                  <>
-                    <div className=" text-center mt-4">
-                      <a href={`/checkout/${coursedetails._id}`}>
-                        <button className=" w-75 cartbutton" id="buybutton">
-                          Buy Now
-                        </button>
-                      </a>
-                    </div>
-                    </>
-                    ) : (<><div className=" text-center mt-4">
-                      <a href="/login">
-                        <button className=" w-75 cartbutton" id="buybutton">
-                          Buy Now
-                        </button>
-                      </a>
-                    </div>
-                    </>
-                  )}   */}
 
-                {user_id  && viewcourse ? (
-                  viewcourse.map((view) => (
-                    <>
-                      {view.id === id ? (
-                        <div className=" text-center mt-4">
-                          <a href={`/courseview/${id}`}>
-                            <button className="w-75 cartbutton" id="viewbutton">
-                              view course
-                            </button>
-                          </a>
-                        </div>
-                      ) : (
-                        <>
-                          <div className=" text-center mt-4">
-                            <a href={`/checkout/${coursedetails._id}`}>
-                              <button
-                                className=" w-75 cartbutton"
-                                id="buybutton"
-                              >
-                                Buy Now
-                              </button>
-                            </a>
-                          </div>
-                          {/* { user_id ? (
-                    
-                    <>
+                {hasPurchased ? (
+                  <>
+                    {" "}
                     <div className=" text-center mt-4">
-                      <a href={`/checkout/${coursedetails._id}`}>
-                        <button className=" w-75 cartbutton" id="buybutton">
-                          Buy Now
+                      <a href={`/courseview/${id}`}>
+                        <button className="w-75 cartbutton" id="viewbutton">
+                          view course
                         </button>
                       </a>
                     </div>
-                    </>
-                    ) : (<>
-                    <div className=" text-center mt-4">
-                      <a href="/login">
-                        <button className=" w-75 cartbutton" id="buybutton">
-                          Buy Now
-                        </button>
-                      </a>
-                    </div></>)} */}
-                        </>
-                      )}
-                    </>
-                  ))
+                  </>
                 ) : (
-                  
+                  <>
                     <div className=" text-center mt-4">
-                      <a href="/login">
-                        <button className=" w-75 cartbutton" id="buybutton">
-                          Buy Now
-                        </button>
-                      </a>
+                      <button
+                        className=" w-75 cartbutton"
+                        id="buybutton"
+                        onClick={handleButtonClick}
+                      >
+                        Buy Now
+                      </button>
                     </div>
-                  
+                  </>
                 )}
 
                 <div className="ms-4 text-center mt-4 mb-4">
@@ -332,14 +279,14 @@ function Coursedetails() {
                       Beginner Level
                     </span>
                   </div>
-                  
+
                   {/* <div className="mt-2">
                     <i className="fa fa-book"></i>
                     <span className="fw-bold ms-2 paratext ">
                       90 students enrolled
                     </span>
                   </div> */}
-                  
+
                   <div className="mt-2">
                     <i className="fa fa-clock-o"></i>
                     <span className="fw-bold ms-2 paratext">
@@ -349,19 +296,20 @@ function Coursedetails() {
                   <div className="mt-2">
                     <i className="fa fa-book"></i>
                     <span className="fw-bold ms-2 paratext">
-                    Requirements: Laptop/mobile & internet connection
+                      Requirements: Laptop/mobile & internet connection
                     </span>
                   </div>
-                  {coursedetails ? 
-                   
-                  <div className="mt-2">
-                    <i className="fa fa-book"></i>
-                    <span className="fw-bold ms-2 paratext ">
-                      {formattedDate} last updated
-                    </span>
-                  </div>
-                  : <div>no data</div>}
-                  
+                  {coursedetails ? (
+                    <div className="mt-2">
+                      <i className="fa fa-book"></i>
+                      <span className="fw-bold ms-2 paratext ">
+                        {formattedDate} last updated
+                      </span>
+                    </div>
+                  ) : (
+                    <div>no data</div>
+                  )}
+
                   <div className="mt-2">
                     <i className="fa fa-certificate"></i>
                     <span className="fw-bold ms-2 paratext">
@@ -521,15 +469,7 @@ function Coursedetails() {
             <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}> Buy Now</button></div>
             <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
           </div> */}
-      {/* <div className=' border rounded'>
-            <div className='ms-4 mt-2 mb-4'>
-              <div><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext'>Beginner Level</span></div>
-              <div className='mt-2'><i className="fa fa-book" ></i><span className='fw-bold ms-2 paratext '>90 students enrolled</span></div>
-              <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2 paratext'>6 hour 34 min duration</span></div>
-              <div className='mt-2'><i className='fa fa-clock-o'></i><span className='fw-bold ms-2'>10 nov,2023 last updated </span></div>
-              <div className='mt-2'><i className='fa fa-certificate'></i><span className='fw-bold ms-2 paratext'>Certificate of completion </span></div>
-            </div>
-          </div> */}
+      
       {/* <div className='border rounded mt-4'>
               <div className='ms-4 mt-2 mb-2'>
                 <h6 className='fw-bold'>A course by</h6>
@@ -559,9 +499,7 @@ function Coursedetails() {
             {productdata.map(redercoursecard)}
           </div>
         </div>
-        {/* <div className="row g-4">
-        {productdata.map(redercoursecard)}
-        </div> */}
+        
       </div>
     </>
   );

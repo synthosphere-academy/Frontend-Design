@@ -33,13 +33,18 @@ Explore an array of captivating blogs on technology, science, arts, and more, of
 </p> */}
     {blogdata ? (
       <div className="container mb-5 py-5 ">
-      <h3 className=' fw-bold text-center '>{blogdata.blogtitle}</h3>
-      <div className="row" key={blogdata._id}>
-      <div className="col-lg-12">
-     
-      <div className='text-center'><img className=" img-fluid mt-2 " src={blogdata.image}/></div>
       
-              <hr className="w-100" />
+      <div className="container py-5 blogcard ">
+      <h3 className=' fw-bold text-center '>{blogdata.blogtitle}</h3>
+      <div className="row mt-3" key={blogdata._id}>
+      <div className='col-lg-6'>
+      <img   className=" img-fluid mt-5" src={blogdata.image}/>
+      </div>
+      <div className="col-lg-6">
+     
+      {/* <div className='text-center'></div>
+      
+              <hr className="w-100" /> */}
              
               <div>
                 <div
@@ -49,6 +54,7 @@ Explore an array of captivating blogs on technology, science, arts, and more, of
               </div>
       </div>
 
+      </div>
       </div>
 
 

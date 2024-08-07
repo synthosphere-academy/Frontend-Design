@@ -76,7 +76,7 @@ else{
                         key:"rzp_test_FEdsKrhgE2fdCF",
                         amount :  res.data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                         currency: "INR",
-                        name: "Srijani banerjee",
+                        name: "Synthosphere academy",
                         description: "Test Transaction",
                         image: pic1,
                         order_id: res.data.order.id, 

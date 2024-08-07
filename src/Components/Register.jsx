@@ -212,23 +212,23 @@ function Register() {
                     <div className='display-5 text-white text-center'>Register Here!</div>
                     <form className='row g-3 py-2'>
                         <div className="col-lg-6">
-                            <label className='form-label text-white' htmlFor="name">Name </label>
+                            <label className='form-label text-white' htmlFor="name">Full Name  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="name" name="fullname" placeholder="Enter Your Name" onChange={e => setName(e.target.value)} />
 
                         </div>
                         <div className="col-lg-6">
-                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Phone Number</label>
+                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Phone Number  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="phoneno" onKeyUp={mobileHandler}
                                 name="phoneno" placeholder="Enter Your Phone Number" onChange={e => setPhoneno(e.target.value)} />
                             {mobilenoerror ? <span className='link-danger'>phone no invalid</span> : ""}
                         </div>
                         <div className='col-lg-3'>
-                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Date of birth </label>
+                            <label className='form-label text-white' htmlFor="exampleInputEmail1">Date of birth  <sup><i className="fa fa-asterisk redstar"></i> </sup> </label>
                             <span className='form-control h-50'><DatePicker value={date} className="" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
 
                         </div>
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">State</label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">State  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <select className="form-select form-control-lg mb-3 h-50 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_state}>
                                 <option value="" label='Enter your State'></option>
                                 {Array.isArray(state) && state.map(state => (
@@ -238,7 +238,7 @@ function Register() {
                         </div>
 
                         <div className='col-lg-5'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">City</label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">City  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <select className="form-select form-control-lg h-50 mb-3 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_city}>
                                 <option value="Choose city" label=' Enter your city'></option>
                                 {Array.isArray(city) && city.map(city => (
@@ -264,7 +264,7 @@ function Register() {
                         }
                         </div> */}
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address</label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="email" className="form-control form-control-lg inputform" id="email" name="email"
                                 onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
                             {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
@@ -272,7 +272,7 @@ function Register() {
 
                         </div>
                         <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Password</label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Password  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="password" name="password"
                                 onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
                             {passwordError && <span className='link-danger'>{passwordError}</span>}
@@ -280,7 +280,7 @@ function Register() {
 
                         </div>
                         <div className='col-lg-4'>
-                            <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password</label>
+                            <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="confirmpassword" name="confirmpassword"
                                 onKeyUp={confirmpasswordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
                             {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}

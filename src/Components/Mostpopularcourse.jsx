@@ -3,12 +3,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import lessonicon from '../Images/lesson.svg'
 
-// import teacherpic from '../Images/teacherpic.jpg'
+import teacherpic from "../Images/academy.png";
 
-
-
-
-//  import pic1 from '../Images/course1.jpg'
 
 function Mostpopularcourse() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
@@ -48,12 +44,12 @@ function Mostpopularcourse() {
             <hr />
             <div className="row">
               
-              {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
-              </div> */}
-              <div className='col-7 mt-2'><span>{productdata.teacher_name}</span>
+              <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
               </div>
+              <div className='col-5 mt-2'><span>{productdata.teacher_name}</span>
+              
 
-              {/* <br/><span>{productdata.teacher_dept}</span></div> */}
+              <br/><span>{productdata.teacher_dept}</span></div>
               <div className='col-5 text-end'><a className='buttonlearnmore' href={`/coursedetails/${productdata._id}`}><button className=" btn-sm learnmore ">Learn More</button></a></div>
             </div>
 

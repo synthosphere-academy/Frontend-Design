@@ -1,8 +1,10 @@
 
 import { useState , useEffect} from 'react';
 import axios from "axios";
-
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 function Home() {
+  const navigate = useNavigate();
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [totalcourse, settotalcourse] = useState([]);
   useEffect(() => {
@@ -14,13 +16,19 @@ function Home() {
         headers: {
           Authorization: `Bearer ${token}`,
         }
- 
       })
       .then((total_course) => {
         settotalcourse(total_course.data);
         console.log(total_course.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>{
+        console.log(err);
+        swal("Session Expired!", "Your session has expired. Please log in again to continue.", "warning");
+        localStorage.removeItem('token');
+        sessionStorage.removeItem('username');
+    sessionStorage.removeItem('userid');
+        navigate('/login');
+      } );
   }, []);
   return (
    <>

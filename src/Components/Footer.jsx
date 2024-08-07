@@ -2,6 +2,8 @@ import '../Css/Footer.css'
 import logo from '../Images/academy.png'
 
 function Footer() {
+    const today = new Date();
+    const todayyear = today.getFullYear()
     return (
         <>
         
@@ -31,8 +33,8 @@ function Footer() {
                         </div>
 
                     </div>
-                    <div className='row'>
-                        <div className='col-lg-12 text-center'><span className='text-white copyright'>Copyright Synthosphere team © 2024. All rights reserved.</span></div>
+                    <div className='row mt-3'>
+                        <div className='col-lg-12 text-center'><span className='text-white copyright'>Copyright © Synthosphere team <span>{todayyear}</span>. Powered by<a className="text-white text-decoration-none" href='https://synthospheretech.com/'> Synthosphere Technologies Private Limited</a></span></div>
                     </div>
                     </div>
                 </div>

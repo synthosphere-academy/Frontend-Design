@@ -18,7 +18,7 @@ function Features() {
                    <div className="row py-5 g-4" >
 
                         <div className="col-lg-3 ">
-                            <div className="card  align-items-center carddesign1">
+                            <div className="card  align-items-center carddesign1 cardshadow">
                                 <div className='feature mt-3' id='feature1'> 
 
                                 <img className="img mt-3 ms-3 " src={icon1} width={50}  alt="100%x280" />
@@ -33,7 +33,7 @@ function Features() {
                         </div>
 
                         <div className="col-lg-3  ">
-                            <div className="card align-items-center carddesign2">
+                            <div className="card align-items-center carddesign2 cardshadow">
                                 <div className=' feature mt-3' id='feature2'> 
                                 <img className="img mt-3 ms-3" src={icon2} width={50} alt="100%x280" />
                                 </div>
@@ -46,7 +46,7 @@ function Features() {
                         </div>
 
                         <div className="col-lg-3 ">
-                            <div className="card align-items-center carddesign3">
+                            <div className="card align-items-center carddesign3 cardshadow">
                                 <div className='feature mt-3' id='feature3'>
                                      <img className="img  mt-3 ms-3" src={icon3} width={50} alt="100%x280" /></div>
 
@@ -57,7 +57,7 @@ function Features() {
                             </div>
                         </div>
                         <div className="col-lg-3 ">
-                            <div className="card align-items-center carddesign4">
+                            <div className="card align-items-center carddesign4 cardshadow">
                                 <div className='feature mt-3' id='feature4'> 
                                 <img className="img  mt-3 ms-3" src={icon4} width={50} alt="100%x280" /></div>
 

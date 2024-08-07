@@ -15,14 +15,14 @@ function Chooseus() {
                 <div className="row py-4">
                     <div className="col-lg-6">
                         <p className='paragraph'> 
-Attracting students with expert mentorship, abundant resources, interactive learning, and a supportive environment, we empower growth and ensure success in the academic journey</p>
+Attracting students with expert mentorship, abundant resources, interactive learning and a supportive environment, we empower growth and ensure success in the academic journey</p>
                         <div className='row py-3'>
                             <div className='col-lg-1'>
                             <i className="fa fa-check-square-o" id='icon1'></i>
                             </div>
                             
                             <div className='col-lg-5'>
-                                <span className='fw-bold point'>60k People joined</span>
+                                <span className='fw-bold point'>60k people joined</span>
                                
                             </div>
                         </div>
@@ -32,7 +32,7 @@ Attracting students with expert mentorship, abundant resources, interactive lear
                             </div>
                             
                             <div className='col-lg-5'>
-                                <span className='fw-bold point'> 50+ online courses</span><br/>
+                                <span className='fw-bold point'> 50+ upcoming courses</span><br/>
                               
                             </div>
                         </div>
@@ -42,7 +42,7 @@ Attracting students with expert mentorship, abundant resources, interactive lear
                             </div>
                             
                             <div className='col-lg-5'>
-                                <span className='fw-bold point'>10+ Brand companies</span><br/>
+                                <span className='fw-bold point'>10+ brand companies</span><br/>
                                
                             </div>
                         </div>
@@ -52,7 +52,7 @@ Attracting students with expert mentorship, abundant resources, interactive lear
                             </div>
                             
                             <div className='col-lg-5'>
-                                <span className='fw-bold point'>5+ Experienced student</span><br/>
+                                <span className='fw-bold point'>5+ experienced teachers</span><br/>
                                
                             </div>
                         </div>
