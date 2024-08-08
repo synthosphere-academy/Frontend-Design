@@ -88,7 +88,7 @@ function Courses() {
               
               <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
               </div>
-              <div className='col-5 mt-2'><span>{coursedata.teacher_name}</span>
+              <div className='col-5 mt-2'><span>{coursedata.teacher_name}</span><br/><span>{coursedata.teacher_dept}</span>
               </div>
 
               {/* <br/><span>{productdata.teacher_dept}</span></div> */}

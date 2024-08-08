@@ -41,18 +41,18 @@ const Courseview = () => {
           <div className="col-12">
             <div className="courseview">
               <div className="row justify-content-center">
-                <div className="col-lg-8 col-12">
-                  <div>
-                    <div className="video-part">
+                <div className="col-lg-8 col-12 col-sm-8">
+                <div className="video-part">
                       {coursedata ? (
                         <div key={coursedata._id}>
-                          <h3 className="mt-3 fw-bold">
+                          <h3 className="mt-3 mb-1 fw-bold">
                             {coursedata.course_name}
                           </h3>
+                          <div className="vimeo-container">
+                          <Vimeo key={videoSource} video={videoSource} className="vimeo-player" controls 
+                                         />
+                                        </div>
                           
-                          <Vimeo key={videoSource} video={videoSource} controls 
-                                        height={360}  width={640} autoplay />
-                                      
                           {/* <ReactPlayer
                                         controls
                                         width="100%"
@@ -63,36 +63,7 @@ const Courseview = () => {
                       ) : (
                         <div>No data</div>
                       )}
-                      {/* {Array.isArray(coursedata) && coursedata.length > 0 ? (
-                        coursedata.map((course) => (
-                          <div key={course._id}>
-                            <h3 className="mt-3">{course.course_name}</h3>
-                            {course.sections.map((section, sectionIndex) => (
-                              <div key={sectionIndex}>
-                                {section.chapters.map(
-                                  (chapter, chapterIndex) => (
-                                    <div key={chapterIndex}>
-                                      <div
-                                        className="vp-video mb-4"
-                                        key={chapter.chapter_id}
-                                      >
-                                        <ReactPlayer
-                                          controls
-                                          width="100%"
-                                          height="450px"
-                                          url={videoSource}
-                                        />
-                                      </div>
-                                    </div>
-                                  )
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        ))
-                      ) : (
-                        <div>No courses available.</div>
-                      )} */}
+                      
                     </div>
                     <div className="content-wrapper">
                       <div className="about_course mt-2">
@@ -143,7 +114,6 @@ const Courseview = () => {
                         </ul>
                       </div> */}
                     </div>
-                  </div>
                 </div>
                 <div className="col-lg-4 col-sm-8 col-12">
                   <div className="videolist-area ms-2 mb-3">

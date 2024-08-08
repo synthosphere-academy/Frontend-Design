@@ -120,8 +120,9 @@ function Coursedetails() {
       {coursedetails ? (
         <div className="container mb-5">
           <div className="row" key={coursedetails._id}>
-            <div className="col-lg-7  mt-5">
-              <h2>{coursedetails.course_name}</h2>
+            <div className="col-lg-7  mt-3">
+              
+              <h3 className=" mb-4 fw-bold">{coursedetails.course_name}</h3>
               {/* <ReactPlayer
                 controls
                 width="100%"
@@ -132,8 +133,9 @@ function Coursedetails() {
                 video={coursedetails.introduction_video}
                 controls
                 autoplay={false}
-                height={360}
-                width={640}
+                height={400}
+                width={740}
+                
               />
 
               <div className="mt-2">

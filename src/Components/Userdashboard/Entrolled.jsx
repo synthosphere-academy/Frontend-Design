@@ -70,7 +70,7 @@ const Entrolled =() => {
               
               <div className='col-lg-2 col-md-1'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
               </div>
-              <div className='col-lg-4 col-md-4 mt-2'><span>{course.teacher_name}</span>
+              <div className='col-lg-4 col-md-4 mt-2'><span>{course.teacher_name}</span> <br/><span>{course.teacher_dept}</span>
               </div>
               <div className='col-lg-6 col-md-7 text-end'><a className='buttonlearnmore' href={`/courseview/${course._id}`}><button className="btn-lg learnmore viewcourse">View Course</button></a></div>
             </div>
