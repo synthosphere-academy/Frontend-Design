@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef} from "react";
 import axios from "axios";
 // import ReactPlayer from "react-player";
 import Vimeo from "@u-wave/react-vimeo";
@@ -12,11 +12,46 @@ const Courseview = () => {
   const [videoSource, setVideoSource] = useState(
     "https://vimeo.com/988855316"
   );
+  ///
+  const [videoLinks , setvideolinks]= useState([])
+  const playerRef = useRef(null);
+  const [completedVideos, setCompletedVideos] = useState([]);
+  const [allVideosCompleted, setAllVideosCompleted] = useState(false);
+///
+const handleVideoCompletion = (videoId) => {
+  setCompletedVideos((prevCompletedVideos) => {
+    const newCompletedVideos = [...new Set([...prevCompletedVideos, videoId])];
+    
+    if (newCompletedVideos.length === videoLinks.length) {
+      setAllVideosCompleted(true);
+      generateCertificate();
+    }
+    
+    return newCompletedVideos;
+  });
+};
+const generateCertificate = () => {
+  console.log('All videos watched. Generating certificate...');
+  // Add your certificate generation logic here
+};
+const handleVideoEnd = () => {
+  alert('Video ended')
+  // handleVideoCompletion(videoSource); // Mark the video as completed when it ends
+};
+ 
+
+
+//video complete event
+
+///////////
+
+
 
   const handleChapterClick = (event, newVideoSource) => {
     event.preventDefault();
     console.log(newVideoSource);
     setVideoSource(newVideoSource);
+
   };
   useEffect(() => {
     const fetchCourses = async () => {
@@ -25,15 +60,27 @@ const Courseview = () => {
           ROOT_URL + `/api/v1/getcoursebyid/${id}`
         );
         setcoursedata(response.data);
+        
         console.log(response.data);
+        const sections = coursedata.sections || [];
+
+        // Safely map over the sections and chapters
+        const videos = sections
+          .map(section => 
+            section.chapters?.map(chapter => chapter.Video_link) || []
+          )
+          .flat();
+        setvideolinks(videos)
+        console.log(videoLinks);
       } catch (err) {
-        setError(err);
+        console.log(err);
       }
     };
 
     fetchCourses();
   }, [id]);
- 
+
+
   return (
     <>
       <div className="container">
@@ -49,8 +96,7 @@ const Courseview = () => {
                             {coursedata.course_name}
                           </h3>
                           <div className="vimeo-container">
-                          <Vimeo key={videoSource} video={videoSource} className="vimeo-player" controls 
-                                         />
+                          <Vimeo key={videoSource} video={videoSource} autoplay className="vimeo-player" onEnd={() => handleVideoEnd()}  loop={false} controls />
                                         </div>
                           
                           {/* <ReactPlayer
