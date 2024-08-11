@@ -6,7 +6,7 @@ import icon from '../Images/Search.svg';
 import lessonicon from '../Images/lesson.svg'
 import teacherpic from '../Images/academy.png'
 // import Preloader from './Preloader';
-import pic1 from '../Images/Music.jpg'
+import pic1 from '../Images/music.jpg'
 import { ROOT_URL } from '../Components/Localhost'
 
 function Courses() {
