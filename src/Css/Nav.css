@@ -107,10 +107,10 @@ border: none;
 
     }
     .buttonstyle{
-        margin-left:35% ;
+        margin-left:20% ;
     }
     .userdrop{
-        margin-left:43%
+        margin-left:20%
     }
 }
 
@@ -120,10 +120,10 @@ border: none;
 
     }
     .buttonstyle{
-        margin-left:35% ;
+        margin-left:20% ;
     }
     .userdrop{
-        margin-left:43%
+        margin-left:30%
     }
 }
 @media (max-width: 900px) {
@@ -132,10 +132,10 @@ border: none;
 
     }
     .buttonstyle{
-        margin-left:28% ;
+        margin-left:8% ;
     }
     .userdrop{
-        margin-left:43%
+        margin-left:30%
     }
 
 }
@@ -144,11 +144,11 @@ border: none;
       margin-left:43% ;
 
     }
-    .buttonstyle{
+    /* .buttonstyle{
         margin-left:29% ;
-    }
+    } */
     .userdrop{
-        margin-left:43%
+        margin-left:23%
     }
 
 }

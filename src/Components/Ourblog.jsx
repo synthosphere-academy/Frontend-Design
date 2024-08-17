@@ -1,5 +1,4 @@
 import '../Css/blog.css';
-import img1 from '../Images/Image.png';
 import Slider from "react-slick";
  import 'slick-carousel/slick/slick.css';
  import 'slick-carousel/slick/slick-theme.css';
@@ -8,10 +7,9 @@ import axios from 'axios';
 
 const Ourblog = () => {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-  // console.log(ROOT_URL);
+
   const [blogdata, setblogdata] = useState([])
   useEffect(() => {
-    // const apiUrl = process.env.REACT_APP_API_URL;
     axios.get(ROOT_URL+'/api/v1/get_blog')
       .then(blogdata => setblogdata(blogdata.data.data))
       
@@ -19,24 +17,7 @@ const Ourblog = () => {
       // console.log(blogdata)
   }, []);
 
-  // const renderblog = (blogdata) => {
-  //   return (
-  //     <div  className="row" key={blogdata._id}>
-  //     <a className = "blogcontent" href='/blog'>
-  //     <div className="card" style={{padding:"0 10px "}}>
-  //       <div className='container mt-3'>
-  //         <img src={blogdata.image} className="card-img-top d-block" alt="noimage" />
-  //         <div className="card-body">
-  //           <h5 className="card-title">{blogdata.blogtitle}</h5>
-  //           <p className="card-text">{blogdata.shortdescription}</p>
-  //         </div>
-  //       </div>
-  //     </div>
-  //     </a>
-  //     </div>
-      
-  //   )
-  // }
+
 
   var settings = {
     dots: true,
@@ -71,7 +52,7 @@ const Ourblog = () => {
      
       <Slider {...settings}>
       {blogdata.map((blog) =>( 
-        <a className='blogcontent' href={`/blog/${blog._id}`} key={blog._id} >
+        <a className='blogcontent' href={`/blog/${blog.slug}`} key={blog._id} >
         <div className="card h-100" >
         <div className='container mt-3 '>
   <img src={blog.image} className="card-img-top d-block cardimage " alt="noimage"/>

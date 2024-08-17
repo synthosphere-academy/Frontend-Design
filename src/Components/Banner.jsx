@@ -3,15 +3,13 @@ import axios from 'axios';
 import '../Css/Banner.css'
 import icon from '../Images/Search.svg';
 import { useState, useEffect } from 'react';
-function Banner() {
-    
+function Banner() { 
     const [query, setQuery] = useState('');
     const [courses, setCourses] = useState([]);
     const handleInputfieldChange = (e) => {
         setQuery(e.target.value);
     };
     const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-
     useEffect(() => {
         const fetchCourses = async () => {
       
@@ -55,7 +53,7 @@ function Banner() {
                             <span className='para'>Discover Synthosphere Academy:  Elevate Your Knowledge. Offering Expert-Led Programs, Innovative Resources and a Vibrant Community, Empowering You to Thrive in the World of Synthesis and Beyond.</span><br /><br />
                             <div className="search mt-5">
                             <img className='searchicon' src={icon} width={20}/>
-                                {/* <i className="fa fa-search mt-1 ms-3"></i> */}
+                               
                                 <input type="text" className="form-control" id='searchinput' 
                                  placeholder="Find a course ?"
                                  value={query}
@@ -79,16 +77,7 @@ function Banner() {
 
 
             </div>
-            {/* <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
-                <defs>
-                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                </defs>
-                <g className="parallax">
-                    <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                    <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-
-                </g>
-            </svg> */}
+         
         </>
     )
 }

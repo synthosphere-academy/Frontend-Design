@@ -15,7 +15,6 @@
     padding-bottom: 14%;
     /* border: 1px solid #565656; */
     border-bottom: 1px solid #cdc6c6;
-
 }
 .chapter:hover{
 
@@ -44,6 +43,29 @@ padding: 0%;
     width: 100%;
     height: 100%;
     border: 0;
-
-
   }
+  .buttoncerificate{
+    border-radius: 10px;
+    font-size:18px;
+    color: white;
+    line-height:1.3333333;
+    padding:10px 16px;
+    margin:11px;
+    background-color: #b43f95;
+    box-shadow: none;
+    border: none;
+  }
+  .buttoncerificate:hover{
+    color: white;
+    background-color: #6d2259;
+    box-shadow: none;
+} 
+.buttoncerificate:active{
+    color: white;
+    background-color: #6d2259;
+    box-shadow: none;
+} 
+.buttoncerificate:disabled {
+      background-color: #c266a9;; 
+    color: white
+}

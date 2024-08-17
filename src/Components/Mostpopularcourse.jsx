@@ -47,9 +47,7 @@ function Mostpopularcourse() {
               <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
               </div>
               <div className='col-5 mt-2'><span>{productdata.teacher_name}</span>
-              
-
-              <br/><span>{productdata.teacher_dept}</span></div>
+              <br/><span className='text-muted'>{productdata.teacher_dept}</span></div>
               <div className='col-5 text-end'><a className='buttonlearnmore' href={`/coursedetails/${productdata._id}`}><button className=" btn-sm learnmore ">Learn More</button></a></div>
             </div>
 
@@ -57,44 +55,7 @@ function Mostpopularcourse() {
         </div>
       </div>
     )}
-      //for static
-      // const rendercourse = (card, index) => {
-      //   return (
-      //     <div className='col' key={index} >
-      // <div className="card h-100">
-      //     <img className="card-img-top cardimage " src={card.image} alt="Sample photo" />
-      //      <div className="card-body">
-      //       <div className='row'>
-      //         <div className='col-6'>
-      //            <img src={lessonicon} width={20} height={20} />
-      //           <span className='ms-2'>{card.video} videos</span>
-      //          </div>
-      //        
-      //       </div>
-      //        <h5 className='mt-3'>{card.course_name}</h5>
-      //       {/* <p>{card.coursedetails}</p> */}
-
-      //       {/* <span className='fw-bold'>{card.course_currentprice}</span>
-      // //   <label className='text-decoration-line-through'>{card.course_price}</label> */}
-      //        <hr />
-      //      <div className="row">
-              
-      //         {/* <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
-      //        </div> */}
-      //         <div className='col-7 mt-2'><span>{card.teacher_name}</span>
-      //          </div>
-
-      //         {/* <br/><span>{productdata.teacher_dept}</span></div> */}
-      //          {/* <div className='col-5 text-end'><a className='buttonlearnmore' href="/coursedetails"><button className=" btn-sm learnmore ">Learn More</button></a></div> */}
-      //       </div>
-
-      //     </div>
-      //   </div>
-      // </div>
-
-      //   )
-      // }
-      //end static
+      
   return (
     <>
       <div className='mostpopular' >

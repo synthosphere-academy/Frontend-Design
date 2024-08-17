@@ -96,10 +96,10 @@ function Coursedetails() {
               </div>
               <div className="col-lg-6 mt-2">
                 <span>{productdata.teacher_name}</span>
-                <br /><span>Teacher</span>
+                <br />
+                <span className="text-muted">{productdata.teacher_dept}</span>
               </div>
 
-              {/* <br/><span>{productdata.teacher_dept}</span></div> */}
               <div className="col-lg-4 text-end">
                 <a
                   className="buttonlearnmore"
@@ -121,7 +121,6 @@ function Coursedetails() {
         <div className="container mb-5">
           <div className="row" key={coursedetails._id}>
             <div className="col-lg-7  mt-3">
-              
               <h3 className=" mb-4 fw-bold">{coursedetails.course_name}</h3>
               {/* <ReactPlayer
                 controls
@@ -135,7 +134,6 @@ function Coursedetails() {
                 autoplay={false}
                 height={400}
                 width={740}
-                
               />
 
               <div className="mt-2">
@@ -194,7 +192,7 @@ function Coursedetails() {
                                 className="accordion-body"
                                 key={chapter.chapter_id}
                               >
-                                <div className="chapter">
+                                <div className="chapter_name">
                                   <div>{chapter.chapter_name}</div>
                                 </div>
                               </div>
@@ -282,13 +280,6 @@ function Coursedetails() {
                     </span>
                   </div>
 
-                  {/* <div className="mt-2">
-                    <i className="fa fa-book"></i>
-                    <span className="fw-bold ms-2 paratext ">
-                      90 students enrolled
-                    </span>
-                  </div> */}
-
                   <div className="mt-2">
                     <i className="fa fa-clock-o"></i>
                     <span className="fw-bold ms-2 paratext">
@@ -323,16 +314,24 @@ function Coursedetails() {
               <div className="border rounded mt-4">
                 <div className="ms-4 mt-2 mb-2">
                   <h6 className="fw-bold">A course by</h6>
-                  <div>
-                    <img
-                      className="rounded-circle"
-                      width={45}
-                      height={45}
-                      src={teacherpic}
-                    />
-                    <span className="fw-bold ms-2 paratext">
-                      {coursedetails.teacher_name}
-                    </span>
+                  <div className="row">
+                    <div className="col-lg-2">
+                      <img
+                        className="rounded-circle"
+                        width={45}
+                        height={45}
+                        src={teacherpic}
+                      />
+                    </div>
+                    <div className="col-lg-10">
+                      <span className="fw-bold paratext ">
+                        {coursedetails.teacher_name}
+                      </span>
+                      <br />
+                      <span className="paratext text-muted">
+                        ({coursedetails.teacher_dept})
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -358,94 +357,7 @@ function Coursedetails() {
         <p>No courses available</p>
       )}
 
-      {/* course Content---------*/}
-      {/* <div>
-              <h4 className='fw-bold'>Course Content</h4>
-              <div className="accordion" id="accordionExample">
-                
-                <div className="accordion-item accordionitem">
-                  <h2 className="accordion-header">
-                    <button className="accordion-button collapsed accordionitem fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-
-                      <div>Content 1</div>
-
-
-                    </button>
-                  </h2>
-                  <div id="collapseOne" className="accordion-collapse collapse " data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                      <div className='row'>
-                        <div className='col mt-2'>
-                          <i className="fa fa-play-circle iconplay ms-2"></i>
-                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
-                        </div>
-                        <div className='col text-end mt-2 me-2'>10:05</div>
-                      </div>
-                      <div className='row mt'>
-                        <div className='col'>
-                          <i className="fa fa-play-circle iconplay ms-2"></i>
-                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
-                        </div>
-                        <div className='col text-end mt-2 me-2'>15:05</div>
-                      </div>
-
-
-                    </div>
-                  </div>
-                </div>
-                <div className="accordion-item">
-                  <h2 className="accordion-header">
-                    <button className="accordion-button collapsed accordionitem fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Content 2
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                      <div className='row'>
-                        <div className='col mt-2'>
-                          <i className="fa fa-play-circle iconplay ms-2"></i>
-                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
-                        </div>
-                        <div className='col text-end  mt-2 me-2'>10:05</div>
-                      </div>
-                      <div className='row mt'>
-                        <div className='col'>
-                          <i className="fa fa-play-circle iconplay ms-2"></i>
-                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
-                        </div>
-                        <div className='col text-end me-2 '>15:05</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="accordion-item">
-                  <h2 className="accordion-header">
-                    <button className="accordion-button collapsed accordionitem fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Content 3
-                    </button>
-                  </h2>
-                  <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                      <div className='row'>
-                        <div className='col mt-2'>
-                          <i className="fa fa-play-circle iconplay ms-2"></i>
-                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
-                        </div>
-                        <div className='col text-end mt-2 me-2'>10:05</div>
-                      </div>
-                      <div className='row mt'>
-                        <div className='col'>
-                          <i className="fa fa-play-circle iconplay ms-2"></i>
-                          <span className='ms-3'><a href='https://youtu.be/G1nWnu89d7M?si=vzZKGCvNYU7uuu4t'>Introduction</a></span>
-                        </div>
-                        <div className='col text-end me-2'>15:05</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div> */}
+      
       {/* end course Content---------*/}
       {/* <div className='mt-4'>
               ---------------teacher description------------
@@ -462,38 +374,9 @@ function Coursedetails() {
             </div> */}
       {/* </div> */}
 
-      {/* <div className="col-lg-4  mt-5">
-          <div className="border" id='cartpart'>
-            <div className="ms-4 mt-4">
-              <span className="fw-bold h2 ">₹899</span><span className="text-decoration-line-through ms-2">₹999</span>
-            </div>
-            <div className=" text-center mt-4"><button className="  w-75" id='cartbutton' onClick={() => dispatch(addItem({ price: "200" }))} >Add to cart</button></div>
-            <div className=" text-center mt-4"><button className="btn w-75" id="buybutton" onClick={entroll_handler}> Buy Now</button></div>
-            <div className="ms-4 text-center mt-4 mb-4">30-Day Money-Back Guarantee</div>
-          </div> */}
-      
-      {/* <div className='border rounded mt-4'>
-              <div className='ms-4 mt-2 mb-2'>
-                <h6 className='fw-bold'>A course by</h6>
-                <div className="row">
-                  <div className='col-3'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
-                  </div>
-                  <div className='col-6'><span>Dipan Das</span>
-                    <br /><span>Teacher</span></div>
+     
 
-                </div>
-                <div className="row mt-2">
-                  <div className='col-3'><img className="rounded-circle" width={40} height={40} src={teacherpic} />
-                  </div>
-                  <div className='col-6'><span>Dipan Das</span>
-                    <br /><span>Teacher</span></div>
-
-                </div>
-
-              </div>
-            </div> */}
-
-      {/* related course */}
+     
       <div>
         <div className="container  mb-3">
           <h4 className="fw-bold mb-4">Related Courses</h4>
@@ -501,7 +384,6 @@ function Coursedetails() {
             {productdata.map(redercoursecard)}
           </div>
         </div>
-        
       </div>
     </>
   );

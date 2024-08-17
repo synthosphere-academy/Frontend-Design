@@ -19,6 +19,7 @@ import Invoice from './Components/Invoice'
 import { Userlayout } from './Components/Userlayout';
 import Offlineregister from './Components/Offlineregister';
 import Checkout from './Components/Checkout';
+import { Allblog } from './Components/Allblog';
 //  import Admin from './Components/admin/layout/DefaultLayout'
 import PaymentSucess from './Components/PaymentSucess'
  
@@ -41,7 +42,7 @@ function App() {
         <Route path="/login" element={<Userlayout><Login /></Userlayout>} />
         <Route path="/register" element={<Userlayout><Register /></Userlayout>} />
         <Route path="/contact" element={<Userlayout><Contact /></Userlayout>} />
-        <Route path="/blog/:id" element={<Userlayout><Blog/></Userlayout>} />
+        <Route path="/blog/:slug" element={<Userlayout><Blog/></Userlayout>} />
         <Route path='/forgotpassword' element={<Userlayout><Forgotpage/></Userlayout>}/>
         <Route path='/course' element={<Userlayout><Courses/></Userlayout>}/>
         <Route path='/addtocart' element={<Userlayout><Addtocart/></Userlayout>}/>
@@ -57,6 +58,8 @@ function App() {
         {/* <Route path='/checkout' element={<Userlayout><Checkout/></Userlayout>}/> */}
         <Route path='/checkout/:id' element={<Userlayout><Checkout/></Userlayout>}/>
         <Route path='/paymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
+        <Route path='/allblogs' element={<Userlayout><Allblog/></Userlayout>}/>
+
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
        
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>

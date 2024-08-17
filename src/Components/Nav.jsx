@@ -49,7 +49,7 @@ const Nav = () => {
                 </ul> */}
               {/* </li> */}
               <li className="nav-item pe-2">
-                <a className="nav-link text-white" href="#articlesection">
+                <a className="nav-link text-white" href="/allblogs">
                   Article
                 </a>
               </li>

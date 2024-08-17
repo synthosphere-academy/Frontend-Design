@@ -74,7 +74,7 @@ function Contact() {
           <div className='container mt-3'>
          
             <div className='row '>
-              <div className='col-lg-8 background text-start'>
+              <div className='col-lg-8 background_contact text-start'>
               </div>
               <div className='col-lg-4 contact_form ' style={{ backgroundColor: "rgba(14, 18, 85, 1)" }} >
               <div className='container contactcontainer'>

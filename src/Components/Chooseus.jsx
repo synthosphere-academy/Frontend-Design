@@ -11,7 +11,7 @@ function Chooseus() {
                     </h1>
                 
                    <h1 className="display-4 chooseheading">
-                  for Gain Their Knowledge</h1>
+                  For Gain Their Knowledge</h1>
                 <div className="row py-4">
                     <div className="col-lg-6">
                         <p className='paragraph'> 

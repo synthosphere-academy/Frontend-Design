@@ -3,22 +3,27 @@
     src: url('../fontstyle/SFPRODISPLAYREGULAR.OTF');
 }
 
+.chapter_name{
+    height: 48px;
+    font-size: 18px;
+    
+    padding: 2%;
+    padding-bottom: 5%;
+    /* border: 1px solid #565656; */
+    border-bottom: 1px solid #cdc6c6;
+}
+.chapter:hover{
 
+    background-color: rgb(189, 194, 198);
+
+}
 .paratext{
     font-family: coursestyle;
 }
 .iconplay{
     font-size: 18px;
 }
-/* #buybutton{
-    color: #b43f95;
-    border-color: #b43f95;
-    border-radius: 10px;
-    font-size:18px;
-    line-height:1.3333333;
-    padding:10px 16px;
-    margin:5px;
-} */
+
 .cartbutton{
     border-radius: 10px;
     font-size:18px;
@@ -64,8 +69,4 @@
           border: none;
       }
 
-      /* @media screen and (max-width: 640px) {
-        .couponinput {
-          background-color: lightgreen;
-        }
-      } */
+   
