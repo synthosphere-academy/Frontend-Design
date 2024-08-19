@@ -1,10 +1,12 @@
-import pic from "../Images/courseimage.png";
-import "../Css/Course.css";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import icon from "../Images/Search.svg";
-import lessonicon from "../Images/lesson.svg";
-import teacherpic from "../Images/academy.png";
+
+
+import pic from '../Images/courseimage.png'
+import '../Css/Course.css'
+import { useState, useEffect } from 'react';
+ import axios from 'axios';
+import icon from '../Images/Search.svg';
+import lessonicon from '../Images/lesson.svg'
+import teacherpic from '../Images/academy.png'
 
 function Courses() {
   const [query, setQuery] = useState("");
@@ -170,3 +172,4 @@ function Courses() {
   );
 }
 export default Courses;
+
