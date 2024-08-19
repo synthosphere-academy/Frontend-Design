@@ -90,15 +90,13 @@ else{
                               // Pass the user ID for backend processing
                             }).then(() => {
                              console.log(response);
-                             navigate('/paymentSucess');
                             //  window.location.reload();
                             }).catch(() => {
                               swal('Payment verification failed.');
+                              navigate(`/checkout/${id}`);
                             });
                           },
-                        // callback_url: Auth_URL+'/paymentverification',
-           
-               
+                        
                         prefill: {
                             name: fullname,
                             email: email,
