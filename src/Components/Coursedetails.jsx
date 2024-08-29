@@ -122,19 +122,16 @@ function Coursedetails() {
           <div className="row" key={coursedetails._id}>
             <div className="col-lg-7  mt-3">
               <h3 className=" mb-4 fw-bold">{coursedetails.course_name}</h3>
-              {/* <ReactPlayer
-                controls
-                width="100%"
-                height="450px"
-                url={coursedetails.introduction_video}
-              /> */}
+              
+              <div className="vimeo-container">
               <Vimeo
                 video={coursedetails.introduction_video}
                 controls
                 autoplay={false}
-                height={400}
-                width={740}
+                
               />
+              </div>
+              
 
               <div className="mt-2">
                 <h4 className="fw-bold">Course Description</h4>

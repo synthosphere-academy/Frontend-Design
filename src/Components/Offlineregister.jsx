@@ -4,7 +4,6 @@ import '../Css/Register.css'
 import axios from 'axios';
 import swal from 'sweetalert';
 import DatePicker from 'react-date-picker';
-import { Auth_URL } from './Localhost';
 import pic1 from '../Images/icon1.png';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
@@ -212,13 +211,13 @@ const Offlineregister = () => {
                         key:"rzp_test_FEdsKrhgE2fdCF",
                         amount: res.data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                         currency: "INR",
-                        name: "Srijani banerjee",
+                        name: "Synthosphere Academy",
                         description: "Test Transaction",
                         image: pic1,
                         order_id: res.data.order.id, 
                         handler: function (response) {
                             // Call your backend to verify the payment and store data
-                            axios.post(Auth_URL+'/paymentverification', {
+                            axios.post(ROOT_URL+'api/auth/paymentverification', {
                               razorpay_order_id: response.razorpay_order_id,
                               razorpay_payment_id: response.razorpay_payment_id,
                               razorpay_signature: response.razorpay_signature,
@@ -245,7 +244,7 @@ const Offlineregister = () => {
                               swal('Payment verification failed.');
                             });
                           },
-                        // callback_url: Auth_URL+'/paymentverification',
+                       
            
                
                         prefill: {

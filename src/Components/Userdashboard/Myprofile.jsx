@@ -1,6 +1,6 @@
 import { useState , useEffect} from 'react';
 import axios from "axios";
-import { Auth_URL } from "../Localhost";
+
 
 function Myprofile() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
