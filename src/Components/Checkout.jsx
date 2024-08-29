@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from "react";
 import { useNavigate , useParams} from 'react-router-dom';
 import axios from 'axios';
-import { Auth_URL } from './Localhost';
+
 import pic1 from '../Images/icon1.png';
 import "../Css/checkout.css";
 const Checkout = () => {
@@ -66,7 +66,7 @@ else if (emailerror != "" || mobilenoerror != "") {
     swal("Opps!", "Please give valid inputs!", "error");
 }
 else{
-  await axios.post(Auth_URL+'/checkout',{fullname,phoneno,email,state,city,amount,id,userId})
+  await axios.post(ROOT_URL+'/api/auth/checkout',{fullname,phoneno,email,state,city,amount,id,userId})
                 .then(res => {
                     console.log(res);
                     //console.log(res.data.order.amount);
