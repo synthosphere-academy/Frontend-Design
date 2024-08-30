@@ -86,7 +86,7 @@ function Coursedetails() {
         <label className='text-decoration-line-through'>{card.course_price}</label> */}
             <hr />
             <div className="row">
-              <div className="col-lg-2">
+              <div className="col-2">
                 <img
                   className="rounded-circle"
                   width={40}
@@ -94,20 +94,16 @@ function Coursedetails() {
                   src={teacherpic}
                 />
               </div>
-              <div className="col-lg-6 mt-2">
+              <div className="col-10 mt-2">
                 <span>{productdata.teacher_name}</span>
                 <br />
                 <span className="text-muted">{productdata.teacher_dept}</span>
               </div>
 
-              <div className="col-lg-4 text-end">
-                <a
-                  className="buttonlearnmore"
-                  href={`/coursedetails/${productdata._id}`}
-                >
-                  <button className=" btn-sm learnmore ">Learn More</button>
-                </a>
-              </div>
+              
+            </div>
+            <div className='row mt-3'> 
+              <div className='col-12 text-center'><a className='buttonlearnmore' href={`/coursedetails/${productdata._id}`}><button className="learnmore w-75 ">Learn More</button></a></div>
             </div>
           </div>
         </div>

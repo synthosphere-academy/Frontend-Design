@@ -54,4 +54,50 @@
     font-family: myfont;
     cursor: pointer;
 }
+.taganimation{
+     
+        position: relative;
+        /* Adjust the size to your preference */
+        color: #fff; /* Base text color */
+        background: linear-gradient(0deg, #ca52aa 0%, #831967 100%);
+        display: inline-block;
+        overflow: hidden;
+        padding: 2px 10px;
+        border-radius: 5px;
+      }
+      
+      .taganimation:before {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: rotate(45deg);
+        opacity: 0;
+        animation: shiny-text 3s ease-in-out infinite;
+      }
+      
+      @keyframes shiny-text {
+        0% {
+          transform: translate(-100%, -100%) rotate(45deg);
+          opacity: 0;
+        }
+        50% {
+          transform: translate(100%, 100%) rotate(45deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(300%, 300%) rotate(45deg);
+          opacity: 0;
+        }
+      }
+        
+      
+  
+    
+      
+
+      
 

@@ -46,9 +46,11 @@ function Mostpopularcourse() {
               
               <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
               </div>
-              <div className='col-5 mt-2'><span>{productdata.teacher_name}</span>
+              <div className='col-10 mt-2'><span>{productdata.teacher_name}</span>
               <br/><span className='text-muted'>{productdata.teacher_dept}</span></div>
-              <div className='col-5 text-end'><a className='buttonlearnmore' href={`/coursedetails/${productdata._id}`}><button className=" btn-sm learnmore ">Learn More</button></a></div>
+              </div>
+            <div className='row mt-3'> 
+              <div className='col-12 text-center'><a className='buttonlearnmore' href={`/coursedetails/${productdata._id}`}><button className=" btn-sm learnmore ">Learn More</button></a></div>
             </div>
 
           </div>
