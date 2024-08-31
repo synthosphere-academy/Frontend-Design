@@ -56,23 +56,21 @@ function Courses() {
   const redercoursecard = (coursedata) => {
     return (
       <div className="col" key={coursedata._id}>
-        <div className="card h-100">
+        <div className="card h-100 d-flex flex-column">
           <img
             className="card-img-top cardimage "
             src={coursedata.image}
             alt="Sample photo"
           />
-          <div className="card-body">
+          <div className="card-body flex-grow-1">
             <div className="row">
-              <div className="col-4">
+              <div className="col-6">
                 <img src={lessonicon} width={20} height={20} />
                 <span className="ms-2">{coursedata.total_video} videos</span>
               </div> 
-              <div className="col-5">
-                <span className="taganimation">Coming soon</span>
-              </div>
+             
 
-              <div className="col-3 text-end">
+              <div className="col-6 text-end">
                 <span className=" h5">{coursedata.course_price}/-</span>
               </div>
             </div>
@@ -94,19 +92,12 @@ function Courses() {
                 <span className="text-muted">{coursedata.teacher_dept}</span>
                 
               </div>
-              {/* <div className="col-5 text-end">
-                <a
-                  className="buttonlearnmore"
-                  href={`/coursedetails/${coursedata._id}`}
-                >
-                  <button className=" btn-sm learnmore ">Learn More</button>
-                </a>
-              </div> */}
+              </div>
             </div>
-            <div className='row mt-3'> 
+            <div className=' card-footer row mt-3'> 
               <div className='col-12 text-center'><a className='buttonlearnmore' href={`/coursedetails/${coursedata._id}`}><button className="learnmore w-75 ">Learn More</button></a></div>
             </div>
-          </div>
+          
         </div>
       </div>
     );
