@@ -63,54 +63,54 @@ function Coursedetails() {
   };
   const hasPurchased = viewcourse && viewcourse.some((view) => view.id === id);
 
-  const redercoursecard = (productdata) => {
-    return (
-      <div className="col" key={productdata.objectid}>
-        <div className="card h-100">
-          <img
-            className="card-img-top cardimage "
-            src={productdata.image}
-            alt="Sample photo"
-          />
-          <div className="card-body">
-            <div className="row">
-              <div className="col-6">
-                <img src={lessonicon} width={20} height={20} />
-                <span className="ms-2">{productdata.total_video} videos</span>
-              </div>
-            </div>
-            <h5 className="mt-3">{productdata.course_name}</h5>
-            {/* <p>{card.coursedetails}</p> */}
+  // const redercoursecard = (productdata) => {
+  //   return (
+  //     <div className="col" key={productdata.objectid}>
+  //       <div className="card h-100">
+  //         <img
+  //           className="card-img-top cardimage "
+  //           src={productdata.image}
+  //           alt="Sample photo"
+  //         />
+  //         <div className="card-body">
+  //           <div className="row">
+  //             <div className="col-6">
+  //               <img src={lessonicon} width={20} height={20} />
+  //               <span className="ms-2">{productdata.total_video} videos</span>
+  //             </div>
+  //           </div>
+  //           <h5 className="mt-3">{productdata.course_name}</h5>
+  //           {/* <p>{card.coursedetails}</p> */}
 
-            {/* <span className='fw-bold'>{card.course_currentprice}</span>
-        <label className='text-decoration-line-through'>{card.course_price}</label> */}
-            <hr />
-            <div className="row">
-              <div className="col-2">
-                <img
-                  className="rounded-circle"
-                  width={40}
-                  height={40}
-                  src={teacherpic}
-                />
-              </div>
-              <div className="col-10 mt-2">
-                <span>{productdata.teacher_name}</span>
-                <br />
-                <span className="text-muted">{productdata.teacher_dept}</span>
-              </div>
+  //           {/* <span className='fw-bold'>{card.course_currentprice}</span>
+  //       <label className='text-decoration-line-through'>{card.course_price}</label> */}
+  //           <hr />
+  //           <div className="row">
+  //             <div className="col-2">
+  //               <img
+  //                 className="rounded-circle"
+  //                 width={40}
+  //                 height={40}
+  //                 src={teacherpic}
+  //               />
+  //             </div>
+  //             <div className="col-10 mt-2">
+  //               <span>{productdata.teacher_name}</span>
+  //               <br />
+  //               <span className="text-muted">{productdata.teacher_dept}</span>
+  //             </div>
 
               
-            </div>
-            <div className='row mt-3'> 
-              <div className='col-12 text-center'><a className='buttonlearnmore' href={`/coursedetails/${productdata._id}`}><button className="learnmore w-75 ">Learn More</button></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-  const formattedDate = new Date(coursedetails.createdAt).toLocaleDateString();
+  //           </div>
+  //           <div className='row mt-3'> 
+  //             <div className='col-12 text-center'><a className='buttonlearnmore' href={`/coursedetails/${productdata._id}`}><button className="learnmore w-75 ">Learn More</button></a></div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // };
+  // const formattedDate = new Date(coursedetails.createdAt).toLocaleDateString();
   return (
     <>
       {coursedetails ? (
@@ -182,7 +182,7 @@ function Coursedetails() {
                           {section.chapters && section.chapters.length > 0 ? (
                             section.chapters.map((chapter) => (
                               <div
-                                className="accordion-body"
+                                className="accordion-body chapters_container"
                                 key={chapter.chapter_id}
                               >
                                 <div className="chapter_name">
@@ -248,7 +248,7 @@ function Coursedetails() {
                   </>
                 ) : (
                   <>
-                    <div className=" text-center mt-4">
+                    <div className=" text-center mt-4 mb-4">
                       <button
                         className=" w-75 cartbutton"
                         id="buybutton"
@@ -260,9 +260,9 @@ function Coursedetails() {
                   </>
                 )}
 
-                <div className="ms-4 text-center mt-4 mb-4">
+                {/* <div className="ms-4 text-center mt-4 mb-4">
                   30-Day Money-Back Guarantee
-                </div>
+                </div> */}
               </div>
               <div className=" border rounded">
                 <div className="ms-4 mt-2 mb-4">
@@ -282,10 +282,10 @@ function Coursedetails() {
                   <div className="mt-2">
                     <i className="fa fa-book"></i>
                     <span className="fw-bold ms-2 paratext">
-                      Requirements: Laptop/mobile & internet connection
+                      Requirements: Computer/mobile & internet connection
                     </span>
                   </div>
-                  {coursedetails ? (
+                  {/* {coursedetails ? (
                     <div className="mt-2">
                       <i className="fa fa-book"></i>
                       <span className="fw-bold ms-2 paratext ">
@@ -294,7 +294,7 @@ function Coursedetails() {
                     </div>
                   ) : (
                     <div>no data</div>
-                  )}
+                  )} */}
 
                   <div className="mt-2">
                     <i className="fa fa-certificate"></i>
