@@ -51,7 +51,7 @@ const Entrolled =() => {
       enrollcourse.map((course) => (
     <div className='col'key={course._id} >
         <div className="card h-100">
-          <img className=" image-fuild card-img-top cardimage " src={course.image} alt="Sample photo" />
+          <img className="image-fuild card-img-top cardimage " src={course.image} alt="Sample photo" />
           <div className="card-body">
             <div className='row'>
               <div className='col-6'>
@@ -68,17 +68,21 @@ const Entrolled =() => {
               
               <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
               </div>
-              <div className='col-5 mt-2'><span>{course.teacher_name}</span> <br/><span className="text-muted">{course.teacher_dept}</span>
+              <div className='col-10 mt-2'><span>{course.teacher_name}</span> <br/><span className="text-muted">{course.teacher_dept}</span>
               </div>
-              <div className='col-5 text-end'><a className='buttonlearnmore' href={`/courseview/${course._id}`}><button className="btn-lg learnmore viewcourse">View Course</button></a></div>
+              {/* <div className='col-5 text-end'><a className='buttonlearnmore' href={`/courseview/${course._id}`}><button className="btn-lg learnmore viewcourse">View Course</button></a></div> */}
             </div>
-
-          </div>
+            </div>
+            <div className=" card-footer row mt-3">
+              <div className="col-12 text-center">
+              <a className='buttonlearnmore' href={`/courseview/${course._id}`}><button className=" learnmore w-75">View Course</button></a>
+              </div>
+            </div>  
         </div>
       </div>
       
       ))
-      ) :(<div></div>)}
+      ) :(<div>No courses available</div>)}
       </div>
       </div>
       </div>

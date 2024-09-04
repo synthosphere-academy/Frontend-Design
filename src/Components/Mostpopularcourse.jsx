@@ -62,7 +62,7 @@ function Mostpopularcourse() {
                   className="buttonlearnmore"
                   href={`/coursedetails/${productdata._id}`}
                 >
-                  <button className=" learnmore w-75 ">Learn More</button>
+                  <button className=" learnmore w-75 ">Buy Now</button>
                 </a>
               </div>
             </div>

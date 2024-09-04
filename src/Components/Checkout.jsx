@@ -90,6 +90,7 @@ else{
                               // Pass the user ID for backend processing
                             }).then(() => {
                              console.log(response);
+                             navigate("/paymentSucess");
                             //  window.location.reload();
                             }).catch(() => {
                               swal('Payment verification failed.');

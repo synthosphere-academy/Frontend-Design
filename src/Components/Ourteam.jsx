@@ -1,9 +1,10 @@
 import '../Css/Ourteam.css'
 import face1 from '../Images/sourav.jpg';
-import face2 from '../Images/dishapic.jpg';
+import face2 from '../Images/dipan.jpg';
 
 function Ourteam() {
     const ourteamInfo = [
+       
         {
             image:[face1],
             team_member:"Sourav Basak ",
@@ -22,10 +23,22 @@ function Ourteam() {
     ];
      const renderteam=(card,index)=>{
         return(
-            <article className='grid-body text-center teamcard' key={index}>
-                <img className="rounded-circle shadow-1-strong mb-4"
+            <div className="col-lg-6 text-center">
+            <img className="rounded-circle shadow-1-strong mb-4"
+              src={card.image}alt="avatar"
+             style={{width:"130px"}} />
+            <h5 className="mb-3">{card.team_member}</h5>
+            <p> {card.team_member_role}</p>
+            <p className="text-muted">
+            <i className="fa fa-quote-left pe-2"></i>
+              {card.team_member_description}
+            </p>
+            </div>
+        )}
+            {/* <article className=' text-center' key={index}>
+                <img className=" img-fluid rounded-circle shadow-1-strong mb-4"
                             src={card.image} alt="avatar"
-                            style={{ width: "44%" }} />
+                            />
                              <h5 className="mb-3 teamname">{card.team_member}</h5>
                         <p className='teamrole'>
                             {card.team_member_role}
@@ -34,17 +47,18 @@ function Ourteam() {
                             <i className="fa fa-quote-left pe-2"></i>
                             {card.team_member_description}
                         </p>
-                </article>  
-        )
-     }
+                </article>  */}
+                 
+        
+     
     return (
         <div style={{backgroundColor:"rgba(244, 238, 238, 0.975)"}}>
             <div className="container py-5">
                 <h4 className='display-4 text-center mt-5 teamheading'>Our team is the best for the academy</h4>
-                <main className="grid team mt-3">
+                <div className="row mt-3" >
                  {ourteamInfo.map(renderteam)}
    
-                </main>
+                </div>
 
             </div>
         </div>
