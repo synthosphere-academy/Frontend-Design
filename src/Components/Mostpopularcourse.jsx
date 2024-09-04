@@ -97,13 +97,29 @@ function Mostpopularcourse() {
                         <span className="ms-2">10 videos</span>
                       </div>
                       <div className="col-6 text-end">
-                        <span className=" h5">999/-</span>
+                        {/* <span className=" h5">999/-</span> */}
                       </div>
                     </div>
-                    <h3 className="mt-5 text-center">The karate course</h3>
+                    <h3 className="mt-5">The karate course</h3>
+                    <hr />
+            <div className="row">
+              <div className="col-2">
+                <img
+                  className="rounded-circle"
+                  width={40}
+                  height={40}
+                  src={teacherpic}
+                />
+              </div>
+              <div className="col-10 mt-2">
+                <span>Agnideb Sen</span>
+                <br />
+                <span className="text-muted">Karate coach</span>
+              </div>
+            </div>
                     </div>
                     <div className="card-footer row">
-                      <div className="col-12 text-center">
+                      <div className="col-12 text-center blink">
                         <a>
                           <button
                             type="button"
@@ -130,13 +146,29 @@ function Mostpopularcourse() {
                         <span className="ms-2">10 videos</span>
                       </div>
                       <div className="col-6 text-end">
-                        <span className=" h5">999/-</span>
+                        {/* <span className=" h5">999/-</span> */}
                       </div>
                     </div>
-                    <h3 className="mt-5 text-center">Music production course</h3>
+                    <h3 className="mt-5 ">Music production course</h3>
+                    <hr />
+            <div className="row">
+              <div className="col-2">
+                <img
+                  className="rounded-circle"
+                  width={40}
+                  height={40}
+                  src={teacherpic}
+                />
+              </div>
+              <div className="col-10 mt-2">
+                <span>Kushal Saha</span>
+                <br />
+                <span className="text-muted">Music teacher</span>
+              </div>
+            </div>
                     </div>
                     <div className="card-footer row">
-                      <div className="col-12 text-center">
+                    <div className="col-12 text-center blink">
                         <a>
                           <button
                             type="button"
@@ -145,8 +177,8 @@ function Mostpopularcourse() {
                           </button>
                         </a>
                       </div>
+                      
                     </div>
-                
                 </div>
                 </div>
                 <div>
@@ -163,13 +195,29 @@ function Mostpopularcourse() {
                         <span className="ms-2">10 videos</span>
                       </div>
                       <div className="col-6 text-end">
-                        <span className=" h5">999/-</span>
+                        {/* <span className=" h5">999/-</span> */}
                       </div>
                     </div>
-                    <h3 className="mt-5 text-center">The music course</h3>
+                    <h3 className="mt-5">The music course</h3>
+                    <hr />
+            <div className="row">
+              <div className="col-2">
+                <img
+                  className="rounded-circle"
+                  width={40}
+                  height={40}
+                  src={teacherpic}
+                />
+              </div>
+              <div className="col-10 mt-2">
+                <span>Kushal Saha</span>
+                <br />
+                <span className="text-muted">Music teacher</span>
+              </div>
+            </div>
                     </div>
                     <div className="card-footer row">
-                      <div className="col-12 text-center">
+                    <div className="col-12 text-center blink">
                         <a>
                           <button
                             type="button"

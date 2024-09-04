@@ -95,7 +95,7 @@ font-family: courseheading ;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.6); /* White overlay with opacity */
+    /* background: rgba(255, 255, 255, 0.6); White overlay with opacity */
     z-index: 1;
   }
   
@@ -110,8 +110,8 @@ font-family: courseheading ;
     position: relative;
     z-index: 3;
     /* background-color: #b43f95; */
-    background-color: #1fd1f9;
-    background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+    background-color: #b75b9e;
+    /* background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%); */
     /* background: rgb(96,9,240);
   background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
     font-size:18px; */
