@@ -210,7 +210,7 @@ function Mostpopularcourse() {
                 />
               </div>
               <div className="col-10 mt-2">
-                <span>Kushal Saha</span>
+                <span>Maddhurjo Mukherjee</span>
                 <br />
                 <span className="text-muted">Music teacher</span>
               </div>
