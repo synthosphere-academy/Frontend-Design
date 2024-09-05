@@ -90,7 +90,8 @@ else{
                               // Pass the user ID for backend processing
                             }).then(() => {
                              console.log(response);
-                             navigate("/paymentSucess");
+                
+    
                             //  window.location.reload();
                             }).catch(() => {
                               swal('Payment verification failed.');
@@ -113,6 +114,7 @@ else{
                     };
                     const razor = new window.Razorpay(options);
                     razor.open();
+                    navigate("/paymentSucess");
                     
                     // swal("Thank You!", "Registration completed sucessfully!", "success");
                     //  window.location.reload();
