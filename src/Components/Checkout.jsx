@@ -90,8 +90,8 @@ else{
                               // Pass the user ID for backend processing
                             }).then(() => {
                              console.log(response);
+                             navigate("/paymentSucess");
                 
-    
                             //  window.location.reload();
                             }).catch(() => {
                               swal('Payment verification failed.');
@@ -110,11 +110,18 @@ else{
                         },
                         theme: {
                             color: "#3399cc"
+                        },
+                        modal: {
+                          ondismiss: function() {
+                            swal("Payment window closed", "You can try again.", "info");
+                            console.log("Payment modal closed by user");
+                            navigate(`/checkout/${id}`); // Navigate back to checkout if the user closes the modal
+                          }
                         }
                     };
                     const razor = new window.Razorpay(options);
                     razor.open();
-                    navigate("/paymentSucess");
+                   
                     
                     // swal("Thank You!", "Registration completed sucessfully!", "success");
                     //  window.location.reload();

@@ -11,7 +11,7 @@ const Courseview = () => {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   // const [data, setData] = useState(null);
   const [coursedata, setcoursedata] = useState([]);
-  const [videoSource, setVideoSource] = useState("988855316");
+  const [videoSource, setVideoSource] = useState(null);
   const [completedChapters, setCompletedChapters] = useState([]);
   const [currentChapterId, setCurrentChapterId] = useState(null);
   const [allChapters, setAllChapters] = useState([]);
@@ -39,6 +39,12 @@ const Courseview = () => {
           const allChaptersList = response.data.sections.flatMap(section => section.chapters.map(chapter => chapter.chapter_id));
           setAllChapters(allChaptersList);
         }
+
+        const firstChapter = response.data.sections[0]?.chapters[0];
+          if (firstChapter) {
+            setVideoSource(String(firstChapter.Video_link)); // Set the first video
+            setCurrentChapterId(firstChapter.chapter_id); // Set the current chapter ID
+          }
         if(response.data) {
           const course_name = response.data.course_name;
           const teacher_name = response.data.teacher_name;
