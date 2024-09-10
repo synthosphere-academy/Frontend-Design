@@ -29,12 +29,13 @@
     padding-top: 0.50in;
     font-family: namefont;
     font-size: 95px;
+    color: #003470;
    
 } 
 .date{
     margin-left: 18%;
     margin-top: 2px;
-   
+    color: #003470;
     font-size: 29px;
     font-family: courrsenamefont;
 }

@@ -20,7 +20,7 @@ const Ourblog = () => {
 
 
   var settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -54,10 +54,10 @@ const Ourblog = () => {
       {blogdata.map((blog) =>( 
         <div>
         <a className='blogcontent' href={`/blog/${blog.slug}`} key={blog._id} >
-        <div className="card h-100">
+        <div className="card h-100 d-flex flex-column">
         <div className='container mt-3 blog '>
   <img src={blog.image} className="card-img-top d-block cardimage " alt="noimage"/>
-  <div className="card-body" >
+  <div className="card-body d-flex flex-column flex-grow-1" >
   <h5 className="card-title">{blog.blogtitle}</h5>
             <p className="card-text" dangerouslySetInnerHTML={{
                     __html: blog.shortdescription}}></p>

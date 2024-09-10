@@ -8,7 +8,7 @@ const Teamslider = ({users}) => {
         infinite: true,
         speed: 500,
         slidesToShow: 3, // Number of cards to show at once
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         responsive: [
           {
             breakpoint: 1024,

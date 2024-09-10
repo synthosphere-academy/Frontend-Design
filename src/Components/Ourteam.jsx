@@ -68,8 +68,10 @@ function Ourteam() {
     return (
         <div style={{backgroundColor:"rgba(244, 238, 238, 0.975)"}}>
             <div className="container py-5">
-                <h4 className='display-4 text-center mt-5 teamheading mb-3'>Our team is the best for the academy</h4>
+                <h4 className='display-4 text-center  teamheading mb-5'>Our team is the best for the academy</h4>
+                <div className='team_member'>
                 <Teamslider users={ourteamInfo} />
+                </div>
                 {/* <div className="row mt-3" >
                  {ourteamInfo.map(renderteam)}
                 </div> */}
