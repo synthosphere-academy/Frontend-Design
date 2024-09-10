@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from "react";
-import { useNavigate , useParams} from 'react-router-dom';
+import { Navigate, useNavigate , useParams} from 'react-router-dom';
 import axios from 'axios';
 
 import pic1 from '../Images/icon1.png';
@@ -50,6 +50,7 @@ useEffect(() => {
         setmobileerror(false)
     }
 }
+
 const handleSubmit = async (event) => {
   const userId = sessionStorage.getItem('userid');
   console.log(userId);
@@ -80,9 +81,9 @@ else{
                         description: "Test Transaction",
                         image: pic1,
                         order_id: res.data.order.id, 
-                        handler: async function (response) {
+                        handler: function (response) {
                             // Call your backend to verify the payment and store data
-                            await axios.post(ROOT_URL+'/api/auth/paymentverification_students', {
+                             axios.post(ROOT_URL+'/api/auth/paymentverification_students', {
                               razorpay_order_id: response.razorpay_order_id,
                               razorpay_payment_id: response.razorpay_payment_id,
                               razorpay_signature: response.razorpay_signature,
@@ -93,10 +94,11 @@ else{
                              swal("Thank you for your purchase!" ,"You've successfully enrolled in the course", "success");
                              navigate("/paymentSucess");
 
-                            //  window.location.reload();
+                            
                             }).catch(() => {
                               swal('Payment verification failed.');
-                              navigate(`/checkout/${id}`);
+                              // navigate(`/checkout/${id}`);
+                               window.location.reload();
                             });
                           },
                         

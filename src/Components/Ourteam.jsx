@@ -1,6 +1,7 @@
 import '../Css/Ourteam.css'
 import face1 from '../Images/sourav.jpg';
 import face2 from '../Images/dipan.jpg';
+import face3 from '../Images/kushal.jpeg';
 import face4 from '../Images/subham.png';
 import face5  from "../Images/figo.jpg";
 import Teamslider from './Teamslider';
@@ -21,7 +22,7 @@ function Ourteam() {
         team_member_description: "Join us in the future of technology with this Academy's visionary courses, driving innovation and progress forward."
         },
         {
-            image:[face2],
+            image:[face3],
             team_member:"Kushal Saha",
             team_member_role:"Co-founder & CFO",
             team_member_description: "Empower your future with courses that fuel creativity and technological breakthroughs."

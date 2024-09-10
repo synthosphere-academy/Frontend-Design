@@ -8,6 +8,7 @@ import music from "../Images/music.jpg";
 import music2 from "../Images/music_banner.jpg";
 import nailphoto from "../Images/nailart.jpg"
 import music3 from "../Images/guitar.jpg";
+import music4 from "../Images/vocal.jpg";
 
 function Mostpopularcourse() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
@@ -92,15 +93,7 @@ function Mostpopularcourse() {
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    {/* <div className="row">
-                      <div className="col-6">
-                        <img src={lessonicon} width={20} height={20} />
-                        <span className="ms-2">10 videos</span>
-                      </div>
-                      <div className="col-6 text-end">
-                        <span className=" h5">999/-</span>
-                      </div>
-                    </div> */}
+                    
                     <h3 className="mt-1">The karate course</h3>
                     <hr />
                     <div className="row">
@@ -138,15 +131,6 @@ function Mostpopularcourse() {
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    {/* <div className="row">
-                      <div className="col-6">
-                        <img src={lessonicon} width={20} height={20} />
-                        <span className="ms-2">10 videos</span>
-                      </div>
-                      <div className="col-6 text-end">
-                        <span className=" h5">999/-</span>
-                      </div>
-                    </div> */}
                     <h3 className="mt-1">Music production course</h3>
                     <hr />
                     <div className="row">
@@ -184,15 +168,7 @@ function Mostpopularcourse() {
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    {/* <div className="row">
-                      <div className="col-6">
-                        <img src={lessonicon} width={20} height={20} />
-                        <span className="ms-2">10 videos</span>
-                      </div>
-                      <div className="col-6 text-end">
-                        <span className=" h5">999/-</span>
-                      </div>
-                    </div> */}
+                   
                     <h3 className="mt-1">The music course</h3>
                     <hr />
                     <div className="row">
@@ -301,11 +277,11 @@ function Mostpopularcourse() {
               <div className="card h-100 d-flex flex-column comingcard">
               <img
                     className="card-img-top cardimage "
-                    src={music2}
+                    src={music4}
                     alt="Sample photo"
                   />
                         <div className="card-body flex-grow-1">
-              <h3 className="mt-1">The music course</h3>
+              <h3 className="mt-1">The vocal training course</h3>
                     <hr />
                     <div className="row">
                       <div className="col-2">
@@ -319,7 +295,7 @@ function Mostpopularcourse() {
                         <div className="col-10 mt-2">
                         <span>Biplab Chakraborty</span>
                         <br />
-                        <span className="text-muted">Voice trainer</span>
+                        <span className="text-muted">Vocal trainer</span>
                       </div>
                         </div>
                         </div>

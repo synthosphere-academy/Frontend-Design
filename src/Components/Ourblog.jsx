@@ -52,12 +52,12 @@ const Ourblog = () => {
      
       <Slider {...settings}>
       {blogdata.map((blog) =>( 
-        <div className='d-flex flex-column h-100'>
+        <div>
         <a className='blogcontent' href={`/blog/${blog.slug}`} key={blog._id} >
-        <div className="card" >
-        <div className='container mt-3 '>
+        <div className="card">
+        <div className='container mt-3 blog '>
   <img src={blog.image} className="card-img-top d-block cardimage " alt="noimage"/>
-  <div className="card-body">
+  <div className="card-body" >
   <h5 className="card-title">{blog.blogtitle}</h5>
             <p className="card-text" dangerouslySetInnerHTML={{
                     __html: blog.shortdescription}}></p>
