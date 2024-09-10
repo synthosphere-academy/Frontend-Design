@@ -68,7 +68,7 @@ const Nav = () => {
                 <div>
                 <div className="me-5 userdrop dropdown">
                   <div className="buttonstyle dropdown-toggle text-white" type='button'  data-bs-toggle="dropdown" aria-expanded="false">
-                    Hi,{sessionStorage.getItem("username")}
+                    Hi, {sessionStorage.getItem("username")}
                     {/* <img src={pic} width="10%" height="20%"/> */}
                   </div>
                   <ul className="dropdown-menu">

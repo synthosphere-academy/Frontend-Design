@@ -1,7 +1,5 @@
 import { useState , useEffect} from 'react';
 import axios from "axios";
-
-
 function Myprofile() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   
@@ -17,8 +15,8 @@ function Myprofile() {
       })
       .catch((err) => console.log(err));
   }, []);
+  //  const formattedDate = new Date(coursedetails.createdAt).toLocaleDateString();
   return (
-   
     <div>
      {userdata ? (
       <div>

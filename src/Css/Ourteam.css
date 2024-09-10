@@ -30,6 +30,10 @@
     font-family: teamstylebold;
     color: black;
   }
+  .slick-prev:before, .slick-next:before {
+  
+    color: black !important /* Change this to your desired color */
+  }
   /* .team{
   display: grid;
   

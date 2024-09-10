@@ -6,6 +6,8 @@ import karate from "../Images/karate.jpg";
 import teacherpic from "../Images/academy.png";
 import music from "../Images/music.jpg";
 import music2 from "../Images/music_banner.jpg";
+import nailphoto from "../Images/nailart.jpg"
+import music3 from "../Images/guitar.jpg";
 
 function Mostpopularcourse() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
@@ -55,18 +57,17 @@ function Mostpopularcourse() {
                 <span className="text-muted">{productdata.teacher_dept}</span>
               </div>
             </div>
+          </div>
+          <div className=" card-footer row mt-3">
+            <div className="col-12 text-center">
+              <a
+                className="buttonlearnmore"
+                href={`/coursedetails/${productdata._id}`}
+              >
+                <button className=" learnmore w-75 ">Buy Now</button>
+              </a>
             </div>
-            <div className=" card-footer row mt-3">
-              <div className="col-12 text-center">
-                <a
-                  className="buttonlearnmore"
-                  href={`/coursedetails/${productdata._id}`}
-                >
-                  <button className=" learnmore w-75 ">Buy Now</button>
-                </a>
-              </div>
-            </div>
-        
+          </div>
         </div>
       </div>
     );
@@ -91,97 +92,91 @@ function Mostpopularcourse() {
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    <div className="row">
+                    {/* <div className="row">
                       <div className="col-6">
                         <img src={lessonicon} width={20} height={20} />
                         <span className="ms-2">10 videos</span>
                       </div>
                       <div className="col-6 text-end">
-                        {/* <span className=" h5">999/-</span> */}
+                        <span className=" h5">999/-</span>
                       </div>
-                    </div>
-                    <h3 className="mt-5">The karate course</h3>
+                    </div> */}
+                    <h3 className="mt-1">The karate course</h3>
                     <hr />
-            <div className="row">
-              <div className="col-2">
-                <img
-                  className="rounded-circle"
-                  width={40}
-                  height={40}
-                  src={teacherpic}
-                />
-              </div>
-              <div className="col-10 mt-2">
-                <span>Agnideb Sen</span>
-                <br />
-                <span className="text-muted">Karate coach</span>
-              </div>
-            </div>
-                    </div>
-                    <div className="card-footer row">
-                      <div className="col-12 text-center blink">
-                        <a>
-                          <button
-                            type="button"
-                            className="coming w-75">
-                            Coming soon
-                          </button>
-                        </a>
+                    <div className="row">
+                      <div className="col-2">
+                        <img
+                          className="rounded-circle"
+                          width={40}
+                          height={40}
+                          src={teacherpic}
+                        />
+                      </div>
+                      <div className="col-10 mt-2">
+                        <span>Agnideb Sen</span>
+                        <br />
+                        <span className="text-muted">Karate coach</span>
                       </div>
                     </div>
-                
+                  </div>
+                  <div className="card-footer row">
+                    <div className="col-12 text-center blink">
+                      <a>
+                        <button type="button" className="coming w-75">
+                          Coming soon
+                        </button>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div>
-              <div className="card h-100 d-flex flex-column comingcard">
+                <div className="card h-100 d-flex flex-column comingcard">
                   <img
                     className="card-img-top cardimage "
                     src={music}
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    <div className="row">
+                    {/* <div className="row">
                       <div className="col-6">
                         <img src={lessonicon} width={20} height={20} />
                         <span className="ms-2">10 videos</span>
                       </div>
                       <div className="col-6 text-end">
-                        {/* <span className=" h5">999/-</span> */}
+                        <span className=" h5">999/-</span>
                       </div>
-                    </div>
-                    <h3 className="mt-5 ">Music production course</h3>
+                    </div> */}
+                    <h3 className="mt-1">Music production course</h3>
                     <hr />
-            <div className="row">
-              <div className="col-2">
-                <img
-                  className="rounded-circle"
-                  width={40}
-                  height={40}
-                  src={teacherpic}
-                />
-              </div>
-              <div className="col-10 mt-2">
-                <span>Kushal Saha</span>
-                <br />
-                <span className="text-muted">Music teacher</span>
-              </div>
-            </div>
-                    </div>
-                    <div className="card-footer row">
-                    <div className="col-12 text-center blink">
-                        <a>
-                          <button
-                            type="button"
-                            className="coming w-75">
-                            Coming soon
-                          </button>
-                        </a>
+                    <div className="row">
+                      <div className="col-2">
+                        <img
+                          className="rounded-circle"
+                          width={40}
+                          height={40}
+                          src={teacherpic}
+                        />
                       </div>
-                      
+                      <div className="col-10 mt-2">
+                        <span>Kushal Saha</span>
+                        <br />
+                        <span className="text-muted">Audio engineer</span>
+                      </div>
                     </div>
+                  </div>
+                  <div className="card-footer row">
+                    <div className="col-12 text-center blink">
+                      <a>
+                        <button type="button" className="coming w-75">
+                          Coming soon
+                        </button>
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                </div>
-                <div>
+              </div>
+              <div>
                 <div className="card h-100 d-flex flex-column comingcard">
                   <img
                     className="card-img-top cardimage "
@@ -189,47 +184,157 @@ function Mostpopularcourse() {
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    <div className="row">
+                    {/* <div className="row">
                       <div className="col-6">
                         <img src={lessonicon} width={20} height={20} />
                         <span className="ms-2">10 videos</span>
                       </div>
                       <div className="col-6 text-end">
-                        {/* <span className=" h5">999/-</span> */}
+                        <span className=" h5">999/-</span>
                       </div>
-                    </div>
-                    <h3 className="mt-5">The music course</h3>
+                    </div> */}
+                    <h3 className="mt-1">The music course</h3>
                     <hr />
-            <div className="row">
-              <div className="col-2">
-                <img
-                  className="rounded-circle"
-                  width={40}
-                  height={40}
-                  src={teacherpic}
-                />
-              </div>
-              <div className="col-10 mt-2">
-                <span>Maddhurjo Mukherjee</span>
-                <br />
-                <span className="text-muted">Music teacher</span>
-              </div>
-            </div>
-                    </div>
-                    <div className="card-footer row">
-                    <div className="col-12 text-center blink">
-                        <a>
-                          <button
-                            type="button"
-                            className="coming w-75">
-                            Coming soon
-                          </button>
-                        </a>
+                    <div className="row">
+                      <div className="col-2">
+                        <img
+                          className="rounded-circle"
+                          width={40}
+                          height={40}
+                          src={teacherpic}
+                        />
+                      </div>
+                      <div className="col-10 mt-2">
+                        <span>Sayamdeep Chakraborty</span>
+                        <br />
+                        <span className="text-muted">Violin teacher</span>
                       </div>
                     </div>
-                
+                  </div>
+                  <div className="card-footer row">
+                    <div className="col-12 text-center blink">
+                      <a>
+                        <button type="button" className="coming w-75">
+                          Coming soon
+                        </button>
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                </div>
+              </div>
+              <div>
+              <div className="card h-100 d-flex flex-column comingcard">
+              <img
+                    className="card-img-top cardimage "
+                    src={nailphoto}
+                    alt="Sample photo"
+                  />
+                  <div className="card-body flex-grow-1">
+              <h3 className="mt-1">The complete nail art course</h3>
+                    <hr />
+                    <div className="row">
+                      <div className="col-2">
+                        <img
+                          className="rounded-circle"
+                          width={40}
+                          height={40}
+                          src={teacherpic}
+                        />
+                        </div>
+                        <div className="col-10 mt-2">
+                        <span>Shilpi Saha</span>
+                        <br />
+                        <span className="text-muted">Nail technician</span>
+                      </div>
+                        </div>
+                        </div>
+                        <div className="card-footer row">
+                    <div className="col-12 text-center blink">
+                      <a>
+                        <button type="button" className="coming w-75">
+                          Coming soon
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+              </div>
+              </div>
+              <div>
+              <div className="card h-100 d-flex flex-column comingcard">
+              <img
+                    className="card-img-top cardimage "
+                    src={music3}
+                    alt="Sample photo"
+                  />
+                        <div className="card-body flex-grow-1">
+              <h3 className="mt-1">Guitar beginner course</h3>
+                    <hr />
+                    <div className="row">
+                      <div className="col-2">
+                        <img
+                          className="rounded-circle"
+                          width={40}
+                          height={40}
+                          src={teacherpic}
+                        />
+                        </div>
+                        <div className="col-10 mt-2">
+                        <span>Madurjoo Mukherjee</span>
+                        <br />
+                        <span className="text-muted">Guitar teacher</span>
+                      </div>
+                        </div>
+                        </div>
+                        <div className="card-footer row">
+                    <div className="col-12 text-center blink">
+                      <a>
+                        <button type="button" className="coming w-75">
+                          Coming soon
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+
+              </div>
+              </div>
+              <div>
+              <div className="card h-100 d-flex flex-column comingcard">
+              <img
+                    className="card-img-top cardimage "
+                    src={music2}
+                    alt="Sample photo"
+                  />
+                        <div className="card-body flex-grow-1">
+              <h3 className="mt-1">The music course</h3>
+                    <hr />
+                    <div className="row">
+                      <div className="col-2">
+                        <img
+                          className="rounded-circle"
+                          width={40}
+                          height={40}
+                          src={teacherpic}
+                        />
+                        </div>
+                        <div className="col-10 mt-2">
+                        <span>Biplab Chakraborty</span>
+                        <br />
+                        <span className="text-muted">Voice trainer</span>
+                      </div>
+                        </div>
+                        </div>
+                        <div className="card-footer row">
+                    <div className="col-12 text-center blink">
+                      <a>
+                        <button type="button" className="coming w-75">
+                          Coming soon
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+
+              </div>
+              </div>
             </div>
           </div>
         </div>

@@ -20,7 +20,6 @@ const Orderhistory= () => {
     
   return (
     <>
-    
     <div>
     <h4 className='fw-bold'>Order History</h4>
     <div className='container py-2'>
@@ -55,10 +54,6 @@ const Orderhistory= () => {
           </div>
         ))
       ) : (<div> No orders available.</div>)}
-
-    
-    
-     
       </div>
       </div>
     

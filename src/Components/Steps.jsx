@@ -2,6 +2,8 @@ import pic from '../Images/Classroom.png'
 import icon1 from '../Images/IconsStep.png'
 import icon2 from '../Images/IconsStep2.png'
 import icon3 from '../Images/IconsStep4.png'
+
+import '../Css/steps.css'
 function Steps() {
     return (
         <>
@@ -15,9 +17,9 @@ function Steps() {
                             <img src={icon1}/>
                             </div>
                             
-                            <div className='col-lg-4'>
-                                <span className='font-text'>Create Account</span><br/>
-                                <span className='font-text'>Have to create an account</span>
+                            <div className='col-lg-5'>
+                                <span className='font-text textfont'>Create Account</span><br/>
+                                <span className='font-text textfont'>Have to create an account</span>
                             </div>
                         </div>
                         <div className='row py-3'>
@@ -26,8 +28,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span className='font-text'>Choose Course</span><br/>
-                                <span className='font-text'>Choose any course</span>
+                                <span className='font-text textfont'>Choose Course</span><br/>
+                                <span className='font-text textfont'>Choose any course</span>
                             </div>
                         </div>
                         <div className='row  py-3'>
@@ -36,8 +38,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span className='font-text'>Enjoy Learning</span><br/>
-                                <span className='font-text'>Buy and enjoy learning</span>
+                                <span className='font-text textfont'>Enjoy Learning</span><br/>
+                                <span className='font-text textfont'>Buy and enjoy learning</span>
                             </div>
                         </div>
                         

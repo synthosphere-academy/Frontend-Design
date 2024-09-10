@@ -6,7 +6,7 @@ import "../Css/Coursedetails.css";
 
 import teacherpic from "../Images/academy.png";
 import axios from "axios";
-import lessonicon from "../Images/lesson.svg";
+// import lessonicon from "../Images/lesson.svg";
 
 function Coursedetails() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;

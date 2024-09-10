@@ -80,9 +80,9 @@ else{
                         description: "Test Transaction",
                         image: pic1,
                         order_id: res.data.order.id, 
-                        handler: function (response) {
+                        handler: async function (response) {
                             // Call your backend to verify the payment and store data
-                            axios.post(ROOT_URL+'/api/auth/paymentverification_students', {
+                            await axios.post(ROOT_URL+'/api/auth/paymentverification_students', {
                               razorpay_order_id: response.razorpay_order_id,
                               razorpay_payment_id: response.razorpay_payment_id,
                               razorpay_signature: response.razorpay_signature,
@@ -90,8 +90,9 @@ else{
                               // Pass the user ID for backend processing
                             }).then(() => {
                              console.log(response);
+                             swal("Thank you for your purchase!" ,"You've successfully enrolled in the course", "success");
                              navigate("/paymentSucess");
-                
+
                             //  window.location.reload();
                             }).catch(() => {
                               swal('Payment verification failed.');
