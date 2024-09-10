@@ -80,7 +80,7 @@ else{
                         name: "Synthosphere academy",
                         description: "Test Transaction",
                         image: pic1,
-                        order_id: res.data.order.id, 
+                        order_id: res.data.order.id,
                         handler: function (response) {
                             // Call your backend to verify the payment and store data
                              axios.post(ROOT_URL+'/api/auth/paymentverification_students', {
