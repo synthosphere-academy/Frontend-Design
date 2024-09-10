@@ -17,8 +17,9 @@ import "../Css/generatecertificate.css";
           <div className='coursename'>
           <span>{coursename}</span>
           </div>
-            <h1 className='username'>{username}</h1><br /><br/><br/><br/><br/><br/>
-            <span className='date' >{formattedDate}</span> <span className='teachername'>{teachername}</span>
+            <h1 className='username'>{username}</h1><br /><br/><br/><br/><br/><br/><br/><br/>
+            <span className='date' >{formattedDate}</span> 
+            {/* <span className='teachername'>{teachername}</span> */}
            
           
             </div>

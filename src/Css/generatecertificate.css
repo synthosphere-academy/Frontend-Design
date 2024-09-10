@@ -8,7 +8,7 @@
     src: url('../fontstyle/MYRIADPRO-BOLD.OTF');
 }
 .background{
-    background-image: url('../Images/academycertificatetemplate.jpg');
+    background-image: url('../Images/academy_certificate.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* This makes the background fixed */
@@ -32,14 +32,14 @@
    
 } 
 .date{
-    margin-left: 11%;
-    padding-top: 0.90in;
+    margin-left: 18%;
+    margin-top: 2px;
    
-    font-size: 25px;
+    font-size: 29px;
     font-family: courrsenamefont;
 }
- .teachername{
+ /* .teachername{
     margin-left: 30%;
     font-size: 25px;
     font-family: courrsenamefont;
-           }
+           } */
