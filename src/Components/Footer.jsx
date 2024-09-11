@@ -28,7 +28,7 @@ function Footer() {
 
                             <span className='text-white'>Coming soon</span><br/>
 
-                            <a className=" btnfooter btn btn-google " href="#" title="Google Play">Google Play</a>
+                            <a className=" btnfooter btn btn-google " title="Google Play">Google Play</a>
                             </div>
                         </div>
 

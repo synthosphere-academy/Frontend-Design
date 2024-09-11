@@ -37,8 +37,9 @@ function Mostpopularcourse() {
                 <img src={lessonicon} width={20} height={20} />
                 <span className="ms-2">{productdata.total_video} videos</span>
               </div>
-              <div className="col-6 text-end">
-                <span className=" h5">{productdata.course_price}/- +GST</span>
+              <div className="col-6 text-end d-flex flex-column">
+                <span className=" h5 fw-bold">₹{productdata.course_price}</span>
+                <span className="text-muted"style={{marginTop:"-10px"}}>(Including GST)</span>
               </div>
             </div>
             <h5 className="mt-3">{productdata.course_name}</h5>
