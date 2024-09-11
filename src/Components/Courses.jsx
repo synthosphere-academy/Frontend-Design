@@ -178,7 +178,7 @@ function Courses() {
                   />
                   <div className="card-body flex-grow-1">
                     
-                    <h3 className="mt-1">The karate course</h3>
+                    <h3 className="mt-1">Bruce Lee's street survival tactics part-1</h3>
                     <hr />
                     <div className="row">
                       <div className="col-2">

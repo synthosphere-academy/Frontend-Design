@@ -30,7 +30,8 @@ const Orderhistory= () => {
         <th>Order_id </th>
         <th>Course_name</th>
         <th>Course_amount</th>
-        <th>Payment_id</th>
+        <th className='text-center'>Payment_id</th>
+        <th>View invoice</th>
       </tr>
     </thead>
     <tbody>
@@ -41,6 +42,8 @@ const Orderhistory= () => {
         <td>{order.courses}</td>
         <td>{order.amount}</td>
         <td>{order.razorpay_payment_id}</td>
+        <td><a href={`/invoice/${order._id}`}><i className="fa fa-eye editicon ms-4"></i></a>
+</td>
       </tr>
       ))
       ) : (<>No Orders Available</>)

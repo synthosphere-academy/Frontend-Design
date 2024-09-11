@@ -4,6 +4,7 @@ import Myprofile from './Myprofile'
 // import Wishlist from './Wishlist'
 import Entrolled from './Entrolled';
 import Orderhistory from './Orderhistory';
+import Invoice from "./Invoice";
 const Dashboard = ({ currentContent }) => {
   return (
     <div className="dashboard">
@@ -12,6 +13,8 @@ const Dashboard = ({ currentContent }) => {
       {/* {currentContent === 'wishlist' && <Wishlist />} */}
       {currentContent === 'entrolled' && <Entrolled />}
       {currentContent === 'orderhistory' && <Orderhistory />}
+      {currentContent === 'invoicedownload' && <Invoice />}
+
     </div>
   )
 }

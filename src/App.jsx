@@ -15,13 +15,14 @@ import Courseview from './Components/Courseview'
 import Terms from './Components/Terms';
 import Privatepolicy from './Components/Privatepolicy'
 import Refundpolicy from './Components/Refundpolicy'
-import Invoice from './Components/Invoice'
+// import Invoice from './Components/Invoice'
 import { Userlayout } from './Components/Userlayout';
 import Offlineregister from './Components/Offlineregister';
 import Checkout from './Components/Checkout';
 import { Allblog } from './Components/Allblog';
 //  import Admin from './Components/admin/layout/DefaultLayout'
 import PaymentSucess from './Components/PaymentSucess'
+import Invoice from './Components/Userdashboard/Invoice';
  
 import './App.css'
 
@@ -52,14 +53,14 @@ function App() {
         <Route path='/terms' element={<Userlayout><Terms/></Userlayout>}/>
         <Route path='/Privatepolicy' element={<Userlayout><Privatepolicy/></Userlayout>}/>
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
-        <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/>
+        {/* <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/> */}
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
         <Route path='/Offlineregister' element={<Userlayout><Offlineregister/></Userlayout>}/>
         {/* <Route path='/checkout' element={<Userlayout><Checkout/></Userlayout>}/> */}
         <Route path='/checkout/:id' element={<Userlayout><Checkout/></Userlayout>}/>
         <Route path='/paymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
         <Route path='/allblogs' element={<Userlayout><Allblog/></Userlayout>}/>
-
+        <Route path='/invoice/:id' element={<Userlayout><Invoice/></Userlayout>}/>
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
        
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>
