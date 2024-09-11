@@ -36,7 +36,7 @@ function Ourteam() {
                 {
                     image:[face5],
                     team_member:"Kalyan Das",
-                    team_member_role:"Graphics design",
+                    team_member_role:"Graphics designer",
                     team_member_description: "Fuel your passion for technology and innovation with our Academy's forward-thinking curriculum."
                     },
                     {
@@ -68,7 +68,7 @@ function Ourteam() {
     return (
         <div style={{backgroundColor:"rgba(244, 238, 238, 0.975)"}}>
             <div className="container py-5">
-                <h4 className='display-4 text-center  teamheading mb-5'>Our team is the best for the academy</h4>
+                <h4 className='display-4 text-center  teamheading mb-5'>Our team is best for the academy</h4>
                 <div className='team_member'>
                 <Teamslider users={ourteamInfo} />
                 </div>

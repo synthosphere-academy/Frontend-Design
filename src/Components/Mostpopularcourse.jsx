@@ -38,7 +38,7 @@ function Mostpopularcourse() {
                 <span className="ms-2">{productdata.total_video} videos</span>
               </div>
               <div className="col-6 text-end">
-                <span className=" h5">{productdata.course_price}/-</span>
+                <span className=" h5">{productdata.course_price}/- +GST</span>
               </div>
             </div>
             <h5 className="mt-3">{productdata.course_name}</h5>

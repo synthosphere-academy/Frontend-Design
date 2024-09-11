@@ -273,8 +273,12 @@ function Register() {
                         </div>
                         <div className='col-lg-4'>
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">Password  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
-                            <input type="text" className="form-control form-control-lg inputform" id="password" name="password"
+                            
+                            <input type='password'
+                             className="form-control form-control-lg inputform" id="password" name="password"
                                 onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
+                              
+                                        
                             {passwordError && <span className='link-danger'>{passwordError}</span>}
                             {/* {passwordError ? <span className='link-danger'>Password must me 8 character, one Uppercase, one special character</span> : ""} */}
 

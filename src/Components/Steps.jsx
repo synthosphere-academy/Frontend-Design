@@ -18,8 +18,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-5'>
-                                <span className='font-text textfont'>Create Account</span><br/>
-                                <span className='font-text textfont'>Have to create an account</span>
+                                <span className='font-text textfont fw-bold'>Create Account</span><br/>
+                                <span className='font-text textfont text-muted'>Have to create an account</span>
                             </div>
                         </div>
                         <div className='row py-3'>
@@ -28,8 +28,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span className='font-text textfont'>Choose Course</span><br/>
-                                <span className='font-text textfont'>Choose any course</span>
+                                <span className='font-text textfont fw-bold'>Choose Course</span><br/>
+                                <span className='font-text textfont text-muted'>Choose any course</span>
                             </div>
                         </div>
                         <div className='row  py-3'>
@@ -38,8 +38,8 @@ function Steps() {
                             </div>
                             
                             <div className='col-lg-4'>
-                                <span className='font-text textfont'>Enjoy Learning</span><br/>
-                                <span className='font-text textfont'>Buy and enjoy learning</span>
+                                <span className='font-text textfont fw-bold'>Enjoy Learning</span><br/>
+                                <span className='font-text textfont text-muted'>Buy and enjoy learning</span>
                             </div>
                         </div>
                         

@@ -23,22 +23,21 @@ function Footer() {
                         </ul>
                         
                         </div>
-                        <div className="col-lg-4 me-auto">
+                        <div className="col-lg-4 me-auto text-center">
                             <div className='float-lg-end googleapp'>
 
-                            <span className='text-white '>Get the App</span><br/>
+                            <span className='text-white'>Coming soon</span><br/>
 
-                            <a className=" btnfooter btn btn-google" href="#" title="Google Play">Google Play</a>
+                            <a className=" btnfooter btn btn-google " href="#" title="Google Play">Google Play</a>
                             </div>
                         </div>
 
                     </div>
                     <div className='row mt-3'>
-                        <div className='col-lg-12 text-center'><span className='text-white copyright'>Copyright © Synthosphere team <span>{todayyear}</span>. Powered by<a className="text-white text-decoration-none" href='https://synthospheretech.com/'> Synthosphere Technologies Private Limited</a></span></div>
+                        <div className='col-lg-12 text-center'><span className='text-white copyright'>Copyright © Synthosphere academy <span>{todayyear}</span>. Powered by<a className="text-white text-decoration-none" href='https://synthospheretech.com/'> Synthosphere Technologies Private Limited</a></span></div>
                     </div>
                     </div>
                 </div>
-
                 
         </>
     )

@@ -125,7 +125,7 @@ function Contact() {
 
                 <div className="card-body">
                   <h5 className="card-title text-center cardtitle">Email</h5>
-                  <h6 className="card-text text-center cardtext">synthosphereacademy@gmail.com</h6>
+                  <h6 className="card-text text-center cardtext">support@synthosphereacademy.in</h6>
 
                 </div>
               </div>
