@@ -1,7 +1,7 @@
 import  React,{ useState, useEffect,useRef } from "react";
 import axios from "axios";
 import VimeoPlayer from "./Vimeoplayer";
-
+import swal from 'sweetalert';
 import Generatecertificate from "./Generatecertificate";
 //  import Player from '@vimeo/player';
 import { useParams } from "react-router-dom";
@@ -15,10 +15,28 @@ const Courseview = () => {
   const [completedChapters, setCompletedChapters] = useState([]);
   const [currentChapterId, setCurrentChapterId] = useState(null);
   const [allChapters, setAllChapters] = useState([]);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
+  // const [message, setMessage] = useState('');
   const userId= sessionStorage.getItem("userid");
 
+
+  const StarRating = ({ rating, setRating }) => {
+    return (
+        <div>
+            {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                    key={star}
+                    style={{ cursor: 'pointer', fontSize: '2rem', color: star <= rating ? 'gold' : 'gray' }}
+                    onClick={() => setRating(star)}  
+                >
+                    ★
+                </span>
+            ))}
+        </div>
+    );
+};
   const handleChapterClick = (event, newVideoSource,chapterId) => {
-   
     console.log(newVideoSource);
     event.preventDefault();
     if (videoSource !== newVideoSource) {
@@ -26,6 +44,33 @@ const Courseview = () => {
     }
     setCurrentChapterId(chapterId);
   };
+//review
+const handlereviewSubmit = async (e) => {
+  e.preventDefault();
+
+  // if (rating < 1 || rating > 5) {
+      
+  //     return;
+  // }
+
+  try {
+      const response = await axios.post(ROOT_URL+`/api/v1/submitreview/${id}`, {
+           userId,
+          rating: rating,
+          comment: comment,
+      });
+      swal("Submited!!", "Thank you for your review", "success");
+      
+  } catch (error) {
+      console.error('Error submitting review:', error);
+      swal("Opps!", "Try again!", "error");
+     
+  }
+};
+
+//end review
+
+
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -178,6 +223,40 @@ const Courseview = () => {
                         Download Certificate
                       </button>
                     </div>
+                    
+                    <div className="d-flex flex-row mb-5 ">
+                    <h6 className="mt-3">Give a Review: </h6>
+                    <form onSubmit={handlereviewSubmit}>
+            <div className="ms-1">
+                    <StarRating rating={rating} setRating={setRating} />
+                </div>
+                
+                {/* <div>
+                    <label>Rating (1-5):</label>
+                    <input
+                        type="number"
+                        value={rating}
+                        onChange={(e) => setRating(e.target.value)}
+                        min="1"
+                        max="5"
+                        required
+                    />
+                </div> */}
+                <div className="d-flex">
+                    {/* <h5>Give a Comment:</h5> */}
+                    <textarea
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                        placeholder="Enter a comment"
+                        required
+                    />
+                     <button className="learnmore" type="submit">Submit Review</button>
+                </div>
+               
+            </form>
+                    </div>
+                    
+            
                   </div>
                 </div>
                 <div className="col-lg-4 col-sm-8 col-12">
