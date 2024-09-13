@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Vimeo from "@u-wave/react-vimeo";
 import "../Css/Coursedetails.css";
@@ -12,7 +12,7 @@ function Coursedetails() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [coursedetails, setcoursedetail] = useState([]);
 
-  const [productdata, setproduct] = useState([]);
+  // const [productdata, setproduct] = useState([]);
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -37,6 +37,7 @@ function Coursedetails() {
   }, []);
 
   useEffect(() => {
+    if (!coursedetails.length) {
     axios
       .get(ROOT_URL + `/api/v1/getcoursebyid/${id}`)
       .then((coursedetail) => {
@@ -45,15 +46,10 @@ function Coursedetails() {
         console.log(coursedetails);
       })
       .catch((err) => console.log(err));
+    }
   }, [id]);
 
-  useEffect(() => {
-    axios
-      .get(ROOT_URL + "/api/v1/get_course")
-      .then((productdata) => setproduct(productdata.data.data))
-      .catch((err) => console.log(err));
-  }, []);
-
+  const memoizedcoursedetailsData = useMemo(() => coursedetails, [coursedetails]);
   const handleButtonClick = () => {
     if (!userId) {
       navigate("/login");
@@ -113,7 +109,7 @@ function Coursedetails() {
   // const formattedDate = new Date(coursedetails.createdAt).toLocaleDateString();
   return (
     <>
-      {coursedetails ? (
+      {memoizedcoursedetailsData ? (
         <div className="container mb-5">
           <div className="row" key={coursedetails._id}>
             <div className="col-lg-7  mt-3">
@@ -207,7 +203,7 @@ function Coursedetails() {
                 <div className="ms-4 mt-4">
                   <span className="fw-bold h2 ">
                     ₹{coursedetails.course_price}
-                  </span>
+                  </span><span> (Including GST) </span>
                 </div>
                 {/* {sessionStorage.getItem("userEmail") ? (
                   <>
@@ -308,7 +304,7 @@ function Coursedetails() {
                 <div className="ms-4 mt-2 mb-2">
                   <h6 className="fw-bold">A course by</h6>
                   <div className="row">
-                    <div className="col-lg-2">
+                    <div className="col-2">
                       <img
                         className="rounded-circle"
                         width={45}
@@ -316,13 +312,13 @@ function Coursedetails() {
                         src={teacherpic}
                       />
                     </div>
-                    <div className="col-lg-10">
+                    <div className="col-10">
                       <span className="fw-bold paratext ">
                         {coursedetails.teacher_name}
                       </span>
                       <br />
                       <span className="paratext text-muted">
-                        ({coursedetails.teacher_dept})
+                        {coursedetails.teacher_dept}
                       </span>
                     </div>
                   </div>

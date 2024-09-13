@@ -1,5 +1,5 @@
 import "../Css/Mostpopularcourse.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useMemo } from "react";
 import axios from "axios";
 import lessonicon from "../Images/lesson.svg";
 import karate from "../Images/karate.jpg";
@@ -16,12 +16,15 @@ function Mostpopularcourse() {
   const [productdata, setproduct] = useState([]);
 
   useEffect(() => {
+    if (!productdata.length) {
     axios
       .get(ROOT_URL + "/api/v1/get_course")
       .then((productdata) => setproduct(productdata.data.data))
       .catch((err) => console.log(err));
-  }, []);
+    }
+  }, [productdata]);
 
+ const memoizedProductData = useMemo(() => productdata, [productdata]);
   const redercoursecard = (productdata) => {
     return (
       <div className="col" key={productdata._id}>
@@ -85,7 +88,7 @@ function Mostpopularcourse() {
 
           <div className="container py-5 cardcontainer">
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
-              {productdata.map(redercoursecard)}
+              {memoizedProductData.map(redercoursecard)}
               <div>
                 <div className="card h-100 d-flex flex-column comingcard">
                   <img
@@ -256,7 +259,7 @@ function Mostpopularcourse() {
                         />
                         </div>
                         <div className="col-10 mt-2">
-                        <span>Madurjoo Mukherjee</span>
+                        <span>Suvro Jyoti Biswas</span>
                         <br />
                         <span className="text-muted">Guitar teacher</span>
                       </div>

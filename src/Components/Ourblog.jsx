@@ -2,7 +2,7 @@ import '../Css/blog.css';
 import Slider from "react-slick";
  import 'slick-carousel/slick/slick.css';
  import 'slick-carousel/slick/slick-theme.css';
- import { useEffect, useState } from 'react';
+ import { useEffect, useState ,useMemo} from 'react';
 import axios from 'axios';
 
 const Ourblog = () => {
@@ -10,14 +10,16 @@ const Ourblog = () => {
 
   const [blogdata, setblogdata] = useState([])
   useEffect(() => {
+    if (!blogdata.length) {
     axios.get(ROOT_URL+'/api/v1/get_blog')
       .then(blogdata => setblogdata(blogdata.data.data))
       
       .catch(err => console.log(err))
+    }
       // console.log(blogdata)
-  }, []);
+  }, [blogdata]);
 
-
+  const memoizedBlogData = useMemo(() => blogdata, [blogdata]);
 
   var settings = {
     dots: false,
@@ -51,7 +53,7 @@ const Ourblog = () => {
       <div className="container py-5 w-75 ">
      
       <Slider {...settings}>
-      {blogdata.map((blog) =>( 
+      {memoizedBlogData.map((blog) =>( 
         <div>
         <a className='blogcontent' href={`/blog/${blog.slug}`} key={blog._id} >
         <div className="card h-100 d-flex flex-column">

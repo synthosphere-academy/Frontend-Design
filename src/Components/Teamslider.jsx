@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 const Teamslider = ({users}) => {
     const settings = {
         dots: true,
+        arrows: false,
         infinite: true,
         speed: 500,
         slidesToShow: 3, // Number of cards to show at once

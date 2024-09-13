@@ -1,7 +1,7 @@
 import '../Css/Ourteam.css'
 import face1 from '../Images/sourav.jpg';
 import face2 from '../Images/dipan.jpg';
-import face3 from '../Images/kushal.jpeg';
+import face3 from '../Images/kushal.jpg';
 import face4 from '../Images/subham.png';
 import face5  from "../Images/figo.jpg";
 import Teamslider from './Teamslider';
