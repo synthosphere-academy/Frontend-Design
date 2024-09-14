@@ -2,12 +2,15 @@ import React from 'react'
 import axios from 'axios';
 import swal from 'sweetalert';
 import pic from '../../Images/forgot.png';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Updatepassword = ({ email, token }) => {
     const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
     const handleUpdatePassword = async (e) => {
         e.preventDefault();
     
@@ -22,8 +25,11 @@ const Updatepassword = ({ email, token }) => {
             confirm_password: confirmPassword
           });
           setMessage(response.data.message);
+          swal("Password updated", "Please login again","success");
+          navigate('/login');
+
         } catch (error) {
-          setMessage(error.response.data.error);
+          setMessage(error.message);
         }
       };
   return (
