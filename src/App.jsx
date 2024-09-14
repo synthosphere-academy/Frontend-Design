@@ -62,7 +62,7 @@ function App() {
         <Route path='/paymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
         <Route path='/allblogs' element={<Userlayout><Allblog/></Userlayout>}/>
         <Route path='/invoice/:id' element={<Userlayout><Invoice/></Userlayout>}/>
-        <Route path="/verify-email/:token" element={<Resetpassword />} />
+        <Route path='/verify-email/:token' element={<Resetpassword/>} />
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
        
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>

@@ -1,19 +1,19 @@
 import React , { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Updatepassword from './Updatepassword';
 import axios from 'axios';
 
 const Resetpassword = () => {
     const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-    const { token } = useParams(); // Token from URL
-    const navigate = useNavigate();
+    const { token } = useParams();// To extract the token from URL query params
+//   const token = searchParams.get('token'); 
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     useEffect(() => {
         // Verify the token when the component mounts
         const verifyToken = async () => {
           try {
-            const response = await axios.get(ROOT_URL+`/api/auth/verifysentemail?token=${token}`);
+            const response = await axios.get(ROOT_URL+`/api/auth/verifysentemail?${token}`);
             setEmail(response.data.user.email);
             setMessage('Token verified successfully');
           } catch (error) {
