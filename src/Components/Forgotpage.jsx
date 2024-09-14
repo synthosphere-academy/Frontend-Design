@@ -1,7 +1,28 @@
+import { useState } from 'react';
 import pic from '../Images/forgot.png';
 import '../Css/Forgotpage.css'
+import swal from 'sweetalert';
 
 function Forgotpage() {
+  const [email, setEmail] = useState('');
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+      await axios.post(ROOT_URL+'/api/auth/forgotpassword', { email })
+      .then(res => {
+        console.log(res);
+        swal("Reset link sent successfully", "Your password received link has been sent to your email","success");
+        // navigate('/course');
+
+      })
+      .catch(err => {
+        console.log(err);
+        swal("Opps!", "Incorrect email!", "error");
+
+      })
+    }
+    
+  
   return (
     
     <section >
@@ -33,7 +54,7 @@ function Forgotpage() {
   
 
                   <div className="pt-1 mb-4 text-center">
-                    <button className=" btn-lg  w-50 loginbutton " type="button">Submit</button>
+                    <button className=" btn-lg  w-50 loginbutton" type="submit" onClick={handleForgotPassword}>Submit</button>
                   </div>
                   <div className="d-flex">
                   

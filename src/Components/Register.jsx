@@ -199,7 +199,8 @@ function Register() {
                 })
                 .catch(err => {
                     console.log(err);
-                    swal("Opps!", "Not inserted !", "error");
+                    swal("Error!", err.response.data.message || 'Error registering user', "error");
+                   
 
                 })
         }

@@ -4,9 +4,6 @@ import icon from '../Images/Icons.png';
 import emailicon from '../Images/emailicon.png';
 import phoneicon from '../Images/phoneicon.png';
 import socialicon from '../Images/socialicon.png'
-import face from '../Images/facebook.png';
-import twitter from '../Images/twitter.png';
-import link from '../Images/linkdln.png';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { useState } from 'react';
@@ -149,9 +146,11 @@ function Contact() {
                 <div className="card-body">
                   <h5 className="card-title text-center">Socials</h5>
                   <h6 className="card-text text-center">
-                    <img src={face}/>
-                    <img className='ms-2' src={twitter}/>
-                    <img  className='ms-2'src={link}/>
+                 <a href='https://www.facebook.com/profile.php?id=61560565260565&mibextid=ZbWKwL' target='_blank'><i className="fa fa-facebook-f facebook"></i></a> 
+                 <a href='https://www.instagram.com/synthosphere_academy?' target='_blank'><i class="fa fa-instagram ms-3 instagram" ></i></a>
+                    
+                   
+                    {/* <img  className='ms-2'src={link}/> */}
                   </h6>
                   
                 </div>

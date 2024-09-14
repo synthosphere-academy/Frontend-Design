@@ -15,7 +15,8 @@ function Myprofile() {
       })
       .catch((err) => console.log(err));
   }, []);
-  //  const formattedDate = new Date(coursedetails.createdAt).toLocaleDateString();
+    const formattedregistrationDate = new Date(userdata.createdAt).toLocaleDateString();
+    const formattedbirthDate = new Date(userdata.date).toLocaleDateString();
   return (
     <div>
      {userdata ? (
@@ -26,7 +27,7 @@ function Myprofile() {
           <span>Registration Date</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>{userdata.createdAt}</span>
+          <span>{formattedregistrationDate}</span>
         </div>
       </div>
       <div className="row mt-4">
@@ -50,7 +51,7 @@ function Myprofile() {
           <span>Date of birth</span>
         </div>
         <div className="col-lg-9 fw-bold">
-          <span>{userdata. date}</span>
+          <span>{formattedbirthDate}</span>
         </div>
       </div>
       <div className="row mt-4">

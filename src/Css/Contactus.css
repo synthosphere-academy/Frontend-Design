@@ -80,9 +80,16 @@
     .background{
         background-image:none;
     }
-    .contact_form{
-       
-    }
+    
+}
+.facebook{
+    color: green !important;
+    font-size: 18px;
+}
+.instagram{
+    color: green !important;
+    font-size: 18px;
+    /* background-color: blue; */
 }
 
 /* #map{

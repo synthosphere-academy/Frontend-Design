@@ -23,6 +23,7 @@ import { Allblog } from './Components/Allblog';
 //  import Admin from './Components/admin/layout/DefaultLayout'
 import PaymentSucess from './Components/PaymentSucess'
 import Invoice from './Components/Userdashboard/Invoice';
+import Resetpassword from './Components/Fotgotpassword/Resetpassword';
  
 import './App.css'
 
@@ -46,7 +47,7 @@ function App() {
         <Route path="/blog/:slug" element={<Userlayout><Blog/></Userlayout>} />
         <Route path='/forgotpassword' element={<Userlayout><Forgotpage/></Userlayout>}/>
         <Route path='/course' element={<Userlayout><Courses/></Userlayout>}/>
-        <Route path='/addtocart' element={<Userlayout><Addtocart/></Userlayout>}/>
+        {/* <Route path='/addtocart' element={<Userlayout><Addtocart/></Userlayout>}/> */}
         <Route path='/coursedetails/:id' element={<Userlayout><Coursedetails/></Userlayout>}/>
         <Route path='/userdashboard' element={<Userlayout><Userdashboard/></Userlayout>}/>
         <Route path='/courseview/:id' element={<Userlayout><Courseview/></Userlayout>}/>
@@ -61,6 +62,7 @@ function App() {
         <Route path='/paymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
         <Route path='/allblogs' element={<Userlayout><Allblog/></Userlayout>}/>
         <Route path='/invoice/:id' element={<Userlayout><Invoice/></Userlayout>}/>
+        <Route path="/verify-email/:token" element={<Resetpassword />} />
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
        
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>
