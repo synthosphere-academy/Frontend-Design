@@ -1,12 +1,12 @@
 import React , { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import Updatepassword from './Updatepassword';
 import axios from 'axios';
 
 const Resetpassword = () => {
     const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-    const { token } = useParams();// To extract the token from URL query params
-//   const token = searchParams.get('token'); 
+    const [searchParams] = useSearchParams();
+  const token = searchParams.get('token'); 
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     useEffect(() => {
