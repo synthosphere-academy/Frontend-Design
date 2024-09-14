@@ -29,9 +29,9 @@ function Footer() {
                             <a className=" btnfooter btn btn-google mb-3" title="Google Play">Google Play</a>
                           
                             <div>
-                           <a href="mailto:support@synthosphereacademy.in"><i class="fa fa-envelope text-white" style={{fontSize:"19px"}}></i></a>
+                           <a href="mailto:support@synthosphereacademy.in"><i className="fa fa-envelope text-white" style={{fontSize:"19px"}}></i></a>
                             <a href='https://www.facebook.com/profile.php?id=61560565260565&mibextid=ZbWKwL' target='_blank'><i className="fa fa-facebook-f text-white ms-3 " style={{fontSize:"19px"}}></i></a> 
-                            <a href='https://www.instagram.com/synthosphere_academy?' target='_blank'><i class="fa fa-instagram ms-3 text-white"style={{fontSize:"19px"}} ></i></a>
+                            <a href='https://www.instagram.com/synthosphere_academy?' target='_blank'><i className="fa fa-instagram ms-3 text-white"style={{fontSize:"19px"}} ></i></a>
                             </div>
                             </div>
                             

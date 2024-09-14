@@ -2,6 +2,7 @@ import { useState } from 'react';
 import pic from '../Images/forgot.png';
 import '../Css/Forgotpage.css'
 import swal from 'sweetalert';
+import axios from 'axios';
 
 function Forgotpage() {
   const [email, setEmail] = useState('');
@@ -11,7 +12,7 @@ function Forgotpage() {
       await axios.post(ROOT_URL+'/api/auth/forgotpassword', { email })
       .then(res => {
         console.log(res);
-        swal("Reset link sent successfully", "Your password received link has been sent to your email","success");
+        swal("Email sent successfully!", " Please check your email to forgot your password","success");
         // navigate('/course');
 
       })
@@ -48,7 +49,8 @@ function Forgotpage() {
                 
           <div className="form-group  mb-4">
     <label className="text-white"htmlFor="exampleInputEmail1">Email address</label>
-    <input type="email" className="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your  email"/>
+    <input type="email" className="form-control form-control-lg" id="exampleInputEmail1"
+    onChange={(e) => setEmail(e.target.value)} aria-describedby="emailHelp" placeholder="Enter Your  email"/>
     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
   </div>
   
