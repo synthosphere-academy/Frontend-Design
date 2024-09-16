@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import Generatecertificate from "./Generatecertificate";
 //  import Player from '@vimeo/player';
 import { useParams } from "react-router-dom";
+import userpic from '../Images/userreview.png';
 import "../Css/courseview.css";
 const Courseview = () => {
   const { id } = useParams();
@@ -17,10 +18,22 @@ const Courseview = () => {
   const [allChapters, setAllChapters] = useState([]);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
+  //for review
+  const [reviews, setReviews] = useState([]);
   // const [message, setMessage] = useState('');
   const userId= sessionStorage.getItem("userid");
 
-
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+        stars.push(
+            <span key={i}  style={{ color: i < rating ? 'gold' : 'lightgray' }}>
+                {i < rating ? '★' : '☆'}
+            </span>
+        );
+    }
+    return stars;
+};
   const StarRating = ({ rating, setRating }) => {
     return (
         <div>
@@ -48,28 +61,39 @@ const Courseview = () => {
 const handlereviewSubmit = async (e) => {
   e.preventDefault();
 
-  // if (rating < 1 || rating > 5) {
-      
-  //     return;
-  // }
-
   try {
       const response = await axios.post(ROOT_URL+`/api/v1/submitreview/${id}`, {
-           userId,
+        user_id: userId,
           rating: rating,
           comment: comment,
       });
+      console.log(response);
       swal("Submited!!", "Thank you for your review", "success");
+      setRating(0);
+      setComment('');
       
   } catch (error) {
       console.error('Error submitting review:', error);
-      swal("Opps!", "Try again!", "error");
+
+      swal("Opps!", error.response.data.message, "error");
      
   }
 };
+useEffect(() => {
+  // Fetch reviews from backend
+  const fetchReviews = async () => {
+      try {
+          const response = await axios.get(ROOT_URL+`/api/v1/showreviews/${id}`);
+          console.log(response.data.reviews);
+          setReviews(response.data.reviews);
+      } catch (error) {
+          console.error("Error fetching reviews:", error);
+      }
+  };
 
+  fetchReviews();
+}, []);
 //end review
-
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -173,7 +197,7 @@ const handlereviewSubmit = async (e) => {
        className="vimeo-player"
        width={800}
        height={500}
-       autoplay={true} 
+      //  autoplay={true} 
         onEnd={handleEnd}
       />
                           
@@ -225,23 +249,11 @@ const handlereviewSubmit = async (e) => {
                     </div>
                     
                     <div className="d-flex flex-row mb-5 ">
-                    <h6 className="mt-3">Give a Review: </h6>
+                    <h6 className="mt-3 fw-bold">Give a Review: </h6>
                     <form onSubmit={handlereviewSubmit}>
             <div className="ms-1">
                     <StarRating rating={rating} setRating={setRating} />
                 </div>
-                
-                {/* <div>
-                    <label>Rating (1-5):</label>
-                    <input
-                        type="number"
-                        value={rating}
-                        onChange={(e) => setRating(e.target.value)}
-                        min="1"
-                        max="5"
-                        required
-                    />
-                </div> */}
                 <div className="d-flex">
                     {/* <h5>Give a Comment:</h5> */}
                     <textarea
@@ -255,8 +267,29 @@ const handlereviewSubmit = async (e) => {
                
             </form>
                     </div>
+                    <h5 className="mt-3 fw-bold">All reviews: </h5>
+                    {reviews.length > 0 ? (
                     
-            
+                    reviews.map((review) => (
+                     
+                    <div className="d-flex flex-row mb-4 ">
+                      <div><img className="rounded-circle" width={40} src={userpic}/></div>
+                      <div className="d-flex flex-column">
+                      <div className="ms-2 mt-1">{review.username}</div>
+                      {/* <div className="ms-2 mt-1">{review.rating}</div> */}
+                      <div className="ms-2 mt-1">{renderStars(review.rating)}</div>
+                      <div className="ms-2 mt-1"><p>{review.comment}</p></div>
+                      </div>
+                    </div>
+                      
+                    ))
+
+                  
+                    ) : (
+                    <div>No reviews available</div>
+                    )}
+                  
+
                   </div>
                 </div>
                 <div className="col-lg-4 col-sm-8 col-12">

@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -103,12 +104,14 @@ function Login() {
                         </div>
                         <div className="form-group mb-4">
                           <label className="text-white" htmlFor="exampleInputEmail1">Password</label>
-                          <input type="Password" className="form-control form-control-lg" id="password" name='password'  placeholder="Enter  Your Password" onChange={e => setPassword(e.target.value)} />
+                          <input type={showPassword ? 'text' : 'password'} className="form-control form-control-lg" id="password" name='password'  placeholder="Enter  Your Password" onChange={e => setPassword(e.target.value)} />
+                          <span onClick={() => setShowPassword(!showPassword)}  className='passwordtoggle'>
+                                 {showPassword ? <i class="fa fa-eye-slash"></i> :  <i class="fa fa-eye"></i>}</span>
                           {/* {passerror ? <span className='link-warning'>Password invalid</span> : ""} */}
                         </div>
 
                         <div className="pt-1 mb-4 text-center">
-                          <button className=" btn-lg  w-50 loginbutton " type="submit" onClick={handleSubmit}>Login</button>
+                          <button className=" btn-lg  w-50 loginbutton" type="submit" onClick={handleSubmit}>Login</button>
                         </div>
                         <div className="d-flex">
                           <a className='text-success' href="/forgotpassword">Forgot password?</a>

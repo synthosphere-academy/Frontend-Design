@@ -14,7 +14,6 @@ function Mostpopularcourse() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [productdata, setproduct] = useState([]);
-
   useEffect(() => {
     if (!productdata.length) {
     axios
@@ -25,6 +24,18 @@ function Mostpopularcourse() {
   }, [productdata]);
 
  const memoizedProductData = useMemo(() => productdata, [productdata]);
+ //star review
+ const renderStars = (rating) => {
+  const stars = [];
+  for (let i = 0; i < 5; i++) {
+      stars.push(
+          <span key={i}  style={{ color: i < rating ? 'gold' : 'lightgray' }}>
+              {i < rating ? '★' : '☆'}
+          </span>
+      );
+  }
+  return stars;
+};
   const redercoursecard = (productdata) => {
     return (
       <div className="col" key={productdata._id}>
@@ -46,7 +57,9 @@ function Mostpopularcourse() {
               </div>
             </div>
             <h5 className="mt-3">{productdata.course_name}</h5>
+           <span className="fw-bold">{productdata.averageRating}</span><span className="starreview ms-2" >{renderStars(productdata.averageRating)}</span>
             <hr />
+            
             <div className="row">
               <div className="col-2">
                 <img

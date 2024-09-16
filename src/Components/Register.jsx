@@ -9,7 +9,9 @@ import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
 import { useNavigate } from 'react-router-dom';
 
+
 function Register() {
+    const [showPassword, setShowPassword] = useState(false);
     const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
     const [fullname, setName] = useState('')
     const [phoneno, setPhoneno] = useState('')
@@ -275,11 +277,13 @@ function Register() {
                         <div className='col-lg-4'>
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">Password  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <div className='d-flex'>
-                            <input type='password'
+                            <input   type={showPassword ? 'text' : 'password'}
                              className="form-control form-control-lg inputform" id="password_field" name="password"
                                 onKeyUp={passwordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)}
                                  />
-                            <span toggle="#password_field">hiiiii</span> 
+                                
+                                 <span onClick={() => setShowPassword(!showPassword)} style={{ cursor: 'pointer',marginLeft:"-9%", fontSize:"20px" }} className='mt-2'>
+                                 {showPassword ? <i class="fa fa-eye-slash"></i> :  <i class="fa fa-eye"></i>}</span>
                             </div>
                             
                                         
@@ -291,6 +295,7 @@ function Register() {
                             <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="confirmpassword" name="confirmpassword"
                                 onKeyUp={confirmpasswordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
+                              
                             {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}
 
                         </div>
