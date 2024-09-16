@@ -73,8 +73,8 @@ else{
                     //console.log(res.data.order.amount);
 
                     const options = {
-                        // key: "rzp_live_xh5zAIy7sL0nMK", // Enter the Key ID generated from the Dashboard
-                        key:"rzp_live_CXFLJxBQsC8YBF",
+                         key: "rzp_live_CXFLJxBQsC8YBF", // Enter the Key ID generated from the Dashboard
+                        //key:"rzp_test_FEdsKrhgE2fdCF",
                         amount :  res.data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                         currency: "INR",
                         name: "Synthosphere academy",
