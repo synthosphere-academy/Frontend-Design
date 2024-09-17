@@ -2,7 +2,7 @@
 
 import pic from '../Images/courseimage.png'
 import '../Css/Course.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useMemo } from 'react';
  import axios from 'axios';
 import icon from '../Images/Search.svg';
 import lessonicon from '../Images/lesson.svg'
@@ -49,14 +49,28 @@ function Courses() {
     const debounceFetch = setTimeout(fetchCourses, 300);
     return () => clearTimeout(debounceFetch);
   }, [query]);
-
+//star review
+const renderStars = (rating) => {
+  const stars = [];
+  for (let i = 0; i < 5; i++) {
+      stars.push(
+          <span key={i}  style={{ color: i < rating ? 'gold' : 'lightgray' }}>
+              {i < rating ? '★' : '☆'}
+          </span>
+      );
+  }
+  return stars;
+};
   //end search input
   useEffect(() => {
+    if (!coursedata.length) {
     axios
       .get(ROOT_URL + "/api/v1/get_course")
       .then((coursedata) => setcoursedata(coursedata.data.data))
       .catch((err) => console.log(err));
-  }, []);
+    }
+  }, [coursedata]);
+  const memoizedCourseData = useMemo(() => coursedata, [coursedata]);
 
   const redercoursecard = (coursedata) => {
     return (
@@ -75,12 +89,13 @@ function Courses() {
               </div> 
              
 
-              <div className="col-6 text-end">
-                <span className=" h5">{coursedata.course_price}/-</span>
+              <div className="col-6 text-end d-flex flex-column">
+                <span className=" h5 fw-bold">₹{coursedata.course_price}</span>
+                <span className="text-muted"style={{marginTop:"-10px"}}>(Including GST)</span>
               </div>
             </div>
             <h5 className="mt-3">{coursedata.course_name}</h5>
-          
+            <span className="fw-bold">{coursedata.averageRating}</span><span className="starreview ms-2" >{renderStars(coursedata.averageRating)}</span>
             <hr />
             <div className="row">
               <div className="col-2">
@@ -100,7 +115,7 @@ function Courses() {
               </div>
             </div>
             <div className=' card-footer row mt-3'> 
-              <div className='col-12 text-center'><a className='buttonlearnmore' href={`/coursedetails/${coursedata._id}`}><button className="learnmore w-75 ">Learn More</button></a></div>
+              <div className='col-12 text-center'><a className='buttonlearnmore' href={`/coursedetails/${coursedata._id}`}><button className="learnmore w-75 ">Buy Now</button></a></div>
             </div>
           
         </div>
@@ -168,7 +183,7 @@ function Courses() {
 
       <div className="container py-5 cardcontainer ">
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          {coursedata.map(redercoursecard)}
+          {memoizedCourseData.map(redercoursecard)}
           <div>
                 <div className="card h-100 d-flex flex-column comingcard">
                   <img
