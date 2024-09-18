@@ -125,7 +125,7 @@ function Mostpopularcourse() {
                       <div className="col-10 mt-2">
                         <span>Agnideb Sen</span>
                         <br />
-                        <span className="text-muted">Karate coach</span>
+                        <span className="text-muted">Martial coach</span>
                       </div>
                     </div>
                   </div>
