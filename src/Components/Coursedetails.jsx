@@ -2,6 +2,7 @@ import { useState, useEffect,useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Vimeo from "@u-wave/react-vimeo";
 import "../Css/Coursedetails.css";
+import userpic from '../Images/userreview.png';
 // import pic from '../Images/Classroom.png'
 
 import teacherpic from "../Images/academy.png";
@@ -11,7 +12,35 @@ import axios from "axios";
 function Coursedetails() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [coursedetails, setcoursedetail] = useState([]);
+  // for review
+  const [reviews, setReviews] = useState([]);
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+        stars.push(
+            <span key={i}  style={{ color: i < rating ? 'gold' : 'lightgray' }}>
+                {i < rating ? '★' : '☆'}
+            </span>
+        );
+    }
+    return stars;
+};
+useEffect(() => {
+  // Fetch reviews from backend
+  const fetchReviews = async () => {
+  
+      try {
+          const response = await axios.get(ROOT_URL+`/api/v1/showreviews/${id}`);
+          console.log(response.data.reviews);
+          setReviews(response.data.reviews);
+      } catch (error) {
+          console.error("Error fetching reviews:", error);
+      }
+  };
 
+  fetchReviews();
+
+}, []);
   // const [productdata, setproduct] = useState([]);
   const navigate = useNavigate();
 
@@ -325,19 +354,31 @@ function Coursedetails() {
                 </div>
               </div>
 
-              {/* <div className="border rounded mt-4">
+              <div className="border rounded mt-4">
                 <div className="ms-4 mt-2 mb-4">
-                  <h6 className="fw-bold mt-4">Apply Coupon</h6>
-                  <div className="search couponbutton mt-4  ">
-                    <input
-                      type="text"
-                      className="form-control couponinput "
-                      placeholder="Enter coupon"
-                    />
-                    <button className="btn">Apply</button>
-                  </div>
+                  <h6 className="fw-bold mt-4">All Reviews</h6>
+                  {reviews.length > 0 ? (
+                    
+                    reviews.map((review) => (
+                     
+                    <div className="d-flex flex-row mb-4 ">
+                      <div><img className="rounded-circle" width={40} src={userpic}/></div>
+                      <div className="d-flex flex-column">
+                      <div className="ms-2">{review.username}</div>
+                      {/* <div className="ms-2 mt-1">{review.rating}</div> */}
+                      <div className="ms-2" style={{fontSize:"18px"}}>{renderStars(review.rating)}</div>
+                      <span className="ms-2"><p>{review.comment}</p></span>
+                      </div>
+                    </div>
+                      
+                    ))
+
+                  
+                    ) : (
+                    <div>No reviews available</div>
+                    )}
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
           <hr />
