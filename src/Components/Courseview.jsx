@@ -340,6 +340,7 @@ useEffect(() => {
                                               )
                                             }>
                                           <div className="ms-2 mt-1">
+                                          
                                           {completedChapters ? (<>
                                             {completedChapters.includes(chapter.chapter_id) && ' ✅'}{chapter.chapter_name}
                                           </>)
@@ -347,7 +348,8 @@ useEffect(() => {
                                             {chapter.chapter_name}
                                           </>)}
 {/*                                             
-                                            {completedChapters.includes(chapter.chapter_id) && ' ✅'} {chapter.chapter_name} */}
+                                            {completedChapters.includes(chapter.chapter_id) && ' ✅'} {chapter.chapter_name} */
+                                            }
                                           </div>
                                         </div>
                                       </div>

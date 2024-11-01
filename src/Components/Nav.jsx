@@ -56,10 +56,10 @@ const Nav = () => {
               <li className="nav-item pe-2">
                 <a className="nav-link text-white" href='/contact'>Contact</a>
               </li>
-              {/* <li className="nav-item pe-2">
-                <a className="nav-link" href='/offlineregister'><span className="blink" >Offline register <i className="fa fa-bell"></i>
+              <li className="nav-item pe-2">
+                <a className="nav-link"  target='_blank'  href='https://drive.google.com/file/d/1SC0MRWqS4YCH7pyP0i_XfB0-p5WVtWFF/view?usp=drive_link'><span className='fw-bold' style={{color:"#FFFF00"}} >Download app 
                 </span> </a>
-              </li> */}
+              </li>
             </ul>
             
             
