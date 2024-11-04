@@ -8,7 +8,7 @@ import "../Css/generatecertificate.css";
   const today = new Date();
   const formattedDate = today.toLocaleDateString();
  const coursename = localStorage.getItem("course_name");
- const teachername = localStorage.getItem("Teachername");
+//  const teachername = localStorage.getItem("Teachername");
  const username= sessionStorage.getItem("username");
     const pdfJSX = () => {
         return (

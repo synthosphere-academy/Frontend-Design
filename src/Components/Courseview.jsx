@@ -116,6 +116,7 @@ useEffect(() => {
           }
         if(response.data) {
           const course_name = response.data.course_name;
+          console.log(course_name)
           const teacher_name = response.data.teacher_name;
           // alert(course_name );
           // alert(teacher_name);
