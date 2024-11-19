@@ -5,6 +5,7 @@ import Myprofile from './Myprofile'
 import Entrolled from './Entrolled';
 import Orderhistory from './Orderhistory';
 import Invoice from "./Invoice";
+import Affiliate from './Affiliate';
 const Dashboard = ({ currentContent }) => {
   return (
     <div className="dashboard">
@@ -14,6 +15,7 @@ const Dashboard = ({ currentContent }) => {
       {currentContent === 'entrolled' && <Entrolled />}
       {currentContent === 'orderhistory' && <Orderhistory />}
       {currentContent === 'invoicedownload' && <Invoice />}
+      {currentContent === 'affiliate' && <Affiliate />}
 
     </div>
   )

@@ -48,6 +48,19 @@ useEffect(() => {
   const userId = sessionStorage.getItem("userid");
   // console.log(id);
   const [viewcourse, setviewcourse] = useState([]);
+  useEffect(() => {
+    // Extract the 'ref' parameter from the URL
+    const queryParams = new URLSearchParams(window.location.search);
+    const refValue = queryParams.get("ref");
+
+    if (refValue) {
+      // Store the 'ref' value in sessionStorage
+      sessionStorage.setItem("ref", refValue);
+      console.log("Referral code stored:", refValue);
+    } else {
+      console.log("No referral code found in the URL.");
+    }
+  }, []);
   const checkPurchaseStatus = async () => {
     axios
       .get(ROOT_URL + `/api/auth/orderdetails/${userId}`)
@@ -71,12 +84,12 @@ useEffect(() => {
       .get(ROOT_URL + `/api/v1/getcoursebyid/${id}`)
       .then((coursedetail) => {
         setcoursedetail(coursedetail.data);
-
         console.log(coursedetails);
       })
       .catch((err) => console.log(err));
     }
   }, [id]);
+  
 
   const memoizedcoursedetailsData = useMemo(() => coursedetails, [coursedetails]);
   const handleButtonClick = () => {

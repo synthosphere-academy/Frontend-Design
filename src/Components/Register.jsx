@@ -208,6 +208,7 @@ function Register() {
         }
 
     }
+
     return (
         <>
             <section  >
@@ -248,7 +249,6 @@ function Register() {
                                     <option key={city.city_name} value={city.city_name}>{city.city_name}</option>
                                 ))}
 
-                               
 
                             </select>
                         </div>
@@ -300,21 +300,14 @@ function Register() {
 
                         </div>
                         <span className='text-white'><input type="checkbox" id='checkbox_terms'/> I agree all statements in <a href="/terms" target='_blank'>Terms and conditions</a></span>
-
                         <div className="pt-1  text-center">
                             <button className=" btn-lg signupbutton  w-50" type="submit" onClick={handleSubmit} >Sign up</button>
                         </div>
-
-
-
                         <span className="mb-5 pb-lg-2 text-center register_text text-white" >Have an account? <a className="reg text-success" href="/login"
                         >Login</a></span>
                     </form>
-
-
                 </div>
             </section>
-
         </>
     )
 }
