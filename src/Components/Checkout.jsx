@@ -67,7 +67,8 @@ else if (emailerror != "" || mobilenoerror != "") {
     swal("Opps!", "Please give valid inputs!", "error");
 }
 else{
-  await axios.post(ROOT_URL+'/api/auth/checkout',{fullname,phoneno,email,state,city,amount,id,userId})
+  const affiliateCode = sessionStorage.getItem('ref');
+  await axios.post(ROOT_URL+'/api/auth/checkout',{fullname,phoneno,email,state,city,amount,id,userId,affiliateCode})
                 .then(res => {
                     console.log(res);
                     //console.log(res.data.order.amount);
@@ -87,7 +88,7 @@ else{
                               razorpay_order_id: response.razorpay_order_id,
                               razorpay_payment_id: response.razorpay_payment_id,
                               razorpay_signature: response.razorpay_signature,
-                              fullname,phoneno,email,id,userId,state,city,courses,amount
+                              fullname,phoneno,email,id,userId,state,city,courses,amount,affiliateCode
                               // Pass the user ID for backend processing
                             }).then(() => {
                              console.log(response);
