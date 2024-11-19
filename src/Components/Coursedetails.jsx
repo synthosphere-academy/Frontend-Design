@@ -245,7 +245,7 @@ useEffect(() => {
                 <div className="ms-4 mt-4">
                   <span className="fw-bold h2 ">
                     ₹{coursedetails.course_price}
-                  </span><span> (Including GST) </span>
+                  </span><span> (Including tax) </span>
                 </div>
                 {/* {sessionStorage.getItem("userEmail") ? (
                   <>
