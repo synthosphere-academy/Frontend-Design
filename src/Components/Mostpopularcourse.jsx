@@ -2,7 +2,7 @@ import "../Css/Mostpopularcourse.css";
 import { useState, useEffect,useMemo } from "react";
 import axios from "axios";
 import lessonicon from "../Images/lesson.svg";
-import karate from "../Images/karate.jpg";
+
 import teacherpic from "../Images/academy.png";
 import music from "../Images/music.jpg";
 import music2 from "../Images/music_banner.jpg";
@@ -102,44 +102,7 @@ function Mostpopularcourse() {
           <div className="container py-5 cardcontainer">
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
               {memoizedProductData.map(redercoursecard)}
-              <div>
-                <div className="card h-100 d-flex flex-column comingcard">
-                  <img
-                    className="card-img-top cardimage "
-                    src={karate}
-                    alt="Sample photo"
-                  />
-                  <div className="card-body flex-grow-1">
-                    
-                    <h3 className="mt-1">Bruce Lee's street survival tactics part-1</h3>
-                    <hr />
-                    <div className="row">
-                      <div className="col-2">
-                        <img
-                          className="rounded-circle"
-                          width={40}
-                          height={40}
-                          src={teacherpic}
-                        />
-                      </div>
-                      <div className="col-10 mt-2">
-                        <span>Agnideb Sen</span>
-                        <br />
-                        <span className="text-muted">Martial coach</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-footer row">
-                    <div className="col-12 text-center blink">
-                      <a>
-                        <button type="button" className="coming w-75">
-                          Coming soon
-                        </button>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
               <div>
                 <div className="card h-100 d-flex flex-column comingcard">
                   <img

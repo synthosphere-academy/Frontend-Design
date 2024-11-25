@@ -66,12 +66,11 @@ const [copied, setCopied] = useState(false);
                   </div>
                   <div className="col-6 text-end d-flex flex-column">
                     <span className=" h5 fw-bold">₹{productdata.course_price}</span>
-                    <span className="text-muted"style={{marginTop:"-10px"}}>(Including GST)</span>
+                    <span className="text-muted"style={{marginTop:"-10px"}}>(Including tax)</span>
                   </div>
                 </div>
                 <h5 className="mt-3">{productdata.course_name}</h5>
                  <hr />
-                
                 <div className="row">
                   <div className="col-2">
                     <img

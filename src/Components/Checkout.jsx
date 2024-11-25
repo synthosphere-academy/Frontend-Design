@@ -53,6 +53,8 @@ useEffect(() => {
 
 const handleSubmit = async (event) => {
   const userId = sessionStorage.getItem('userid');
+  const affiliateCode = sessionStorage.getItem('ref');
+  console.log(affiliateCode);
   console.log(userId);
   event.preventDefault();
   const amount = document.getElementById('totalamount').innerHTML;
@@ -67,8 +69,8 @@ else if (emailerror != "" || mobilenoerror != "") {
     swal("Opps!", "Please give valid inputs!", "error");
 }
 else{
-  const affiliateCode = sessionStorage.getItem('ref');
-  await axios.post(ROOT_URL+'/api/auth/checkout',{fullname,phoneno,email,state,city,amount,id,userId,affiliateCode})
+ 
+  await axios.post('https://academy-backend-api.onrender.com/api/auth/checkout',{fullname,phoneno,email,state,city,amount,id,userId,affiliateCode})
                 .then(res => {
                     console.log(res);
                     //console.log(res.data.order.amount);
@@ -84,7 +86,7 @@ else{
                         order_id: res.data.order.id,
                         handler: function (response) {
                             // Call your backend to verify the payment and store data
-                             axios.post(ROOT_URL+'/api/auth/paymentverification_students', {
+                             axios.post('https://academy-backend-api.onrender.com/api/auth/paymentverification_students', {
                               razorpay_order_id: response.razorpay_order_id,
                               razorpay_payment_id: response.razorpay_payment_id,
                               razorpay_signature: response.razorpay_signature,
