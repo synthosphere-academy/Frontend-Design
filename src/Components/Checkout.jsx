@@ -70,14 +70,14 @@ else if (emailerror != "" || mobilenoerror != "") {
 }
 else{
  
-  await axios.post('https://academy-backend-api.onrender.com/api/auth/checkout',{fullname,phoneno,email,state,city,amount,id,userId,affiliateCode})
+  await axios.post(ROOT_URL + '/api/auth/checkout',{fullname,phoneno,email,state,city,amount,id,userId,affiliateCode})
                 .then(res => {
                     console.log(res);
                     //console.log(res.data.order.amount);
 
                     const options = {
-                         key: "rzp_live_CXFLJxBQsC8YBF", // Enter the Key ID generated from the Dashboard
-                        //key:"rzp_test_FEdsKrhgE2fdCF",
+                        // key: "rzp_live_CXFLJxBQsC8YBF", // Enter the Key ID generated from the Dashboard
+                         key:"rzp_test_fljf9prKP3Ri1D",
                         amount :  res.data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                         currency: "INR",
                         name: "Synthosphere academy",
@@ -86,7 +86,7 @@ else{
                         order_id: res.data.order.id,
                         handler: function (response) {
                             // Call your backend to verify the payment and store data
-                             axios.post('https://academy-backend-api.onrender.com/api/auth/paymentverification_students', {
+                             axios.post(ROOT_URL + '/api/auth/paymentverification_students', {
                               razorpay_order_id: response.razorpay_order_id,
                               razorpay_payment_id: response.razorpay_payment_id,
                               razorpay_signature: response.razorpay_signature,
@@ -98,10 +98,11 @@ else{
                              navigate("/paymentSucess");
 
                             
-                            }).catch(() => {
+                            }).catch((err) => {
+                              console.log(err);
                               swal('Payment verification failed.');
                               // navigate(`/checkout/${id}`);
-                               window.location.reload();
+                              //  window.location.reload();
                             });
                           },
                         

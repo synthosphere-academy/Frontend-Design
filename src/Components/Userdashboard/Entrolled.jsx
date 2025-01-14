@@ -14,7 +14,9 @@ const Entrolled =() => {
   const token = localStorage.getItem('token');
     const [enrollcourse, setenrollcourse] = useState([]);
     useEffect(() => {
+      
         const userId = sessionStorage.getItem('userid');
+        if(userId){
         // console.log(userId);
            axios
           .get(ROOT_URL + `/api/v1/getenrolledcourse/${userId}`,{
@@ -34,8 +36,10 @@ const Entrolled =() => {
             swal("Opps!", "Please login again!", "warning")
             localStorage.removeItem('token');
             navigate('/login');
-
+          
           });
+        }
+        
       }, []);
 
     
@@ -47,7 +51,7 @@ const Entrolled =() => {
     <h3 className="fw-bold">Enrolled Courses</h3>
     <div className="container py-2">
     <div className="row row-cols-lg-2  row-cols-1 row-cols-md-2">
-    {enrollcourse ? (
+    {enrollcourse.length > 0 ? (
       enrollcourse.map((course) => (
     <div className='col'key={course._id} >
         <div className="card h-100">
@@ -82,7 +86,7 @@ const Entrolled =() => {
       </div>
       
       ))
-      ) :(<div>No courses available</div>)}
+      ) :(<div className="h5">No courses available</div>)}
       </div>
       </div>
       </div>
