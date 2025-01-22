@@ -14,7 +14,7 @@ const Resetpassword = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     useEffect(() => {
-        // Verify the token when the component mounts
+       
         const verifyToken = async () => {
           try {
             const response = await axios.get(ROOT_URL+`/api/auth/verifysentemail?token=${token}`);
