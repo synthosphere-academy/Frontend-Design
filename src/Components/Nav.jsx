@@ -58,7 +58,7 @@ const Nav = () => {
               </li>
               
               <li className="nav-item pe-2">
-                <a className="nav-link"  target='_blank'  href='https://drive.google.com/file/d/1IrqBCEdlFuACINWSbmDPEAeNHXtqBEeF/view?usp=drive_link'><span className='fw-bold' style={{color:"#FFFF00"}} >Download app 
+                <a className="nav-link"  target='_blank'  href='https://drive.google.com/file/d/14REmABPFvJUy1JXkvEs2lygmrFNA9eHd/view?usp=drive_link'><span className='fw-bold' style={{color:"#FFFF00"}} >Download app 
                 </span> </a>
               </li>
             </ul>
