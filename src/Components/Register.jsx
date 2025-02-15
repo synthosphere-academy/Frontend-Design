@@ -8,6 +8,7 @@ import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import '../Css/Datepicker_style.css';
 import { useNavigate } from 'react-router-dom';
+import statesCities from "../Data/statecity.json"
 
 
 function Register() {
@@ -17,8 +18,8 @@ function Register() {
     const [phoneno, setPhoneno] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [state, setDropdownValue_state] = useState([])
-    const [city, setDropdownValue] = useState([])
+   
+    
     const [cities, setSelectedcities] = useState([])
     const [date, setDate] = useState(null);
     const [token, setToken] = useState(null);
@@ -35,7 +36,7 @@ function Register() {
     const navigate = useNavigate();
    
     //for state city api token
-    const API_TOKEN = 'C2dy7lLSGxWm63T6Oem2N9jeUlaE5Y9M59MInjwjc-FksoqRsWk0pa-iKk1LzSfEFy0';
+    
     
     
     
@@ -45,48 +46,8 @@ function Register() {
     //     headers: { Authorization: `Bearer ${token_auth}` }
     // };
     //for state dropdow
-    useEffect(() => {
-        const getAuthToken = async () => {
-            try {
-                const response = await axios.get("https://www.universal-tutorial.com/api/getaccesstoken", {
-                    headers: {
-                        'api-token': API_TOKEN,
-                        'user-email': 'srijani.banerjee2000@gmail.com',
-                    }
-                });
-                setToken(response.data.auth_token);
-            } catch (error) {
-                console.log(error);
-                // setError(error);
-            }
-        };
 
-        getAuthToken();
-    }, []);
-    useEffect(() => {
-        if (token) {
-            const getStates = async () => {
-                try {
-
-                    const response = await axios.get('https://www.universal-tutorial.com/api/states/India', {
-                        headers: {
-                            'Authorization': `Bearer ${token}`,
-                            'Accept': 'application/json'
-                        }
-                    });
-                    console.log(response.data);
-                    setDropdownValue_state(response.data);
-
-                } catch (error) {
-                    // setError(error);
-                    console.log(error);
-
-                }
-            };
-
-            getStates();
-        }
-    }, [token]);
+ 
 
     //city
     useEffect(() => {
@@ -235,19 +196,24 @@ function Register() {
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">State  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <select className="form-select form-control-lg mb-3 h-50 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_state}>
                                 <option value="" label='Enter your State'></option>
-                                {Array.isArray(state) && state.map(state => (
-                                    <option key={state.state_name} value={state.state_name}>{state.state_name}</option>
-                                ))}
+                                {statesCities.map((item) => (
+                      <option key={item.state} value={item.state}>
+                        {item.state}
+                      </option>
+                    ))}
                             </select>
                         </div>
 
                         <div className='col-lg-5'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">City  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1"> District <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <select className="form-select form-control-lg h-50 mb-3 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_city}>
                                 <option value="Choose city" label=' Enter your city'></option>
-                                {Array.isArray(city) && city.map(city => (
-                                    <option key={city.city_name} value={city.city_name}>{city.city_name}</option>
-                                ))}
+                                {(statesCities.find((s) => s.state === States)?.cities || []).map((city) => (
+                      <option key={city} value={city}>
+                        {city}
+                      </option>
+                    ))}
+                       
 
 
                             </select>
