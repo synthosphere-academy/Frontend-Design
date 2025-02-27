@@ -96,7 +96,6 @@ else{
                              console.log(response);
                              swal("Thank you for your purchase!" ,"You've successfully enrolled in the course", "success");
                              navigate("/paymentSucess");
-
                             
                             }).catch((err) => {
                               console.log(err);
