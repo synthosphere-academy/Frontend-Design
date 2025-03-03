@@ -12,19 +12,19 @@ function Ourteam() {
         {
             image:[face1],
             team_member:"Sourav Basak ",
-            team_member_role:"Co-founder & CTO",
+            team_member_role:"Co-founder",
             team_member_description: "Empowering minds, shaping futures – Synthosphere Academy's courses redefine education in the age of synthetic intelligence"
         },
         {
         image:[face2],
         team_member:"Dipan Das",
-        team_member_role:"Co-founder & COO",
+        team_member_role:"Co-founder",
         team_member_description: "Join us in the future of technology with this Academy's visionary courses, driving innovation and progress forward."
         },
         {
             image:[face3],
             team_member:"Kushal Saha",
-            team_member_role:"Co-founder & CFO",
+            team_member_role:"Co-founder",
             team_member_description: "Empower your future with courses that fuel creativity and technological breakthroughs."
             },
             {
