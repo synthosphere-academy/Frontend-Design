@@ -9,12 +9,12 @@ import face6 from "../Images/srijani.jpg";
 function Ourteam() {
     const ourteamInfo = [
        
-        {
-            image:[face1],
-            team_member:"Sourav Basak ",
-            team_member_role:"Co-founder",
-            team_member_description: "Empowering minds, shaping futures – Synthosphere Academy's courses redefine education in the age of synthetic intelligence"
-        },
+        // {
+        //     image:[face1],
+        //     team_member:"Sourav Basak ",
+        //     team_member_role:"Co-founder",
+        //     team_member_description: "Empowering minds, shaping futures – Synthosphere Academy's courses redefine education in the age of synthetic intelligence"
+        // },
         {
         image:[face2],
         team_member:"Dipan Das",
