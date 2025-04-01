@@ -24,7 +24,8 @@ import { Allblog } from './Components/Allblog';
 import PaymentSucess from './Components/PaymentSucess'
 import Invoice from './Components/Userdashboard/Invoice';
 import Resetpassword from './Components/Fotgotpassword/Resetpassword';
- 
+ import Physicalcourse from "./Components/Ourcourse/Physicalcourse";
+ import Onlinecourse from "./Components/Ourcourse/Onlinecourse";
 import './App.css'
 
 
@@ -53,6 +54,8 @@ function App() {
         <Route path='/courseview/:id' element={<Userlayout><Courseview/></Userlayout>}/>
         <Route path='/terms' element={<Userlayout><Terms/></Userlayout>}/>
         <Route path='/Privatepolicy' element={<Userlayout><Privatepolicy/></Userlayout>}/>
+        <Route path='/physicalcourse' element={<Userlayout><Physicalcourse/></Userlayout>}/>
+        <Route path='/onlinecourse' element={<Userlayout><Onlinecourse/></Userlayout>}/>
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
         {/* <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/> */}
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>

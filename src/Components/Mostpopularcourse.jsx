@@ -1,14 +1,14 @@
 import "../Css/Mostpopularcourse.css";
-import { useState, useEffect,useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import lessonicon from "../Images/lesson.svg";
 
 import teacherpic from "../Images/academy.png";
-import music from "../Images/music.jpg";
-import music2 from "../Images/music_banner.jpg";
-import nailphoto from "../Images/nailart.jpg"
-import music3 from "../Images/guitar.jpg";
-import music4 from "../Images/vocal.jpg";
+// import music from "../Images/music.jpg";
+// import music2 from "../Images/music_banner.jpg";
+import nailphoto from "../Images/shilpi_nail.jpg";
+// import music3 from "../Images/guitar.jpg";
+import music4 from "../Images/Tanu_eye.jpg";
 
 function Mostpopularcourse() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
@@ -16,26 +16,26 @@ function Mostpopularcourse() {
   const [productdata, setproduct] = useState([]);
   useEffect(() => {
     if (!productdata.length) {
-    axios
-      .get(ROOT_URL + "/api/v1/get_course")
-      .then((productdata) => setproduct(productdata.data.data))
-      .catch((err) => console.log(err));
+      axios
+        .get(ROOT_URL + "/api/v1/get_course")
+        .then((productdata) => setproduct(productdata.data.data))
+        .catch((err) => console.log(err));
     }
   }, [productdata]);
 
- const memoizedProductData = useMemo(() => productdata, [productdata]);
- //star review
- const renderStars = (rating) => {
-  const stars = [];
-  for (let i = 0; i < 5; i++) {
+  const memoizedProductData = useMemo(() => productdata, [productdata]);
+  //star review
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
       stars.push(
-          <span key={i}  style={{ color: i < rating ? 'gold' : 'lightgray' }}>
-              {i < rating ? '★' : '☆'}
-          </span>
+        <span key={i} style={{ color: i < rating ? "gold" : "lightgray" }}>
+          {i < rating ? "★" : "☆"}
+        </span>
       );
-  }
-  return stars;
-};
+    }
+    return stars;
+  };
   const redercoursecard = (productdata) => {
     return (
       <div className="col" key={productdata._id}>
@@ -53,13 +53,18 @@ function Mostpopularcourse() {
               </div>
               <div className="col-6 text-end d-flex flex-column">
                 <span className=" h5 fw-bold">₹{productdata.course_price}</span>
-                <span className="text-muted"style={{marginTop:"-10px"}}>(Including tax)</span>
+                <span className="text-muted" style={{ marginTop: "-10px" }}>
+                  (Including tax)
+                </span>
               </div>
             </div>
             <h5 className="mt-3">{productdata.course_name}</h5>
-           <span className="fw-bold">{productdata.averageRating}</span><span className="starreview ms-2" >{renderStars(productdata.averageRating)}</span>
+            <span className="fw-bold">{productdata.averageRating}</span>
+            <span className="starreview ms-2">
+              {renderStars(productdata.averageRating)}
+            </span>
             <hr />
-            
+
             <div className="row">
               <div className="col-2">
                 <img
@@ -100,197 +105,108 @@ function Mostpopularcourse() {
           </h1>
 
           <div className="container py-5 cardcontainer">
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
-              {memoizedProductData.map(redercoursecard)}
-              
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4 ">
+              {/* {memoizedProductData.map(redercoursecard)} */}
               <div>
                 <div className="card h-100 d-flex flex-column comingcard">
                   <img
-                    className="card-img-top cardimage "
-                    src={music}
-                    alt="Sample photo"
-                  />
-                  <div className="card-body flex-grow-1">
-                    <h3 className="mt-1">Music production course</h3>
-                    <hr />
-                    <div className="row">
-                      <div className="col-2">
-                        <img
-                          className="rounded-circle"
-                          width={40}
-                          height={40}
-                          src={teacherpic}
-                        />
-                      </div>
-                      <div className="col-10 mt-2">
-                        <span>Kushal Saha</span>
-                        <br />
-                        <span className="text-muted">Audio engineer</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-footer row">
-                    <div className="col-12 text-center blink">
-                      <a>
-                        <button type="button" className="coming w-75">
-                          Coming soon
-                        </button>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="card h-100 d-flex flex-column comingcard">
-                  <img
-                    className="card-img-top cardimage "
-                    src={music2}
-                    alt="Sample photo"
-                  />
-                  <div className="card-body flex-grow-1">
-                   
-                    <h3 className="mt-1">The music course</h3>
-                    <hr />
-                    <div className="row">
-                      <div className="col-2">
-                        <img
-                          className="rounded-circle"
-                          width={40}
-                          height={40}
-                          src={teacherpic}
-                        />
-                      </div>
-                      <div className="col-10 mt-2">
-                        <span>Sayamdeep Chakraborty</span>
-                        <br />
-                        <span className="text-muted">Violin teacher</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-footer row">
-                    <div className="col-12 text-center blink">
-                      <a>
-                        <button type="button" className="coming w-75">
-                          Coming soon
-                        </button>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-              <div className="card h-100 d-flex flex-column comingcard">
-              <img
                     className="card-img-top cardimage "
                     src={nailphoto}
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-              <h3 className="mt-1">The complete nail art course</h3>
+                    <h3 className="mt-1 fw-bold">The nailart course</h3>
+                    <div className="d-flex justify-content-between">
+                      <span
+                        className="starreview ms-2"
+                        style={{ color: "gold" }}
+                      >
+                        <span className="text-dark">5</span>★★★★★
+                      </span>
+
+                      <h5 className="mt-1 text-end">6000/- only</h5>
+                    </div>
                     <hr />
+                    <div>
+                      hhghghgghghghhghghghghghhjhuhuhuhugiugyugjghjghjghjghjghjghjg
+                    </div>
                     <div className="row">
-                      <div className="col-2">
+                      <div className="col-2 mt-2">
                         <img
                           className="rounded-circle"
                           width={40}
                           height={40}
                           src={teacherpic}
                         />
-                        </div>
-                        <div className="col-10 mt-2">
+                      </div>
+                      <div className="col-10 mt-2">
                         <span>Shilpi Saha</span>
                         <br />
-                        <span className="text-muted">Nail technician</span>
+                        <span className="text-muted">Nail artist</span>
                       </div>
-                        </div>
-                        </div>
-                        <div className="card-footer row">
+                    </div>
+                  </div>
+                  <div className="card-footer row">
+                    <div className="text-dark text-center ">Payment link:</div>
                     <div className="col-12 text-center blink">
                       <a>
-                        <button type="button" className="coming w-75">
-                          Coming soon
-                        </button>
+                        <button type="button" className="coming w-75"></button>
                       </a>
                     </div>
                   </div>
+                </div>
               </div>
-              </div>
-              <div>
-              <div className="card h-100 d-flex flex-column comingcard">
-              <img
-                    className="card-img-top cardimage "
-                    src={music3}
-                    alt="Sample photo"
-                  />
-                        <div className="card-body flex-grow-1">
-              <h3 className="mt-1">Guitar beginner course</h3>
-                    <hr />
-                    <div className="row">
-                      <div className="col-2">
-                        <img
-                          className="rounded-circle"
-                          width={40}
-                          height={40}
-                          src={teacherpic}
-                        />
-                        </div>
-                        <div className="col-10 mt-2">
-                        <span>Suvro Jyoti Biswas</span>
-                        <br />
-                        <span className="text-muted">Guitar teacher</span>
-                      </div>
-                        </div>
-                        </div>
-                        <div className="card-footer row">
-                    <div className="col-12 text-center blink">
-                      <a>
-                        <button type="button" className="coming w-75">
-                          Coming soon
-                        </button>
-                      </a>
-                    </div>
-                  </div>
 
-              </div>
-              </div>
               <div>
-              <div className="card h-100 d-flex flex-column comingcard">
-              <img
+                <div className="card h-100 d-flex flex-column comingcard">
+                  <img
                     className="card-img-top cardimage "
                     src={music4}
                     alt="Sample photo"
                   />
-                        <div className="card-body flex-grow-1">
-              <h3 className="mt-1">The vocal training course</h3>
+                  <div className="card-body flex-grow-1">
+                    <h3 className="mt-1 fw-bold">The eyelash course</h3>
+                    <div className="d-flex justify-content-between">
+                      <span
+                        className="starreview ms-2"
+                        style={{ color: "gold" }}
+                      >
+                        <span className="text-dark">5</span>★★★★★
+                      </span>
+
+                      <h5 className="mt-1 text-end">6000/- only</h5>
+                    </div>
                     <hr />
+                    <div>
+                      hhghghgghghghhghghghghghhjhuhuhuhugiugyugjghjghjghjghjghjghjg
+                    </div>
                     <div className="row">
-                      <div className="col-2">
+                      <div className="col-2 mt-2">
                         <img
                           className="rounded-circle"
                           width={40}
                           height={40}
                           src={teacherpic}
                         />
-                        </div>
-                        <div className="col-10 mt-2">
-                        <span>Biplab Chakraborty</span>
-                        <br />
-                        <span className="text-muted">Vocal trainer</span>
                       </div>
-                        </div>
-                        </div>
-                        <div className="card-footer row">
+                      <div className="col-10 mt-2">
+                        <span>Shilpi Saha</span>
+                        <br />
+                        <span className="text-muted">Nail artist</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card-footer row">
+                    <div className="text-dark text-center ">Payment link:</div>
                     <div className="col-12 text-center blink">
                       <a>
-                        <button type="button" className="coming w-75">
-                          Coming soon
-                        </button>
+                        <button type="button" className="coming w-75"></button>
                       </a>
                     </div>
                   </div>
+                </div>
+              </div>
 
-              </div>
-              </div>
             </div>
           </div>
         </div>
