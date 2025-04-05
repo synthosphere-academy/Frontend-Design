@@ -181,7 +181,10 @@ function Physicalcourse() {
                       <b>
                         📍Location : 7 no. Road, Jagatmata apartment, HB Town,
                         Sodepur, Kolkata
-                      </b>
+                      </b><br/><br/><br/>
+                      <br/><br/><br/>
+                      <br/><br/><br/>
+                      <br/>
                     </div>
 
                     <div className="row">
@@ -206,13 +209,12 @@ function Physicalcourse() {
                       </div>
                       <div className="col-lg-7 fw-bold mt-3">
                         ⭐ For admission call/wts 9073582559
+                        
                       </div>
+                     
                     </div>
                   </div>
                   <div className="card-footer row">
-                    <div className="text-dark text-center fw-bold ">
-                      Payment link:
-                    </div>
                     <div className="col-12 text-center">
                       <a href="https://rzp.io/rzp/nUDOa2l" target="_blank">
                         <button type="button" className="coming w-75">
@@ -288,13 +290,11 @@ function Physicalcourse() {
                     </div>
                   </div>
                   <div className="card-footer row">
-                    <div className="text-dark text-center fw-bold ">
-                      Payment link:
-                    </div>
+                    
                     <div className="col-12 text-center">
                       <a href="https://rzp.io/rzp/dSAeWRO" target="_blank">
                         <button type="button" className="coming w-75">
-                          https://rzp.io/rzp/dSAeWRO
+                        Payment link
                         </button>
                       </a>
                     </div>
@@ -377,13 +377,11 @@ function Physicalcourse() {
                     </div>
                   </div>
                   <div className="card-footer row">
-                    <div className="text-dark text-center fw-bold ">
-                      Payment link:
-                    </div>
+                    
                     <div className="col-12 text-center">
                       <a href="https://rzp.io/rzp/18GiHBBV" target="_blank">
                         <button type="button" className="coming w-75">
-                          https://rzp.io/rzp/18GiHBBV
+                        Payment link
                         </button>
                       </a>
                     </div>

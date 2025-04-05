@@ -106,7 +106,7 @@ function Mostpopularcourse() {
 
           <div className="container py-5 cardcontainer">
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4 ">
-              {/* {memoizedProductData.map(redercoursecard)} */}
+              {memoizedProductData.map(redercoursecard)}
               <div>
                 <div className="card h-100 d-flex flex-column comingcard">
                   <img
