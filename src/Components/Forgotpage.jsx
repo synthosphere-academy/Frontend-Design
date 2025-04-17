@@ -23,7 +23,6 @@ function Forgotpage() {
       })
     }
     
-  
   return (
     
     <section >
@@ -54,7 +53,6 @@ function Forgotpage() {
     {/* <small id="emailHelp" className="form-text text-muted text-white">We will never share your email with anyone else.</small> */}
   </div>
   
-
                   <div className="pt-1 mb-4 text-center">
                     <button className=" btn-lg  w-50 loginbutton" type="submit" onClick={handleForgotPassword}>Submit</button>
                   </div>
