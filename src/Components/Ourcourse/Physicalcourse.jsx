@@ -453,7 +453,7 @@ function Physicalcourse() {
                             />
                           </div>
                           <div className="col-10 mt-2">
-                            <span className="ms-2">Priyodarshini Kanjilal</span>
+                            <span className="ms-2">Priyadarshini Kanjilal</span>
                             <br />
                             <span className="text-muted ms-2">
                               Tarot card reader
