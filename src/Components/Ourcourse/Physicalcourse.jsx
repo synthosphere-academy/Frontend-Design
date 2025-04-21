@@ -600,13 +600,45 @@ function Physicalcourse() {
                         className="starreview ms-2"
                         style={{ color: "gold" }}
                       >
-                        {/* <span className="text-dark">5</span>★★★★★ */}
+                        <span className="text-dark">5</span>★★★★★
                       </span>
 
-                      {/* <h5 className="mt-1 text-end">6000/-</h5> */}
+                      <h5 className="mt-1 text-end">10000/-</h5>
                     </div>
                     <hr />
-                    <div></div>
+                    <div>
+                    <b>
+                        ⭐ Duration: 6 months
+                      </b>
+                      <br />
+                      <b>
+                        ⭐ Age: 15 yrs to above
+                      </b>
+                      <br />
+                     
+                      <div className="d-flex justify-content-between">
+                      <div>
+                      <h5 className="fw-bold mt-3">🎤Class Details</h5>
+                      <ul className="list-unstyled ps-3">
+                        <li>⭐Voice Grooming</li>
+                        <li>⭐Rabindra Sangeet</li>
+                        <li>⭐Folk Song</li>
+                        <li>⭐Bengali & Hindi Song</li>
+                        <li>⭐Track Music</li>
+                        
+                      </ul></div>
+                      <div>
+                      <h5 className="fw-bold mt-3">🎵Special Classes</h5>
+                      <ul className="list-unstyled ps-3">
+                        <li>⭐Microphone Management</li>
+                        <li>⭐Stage Management & Performance</li>
+                        <li>⭐Basic Make up & Dressing Sence</li>
+                       
+                        
+                      </ul></div>
+                      </div>
+                    
+                    </div>
                     <div className="row">
                       <div className="col-lg-5">
                         <div className="row">
@@ -632,10 +664,10 @@ function Physicalcourse() {
                   </div>
                   <div className="card-footer row">
                     <div className="text-dark text-center fw-bold "></div>
-                    <div className="col-12 text-center blink">
-                      <a target="_blank">
+                    <div className="col-12 text-center">
+                      <a href="https://rzp.io/rzp/8TsPFjdS" target="_blank">
                         <button type="button" className="coming w-75">
-                          Coming soon
+                          Payment link
                         </button>
                       </a>
                     </div>

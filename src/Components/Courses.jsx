@@ -762,64 +762,96 @@ function Courses() {
                         </div>
                       </div>
                       {/* 7th */}
-                                            <div>
-                                      <div className="card h-100 d-flex flex-column comingcard">
-                                        <img
-                                          className="card-img-top cardimage "
-                                          src={vocal}
-                                          alt="Sample photo"
-                                        />
-                                        <div className="card-body flex-grow-1">
-                                          <h3 className="mt-1 fw-bold">
-                                            Basic To Advance Vocal Course
-                                          </h3>
-                                          <div className="d-flex justify-content-between">
-                                            <span
-                                              className="starreview ms-2"
-                                              style={{ color: "gold" }}
-                                            >
-                                              {/* <span className="text-dark">5</span>★★★★★ */}
-                                            </span>
-                      
-                                            {/* <h5 className="mt-1 text-end">6000/-</h5> */}
+                <div>
+                                <div className="card h-100 d-flex flex-column comingcard">
+                                  <img
+                                    className="card-img-top cardimage "
+                                    src={vocal}
+                                    alt="Sample photo"
+                                  />
+                                  <div className="card-body flex-grow-1">
+                                    <h3 className="mt-1 fw-bold">
+                                      Basic To Advance Vocal Course
+                                    </h3>
+                                    <div className="d-flex justify-content-between">
+                                      <span
+                                        className="starreview ms-2"
+                                        style={{ color: "gold" }}
+                                      >
+                                        <span className="text-dark">5</span>★★★★★
+                                      </span>
+                
+                                      <h5 className="mt-1 text-end">10000/-</h5>
+                                    </div>
+                                    <hr />
+                                    <div>
+                                    <b>
+                                        ⭐ Duration: 6 months
+                                      </b>
+                                      <br />
+                                      <b>
+                                        ⭐ Age: 15 yrs to above
+                                      </b>
+                                      <br />
+                                     
+                                      <div className="d-flex justify-content-between">
+                                      <div>
+                                      <h5 className="fw-bold mt-3">🎤Class Details</h5>
+                                      <ul className="list-unstyled ps-3">
+                                        <li>⭐Voice Grooming</li>
+                                        <li>⭐Rabindra Sangeet</li>
+                                        <li>⭐Folk Song</li>
+                                        <li>⭐Bengali & Hindi Song</li>
+                                        <li>⭐Track Music</li>
+                                        
+                                      </ul></div>
+                                      <div>
+                                      <h5 className="fw-bold mt-3">🎵Special Classes</h5>
+                                      <ul className="list-unstyled ps-3">
+                                        <li>⭐Microphone Management</li>
+                                        <li>⭐Stage Management & Performance</li>
+                                        <li>⭐Basic Make up & Dressing Sence</li>
+                                       
+                                        
+                                      </ul></div>
+                                      </div>
+                                    
+                                    </div>
+                                    <div className="row">
+                                      <div className="col-lg-5">
+                                        <div className="row">
+                                          <div className="col-2 mt-2">
+                                            <img
+                                              className="rounded-circle"
+                                              width={40}
+                                              height={40}
+                                              src={teacherpic}
+                                            />
                                           </div>
-                                          <hr />
-                                          <div></div>
-                                          <div className="row">
-                                            <div className="col-lg-5">
-                                              <div className="row">
-                                                <div className="col-2 mt-2">
-                                                  <img
-                                                    className="rounded-circle"
-                                                    width={40}
-                                                    height={40}
-                                                    src={teacherpic}
-                                                  />
-                                                </div>
-                                                <div className="col-10 mt-2">
-                                                  <span className="ms-2">Susmita Das</span>
-                                                  <br />
-                                                  <span className="text-muted ms-2">Singer</span>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div className="col-lg-7 fw-bold mt-3 text-end">
-                                              <div>⭐For admission call: 9051911544</div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div className="card-footer row">
-                                          <div className="text-dark text-center fw-bold "></div>
-                                          <div className="col-12 text-center blink">
-                                            <a target="_blank">
-                                              <button type="button" className="coming w-75">
-                                                Coming soon
-                                              </button>
-                                            </a>
+                                          <div className="col-10 mt-2">
+                                            <span className="ms-2">Susmita Das</span>
+                                            <br />
+                                            <span className="text-muted ms-2">Singer</span>
                                           </div>
                                         </div>
                                       </div>
+                                      <div className="col-lg-7 fw-bold mt-3 text-end">
+                                        <div>⭐For admission call: 9051911544</div>
+                                      </div>
                                     </div>
+                                  </div>
+                                  <div className="card-footer row">
+                                    <div className="text-dark text-center fw-bold "></div>
+                                    <div className="col-12 text-center">
+                                      <a href="https://rzp.io/rzp/8TsPFjdS" target="_blank">
+                                        <button type="button" className="coming w-75">
+                                          Payment link
+                                        </button>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
         </div>
       </div>
       <div className="container py-5 cardcontainer ">
