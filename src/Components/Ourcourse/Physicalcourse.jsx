@@ -31,7 +31,7 @@ function Physicalcourse() {
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    <h3 className="mt-1 fw-bold">The Nailart Course</h3>
+                    <h3 className="mt-1 fw-bold">The Nail Extension Course</h3>
                     <div className="d-flex justify-content-between">
                       <span
                         className="starreview ms-2"
@@ -151,7 +151,7 @@ function Physicalcourse() {
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    <h3 className="mt-1 fw-bold">The Eyelash Course</h3>
+                    <h3 className="mt-1 fw-bold">The Eyelash Extension Course</h3>
                     <div className="d-flex justify-content-between">
                       <span
                         className="starreview ms-2"
@@ -242,7 +242,7 @@ function Physicalcourse() {
                     alt="Sample photo"
                   />
                   <div className="card-body flex-grow-1">
-                    <h3 className="mt-1 fw-bold">The Makeup Course</h3>
+                    <h3 className="mt-1 fw-bold">The Makeup Master Course</h3>
                     <div className="d-flex justify-content-between">
                       <span
                         className="starreview ms-2"
@@ -488,7 +488,7 @@ function Physicalcourse() {
                   />
                   <div className="card-body flex-grow-1">
                     <h3 className="mt-1 fw-bold">
-                      Basic to Advance Makeup Course
+                      The Advance Makeup Course
                     </h3>
                     <div className="d-flex justify-content-between">
                       <span
@@ -626,7 +626,7 @@ function Physicalcourse() {
                         </div>
                       </div>
                       <div className="col-lg-7 fw-bold mt-3 text-end">
-                        <div>⭐For admission call: 9330507516</div>
+                        <div>⭐For admission call: 9051911544</div>
                       </div>
                     </div>
                   </div>
