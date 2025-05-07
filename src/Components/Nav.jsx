@@ -48,11 +48,11 @@ const Nav = () => {
                   <li><a className="dropdown-item" href="#">Music</a></li>
                 </ul> */}
               {/* </li> */}
-              <li className="nav-item pe-2">
+              {/* <li className="nav-item pe-2">
                 <a className="nav-link text-white" href="/allblogs">
                   Article
                 </a>
-              </li>
+              </li> */}
               <li className="nav-item pe-2">
                 <a className="nav-link text-white" href='/contact'>Contact</a>
               </li>
@@ -64,13 +64,12 @@ const Nav = () => {
             </ul>
           
             
-            {
+            {/* {
               sessionStorage.getItem("username") ?
                 <div>
                 <div className="me-5 userdrop dropdown">
                   <div className="buttonstyle dropdown-toggle text-white" type='button'  data-bs-toggle="dropdown" aria-expanded="false">
-                    Hi, {sessionStorage.getItem("username")}
-                    {/* <img src={pic} width="10%" height="20%"/> */}
+                    Hi, {sessionStorage.getItem("username")} 
                   </div>
                   <ul className="dropdown-menu">
                     <li><a className="dropdown-item p-2" href="/userdashboard">Dashboard</a></li>
@@ -85,22 +84,8 @@ const Nav = () => {
                   <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
                   <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
                 </button>
-            }
-            {/* {
-              sessionStorage.getItem("userEmail") ?
-            <div className='me-4 cartpart'>
-              <div className="navbar-text  cartstyle text-center" >
-                <a href='/addtocart' id='cartitem'>
-                  <img src={icon} className='carticon' /><sup ><span className="badge bg-danger overflow-auto">{items.cart.length}</span></sup>
-                </a>
-              </div>
-            </div>: ""
             } */}
             
-            {/* <button className='buttonstyle btn btn-sm text-white'>
-              <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
-              <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
-            </button> */}
 
           </div>
         </div>
