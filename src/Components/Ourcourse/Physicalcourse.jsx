@@ -44,19 +44,23 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div style={{ textAlign: "justify" }}>
-                      ⭐⭐ 24th Batch will start from : April
+                      <b>⭐⭐ Next Batch will start from : July</b>
                       <br />
+                       <b>
+                        ⭐ Duration: 10 days & 1 day for exam
+                      </b><br/>
+                      <b>⭐ Time - 12pm - 3pm</b><br/>
                       <b>
-                        ⭐1000 pay for seat booking , Then due fees pay on 1st
-                        day Duration 10 days & 1 day for exam
+                        ⭐ 1000/- pay for seat booking , Then due fees pay on 1st
+                        day
                       </b>
                       <br />
-                      ISO certification Classes - (as per student choice) Time -
-                      (12pm - 3pm)
+                      <b> ⭐ ISO certification </b> <br/>
+                      
                       <br />
                       <div className="row ">
                         <div className="col-lg-6">
-                          <h5 className="fw-bold mt-3">💅 Course Details</h5>
+                          <h5 className="fw-bold mt-3">🌟 Course Details</h5>
                           <ul className="list-unstyled ps-3">
                             <li>⭐ Theory</li>
                             <li>⭐ Gel overlay</li>
@@ -69,11 +73,11 @@ function Physicalcourse() {
                             🌟 Types of Extensions
                           </h5>
                           <ul className="list-unstyled ps-3">
-                            <li>• Gel extension</li>
-                            <li>• Acrylic extension</li>
-                            <li>• Poly gel</li>
-                            <li>• Soft gel</li>
-                            <li>• Foam extension</li>
+                            <li>⭐ Gel extension</li>
+                            <li>⭐ Acrylic extension</li>
+                            <li>⭐ Poly gel</li>
+                            <li>⭐ Soft gel</li>
+                            <li>⭐ Foam extension</li>
                           </ul>
                         </div>
                       </div>
@@ -160,27 +164,28 @@ function Physicalcourse() {
                         <span className="text-dark">5</span>★★★★★
                       </span>
 
-                      <h5 className="mt-1 text-end">3000/-(Without product)</h5>
+                      <h5 className="mt-1 text-end">4000/-(Without product)</h5>
                     </div>
                     <hr />
                     <div>
-                      ⭐⭐1st Batch will start from : 2nd December <br />
+                      <b>⭐⭐1st Batch will start from : 2nd December</b> <br />
+                      <b>⭐ Duration: 5 days & 1 day for exam</b><br/>
+                      <b>⭐ Time: 12pm - 3pm</b><br/>
                       <b>
-                        ⭐500 pay for seat booking ,Then due fees pay on 1st day
-                        & 3rd day of class
+                        ⭐500/- pay for seat booking ,Then due fees pay on 1st day
+                        & 3rd day
                       </b>{" "}
-                      <br /> Duration 5days & 1 day for exam, ISO certification
-                      Classes - (as per student choice) Time - (12pm - 3pm)
+                      <br /> 
+                      <b>⭐ ISO certification </b>
                       <br />
                       <br />
-                      COURSE DETAILS BASIC TO ADVANCE ( TOPIC ) <br /> ⭐
+                      <h5 className="fw-bold mt-3"> 🌟 Course Details</h5> ⭐
                       Product knowledge natural looking extension <br />
                       ⭐Lash extension kit <br />⭐ Lash combination process
                       <br /> ⭐ Safety & Prevention
                       <br />⭐ Application Removal
-                      <br /> ⭐ Lash Refilling Process <br />⭐ ISO Certificate
-                      will be provided
-                      <br />
+                      <br /> ⭐ Lash Refilling Process <br />
+                      <br/>
                       <b>
                         📍Location : 7 no. Road, Jagatmata apartment, HB Town,
                         Sodepur, Kolkata
@@ -255,18 +260,20 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
-                      ⭐ ⭐ Batch Starts: 16th April 2025
+                      <b>⭐⭐ Batch Starts: 16th April 2025</b>
                       <br />
-                      ⭐Seat Booking: ₹2,000/-
+                      <b>⭐Seat Booking: ₹2,000/-</b>
                       <br />
+                       <b>⭐ ISO certification </b>
                       <br />
+                      <h5 className="fw-bold mt-3"> 🌟 Course Details</h5> 
                       ⭐Learn Makeup Theory & Face Structure
                       <br />⭐ Master Skin Tones & the Color Wheel <br />⭐
                       Essential Makeup Tools & Techniques
                       <br /> ⭐ Perfect Blending & Dabbing Methods <br />⭐ HD &
                       Non-HD Makeup Procedures <br />⭐ Different Types of
                       Makeovers & Solutions
-                    </div>
+                    </div><br/>
                     <b>
                       📍Location : 7 no. Road, Jagatmata apartment ground floor,
                       HB Town, Sodepur, Kolkata
@@ -332,26 +339,31 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
+                    <b>⭐ Duration: 12 days (3 days/week)</b>
+
                       {/* ⭐ ⭐ Batch Starts: 16th April 2025<br/> */}
-                      ⭐Seat Booking: ₹1,000/-
+                      
                       <br />
-                      ⭐ Fees: Pay on the 1st & 3rd classes!
+                      <b>⭐ Timings: Flexible, as per your choice
+                      </b><br/>
+                      <b>⭐Seat Booking: ₹1,000/-</b><br/>
+                     <b> ⭐ Fees Pay on the 1st & 3rd classes</b>
                       <br />
-                      ⭐ ISO-Certified Course
+                      <b> ⭐ ISO certification </b>
                       <br />
-                      ⭐Certificate provided To All Student!
+                      
                       <br />
-                      ⭐ Duration: 12 days (3 days/week)
+                      <h5 className="fw-bold mt-3">🌟 Course Details</h5>
+                      ⭐ How to make henna paste and cones
+                      
                       <br />
-                      ⭐ Timings: Flexible, as per your choice
+                      ⭐ Types of detailed mehendi as in mandala. Floral pattern
                       <br />
-                      SPECIAL NOTE <br />
-                      ⭐Products provided during the class
+                      ⭐ How to make small details of Arabic mehendi 
                       <br />
-                      ⭐Certification upon successful completion
-                      <br />
-                      ⭐Perfect for beginners & aspiring mehendi artists
-                    </div>
+                      ⭐Bride Groom with proportions demonstration on hands<br/>                    
+                      
+                    </div><br/>
                     <b>
                       📍Location : 7 no. Road, Jagatmata apartment ground floor,
                       HB Town, Sodepur, Kolkata
@@ -419,7 +431,7 @@ function Physicalcourse() {
                         ⭐ Duration: 3 months course (Weekly 1 class) 
                       </b>
                       <br/>
-                      <h5 className="fw-bold mt-3">📚Course details</h5>
+                      <h5 className="fw-bold mt-3">🌟Course details</h5>
                       <div className="d-flex">
                       <div><ul className="list-unstyled ps-3">
                         <li>⭐History of tarot cards</li>
@@ -503,11 +515,11 @@ function Physicalcourse() {
                     <hr />
                     <div>
                       <b>
-                        ⭐ Duration: 16 Days (2days in a week), TIMING: 11a.m to
-                        3p.m{" "}
+                        ⭐ Duration: 16 Days (2days in a week), 
                       </b>
                       <br />
-                      ⭐Seat Booking: ₹2,000/-
+                      <b>⭐Time: 11a.m - 3p.m{" "}</b><br/>
+                      <b>⭐2,000/- pay for seat booking</b>
                       <br />
                       <h5 className="fw-bold mt-3">💄Demostration</h5>
                       <div className="d-flex">
@@ -529,7 +541,7 @@ function Physicalcourse() {
                       </ul>
                       </div>
                       </div>
-                      <h5 className="fw-bold mt-3">📚Course details</h5>
+                      <h5 className="fw-bold mt-3">🌟Course details</h5>
                       <div className="d-flex">
                       <div><ul className="list-unstyled ps-3">
                         <li>⭐Different types of eye makeup</li>
@@ -541,7 +553,10 @@ function Physicalcourse() {
                         <li>⭐Practice class</li>
                       </ul></div>
                       </div>
-                      
+                       <b>
+                        📍Location : 7 no. Road, Jagatmata apartment, HB Town,
+                        Sodepur, Kolkata
+                      </b>
                       <br />
                      
                     </div>
@@ -615,10 +630,11 @@ function Physicalcourse() {
                         ⭐ Age: 15 yrs to above
                       </b>
                       <br />
+                       <b>⭐ ISO certification </b>
                      
                       <div className="d-flex justify-content-between">
                       <div>
-                      <h5 className="fw-bold mt-3">🎤Class Details</h5>
+                      <h5 className="fw-bold mt-3">🌟Class Details</h5>
                       <ul className="list-unstyled ps-3">
                         <li>⭐Voice Grooming</li>
                         <li>⭐Rabindra Sangeet</li>
@@ -637,6 +653,10 @@ function Physicalcourse() {
                         
                       </ul></div>
                       </div>
+                      <b>
+                        📍Location : 7 no. Road, Jagatmata apartment, HB Town,
+                        Sodepur, Kolkata
+                      </b>
                     
                     </div>
                     <div className="row">
