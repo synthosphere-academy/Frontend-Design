@@ -260,7 +260,7 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
-                      <b>⭐⭐ Batch Starts: 16th April 2025</b>
+                      <b>⭐⭐ Batch Starts: July</b>
                       <br />
                       <b>⭐Seat Booking: ₹2,000/-</b>
                       <br />
