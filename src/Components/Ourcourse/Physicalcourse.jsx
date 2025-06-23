@@ -168,7 +168,7 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
-                      <b>⭐⭐1st Batch will start from : 2nd December</b> <br />
+                      <b>⭐⭐1st Batch will start from : July</b> <br />
                       <b>⭐ Duration: 5 days & 1 day for exam</b><br/>
                       <b>⭐ Time: 12pm - 3pm</b><br/>
                       <b>
@@ -260,7 +260,7 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
-                      <b>⭐⭐ Batch Starts: July</b>
+                     <b>⭐⭐ Next Batch will start from : July</b>
                       <br />
                       <b>⭐Seat Booking: ₹2,000/-</b>
                       <br />
@@ -339,6 +339,7 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
+                    <b>⭐⭐ Next Batch will start from : July</b><br/>
                     <b>⭐ Duration: 12 days (3 days/week)</b>
 
                       {/* ⭐ ⭐ Batch Starts: 16th April 2025<br/> */}
@@ -427,9 +428,11 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
+                    <b>⭐⭐ Next Batch will start from : July</b><br/>
                     <b>
                         ⭐ Duration: 3 months course (Weekly 1 class) 
-                      </b>
+                      </b><br/>
+                      <b>⭐ ISO certification</b>
                       <br/>
                       <h5 className="fw-bold mt-3">🌟Course details</h5>
                       <div className="d-flex">
@@ -514,6 +517,7 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
+                    <b>⭐⭐ Next Batch will start from : July</b><br/>
                       <b>
                         ⭐ Duration: 16 Days (2days in a week), 
                       </b>
@@ -521,6 +525,7 @@ function Physicalcourse() {
                       <b>⭐Time: 11a.m - 3p.m{" "}</b><br/>
                       <b>⭐2,000/- pay for seat booking</b>
                       <br />
+                      <b>⭐ ISO certification</b>
                       <h5 className="fw-bold mt-3">💄Demostration</h5>
                       <div className="d-flex">
                       <div><ul className="list-unstyled ps-3">
@@ -622,6 +627,7 @@ function Physicalcourse() {
                     </div>
                     <hr />
                     <div>
+                    <b>⭐⭐ Next Batch will start from : July</b><br/>
                     <b>
                         ⭐ Duration: 6 months
                       </b>
