@@ -26,6 +26,15 @@ import Invoice from './Components/Userdashboard/Invoice';
 import Resetpassword from './Components/Fotgotpassword/Resetpassword';
  import Physicalcourse from "./Components/Ourcourse/Physicalcourse";
  import Onlinecourse from "./Components/Ourcourse/Onlinecourse";
+ import Naildetails from "./Components/CourseDetails/Naildetails";
+ import Promakeupdetails from "./Components/CourseDetails/Promakeupdetails";
+ import Eyelashdetails from "./Components/CourseDetails/Eyelashdetails";
+ import Makeupmasterdetails from "./Components/CourseDetails/Makeupmasterdetails";
+ import Mehendidetails from "./Components/CourseDetails/Mehendidetails"
+ import Tarotdetails from "./Components/CourseDetails/Tarotdetails";
+ import Vocaldetails from "./Components/CourseDetails/Vocaldetails";
+ import Advancemakeup from "./Components/CourseDetails/Advancemakeup";
+ import Allmakeupcourse from "./Components/CourseDetails/Allmakeupcourse";
 import './App.css'
 
 
@@ -67,7 +76,18 @@ function App() {
         <Route path='/invoice/:id' element={<Userlayout><Invoice/></Userlayout>}/>
         <Route path='/verify-email' element={<Resetpassword/>} />
         {/* <Route path='/admin/*' element={<Admin/>}/> */}
-       
+       {/* course details */}
+        <Route path='/naildetails' element={<Userlayout><Naildetails/></Userlayout>}/>
+        <Route path='/promakeupdetails' element={<Userlayout><Promakeupdetails/></Userlayout>}/>
+        <Route path='/eyelashdetails' element={<Userlayout><Eyelashdetails/></Userlayout>}/>
+        <Route path='/makeupmasterdetails' element={<Userlayout><Makeupmasterdetails/></Userlayout>}/>
+        <Route path='/mehendidetails' element={<Userlayout><Mehendidetails/></Userlayout>}/>
+        <Route path='/tarotdetails' element={<Userlayout><Tarotdetails/></Userlayout>}/>
+        <Route path='/vocaldetails' element={<Userlayout><Vocaldetails/></Userlayout>}/>
+        <Route path='/advancemakeup' element={<Userlayout><Advancemakeup/></Userlayout>}/>
+        <Route path='/allmakeupcourse' element={<Userlayout><Allmakeupcourse/></Userlayout>}/>
+         {/* 404 page not found */}
+      
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>
        </Routes>
         {/* <Footer /> */}

@@ -1,0 +1,212 @@
+import React from "react";
+import makeup1 from "../../Images/makeup1.jpg";
+import makeup2 from "../../Images/makeup2.jpg";
+import makeup3 from "../../Images/makeup3.jpg";
+import vocal from "../../Images/vocalmusic.jpg";
+import teacherpic from "../../Images/academy.png";
+import "./coursedetails.css";
+const Vocaldetails = () => {
+  return (
+    <>
+      <div className="container my-5">
+        <div className="row">
+          <div className="col-12">
+            <div className="courseview">
+              <div className="row justify-content-center">
+                {/* Left Section */}
+                <div className="col-lg-8 col-12 col-sm-8">
+                  <div className="card shadow">
+                    {/* Slider */}
+                    {/* <div
+                                      id="nailCourseCarousel"
+                                      className="carousel slide"
+                                      data-bs-ride="carousel"
+                                      data-bs-interval="3000"
+                                    >
+                                      <div className="carousel-inner" style={{borderRadius: "20px"}}>
+                                        <div className="carousel-item active">
+                                          <img
+                                            src={makeup1}
+                                            className="d-block w-100"
+                                            alt="Slide 1"
+                                          />
+                                        </div>
+                                        <div className="carousel-item">
+                                          <img
+                                            src={makeup2}
+                                            className="d-block w-100"
+                                            alt="Slide 2"
+                                          />
+                                        </div>
+                                        <div className="carousel-item">
+                                          <img
+                                            src={makeup3}
+                                            className="d-block w-100"
+                                            alt="Slide 3"
+                                          />
+                                        </div>
+                                      </div>
+                
+                                     
+                                      <button
+                                        className="carousel-control-prev"
+                                        type="button"
+                                        data-bs-target="#nailCourseCarousel"
+                                        data-bs-slide="prev"
+                                      >
+                                        <span
+                                          className="carousel-control-prev-icon"
+                                          aria-hidden="true"
+                                        ></span>
+                                        <span className="visually-hidden">Previous</span>
+                                      </button>
+                                      <button
+                                        className="carousel-control-next"
+                                        type="button"
+                                        data-bs-target="#nailCourseCarousel"
+                                        data-bs-slide="next"
+                                      >
+                                        <span
+                                          className="carousel-control-next-icon"
+                                          aria-hidden="true"
+                                        ></span>
+                                        <span className="visually-hidden">Next</span>
+                                      </button>
+                                    </div> */}
+
+                    {/* Course Name */}
+                    <div className="card-body text-start mt-3">
+                      <div className="d-flex justify-content-between ">
+                        <h3 className="fw-bold">
+                          {" "}
+                          Basic To Advance Vocal Course
+                        </h3>
+                        <h4 className="fw-bold">10000/-</h4>
+                      </div>
+                      <div className="fw-bold h5">
+                        <i
+                          className="fa fa-location-arrow me-2"
+                          style={{ color: "goldenrod" }}
+                        ></i>
+                        Location : 7 no. Road, Jagatmata apartment ground floor,
+                        HB Town, Sodepur, Kolkata
+                      </div>
+                      <div className="fw-bold h5 ms-1">
+                        <i className="fa fa-phone me-2"></i>Contact No:
+                        9051911544
+                      </div>
+                      <div className=" h4 fw-bold mb-3 mt-4">
+                        Other Details:
+                      </div>
+                      <div className="d-flex flex-column fw-bold">
+                        <div className="title">✓ Next Batch: September</div>
+                        <div className="title">✓ Duration: 6 months</div>
+
+                        <div className="title">
+                          ✓ Timings: Flexible, as per your choice
+                        </div>
+                        <div className="title">✓ Age: 15 yrs to above</div>
+
+                        <div className="title">✓ ISO certification</div>
+                      </div>
+                      <div className="mt-4">
+                        <div className=" h4 fw-bold mb-3">
+                          This Course Includes:
+                        </div>
+
+                        <div className="course-list">
+                          <div className="course-item ">
+                            <span className="fw-bold">Voice Grooming</span>
+                          </div>
+                          <div className="course-item ">
+                            <span className="fw-bold">Rabindra Sangeet</span>
+                          </div>
+                          <div className="course-item">
+                            <span className="fw-bold">Folk Song</span>
+                          </div>
+                          <div className="course-item">
+                            <span className="fw-bold">
+                              Bengali & Hindi Song
+                            </span>
+                          </div>
+                          <div className="course-item">
+                            <span className="fw-bold">Track Music</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className=" h4 fw-bold mb-3 mt-2">
+                        Special Classes
+                      </div>
+
+                      <div className="course-list">
+                        <div className="course-item ">
+                          <span className="fw-bold">Microphone Management</span>
+                        </div>
+                        <div className="course-item ">
+                          <span className="fw-bold">
+                            Stage Management & Performance
+                          </span>
+                        </div>
+                        <div className="course-item ">
+                          <span className="fw-bold">
+                            Basic Make up & Dressing Sence
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Right Section */}
+                <div className="col-lg-4 col-12 col-sm-4">
+                  <div className="card">
+                    <img src={vocal} style={{ borderRadius: "20px" }} />
+                    <div className="row mt-4">
+                      <div className="col-2 mt-2 text-end">
+                        <img
+                          className="rounded-circle"
+                          width={40}
+                          height={40}
+                          src={teacherpic}
+                        />
+                      </div>
+                      <div className="col-10 mt-2">
+                        <span>Susmita Das</span>
+                        <br />
+                        <span className="text-muted ms-0">Singer</span>
+                      </div>
+                    </div>
+                    <div className="d-flex mt-4 justify-content-center mb-3">
+                      <a href="https://rzp.io/rzp/8TsPFjdS" target="_blank">
+                        <button type="button" className="coming w-100">
+                          Register Now
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                  {/* Map Box */}
+                  <div className="mt-5">
+                    <div className="card p-2" style={{ borderRadius: "20px" }}>
+                      <h5 className="fw-bold mb-2 text-center">Find Us Here</h5>
+                      <iframe
+                        title="Synthosphire Academy Sodepur Location"
+                        src="https://www.google.com/maps?q=Jagatmata+apartment+ground+floor,+HB+Town,+Sodepur,+Kolkata&output=embed"
+                        width="100%"
+                        height="200"
+                        style={{ border: 0, borderRadius: "15px" }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Vocaldetails;

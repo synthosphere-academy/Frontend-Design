@@ -3,6 +3,12 @@
     src: url('../fontstyle/SFPRODISPLAYBOLD.OTF');
 }
 
+@media (min-width: 992px) { /* lg breakpoint */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* prevents jump */
+  }
+}
 .nav-link{
     font-family: myfont;
 }
