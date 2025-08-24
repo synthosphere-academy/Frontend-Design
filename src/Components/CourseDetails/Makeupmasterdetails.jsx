@@ -88,8 +88,7 @@ const Makeupmasterdetails = () => {
                           className="fa fa-location-arrow me-2"
                           style={{ color: "goldenrod" }}
                         ></i>
-                        Location : 7 no. Road, Jagatmata apartment ground floor,
-                        HB Town, Sodepur, Kolkata
+                        Location : Sakshi Apartment, 6 no Road, H B Town, Sodepur, Kolkata, West Bengal 700110, India
                       </div>
                       <div className="fw-bold h5 ms-1">
                         <i className="fa fa-phone me-2"></i>Contact No: 91236
@@ -186,16 +185,13 @@ const Makeupmasterdetails = () => {
                         <h5 className="fw-bold mb-2 text-center">
                           Find Us Here
                         </h5>
-                        <iframe
-                          title="Synthosphire Academy Sodepur Location"
-                          src="https://www.google.com/maps?q=Jagatmata+apartment+ground+floor,+HB+Town,+Sodepur,+Kolkata&output=embed"
-                          width="100%"
-                          height="200"
-                          style={{ border: 0, borderRadius: "15px" }}
-                          allowFullScreen=""
-                          loading="lazy"
-                          referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1068.0641966523451!2d88.39421028525857!3d22.694961104933775!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d1c30bef1af%3A0x1df41c4892785b87!2sUDBHAB%20MARKETING%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sus!4v1756028505028!5m2!1sen!2sus" 
+                     allowfullscreen=""
+                      width="100%"
+                        height="200"
+                        style={{ border: 0, borderRadius: "15px" }} loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+                    </iframe>
                       </div>
                     </div>
                 </div>

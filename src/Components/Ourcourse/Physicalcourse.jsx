@@ -386,7 +386,7 @@ function Physicalcourse() {
                             <span className="text-dark">5</span>★★★★★
                           </span>
                            <div><h5 className="mt-1 text-end">
-                          8000/-
+                          10000/-
                           </h5></div>  
                         </div>
                       </div>
@@ -403,7 +403,7 @@ function Physicalcourse() {
                          
                           <div className="title">✓ Time: 12pm - 3pm</div>
                           <div className="title">
-                            ✓ Seat Booking: ₹2,000/-
+                            ✓ Seat Booking: ₹2,500/-
                           </div>
                           <div className="title">✓ ISO certification</div>
                         </div>

@@ -88,8 +88,7 @@ const Vocaldetails = () => {
                           className="fa fa-location-arrow me-2"
                           style={{ color: "goldenrod" }}
                         ></i>
-                        Location : 7 no. Road, Jagatmata apartment ground floor,
-                        HB Town, Sodepur, Kolkata
+                        Location : Sakshi Apartment, 6 no Road, H B Town, Sodepur, Kolkata, West Bengal 700110, India
                       </div>
                       <div className="fw-bold h5 ms-1">
                         <i className="fa fa-phone me-2"></i>Contact No:

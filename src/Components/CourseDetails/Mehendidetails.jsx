@@ -17,7 +17,7 @@ const Mehendidetails = () => {
                 <div className="col-lg-8 col-12 col-sm-8">
                   <div className="card shadow">
                     {/* Slider */}
-                    <div
+                    {/* <div
                       id="nailCourseCarousel"
                       className="carousel slide"
                       data-bs-ride="carousel"
@@ -50,7 +50,6 @@ const Mehendidetails = () => {
                         </div>
                       </div>
 
-                      {/* Controls */}
                       <button
                         className="carousel-control-prev"
                         type="button"
@@ -75,21 +74,20 @@ const Mehendidetails = () => {
                         ></span>
                         <span className="visually-hidden">Next</span>
                       </button>
-                    </div>
+                    </div> */}
 
                     {/* Course Name */}
                     <div className="card-body text-start mt-3">
                       <div className="d-flex justify-content-between ">
-                        <h3 className="fw-bold"> The Pro Makeup Course</h3>
-                        <h4 className="fw-bold">8000/-</h4>
+                        <h3 className="fw-bold"> Basic To Advance Bridal Mehendi Course</h3>
+                        <h4 className="fw-bold">6000/-</h4>
                       </div>
                       <div className="fw-bold h5">
                         <i
                           className="fa fa-location-arrow me-2"
                           style={{ color: "goldenrod" }}
                         ></i>
-                        Location : 7 no. Road, Jagatmata apartment ground floor,
-                        HB Town, Sodepur, Kolkata
+                        Location : Sakshi Apartment, 6 no Road, H B Town, Sodepur, Kolkata, West Bengal 700110, India
                       </div>
                       <div className="fw-bold h5 ms-1">
                         <i className="fa fa-phone me-2"></i>Contact No:
@@ -175,16 +173,13 @@ const Mehendidetails = () => {
                   <div className="mt-5">
                     <div className="card p-2" style={{ borderRadius: "20px" }}>
                       <h5 className="fw-bold mb-2 text-center">Find Us Here</h5>
-                      <iframe
-                        title="Synthosphire Academy Sodepur Location"
-                        src="https://www.google.com/maps?q=Jagatmata+apartment+ground+floor,+HB+Town,+Sodepur,+Kolkata&output=embed"
-                        width="100%"
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1068.0641966523451!2d88.39421028525857!3d22.694961104933775!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d1c30bef1af%3A0x1df41c4892785b87!2sUDBHAB%20MARKETING%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sus!4v1756028505028!5m2!1sen!2sus" 
+                     allowfullscreen=""
+                      width="100%"
                         height="200"
-                        style={{ border: 0, borderRadius: "15px" }}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                      ></iframe>
+                        style={{ border: 0, borderRadius: "15px" }} loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+                    </iframe>
                     </div>
                   </div>
                 </div>

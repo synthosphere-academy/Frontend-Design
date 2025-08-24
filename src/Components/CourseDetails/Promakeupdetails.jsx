@@ -80,15 +80,14 @@ const Promakeupdetails = () => {
                   <div className="card-body text-start mt-3">
                     <div className="d-flex justify-content-between ">
                       <h3 className="fw-bold"> The Pro Makeup Course</h3>
-                      <h4 className="fw-bold">8000/-</h4>
+                      <h4 className="fw-bold">10000/-</h4>
                     </div>
                     <div className="fw-bold h5">
                       <i
                         className="fa fa-location-arrow me-2"
                         style={{ color: "goldenrod" }}
                       ></i>
-                      Location : 7 no. Road, Jagatmata apartment ground floor,
-                      HB Town, Sodepur, Kolkata
+                      Location : Sakshi Apartment, 6 no Road, H B Town, Sodepur, Kolkata, West Bengal 700110, India
                     </div>
                     <div className="fw-bold h5 ms-1">
                       <i className="fa fa-phone me-2"></i>Contact No: 9330263238
@@ -98,7 +97,7 @@ const Promakeupdetails = () => {
                       <div className="title">✓ Next Batch: September</div>
 
                       <div className="title">✓ Time: 12pm - 3pm</div>
-                      <div className="title">✓ Seat Booking: ₹2,000/-</div>
+                      <div className="title">✓ Seat Booking: ₹2,500/-</div>
                       <div className="title">✓ ISO certification</div>
                     </div>
                     <div className="mt-4">
@@ -186,16 +185,13 @@ const Promakeupdetails = () => {
                 <div className="mt-5">
                   <div className="card p-2" style={{ borderRadius: "20px" }}>
                     <h5 className="fw-bold mb-2 text-center">Find Us Here</h5>
-                    <iframe
-                      title="Synthosphire Academy Sodepur Location"
-                      src="https://www.google.com/maps?q=Jagatmata+apartment+ground+floor,+HB+Town,+Sodepur,+Kolkata&output=embed"
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1068.0641966523451!2d88.39421028525857!3d22.694961104933775!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d1c30bef1af%3A0x1df41c4892785b87!2sUDBHAB%20MARKETING%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sus!4v1756028505028!5m2!1sen!2sus" 
+                     allowfullscreen=""
                       width="100%"
-                      height="200"
-                      style={{ border: 0, borderRadius: "15px" }}
-                      allowFullScreen=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                        height="200"
+                        style={{ border: 0, borderRadius: "15px" }} loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+                    </iframe>
                   </div>
                 </div>
               </div>
