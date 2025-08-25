@@ -208,8 +208,9 @@ function Physicalcourse() {
                       />
                       <div className="card-body">
                         <h4 className="fw-bold mt-4">
-                          Basic To Advance Bridal Mehendi Course
-                        </h4>
+                          Basic To Advance Bridal 
+                           </h4>
+                        <h4 className=" fw-bold text-center">Mehendi Course</h4>
                         <div className="d-flex justify-content-between">
                           <span
                             className="starreview ms-2"
@@ -433,8 +434,9 @@ function Physicalcourse() {
                       />
                       <div className="card-body">
                         <h4 className="fw-bold mt-4">
-                        Basic To Advance Vocal Course
+                        Basic To Advance Vocal 
                         </h4>
+                        <h4 className="fw-bold text-center">Course</h4>
                         <div className="d-flex justify-content-between">
                           <span
                             className="starreview ms-2"
