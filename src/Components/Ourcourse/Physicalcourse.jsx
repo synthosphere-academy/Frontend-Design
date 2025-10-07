@@ -4,7 +4,7 @@ import nailphoto from "../../Images/shilpi_nail.jpg";
  import "../../Css/Mostpopularcourse.css";
  import music4 from "../../Images/Tanu_eye.jpg";
   import makeup from "../../Images/makeupcourse.jpg"; 
-  import mehendi from "../../Images/mehendi.jpg";
+  // import mehendi from "../../Images/mehendi.jpg";
    import tarot from "../../Images/tarot.jpg";
  import vocal from "../../Images/vocalmusic.jpg";
   import advancemakeup from "../../Images/advancemakeup.jpg";
@@ -195,10 +195,10 @@ function Physicalcourse() {
                 </div>
               </div>
               {/* 4th */}
-              <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+               {/* <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                 <div className="card-container">
                   <div className="card-flip">
-                    {/* Front */}
+                    
                     <div className="card-front">
                       <img
                         className="card-img-top"
@@ -225,7 +225,7 @@ function Physicalcourse() {
                       </div>
                     </div>
 
-                    {/* Back */}
+                    
                     <div className="card-back">
                       <div
                         className="card-body"
@@ -252,7 +252,7 @@ function Physicalcourse() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>  */}
               {/* 5th */}
               <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                 <div className="card-container">
