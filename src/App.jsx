@@ -35,6 +35,7 @@ import Resetpassword from './Components/Fotgotpassword/Resetpassword';
  import Vocaldetails from "./Components/CourseDetails/Vocaldetails";
  import Advancemakeup from "./Components/CourseDetails/Advancemakeup";
  import Allmakeupcourse from "./Components/CourseDetails/Allmakeupcourse";
+ import Affiliatecourses from './Components/Affiliatecourses';
 import './App.css'
 
 
@@ -86,6 +87,7 @@ function App() {
         <Route path='/vocaldetails' element={<Userlayout><Vocaldetails/></Userlayout>}/>
         <Route path='/advancemakeup' element={<Userlayout><Advancemakeup/></Userlayout>}/>
         <Route path='/allmakeupcourse' element={<Userlayout><Allmakeupcourse/></Userlayout>}/>
+        <Route path='/affiliatecourses' element={<Userlayout><Affiliatecourses/></Userlayout>}/>
          {/* 404 page not found */}
       
         <Route path='*' element={<div className='text-center h1'>page not found</div>}/>

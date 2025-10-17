@@ -176,6 +176,13 @@ function Register() {
                 <div className="container formcontainer  mt-5 mb-5 ">
                     <div className='display-5 text-white text-center'>Register Here!</div>
                     <form className='row g-3 py-2'>
+                    <div className='col-lg-3'></div>
+                    <div className='col-lg-6'>
+                         <label className='form-label text-white'>Your Refferal ID:</label>
+                            <input type="text" className="form-control form-control-lg inputform"  readOnly  id="name" value="123456899" />
+
+                    </div>
+                    <div className='col-lg-3'></div>
                         <div className="col-lg-6">
                             <label className='form-label text-white' htmlFor="name">Full Name  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="name" name="fullname" placeholder="Enter Your Name" onChange={e => setName(e.target.value)} />
@@ -187,36 +194,22 @@ function Register() {
                                 name="phoneno" placeholder="Enter Your Phone Number" onChange={e => setPhoneno(e.target.value)} />
                             {mobilenoerror ? <span className='link-danger'>phone no invalid</span> : ""}
                         </div>
-                        <div className='col-lg-3'>
+                        {/* <div className='col-lg-3'>
                             <label className='form-label text-white' htmlFor="exampleInputEmail1">Date of birth  <sup><i className="fa fa-asterisk redstar"></i> </sup> </label>
                             <span className='form-control h-50'><DatePicker value={date} className="" onChange={date => setDate(date)} dateFormat="dd/MM/yyyy" /></span>
 
-                        </div>
-                        <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">State  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
-                            <select className="form-select form-control-lg mb-3 h-50 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_state}>
-                                <option value="" label='Enter your State'></option>
-                                {statesCities.map((item) => (
-                      <option key={item.state} value={item.state}>
-                        {item.state}
-                      </option>
-                    ))}
-                            </select>
+                        </div> */}
+                        <div className='col-lg-6'>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Address <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
+                            <input type="text" className="form-control form-control-lg inputform" id="name" name="address" placeholder="Enter Your Address" onChange={e => setName(e.target.value)} />
                         </div>
 
-                        <div className='col-lg-5'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1"> District <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
-                            <select className="form-select form-control-lg h-50 mb-3 inputform" aria-label=".form-select-lg example" onChange={handleDropdownChange_city}>
-                                <option value="Choose city" label=' Enter your city'></option>
-                                {(statesCities.find((s) => s.state === States)?.cities || []).map((city) => (
-                      <option key={city} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                       
+                        <div className='col-lg-6'>
+                          <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
+                            <input type="email" className="form-control form-control-lg inputform" id="email" name="email"
+                                onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
+                            {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
 
-
-                            </select>
                         </div>
                         {/* <div className='col-lg-8'>
                             <label className="form-label text-white" htmlFor="fileName">Student Image</label>
@@ -232,15 +225,7 @@ function Register() {
                             imagefileerror ? "" : <img width={100} height={100} src={image} />
                         }
                         </div> */}
-                        <div className='col-lg-4'>
-                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Email address  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
-                            <input type="email" className="form-control form-control-lg inputform" id="email" name="email"
-                                onKeyUp={emailHandler} placeholder="Enter Your email" onChange={e => setEmail(e.target.value)} />
-                            {emailerror ? <span className='link-danger'>Email invalid</span> : ""}
-
-
-                        </div>
-                        <div className='col-lg-4'>
+                          <div className='col-lg-4'>
                             <label className="form-label text-white" htmlFor="exampleInputEmail1">Password  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <div className='d-flex'>
                             <input   type={showPassword ? 'text' : 'password'}
@@ -249,7 +234,7 @@ function Register() {
                                  />
                                 
                                  <span onClick={() => setShowPassword(!showPassword)} style={{ cursor: 'pointer',marginLeft:"-9%", fontSize:"20px" }} className='mt-2'>
-                                 {showPassword ? <i class="fa fa-eye-slash"></i> :  <i class="fa fa-eye"></i>}</span>
+                                 {showPassword ? <i class="fa fa-eye"> </i>:<i class="fa fa-eye-slash"></i> }</span>
                             </div>
                             
                                         
@@ -258,12 +243,23 @@ function Register() {
 
                         </div>
                         <div className='col-lg-4'>
-                            <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
+                          <label className='form-label text-white' htmlFor='exampleInputEmail1'>Confirm Password  <sup><i className="fa fa-asterisk redstar"></i> </sup></label>
                             <input type="text" className="form-control form-control-lg inputform" id="confirmpassword" name="confirmpassword"
                                 onKeyUp={confirmpasswordHandler} placeholder="Enter Your password" onChange={e => setPassword(e.target.value)} />
                               
                             {confirmpasserror ? <span className='link-danger'>Password invalid</span> : ""}
+    
 
+                        </div>
+                      
+                        <div className='col-lg-4'>
+                          <label className="form-label text-white" htmlFor="exampleInputEmail1">Aadhar card<sup><i className="fa fa-asterisk redstar"></i> </sup></label>
+                            <input type="text" className="form-control form-control-lg inputform" id="name" name="aadharcard" placeholder="Enter Your Address" onChange={e => setName(e.target.value)} />
+                       
+                        </div>
+                        <div className='col-lg-4'>
+                            <label className="form-label text-white" htmlFor="exampleInputEmail1">Upload Aadhar Card Photo<sup><i className="fa fa-asterisk redstar"></i> </sup></label>
+                            <input type="file" className="form-control form-control-lg" id="aadharphoto" name="aadharphoto" accept=".png, .jpg, .jpeg" />
                         </div>
                         <span className='text-white'><input type="checkbox" id='checkbox_terms'/> I agree all statements in <a href="/terms" target='_blank'>Terms and conditions</a></span>
                         <div className="pt-1  text-center">
