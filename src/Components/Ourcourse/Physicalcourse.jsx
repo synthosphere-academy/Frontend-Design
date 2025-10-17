@@ -4,7 +4,7 @@ import nailphoto from "../../Images/shilpi_nail.jpg";
  import "../../Css/Mostpopularcourse.css";
  import music4 from "../../Images/Tanu_eye.jpg";
   import makeup from "../../Images/makeupcourse.jpg"; 
-  import mehendi from "../../Images/mehendi.jpg";
+ import crypto from '../../Images/crypto.jpg';
    import tarot from "../../Images/tarot.jpg";
  import vocal from "../../Images/vocalmusic.jpg";
   import advancemakeup from "../../Images/advancemakeup.jpg";
@@ -147,6 +147,62 @@ function Physicalcourse() {
                       <img
                         className="card-img-top"
                         style={{ borderRadius: "10px" }}
+                        src={crypto}
+                        alt="Course"
+                      />
+                      <div className="card-body">
+                        <h4 className="fw-bold mt-4">
+                          The Crypto Trading Course
+                        </h4>
+                        <div className="d-flex justify-content-between">
+                          <span
+                            className="starreview ms-2"
+                            style={{ color: "gold" }}
+                          >
+                            <span className="text-dark">5</span>★★★★★
+                          </span>
+                           <div><h5 className="mt-1 text-end">
+                          11500/-
+                          </h5></div>  
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Back */}
+                    <div className="card-back">
+                      <div
+                        className="card-body"
+                        style={{ textAlign: "justify" }}
+                      >
+                        <div className="d-flex flex-column fw-bold">
+                          <div className="title">✓ Next Batch: October</div>
+                         
+                          <div className="title">✓ Duration: 8-10 Classes</div>
+                          {/* <div className="title">
+                            ✓ Seat Booking: ₹2,000/-
+                          </div> */}
+                          <div className="title">✓ ISO certification</div>
+                        </div>
+
+                        <div className="d-flex mt-4 justify-content-center">
+                          <button type="button" className="coming w-75" onClick={() => window.location.href = '/cryptodetails'}>
+                            See details
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* 4th */}
+              <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+                <div className="card-container">
+                  <div className="card-flip">
+                    {/* Front */}
+                    <div className="card-front">
+                      <img
+                        className="card-img-top"
+                        style={{ borderRadius: "10px" }}
                         src={makeup}
                         alt="Course"
                       />
@@ -186,65 +242,6 @@ function Physicalcourse() {
 
                         <div className="d-flex mt-4 justify-content-center">
                           <button type="button" className="coming w-75" onClick={() => window.location.href = '/makeupmasterdetails'}>
-                            See details
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* 4th */}
-              <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-                <div className="card-container">
-                  <div className="card-flip">
-                    {/* Front */}
-                    <div className="card-front">
-                      <img
-                        className="card-img-top"
-                        style={{ borderRadius: "10px" }}
-                        src={mehendi}
-                        alt="Course"
-                      />
-                      <div className="card-body">
-                        <h4 className="fw-bold mt-4">
-                          Basic To Advance Bridal 
-                           </h4>
-                        <h4 className=" fw-bold text-center">Mehendi Course</h4>
-                        <div className="d-flex justify-content-between">
-                          <span
-                            className="starreview ms-2"
-                            style={{ color: "gold" }}
-                          >
-                            <span className="text-dark">5</span>★★★★★
-                          </span>
-                           <div><h5 className="mt-1 text-end">
-                          6000/-
-                          </h5></div>  
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Back */}
-                    <div className="card-back">
-                      <div
-                        className="card-body"
-                        style={{ textAlign: "justify" }}
-                      >
-                        <div className="d-flex flex-column fw-bold">
-                          <div className="title">✓ Next Batch: September</div>
-                         
-                          <div className="title">✓ Duration: 12 days (3 days/week)</div>
-                          <div className="title">
-                            ✓  Timings: Flexible, as per your choice
-                          </div>
-                          <div className="title"> ✓ Seat Booking: ₹1,000/-
-                          </div>
-                          <div className="title">✓ ISO certification</div>
-                        </div>
-
-                        <div className="d-flex mt-4 justify-content-center">
-                          <button type="button" className="coming w-75" onClick={() => window.location.href = '/mehendidetails'}>
                             See details
                           </button>
                         </div>

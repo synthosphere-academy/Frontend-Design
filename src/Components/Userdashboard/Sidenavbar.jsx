@@ -42,10 +42,14 @@ const Sidenavbar =({ changeDashboardContent }) => {
    
     {/* <MenuItem> <span ><i className="fa fa-star-o" style={{color:"rgb(92, 14, 71)"}}></i></span> <span className='ms-1'>Review</span> </MenuItem> */}
     <MenuItem onClick={() => changeDashboardContent('orderhistory')}><span ><i className="fa fa-shopping-cart" style={{color:"rgb(92, 14, 71)"}}></i></span> <span className='ms-1'>Order History </span></MenuItem>
-     <MenuItem onClick={() => changeDashboardContent('affiliate')}> <span ><i className="fa fa-heart-o"style={{color:"rgb(92, 14, 71)"}}></i></span> <span className='ms-1'>Affiliate Program</span> </MenuItem>
-    <hr/>
+     {/* <MenuItem onClick={() => changeDashboardContent('affiliate')}> <span ><i className="fa fa-heart-o"style={{color:"rgb(92, 14, 71)"}}></i></span> <span className='ms-1'>Affiliate Program</span> </MenuItem> */}
+    <MenuItem><span><i className="fa fa-money"style={{color:"rgb(92, 14, 71)"}}></i></span> <span className='ms-1'>Payout</span></MenuItem>
+
+     <MenuItem onClick={() => changeDashboardContent('directteam')}> <span ><i className="fa fa-group"style={{color:"rgb(92, 14, 71)"}}></i></span> <span className='ms-1'>Direct Team</span> </MenuItem>
+      <hr/>
     {/* <MenuItem> <span ><i className="fa fa-gear"style={{color:"rgb(92, 14, 71)"}}></i></span> <span className='ms-1'>Settings</span>  </MenuItem> */}
     <MenuItem onClick={Handlelogout}> <span ><i className="fa fa-sign-out"style={{color:"rgb(92, 14, 71)"}}></i></span> <span className='ms-1'>Logout</span> </MenuItem>
+    
     </div>
   </Menu>
 </Sidebar>

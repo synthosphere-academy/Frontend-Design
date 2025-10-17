@@ -1,156 +1,159 @@
-import React from 'react'
-import "../Css/affiliatecourse.css"
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "../Css/affiliatecourse.css";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+
 const Affiliatecourses = () => {
-    const navigate=useNavigate();
-    const handle_enroll=()=>{
-        navigate('/login');
+  const navigate = useNavigate();
+
+  const handle_enroll = (course) => {
+    const userStatus = sessionStorage.getItem("userstatus");
+
+    if (!userStatus) {
+      swal("Not Logged In", "Please login to enroll in the course.", "warning");
+      navigate("/login");
+      return;
     }
-  return (
-   <>
-    <div className="container my-5">
-      {/* <h2 className="text-center my-2">All Packages</h2> */}
-      <div className="row justify-content-center">
-        {/* Kick Starter Package */}
-        <div className="col-md-3 my-4  ">
-        <div className="card p-3 mt-3 w-100 w-md-75 w-lg-50 h-100 rounded-3 cardpackage">
 
-            <div className="card-body d-flex flex-column">
-              <h3 className="text-center fw-bold">Kick Starter</h3>
-              <div className="fw-bold h5 text-center mt-2">50 USDT (Online)</div>
-              <div className="flex-grow-1">
-              <div className="d-flex mt-2">
-              <div>🌟</div>
-              <div className="ms-2"> Basic trading knowledge</div>
-              </div>
-              <div className="d-flex mt-2">
-              <div>🌟</div>
-              <div className="ms-2"> Meme coin name</div>
-              </div>
-              <div className="d-flex mt-2">
-              <div>🌟</div>
-              <div className="ms-2">1-month subscription for premium</div>
-              </div>
-               <div className="d-flex mt-2">
-              <div>🌟</div>
-              <div className="ms-2">Bonus 1-2 long-term GEM coin</div>
-              </div>
-               <div className="d-flex mt-2">
-              <div>🌟</div>
-              <div className="ms-2">Monthly Scholarship 3%</div>
-              </div>
-              
-              </div>
-            </div>
-            <div className='d-flex justify-content-center'>
-                 <button className="btn btn-primary w-75 mb-3 rounded-3 " onClick={handle_enroll}>Enroll Now</button> 
-            </div>
-          
-          </div>
-        </div>
+    if (userStatus === "pending") {
+      swal(
+        "Account Not Verified",
+        "Your account is under review. Please check back once it’s verified.",
+        "error"
+      );
+    } else if (userStatus === "active") {
+      // ✅ Pass course name & price to checkout
+      navigate("/checkout", { state: { courseName: course.name, coursePrice: course.price } });
+    } else {
+      swal("Error", "Invalid account status. Please contact support.", "error");
+    }
+  };
 
-        {/* Bull Starter Package */}
-        <div className="col-md-3 my-4">
-        <div className="card p-3 mt-3 w-100 w-md-75 w-lg-50 rounded-3 h-100 cardpackage">
-
-            <div className="card-body d-flex flex-column">
-              <h3 className="text-center fw-bold">Bull Starter</h3>
-              <div className="fw-bold h5 text-center mt-2">100 USDT (Online)</div>
-              <div className="flex-grow-1">
-              <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2"> Advance crypto knowledge</div>
-              </div>
-              <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2"> Meme coin checklist</div>
-              </div>
-              <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2"> 3-month subscription for premium group</div>
-              </div>
-               <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2">Future trading call</div>
-              </div>
-              <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2">Bonus 5 long-term holding</div>
-              </div>
-               <div className="d-flex mt-2">
-              <div>🌟</div>
-              <div className="ms-2">Monthly Scholarship 5%</div>
-              </div>
-                {/* <div className="kick">🌟 Advance crypto knowledge</div> */}
-                {/* <div className="kick">🌟 Meme coin checklist</div> */}
-                {/* <div className="kick">
-                  🌟 3-month subscription for premium group
-                </div> */}
-                {/* <div className="kick">🌟 Future trading call</div> */}
-                {/* <div className="kick">🌟 Bonus 5 long-term holding</div> */}
-              </div>
-            </div>
-            <div className='d-flex justify-content-center'>
-                 <button className="btn btn-primary w-75 mb-3 rounded-3  ">Enroll Now</button> 
-            </div>
-          </div>
-        </div>
-
-        {/* Whales Starter Package */}
-        <div className="col-md-3 my-4">
-        <div className="card p-3 mt-3 w-100 w-md-75 w-lg-50 rounded-3 h-100 cardpackage">
-            <div className="card-body d-flex flex-column">
-              <h3 className="text-center fw-bold">Whales Starter</h3>
-              <div className="fw-bold h5 text-center">500 USDT (Online/Offline)</div>
-              <div className="flex-grow-1">
-              <div className="d-flex">
-                <div>🌟</div>
-                <div className="ms-2">Master trading skill + life time asset</div>
-              </div>
-              <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2">1-year subscription for premium group</div>
-              </div>
-              <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2">10 GEM coin name</div>
-              </div>
-               <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2">Portfolio management</div>
-              </div>
-               <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2">Future trade call</div>
-              </div>
-              <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2">Liquidation strategy</div>
-              </div>
-              <div className="d-flex mt-2">
-                <div>🌟</div>
-                <div className="ms-2">Future scalping</div>
-              </div>
-             
-                
-              </div>
-            </div>
-            <div className='d-flex justify-content-center'>
-                 <button onClick={handle_enroll} className="btn btn-primary w-75 mb-3 rounded-3">Enroll Now</button> 
-            </div>
-          </div>
-        </div>
-
-        {/* Premium package */}
+  const courses = [
+    {
+      name: "Learner Course",
+      price: " 1770",
+      points: "1500",
+      features: [
+        "Basic Crypto Knowledge",
+"Basic Buy/Sell On Centralised Exchange",
+"Crypto Sip Guide",
+"Portfolio Management Guide",
+"Monthly Spot Call",
+"Basic Fundamental Analysis, Technical Analysis"
+      ],
+    },
+    {
+      name: "Master Course",
+      price: " 3540",
+        points: "3000",
+      features: [
         
+       "Advance Crypto Trading Knowledge",
+"Spot, Future, Margin Trading",
+"Regular Future Trading Call",
+"Risk Management Strategy",
+"Regular PNL Strategy",
+"Liquidation Strategy",
+"Portfolio Management (Advance)",
+"Advance Fundamental Analysis, Technical Analysis"
+      ],
+    },
+    {
+      name: "Pro Master Course",
+      price: " 7080",
+        points: "6000",
+      features: [
+        "Crypto Education A To Z",
+"Premium Future Trading Strategy",
+"Gem Coin Finding Strategy",
+"Regular Premium Call",
+"Premium Portfolio Management",
+"Five Long-Term Holding Coin Name Suggestion",
+"Fund Management Strategy",
+"A To Z Fundamental Analysis, Technical Analysis"
+      ],
+    },
+    {
+      name: "Teacher Course",
+      price: " 11800 ",
+        points: "10000",
+      features: [
+       "Whales Wallet Tracking",
+"Crypto Taxation",
+"Crypto Rules And Knowledge",
+"F.A.T.A (Complete)",
+"DEX And CEX Arbitrage Model"
+      ],
+    },
+    {
+      name: "Pro Teacher Course",
+      price: " 59000",
+        points: "25000",
+      features: [
+        "Whale Wallet Tracking",
+"Crypto Taxation",
+"Crypto Rules And Knowledge",
+"F.A.T.A (Complete)",
+"DEX And CEX Arbitrage Model"
+      ],
+    },
+    {
+      name: "Monthly Subscription",
+      price: " 944",
+        points: "800",
+      gold: true,
+      features: ["Monthly Trading Guidance",
+"Monthly Special Classes",
+"Expert Advice",
+"Two Coin Suggestion",
+"One Special Call"],
+    },
+  ];
 
-        {/* Monthly Subscription (Add-On) */}
-    
-      </div>
-     
-      </div>
-   </>
-  )
-}
+  return (
+    <div className="container ">
+      <div className="row justify-content-start">
+        {courses.map((course, index) => (
+          <div key={index} className="col-md-3 my-1">
+            <div className="card p-3 mt-3 w-100 h-100 rounded-3 cardpackage">
+              <div className="card-body d-flex flex-column">
+                <div className="text-center">
+                  <h3
+                    className="fw-bold"
+                    style={{ color: course.gold ? "gold" : "inherit" }}
+                  >
+                    {course.name}
+                  </h3>
+                  <div className="fw-bold h5 mt-2">RS.{course.price}/- (Incl. GST)</div>
+                  <div className="fw-bold h5 mt-2" style={{color:"gold"}}>🌟{course.points} Points</div>
+                </div>
 
-export default Affiliatecourses
+                <div className="flex-grow-1 mt-3">
+                  {course.features.map((f, i) => (
+                    <div key={i} className="d-flex mt-2">
+                      <div>🌟</div>
+                      <div className="ms-2">{f}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="d-flex justify-content-center">
+                {/* ✅ Send course info when clicked */}
+                <button
+                  onClick={() => handle_enroll(course)}
+                  className="btn btn-primary w-75 mb-3 rounded-3"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Affiliatecourses;

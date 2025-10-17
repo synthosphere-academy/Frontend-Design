@@ -1,0 +1,32 @@
+.sidebar {
+  width: 240px;
+  transition: all 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar-item {
+  color: #555;
+  border-radius: 8px;
+  margin: 4px 8px;
+  transition: all 0.2s;
+}
+
+.sidebar-item:hover {
+  background-color: rgba(121, 82, 179, 0.1);
+  color: #6f42c1;
+}
+
+.sidebar-item.active {
+  background-color: #f3e9ff;
+  color: #6f42c1;
+  font-weight: 600;
+}
+
+.sidebar-header button {
+  border: none;
+  background: none;
+  color: #6f42c1;
+}

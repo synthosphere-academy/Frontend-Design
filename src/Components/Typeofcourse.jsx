@@ -10,7 +10,7 @@ const Typeofcourse = () => {
                            Our Popular Courses
                        </h1>
    
-                      <div className="row py-5 g-4" >
+                      <div className="row py-5 g-4 justify-content-center" >
    
                            <div className="col-lg-6 ">
                            <a href='/physicalcourse' className='text-decoration-none'>
@@ -28,7 +28,7 @@ const Typeofcourse = () => {
                                </div>
                                </a>
                            </div>
-
+{/* 
                            <div className="col-lg-6 ">
                            <a href='/affiliatecourses'  className='text-decoration-none'>
                                <div className="card align-items-center carddesign2 cardshadow">
@@ -38,11 +38,11 @@ const Typeofcourse = () => {
    
                                    <div className="card-body mt-4">
                                        <h2 className="card-title text-center fw-bold">Affiliate Courses</h2>
-                                       {/* <h6 className="card-text text-center">Around-the-clock support available to all academy students for timely assistance & guidance.</h6> */}
+                                       <h6 className="card-text text-center">Around-the-clock support available to all academy students for timely assistance & guidance.</h6>
                                    </div>
                                </div>
                                </a>
-                           </div>
+                           </div> */}
    
                        </div>
                    </div>

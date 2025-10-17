@@ -10,6 +10,9 @@ const Nav = () => {
     e.preventDefault();
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('userid');
+      sessionStorage.removeItem('useremail');
+        sessionStorage.removeItem('userphone');
+          sessionStorage.removeItem('userstatus');
     localStorage.removeItem('token');
     window.location.assign("/")
   }
@@ -61,14 +64,17 @@ const Nav = () => {
                 <a className="nav-link text-white" href='/contact'>Contact</a>
               </li>
               
-              <li className="nav-item pe-2">
+              {/* <li className="nav-item pe-2">
                 <a className="nav-link"  target='_blank'  href='https://drive.google.com/file/d/14REmABPFvJUy1JXkvEs2lygmrFNA9eHd/view?usp=drive_link'><span className='fw-bold' style={{color:"#FFFF00"}} >Download app 
                 </span> </a>
-              </li>
+              </li> */}
             </ul>
           
-            
-            {/* {
+            {/* <button className='buttonstyle btn btn-sm text-white'>
+                  <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
+                  <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
+                </button> */}
+            {
               sessionStorage.getItem("username") ?
                 <div>
                 <div className="me-5 userdrop dropdown">
@@ -85,11 +91,11 @@ const Nav = () => {
               
 
                 : <button className='buttonstyle btn btn-sm text-white'>
-                  <Link to="/register"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
+                  <Link to="/register/SA37499"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
                   <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
                 </button>
-            } */}
-            
+            } 
+             
 
           </div>
         </div>

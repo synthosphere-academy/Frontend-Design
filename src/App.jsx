@@ -35,6 +35,7 @@ import Resetpassword from './Components/Fotgotpassword/Resetpassword';
  import Vocaldetails from "./Components/CourseDetails/Vocaldetails";
  import Advancemakeup from "./Components/CourseDetails/Advancemakeup";
  import Allmakeupcourse from "./Components/CourseDetails/Allmakeupcourse";
+ import Cryptodetails from "./Components/CourseDetails/Cryptodetails";
  import Affiliatecourses from './Components/Affiliatecourses';
 import './App.css'
 
@@ -53,7 +54,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Userlayout><Homepage /></Userlayout>} />
         <Route path="/login" element={<Userlayout><Login /></Userlayout>} />
-        <Route path="/register" element={<Userlayout><Register /></Userlayout>} />
+        <Route path="/register/:parentId" element={<Userlayout><Register /></Userlayout>} />
         <Route path="/contact" element={<Userlayout><Contact /></Userlayout>} />
         <Route path="/blog/:slug" element={<Userlayout><Blog/></Userlayout>} />
         <Route path='/forgotpassword' element={<Userlayout><Forgotpage/></Userlayout>}/>
@@ -70,8 +71,8 @@ function App() {
         {/* <Route path='/userinvoice' element={<Userlayout><Invoice/></Userlayout>}/> */}
         <Route path='/Refundpolicy' element={<Userlayout><Refundpolicy/></Userlayout>}/>
         <Route path='/Offlineregister' element={<Userlayout><Offlineregister/></Userlayout>}/>
-        {/* <Route path='/checkout' element={<Userlayout><Checkout/></Userlayout>}/> */}
-        <Route path='/checkout/:id' element={<Userlayout><Checkout/></Userlayout>}/>
+        <Route path='/checkout' element={<Userlayout><Checkout/></Userlayout>}/>
+        {/* <Route path='/checkout/:id' element={<Userlayout><Checkout/></Userlayout>}/> */}
         <Route path='/paymentSucess' element={<Userlayout><PaymentSucess/></Userlayout>}/>
         <Route path='/allblogs' element={<Userlayout><Allblog/></Userlayout>}/>
         <Route path='/invoice/:id' element={<Userlayout><Invoice/></Userlayout>}/>
@@ -87,6 +88,7 @@ function App() {
         <Route path='/vocaldetails' element={<Userlayout><Vocaldetails/></Userlayout>}/>
         <Route path='/advancemakeup' element={<Userlayout><Advancemakeup/></Userlayout>}/>
         <Route path='/allmakeupcourse' element={<Userlayout><Allmakeupcourse/></Userlayout>}/>
+        <Route path='/cryptodetails' element={<Userlayout><Cryptodetails/></Userlayout>}/>
         <Route path='/affiliatecourses' element={<Userlayout><Affiliatecourses/></Userlayout>}/>
          {/* 404 page not found */}
       

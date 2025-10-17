@@ -1,0 +1,53 @@
+.genealogy-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.parent-node {
+  display: flex;
+  justify-content: center;
+}
+
+.user-card {
+  /* background: linear-gradient(145deg, #dd7fc4, #f4f3f2); */
+  border-radius: 12px;
+  padding: 15px 25px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(54, 26, 46, 0.4);
+  color: #333;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(54, 26, 46, 0.6);
+}
+
+.connector-line {
+  width: 2px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  margin: 15px 0;
+}
+
+.child-nodes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+/* Remove old .child gradient since we now set background dynamically */
+/* .child {
+  background: linear-gradient(145deg, #fff7d1, #c780b4);
+  color: #222;
+  font-size: 0.95rem;
+} */
+
+.no-referrals {
+  color: #888;
+  font-style: italic;
+}

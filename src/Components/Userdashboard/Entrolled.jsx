@@ -1,98 +1,62 @@
-import "../../Css/Entrolled.css"
-import { useState , useEffect} from 'react';
+import "../../Css/Entrolled.css";
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import teacherpic from "../../Images/academy.png";
-
-import lessonicon from "../../Images/lesson.svg"
 import swal from 'sweetalert';
 
-const Entrolled =() => {
+const Entrolled = () => {
   const navigate = useNavigate();
-
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-  const token = localStorage.getItem('token');
-    const [enrollcourse, setenrollcourse] = useState([]);
-    useEffect(() => {
-      
-        const userId = sessionStorage.getItem('userid');
-        if(userId){
-        // console.log(userId);
-           axios
-          .get(ROOT_URL + `/api/v1/getenrolledcourse/${userId}`,{
-            headers: {
-              Authorization: `Bearer ${token}`,
-            }
+  const [userData, setUserData] = useState(null);
+
+ useEffect(() => {
+  const fetchUserDetails = async () => {
+    const userId= sessionStorage.getItem('userid');
+    console.log("Fetched UserID:", userId);
+    if (!userId) {
+      swal("Oops!", "User not logged in!", "warning");
+      // navigate('/login');
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${ROOT_URL}/api/users/getuserdetails`, { userId });
+
+      // extract courses from user object
+       setUserData(response.data);  // store the whole user object
+        console.log(response.data);
+      // const coursesArray = Object.values(coursesData); // convert object to array
+
+      // setenrollcourse(coursesArray);
+      // console.log(coursesArray);
+    } catch (err) {
+      console.error(err);
+      swal("Oops!", "Please login again!", "warning");
      
-          }
+    }
+  };
 
-          )
-          .then((enrollcoursedetail) => {
-            setenrollcourse(enrollcoursedetail.data);
-            console.log(enrollcoursedetail.data);
-          })
-          .catch((err) =>{ 
-            console.log(err);
-            swal("Opps!", "Please login again!", "warning")
-            localStorage.removeItem('token');
-            navigate('/login');
-          
-          });
-        }
-        
-      }, []);
+  fetchUserDetails();
+}, []);
 
-    
-  
+
+
   return (
-   <>
-    
-    <div className="container" >
-    <h3 className="fw-bold">Enrolled Courses</h3>
-    <div className="container py-2">
-    <div className="row row-cols-lg-2  row-cols-1 row-cols-md-2">
-    {enrollcourse.length > 0 ? (
-      enrollcourse.map((course) => (
-    <div className='col'key={course._id} >
-        <div className="card h-100">
-          <img className="image-fuild card-img-top cardimage " src={course.image} alt="Sample photo" />
-          <div className="card-body">
-            <div className='row'>
-              <div className='col-6'>
-                <img src={lessonicon} width={15} height={15} />
-                <span className='ms-2'>{course.total_video} videos</span>
-              </div>
-              <div className='col-6 text-end'>
-                <span className=' h5'>{course.course_price}/-</span> 
-              </div>  
-            </div>
-            <h5 className='mt-3'>{course.course_name}</h5>
-            <hr />
-            <div className="row">
-              
-              <div className='col-2'><img className='rounded-circle' width={40} height={40} src={teacherpic} />
-              </div>
-              <div className='col-10 mt-2'><span>{course.teacher_name}</span> <br/><span className="text-muted">{course.teacher_dept}</span>
-              </div>
-              {/* <div className='col-5 text-end'><a className='buttonlearnmore' href={`/courseview/${course._id}`}><button className="btn-lg learnmore viewcourse">View Course</button></a></div> */}
-            </div>
-            </div>
-            <div className=" card-footer row mt-3">
-              <div className="col-12 text-center">
-              <a className='buttonlearnmore' href={`/courseview/${course._id}`}><button className=" learnmore w-75">View Course</button></a>
-              </div>
-            </div>  
+    <>
+       <div className="container">
+      {userData ? (
+        <div className="card-container">
+          <div className="card p-4">
+            <h5 className="course-package">Course Name: {userData.courseName || "No Package"}</h5>
+            <h5 className="course-name">Package Name: {userData.packageName || "No Course Enrolled"}</h5>
+          </div>
         </div>
-      </div>
-      
-      ))
-      ) :(<div className="h5">No courses available</div>)}
-      </div>
-      </div>
-      </div>
-    
+      ) : (
+        <p className="text-center">Loading user data...</p>
+      )}
+    </div>
     </>
-  )
-}
+  );
+};
 
-export default Entrolled
+export default Entrolled;
