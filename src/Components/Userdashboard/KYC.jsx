@@ -112,8 +112,8 @@ const KYC = () => {
   // Otherwise → show KYC form
   return (
     <div
-      className="container my-4 d-flex justify-content-center align-items-center"
-      style={{ minHeight: "90vh" }}
+      className="container my-2 d-flex justify-content-center align-items-center"
+      style={{ minHeight: "70vh" }}
     >
       <form
         onSubmit={handleSubmit}

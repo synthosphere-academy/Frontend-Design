@@ -31,7 +31,7 @@ const Orderhistory = () => {
       {orderdata.length > 0 ? (
         <div className='table-responsive'>
           <table className="table table-striped">
-            <thead>
+            <thead className="table-primary">
               <tr>
                 <th>Order NO</th>
                 <th>Order Date</th>

@@ -7,7 +7,7 @@ const Directteam = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const userId = "SA14316"; // or sessionStorage.getItem("userid")
+      const userId =  sessionStorage.getItem("userid")
       if (!userId) return;
 
       try {

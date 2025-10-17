@@ -19,7 +19,7 @@ export default function UserDashboard() {
   const menuItems = [
     { name: "Dashboard", icon: "fa fa-home" },
     { name: "My Profile", icon: "fa fa-user" },
-     {name: "KYC", icon: "fa fa-id-card"},
+     {name: "KYC Form", icon: "fa fa-id-card"},
      { name: "Our Packages", icon: "fa fa-graduation-cap" },
     { name: "Enrolled Courses", icon: "fa fa-book" },
     { name: "Order History", icon: "fa fa-history" },
@@ -37,7 +37,7 @@ export default function UserDashboard() {
         return <Home />;
       case "My Profile":
         return <Myprofile />;
-         case "KYC":
+         case "KYC Form":
         return <KYC />; 
       case "Our Packages":
         return <Affiliatecourses />;
@@ -109,7 +109,7 @@ export default function UserDashboard() {
       <div className="flex-grow-1 p-4 overflow-auto">
       <div className="row">
         <div className="col-md-2">
-            <h3 className="fw-bold text-dark">{active}</h3>
+            <h4 className="fw-bold text-dark">{active}</h4>
         </div>
         <div className="col-md-10 text-end">
         <div className="d-flex flex-row justify-content-end align-items-center">

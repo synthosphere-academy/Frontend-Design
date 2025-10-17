@@ -18,7 +18,7 @@ const Affiliatecourses = () => {
     if (userStatus === "pending") {
       swal(
         "Account Not Verified",
-        "Your account is under review. Please check back once it’s verified.",
+        "Your account is under review. Please login again.",
         "error"
       );
     } else if (userStatus === "active") {

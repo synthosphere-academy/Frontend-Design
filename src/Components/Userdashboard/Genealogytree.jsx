@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import "../../Css/genealogytree.css";
-
+import user from "../../Images/userphoto.png";
 const Genealogytree = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ const Genealogytree = () => {
 
   // Initial Load
   useEffect(() => {
-    const userId = "SA14316";
+     const userId = sessionStorage.getItem("userid"); 
     fetchUserTree(userId);
   }, []);
 
@@ -40,11 +40,12 @@ const Genealogytree = () => {
       {/* Parent Node */}
       <div className="parent-node">
         <div
-          className="user-card"
-          style={{ backgroundColor: parentBgColor, color: "#fff" }}
+           className="d-flex flex-column align-items-center "
+        
         >
-          <h4>{data.mainUser.name}</h4>
-          <p style={{color:"#fff"}}>{data.mainUser.userId}</p>
+        <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: parentBgColor, color: "#fff" }}/>
+          <h5 className="fw-bold">{data.mainUser.name}</h5>
+          <p>{data.mainUser.userId}</p>
           {/* <p>Status: {data.mainUser.status}</p> */}
         </div>
       </div>
@@ -61,12 +62,13 @@ const Genealogytree = () => {
             return (
               <div
                 key={index}
-                className="user-card child"
+                  className="d-flex flex-column align-items-center "
                 onClick={() => fetchUserTree(ref.userId)}
-                style={{ cursor: "pointer", backgroundColor: bgColor, color: "#fff" }}
+              
               >
-                <h5>{ref.name}</h5>
-                <p style={{color:"#fff"}}>{ref.userId}</p>
+             <img src={user} width="80px" style={{borderRadius:"25px" ,backgroundColor: parentBgColor, color: "#fff" }}/>
+                <h5 className="fw-bold mt-1">{ref.name}</h5>
+                <p>{ref.userId}</p>
               </div>
             );
           })
