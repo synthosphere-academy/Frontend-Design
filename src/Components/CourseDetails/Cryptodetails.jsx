@@ -177,7 +177,7 @@ const Cryptodetails = () => {
                                       </div>
                                     </div>
                                     <div className="d-flex mt-4 justify-content-center mb-3">
-                                    <a href="https://rzp.io/rzp/nUDOa2l" target="_blank">
+                                    <a href="https://rzp.io/rzp/tUfu0Wl" target="_blank">
                                       <button type="button" className="coming w-100">
                                         Register Now
                                       </button>
