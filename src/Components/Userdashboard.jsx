@@ -11,6 +11,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
  import Payout from "./Userdashboard/Payout";
  import Affiliatecourses from "./Affiliatecourses";
  import Genealogytree from "./Userdashboard/Genealogytree";
+ import Welcome from "./Userdashboard/Welcome";
+ import Registrationanyuser from "./Userdashboard/Registrationanyuser";
+
+ import swal from "sweetalert";
 import KYC from "./Userdashboard/KYC";
 export default function UserDashboard() {
   const [active, setActive] = useState("Dashboard");
@@ -18,6 +22,8 @@ export default function UserDashboard() {
 
   const menuItems = [
     { name: "Dashboard", icon: "fa fa-home" },
+    {name: "Welcome" , icon:"fa fa-envelope-o"},
+      { name: "Registration", icon: "fa fa-user-plus" },
     { name: "My Profile", icon: "fa fa-user" },
      {name: "KYC Form", icon: "fa fa-id-card"},
      { name: "Our Packages", icon: "fa fa-graduation-cap" },
@@ -25,7 +31,6 @@ export default function UserDashboard() {
     { name: "Order History", icon: "fa fa-history" },
     { name: "Genealogy Tree", icon: "fa fa-tree" },
     { name: "Direct Team", icon: "fa fa-group" },
-   
     { name: "Payout", icon: "fa fa-money" },
   ];
 
@@ -35,6 +40,10 @@ export default function UserDashboard() {
     switch (active) {
       case "Dashboard":
         return <Home />;
+      case "Welcome":
+        return <Welcome />;  
+      case "Registration":
+        return <Registrationanyuser />;
       case "My Profile":
         return <Myprofile />;
          case "KYC Form":
@@ -46,8 +55,7 @@ export default function UserDashboard() {
       case "Order History":
         return <Orderhistory />;
       case "Direct Team":
-        return <Directteam />;
-      
+        return <Directteam />;  
       case "Genealogy Tree":
         return <Genealogytree />;  
       case "Payout":
@@ -57,8 +65,9 @@ export default function UserDashboard() {
     }
   };
   const handleLogout = () => {
+     swal("You have been logged out!", "Thank You!", "success");
     sessionStorage.clear();
-    alert("You have been logged out!");
+     window.location.assign("/")
   };
 
   return (
@@ -94,7 +103,7 @@ export default function UserDashboard() {
           ))}
         </div>
 
-        <div className="p-3 border-top">
+        {/* <div className="p-3 border-top">
           <button
             onClick={handleLogout}
             className="btn buttonstyle w-75 d-flex align-items-center justify-content-center text-white"
@@ -102,7 +111,7 @@ export default function UserDashboard() {
             <i className="bi bi-box-arrow-right me-2"></i>
             {!isCollapsed && "Logout"}
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Main content */}

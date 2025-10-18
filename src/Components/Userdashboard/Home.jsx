@@ -167,7 +167,7 @@ function Home() {
             <div className="text-center mt-4">
               <div className="card-body">
                 <h5 className="card-title text-center">{payout}</h5>
-                <h5 className="card-text text-center">Payout</h5>
+                <h5 className="card-text text-center">Current Payout</h5>
               </div>
             </div>
           </div>

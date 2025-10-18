@@ -66,7 +66,7 @@ const Genealogytree = () => {
                 onClick={() => fetchUserTree(ref.userId)}
               
               >
-             <img src={user} width="80px" style={{borderRadius:"25px" ,backgroundColor: parentBgColor, color: "#fff" }}/>
+             <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: parentBgColor, color: "#fff" }}/>
                 <h5 className="fw-bold mt-1">{ref.name}</h5>
                 <p>{ref.userId}</p>
               </div>
