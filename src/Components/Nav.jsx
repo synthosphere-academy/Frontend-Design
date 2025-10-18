@@ -49,7 +49,7 @@ const Nav = () => {
                   <li><a className="dropdown-item p-2" href="/naildetails" target='_blank'>Nail extension</a></li>
                   <li><a className="dropdown-item p-2" href="/eyelashdetails">Eyelash extension</a></li>
                   <li><a className="dropdown-item p-2" href="/allmakeupcourse">Makeup courses </a></li>
-                  <li><a className="dropdown-item p-2" href="/mehendidetails">Mehendi art </a></li>
+                  <li><a className="dropdown-item p-2" href="/cryptodetails">Crypto trading  </a></li>
                   <li><a className="dropdown-item p-2" href="/tarotdetails">Tarot card reading </a></li>
                    <li><a className="dropdown-item p-2" href="/vocaldetails">Vocal course </a></li>
                 </ul>
