@@ -82,7 +82,7 @@ const Affiliatecourses = () => {
        "Whales Wallet Tracking",
 "Crypto Taxation",
 "Crypto Rules And Knowledge",
-"F.A.T.A (Complete)",
+"Fundamental Analysis and Technical Analysis (Complete)",
 "DEX And CEX Arbitrage Model"
       ],
     },
@@ -94,7 +94,7 @@ const Affiliatecourses = () => {
         "Whale Wallet Tracking",
 "Crypto Taxation",
 "Crypto Rules And Knowledge",
-"F.A.T.A (Complete)",
+"Fundamental Analysis and Technical Analysis (Complete)",
 "DEX And CEX Arbitrage Model"
       ],
     },
