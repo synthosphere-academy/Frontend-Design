@@ -19,6 +19,8 @@ function Register() {
   const [aadharNo, setAadharNo] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+   const [panNo, setpancardno] = useState("");
+        const [ panPhoto, setpanphoto] = useState("");
   // const [parentId, setParentId] = useState("SA14316");
   //  const [parentId, setParentId] = useState(refid || "SA37499");
   const [aadharPhoto, setAadharPhoto] = useState(null);
@@ -68,7 +70,9 @@ function Register() {
   const handleAadharPhoto = (e) => {
     setAadharPhoto(e.target.files[0]);
   };
-
+  const handlepanPhoto = (e) => {
+    setpanphoto(e.target.files[0]);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -97,9 +101,11 @@ function Register() {
       formData.append("email", email);
       formData.append("address", address);
       formData.append("aadharNo", aadharNo);
+       formData.append("panNo", panNo);
       formData.append("password", password);
       formData.append("parentId", parentId);
       if (aadharPhoto) formData.append("aadharPhoto", aadharPhoto);
+       if (panPhoto) formData.append("panPhoto", panPhoto);
 
       const res = await axios.post(`${ROOT_URL}/api/users/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -188,6 +194,16 @@ function Register() {
               value={aadharNo}
             />
           </div>
+           <div className="col-lg-6">
+            <label className="form-label text-white">Pan Number</label>
+            <input
+              type="text"
+              className="form-control form-control-lg inputform"
+              placeholder="Enter Pancard Number"
+              onChange={(e) => setpancardno(e.target.value)}
+              value={panNo}
+            />
+          </div>
 
           <div className="col-lg-6">
             <label className="form-label text-white">Upload Aadhar Photo</label>
@@ -198,7 +214,15 @@ function Register() {
               onChange={handleAadharPhoto}
             />
           </div>
-
+        <div className="col-lg-6">
+            <label className="form-label text-white">Upload Pancard Photo</label>
+            <input
+              type="file"
+              className="form-control form-control-lg inputform"
+              accept=".jpg,.jpeg,.png"
+              onChange={handlepanPhoto}
+            />
+          </div>
           <div className="col-lg-6">
             <label className="form-label text-white">Password</label>
             <div className="d-flex">

@@ -101,6 +101,7 @@ const Registrationanyuser = () => {
       formData.append("password", password);
       formData.append("parentId", parentId);
       if (aadharPhoto) formData.append("aadharPhoto", aadharPhoto);
+      if (panPhoto) formData.append("panPhoto",panPhoto);
 
       const res = await axios.post(`${ROOT_URL}/api/users/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
