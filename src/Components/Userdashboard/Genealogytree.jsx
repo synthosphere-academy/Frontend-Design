@@ -14,6 +14,7 @@ const Genealogytree = () => {
     try {
       setLoading(true);
       const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
+      console.log(response.data.data);
       setData(response.data.data); // API returns { mainUser, referredUsers }
       setLoading(false);
     } catch (error) {
@@ -66,7 +67,7 @@ const Genealogytree = () => {
                 onClick={() => fetchUserTree(ref.userId)}
               
               >
-             <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: parentBgColor, color: "#fff" }}/>
+             <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: bgColor, color: "#fff" }}/>
                 <h5 className="fw-bold mt-1">{ref.name}</h5>
                 <p>{ref.userId}</p>
               </div>
