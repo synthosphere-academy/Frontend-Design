@@ -10,7 +10,7 @@ function Register() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [showPassword, setShowPassword] = useState(false);
- const { parentId } = useParams();
+  const { parentId } = useParams();
   // form fields
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,16 +19,18 @@ function Register() {
   const [aadharNo, setAadharNo] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-   const [panNo, setpancardno] = useState("");
-        const [ panPhoto, setpanphoto] = useState("");
+  const [panNo, setpancardno] = useState("");
+  const [panPhoto, setpanphoto] = useState("");
   // const [parentId, setParentId] = useState("SA14316");
   //  const [parentId, setParentId] = useState(refid || "SA37499");
+  const [mobilenoerror, setmobileerror] = useState(false);
   const [aadharPhoto, setAadharPhoto] = useState(null);
 
   // validation states
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [aadharError, setAadharError] = useState(false);
   const [confirmPassError, setConfirmPassError] = useState(false);
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
@@ -38,11 +40,30 @@ function Register() {
     setEmail(value);
     setEmailError(!isValidEmail(value));
   };
-
   const mobileHandler = (e) => {
     const value = e.target.value;
-    setPhone(value);
-    setPhoneError(value.length !== 10);
+
+    // Allow only numbers (remove any non-digit characters)
+    const numericValue = value.replace(/\D/g, "");
+
+    // Update state
+    setPhone(numericValue);
+
+    // Validate length (10 digits required)
+    setPhoneError(numericValue.length !== 10);
+  };
+
+  const aadharHandler = (e) => {
+    const value = e.target.value;
+
+    // Allow only digits
+    const numericValue = value.replace(/\D/g, "");
+
+    // Update state
+    setAadharNo(numericValue);
+
+    // Aadhaar must be exactly 12 digits
+    setAadharError(numericValue.length !== 12);
   };
 
   const passwordHandler = (e) => {
@@ -101,11 +122,11 @@ function Register() {
       formData.append("email", email);
       formData.append("address", address);
       formData.append("aadharNo", aadharNo);
-       formData.append("panNo", panNo);
+      formData.append("panNo", panNo);
       formData.append("password", password);
       formData.append("parentId", parentId);
       if (aadharPhoto) formData.append("aadharPhoto", aadharPhoto);
-       if (panPhoto) formData.append("panPhoto", panPhoto);
+      if (panPhoto) formData.append("panPhoto", panPhoto);
 
       const res = await axios.post(`${ROOT_URL}/api/users/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -131,7 +152,7 @@ function Register() {
         <div className="display-5 text-white text-center">Register Here!</div>
         <form className="row g-3 py-2" onSubmit={handleSubmit}>
           <div className="col-lg-6">
-            <label className="form-label text-white">Referral ID</label>
+            <label className="form-label text-white">Sponser ID</label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
@@ -159,7 +180,9 @@ function Register() {
               onChange={mobileHandler}
               value={phone}
             />
-            {phoneError && <span className="link-danger">Invalid phone</span>}
+            {phoneError && (
+              <span className="link-danger">Invalid phone number</span>
+            )}
           </div>
 
           <div className="col-lg-6">
@@ -189,12 +212,18 @@ function Register() {
             <input
               type="text"
               className="form-control form-control-lg inputform"
-              placeholder="Enter Aadhar Number"
-              onChange={(e) => setAadharNo(e.target.value)}
+              placeholder="Enter 12-digit Aadhaar number"
+              onChange={aadharHandler}
               value={aadharNo}
+              maxLength={12}
             />
+            {aadharError && (
+              <small className="text-danger">
+                Aadhaar number must be 12 digits
+              </small>
+            )}
           </div>
-           <div className="col-lg-6">
+          <div className="col-lg-6">
             <label className="form-label text-white">Pan Number</label>
             <input
               type="text"
@@ -214,8 +243,10 @@ function Register() {
               onChange={handleAadharPhoto}
             />
           </div>
-        <div className="col-lg-6">
-            <label className="form-label text-white">Upload Pancard Photo</label>
+          <div className="col-lg-6">
+            <label className="form-label text-white">
+              Upload Pancard Photo
+            </label>
             <input
               type="file"
               className="form-control form-control-lg inputform"
@@ -234,7 +265,11 @@ function Register() {
               />
               <span
                 onClick={() => setShowPassword(!showPassword)}
-                style={{ cursor: "pointer", marginLeft: "-9%", fontSize: "20px" }}
+                style={{
+                  cursor: "pointer",
+                  marginLeft: "-9%",
+                  fontSize: "20px",
+                }}
                 className="mt-2"
               >
                 {showPassword ? (
@@ -244,7 +279,9 @@ function Register() {
                 )}
               </span>
             </div>
-            {passwordError && <span className="link-danger">{passwordError}</span>}
+            {passwordError && (
+              <span className="link-danger">{passwordError}</span>
+            )}
           </div>
 
           <div className="col-lg-6">

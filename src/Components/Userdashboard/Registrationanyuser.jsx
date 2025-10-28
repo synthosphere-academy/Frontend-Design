@@ -27,7 +27,7 @@ const Registrationanyuser = () => {
       const [phoneError, setPhoneError] = useState(false);
       const [passwordError, setPasswordError] = useState("");
       const [confirmPassError, setConfirmPassError] = useState(false);
-    
+     const [aadharError, setAadharError] = useState(false);
         const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
   const emailHandler = (e) => {
@@ -62,6 +62,19 @@ const Registrationanyuser = () => {
     const value = e.target.value;
     setConfirmPassword(value);
     setConfirmPassError(value !== password);
+  };
+
+   const aadharHandler = (e) => {
+    const value = e.target.value;
+
+    // Allow only digits
+    const numericValue = value.replace(/\D/g, "");
+
+    // Update state
+    setAadharNo(numericValue);
+
+    // Aadhaar must be exactly 12 digits
+    setAadharError(numericValue.length !== 12);
   };
    const handleAadharPhoto = (e) => {
     setAadharPhoto(e.target.files[0]);
@@ -130,11 +143,11 @@ const Registrationanyuser = () => {
          onSubmit={handleSubmit}
         >
           <div className="col-lg-6">
-            <label className="form-label text-white">Referral ID</label>
+            <label className="form-label text-white">Sponser ID</label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
-              placeholder='Enter Refferal ID'
+              placeholder='Enter Sponser ID'
               onChange={(e) => setparentId(e.target.value)}
              
             />
@@ -153,7 +166,7 @@ const Registrationanyuser = () => {
           <div className="col-lg-6">
             <label className="form-label text-white">Phone Number</label>
             <input
-              type="text"
+              type="number"
               className="form-control form-control-lg inputform"
               placeholder="Enter phone number"
               onChange={mobileHandler}
@@ -183,15 +196,21 @@ const Registrationanyuser = () => {
             />
           </div>
 
-          <div className="col-lg-6">
+         <div className="col-lg-6">
             <label className="form-label text-white">Aadhar Number</label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
-              placeholder="Enter Aadhar Number"
-              onChange={(e) => setAadharNo(e.target.value)}
+              placeholder="Enter 12-digit Aadhaar number"
+              onChange={aadharHandler}
               value={aadharNo}
+              maxLength={12}
             />
+            {aadharError && (
+              <small className="text-danger">
+                Aadhaar number must be 12 digits
+              </small>
+            )}
           </div>
            <div className="col-lg-6">
             <label className="form-label text-white">Pan Number</label>

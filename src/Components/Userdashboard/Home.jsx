@@ -153,7 +153,7 @@ function Home() {
       <div className="row mt-5">
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center mt-4">
+            <div className=" mt-4">
               <div className="card-body">
                 <h5 className="card-title text-center">{directTeam}</h5>
                 <h5 className="card-text text-center">Direct Team</h5>
@@ -166,7 +166,7 @@ function Home() {
           <div className="card h-100 cardstyle">
             <div className="text-center mt-4">
               <div className="card-body">
-                <h5 className="card-title text-center">{payout}</h5>
+                <h5 className="card-title text-center">Rs: {payout}/-</h5>
                 <h5 className="card-text text-center">Current Payout</h5>
               </div>
             </div>
@@ -177,6 +177,7 @@ function Home() {
           <div className="card h-100 cardstyle">
             <div className="text-center mt-4">
               <div className="card-body">
+
                 <h5 className="card-title text-center">{selfPoints}</h5>
                 <h5 className="card-text text-center">Self Points</h5>
               </div>
