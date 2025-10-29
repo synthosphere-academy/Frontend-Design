@@ -96,6 +96,7 @@ const fetchPointsDetails = async () => {
   const payout = payoutDetails?.totalPoints || 0;
   const selfPoints = payoutDetails?.selfPoints || 0;
   const referredPoints = payoutDetails?.referredPoints || 0;
+  const totalteampoint = pointdetails?.totalSelfPointsFromReferredUsers || 0;
   const referralLink = userDetails?.referralLink || "N/A";
 
    const handleCopyLink = () => {
@@ -210,7 +211,7 @@ const fetchPointsDetails = async () => {
             <div className="text-center"></div>
               <div className="card-body">
                <div><i className="fa fa-star" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">{referredPoints}</h5>
+                <h5 className="card-title text-center">{totalteampoint}</h5>
                 <h5 className="card-text text-center">Referred Points</h5>
               </div>
             </div>
@@ -241,7 +242,7 @@ const fetchPointsDetails = async () => {
             
           </div>
         </div>
-        <div className="col-lg-3">
+        {/* <div className="col-lg-3">
           <div className="card h-100 cardstyle">
             <div className="text-center"></div>
               <div className="card-body">
@@ -251,7 +252,7 @@ const fetchPointsDetails = async () => {
               </div>
             
           </div>
-        </div>
+        </div> */}
         </div>
       <div className="d-flex justify-content-center flex-column align-items-center">
         <h4 className="mt-5 fw-bold">Your Referral Link </h4>

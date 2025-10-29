@@ -7,7 +7,7 @@ const Genealogytree = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-
+   const [rootUserId, setRootUserId] = useState(null);
   const fetchUserTree = async (userId) => {
     if (!userId) return;
 
@@ -27,8 +27,16 @@ const Genealogytree = () => {
   // Initial Load
   useEffect(() => {
      const userId = sessionStorage.getItem("userid"); 
+     setRootUserId(userId);
     fetchUserTree(userId);
   }, []);
+    const handleGoToTop = () => {
+    if (rootUserId) {
+      fetchUserTree(rootUserId);
+    } else {
+      swal("Error", "Root user not found.", "error");
+    }
+  };
 
   if (loading) return <div className="text-center mt-5">Loading genealogy...</div>;
   if (!data) return <div className="text-center mt-5">No data found.</div>;
@@ -38,6 +46,10 @@ const Genealogytree = () => {
 
   return (
     <div className="genealogy-container">
+    <button className="btn mt-1 mb-4 w-25 text-white" style={{backgroundColor:"#9a357f"}}  onClick={handleGoToTop} >
+            Extreme top
+          </button>
+      
       {/* Parent Node */}
       <div className="parent-node">
         <div

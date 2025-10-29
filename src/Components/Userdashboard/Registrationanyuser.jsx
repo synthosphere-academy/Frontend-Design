@@ -9,6 +9,8 @@ const Registrationanyuser = () => {
       const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
     
       const [showPassword, setShowPassword] = useState(false);
+      const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
       // form fields
       const [name, setName] = useState("");
       const [phone, setPhone] = useState("");
@@ -28,6 +30,8 @@ const Registrationanyuser = () => {
       const [passwordError, setPasswordError] = useState("");
       const [confirmPassError, setConfirmPassError] = useState(false);
      const [aadharError, setAadharError] = useState(false);
+      const [aadharphotoError, setAadharphotoError] = useState("");
+  const [panphotoError, setPanphotoError] = useState("");
         const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
   const emailHandler = (e) => {
@@ -60,7 +64,54 @@ const Registrationanyuser = () => {
       setPasswordError("");
     }
   };
+ const handleAadharPhoto_file= (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const validTypes = ["image/jpeg", "image/jpg", "image/png"];
+      if (!validTypes.includes(file.type)) {
+        setAadharphotoError("Only JPG, JPEG, or PNG files are allowed.");
+         swal("Invalid File", "Only JPG, JPEG, or PNG files are allowed.", "error");
+        e.target.value = null; // clear input
+        return;
+      }
 
+      if (file.size > 1 * 1024 * 1024) {
+        setAadharphotoError("File size must be less than 1 MB.");
+           swal("File Too Large", "File size must be less than 1 MB.", "warning");
+        
+        e.target.value = null;
+        return;
+      }
+       setAadharPhoto(file);
+      setAadharphotoError("");
+      // ✅ your logic for valid file (e.g., upload or store)
+      console.log("Aadhar Photo:", file);
+    }
+  };
+
+  const handlePanPhoto_file = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const validTypes = ["image/jpeg", "image/jpg", "image/png"];
+      if (!validTypes.includes(file.type)) {
+        setPanphotoError("Only JPG, JPEG, or PNG files are allowed.");
+         swal("Invalid File", "Only JPG, JPEG, or PNG files are allowed.", "error");
+        e.target.value = null;
+        return;
+      }
+
+      if (file.size > 1 * 1024 * 1024) {
+        setPanphotoError("File size must be less than 1 MB.");
+           swal("File Too Large", "File size must be less than 1 MB.", "warning");
+        e.target.value = null;
+        return;
+      }
+     
+      setpanphoto(file);
+      setPanphotoError("");
+      console.log("PAN Photo:", file);
+    }
+  };
   const confirmPasswordHandler = (e) => {
     const value = e.target.value;
     setConfirmPassword(value);
@@ -79,12 +130,8 @@ const Registrationanyuser = () => {
     // Aadhaar must be exactly 12 digits
     setAadharError(numericValue.length !== 12);
   };
-   const handleAadharPhoto = (e) => {
-    setAadharPhoto(e.target.files[0]);
-  };
-  const handlepanPhoto = (e) => {
-    setpanphoto(e.target.files[0]);
-  };
+  
+ 
  const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -125,7 +172,7 @@ const Registrationanyuser = () => {
 
       if (res.data.success) {
         swal("Success!", "Registration completed successfully!", "success");
-        navigate("/userdashboard");
+        ("/userdashboard");
 
       }
     } catch (error) {
@@ -142,11 +189,13 @@ const Registrationanyuser = () => {
    <>
     <section>
       <div className="container formcontainer mt-1 mb-5">
-        <form className="row g-3 py-2"
+        <form className="row g-3 py-1"
          onSubmit={handleSubmit}
         >
+          <div className='col-lg-12 text-warning fw-bold'>Please fill all the required fields</div>
           <div className="col-lg-6">
-            <label className="form-label text-white">Sponser ID</label>
+          
+            <label className="form-label text-white">Sponser ID<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
@@ -157,7 +206,7 @@ const Registrationanyuser = () => {
           </div>
 
           <div className="col-lg-6">
-            <label className="form-label text-white">Full Name</label>
+            <label className="form-label text-white">Full Name<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
@@ -167,7 +216,7 @@ const Registrationanyuser = () => {
           </div>
 
           <div className="col-lg-6">
-            <label className="form-label text-white">Phone Number</label>
+            <label className="form-label text-white">Phone Number<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
@@ -179,7 +228,7 @@ const Registrationanyuser = () => {
           </div>
 
           <div className="col-lg-6">
-            <label className="form-label text-white">Email</label>
+            <label className="form-label text-white">Email<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="email"
               className="form-control form-control-lg inputform"
@@ -190,7 +239,7 @@ const Registrationanyuser = () => {
             {emailError && <span className="link-danger">Invalid email</span>}
           </div>
           <div className="col-lg-6">
-            <label className="form-label text-white">Address</label>
+            <label className="form-label text-white">Address<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
@@ -200,7 +249,7 @@ const Registrationanyuser = () => {
           </div>
 
          <div className="col-lg-6">
-            <label className="form-label text-white">Aadhar Number</label>
+            <label className="form-label text-white">Aadhar Number<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
@@ -216,7 +265,7 @@ const Registrationanyuser = () => {
             )}
           </div>
            <div className="col-lg-6">
-            <label className="form-label text-white">Pan Number</label>
+            <label className="form-label text-white">Pan Number<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="text"
               className="form-control form-control-lg inputform"
@@ -224,29 +273,32 @@ const Registrationanyuser = () => {
               onChange={(e) => setpancardno(e.target.value)}
               value={panNo}
             />
+            
           </div>
 
           <div className="col-lg-6">
-            <label className="form-label text-white">Upload Aadhar Photo</label>
+            <label className="form-label text-white">Upload Aadhar Photo<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="file"
               className="form-control form-control-lg inputform"
               accept=".jpg,.jpeg,.png"
-              onChange={handleAadharPhoto}
+              onChange={handleAadharPhoto_file}
             />
+            {aadharphotoError && <span className="link-danger">{aadharphotoError}</span>}
           </div>
           <div className="col-lg-6">
-            <label className="form-label text-white">Upload Pancard Photo</label>
+            <label className="form-label text-white">Upload Pancard Photo<sup style={{fontSize:"14px"}}>*</sup></label>
             <input
               type="file"
               className="form-control form-control-lg inputform"
               accept=".jpg,.jpeg,.png"
-              onChange={handlepanPhoto}
+              onChange={handlePanPhoto_file}
             />
+             {panphotoError && <span className="link-danger">{panphotoError}</span>}
           </div>
 
           <div className="col-lg-6">
-            <label className="form-label text-white">Password</label>
+            <label className="form-label text-white">Password<sup style={{fontSize:"14px"}}>*</sup></label>
             <div className="d-flex">
               <input
                 type={showPassword ? "text" : "password"}
@@ -269,19 +321,33 @@ const Registrationanyuser = () => {
             {passwordError && <span className="link-danger">{passwordError}</span>}
           </div>
 
-          <div className="col-lg-6">
-            <label className="form-label text-white">Confirm Password</label>
-            <input
-              type="password"
-              className="form-control form-control-lg inputform"
-              placeholder="Confirm Password"
-              onChange={confirmPasswordHandler}
-              value={confirmPassword}
-            />
-            {confirmPassError && (
-              <span className="link-danger">Passwords do not match</span>
-            )}
-          </div>
+         <div className="col-lg-6">
+  <label className="form-label text-white">Confirm Password<sup style={{fontSize:"14px"}}>*</sup></label>
+  <div className="d-flex">
+    <input
+      type={showConfirmPassword ? "text" : "password"}
+      className="form-control form-control-lg inputform"
+      placeholder="Confirm Password"
+      onChange={confirmPasswordHandler}
+      value={confirmPassword}
+    />
+    <span
+      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+      style={{ cursor: "pointer", marginLeft: "-9%", fontSize: "20px" }}
+      className="mt-2"
+    >
+      {showConfirmPassword ? (
+        <i className="fa fa-eye"></i>
+      ) : (
+        <i className="fa fa-eye-slash"></i>
+      )}
+    </span>
+  </div>
+  {confirmPassError && (
+    <span className="link-danger">Passwords do not match</span>
+  )}
+</div>
+
 
           <div className="col-12 text-white">
             <input type="checkbox" id="checkbox_terms" /> I agree to the{" "}

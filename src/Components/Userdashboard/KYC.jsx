@@ -8,6 +8,7 @@ const KYC = () => {
 
   const [bankDetails, setBankDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+    const [KycError, setKYcError] = useState("");
 
   // Form state
   const [formData, setFormData] = useState({
@@ -46,7 +47,28 @@ const KYC = () => {
 
   // Handle file change
   const handleFileChange = (e) => {
-    setPassbookPhoto(e.target.files[0]);
+   
+    const file = e.target.files[0];
+    if (file) {
+      const validTypes = ["image/jpeg", "image/jpg", "image/png"];
+      if (!validTypes.includes(file.type)) {
+        setKYcError("Only JPG, JPEG, or PNG files are allowed.");
+         swal("Invalid File", "Only JPG, JPEG, or PNG files are allowed.", "error");
+        e.target.value = null;
+        return;
+      }
+
+      if (file.size > 1 * 1024 * 1024) {
+        setKYcError("File size must be less than 1 MB.");
+           swal("File Too Large", "File size must be less than 1 MB.", "warning");
+        e.target.value = null;
+        return;
+      }
+     
+      setPassbookPhoto(file);
+      setKYcError("");
+      console.log("PAN Photo:", file);
+    }
   };
 
   // Handle form submit
@@ -151,8 +173,9 @@ const KYC = () => {
           </div>
           <div className="col-md-6">
             <label className="form-label">Upload Passbook Photo</label>
-            <input type="file" accept="image/*" className="form-control" onChange={handleFileChange} />
+            <input type="file"  accept=".jpg,.jpeg,.png" className="form-control" onChange={handleFileChange} />
           </div>
+            {KycError && <span className="link-danger">{KycError}</span>}
         </div>
 
         <div className="text-center mt-4">
