@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
   import axios from "axios";
 import swal from "sweetalert";
 const Affiliatecourses = () => {
- 
-
+  const navigate = useNavigate();
+const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   // const handle_enroll = (course) => {
   //   const userStatus = sessionStorage.getItem("userstatus");
 
@@ -31,21 +31,21 @@ const Affiliatecourses = () => {
 
 
 const handle_enroll = async (course) => {
-  const navigate = useNavigate();
+ 
 
   try {
     // Get userId from sessionStorage (assuming you stored it during login)
     const userId = sessionStorage.getItem("userid");
-
+    console.log(userId)
     if (!userId) {
       swal("Not Logged In", "Please login to enroll in the course.", "warning");
-      navigate("/login");
+      // navigate("/login");
       return;
     }
 
     // 🔹 Fetch user details from API
     const response = await axios.post(`${ROOT_URL}/api/users/getuserdetails`, { userId });
-
+      console.log(response.data.status)
     // Extract user status from API response
     const userStatus = response.data?.status;
 
