@@ -1,6 +1,6 @@
-.cardstyle{
-    background-color: #9a357f;
-    color: white;
+.cardstyle {
+  background: linear-gradient(135deg, #9a357f, #c64292);
+  color: white;
 }
 .referral{
     background-color: wheat;

@@ -12,7 +12,8 @@ function Home() {
   const [userDetails, setUserDetails] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
   const [payoutDetails, setPayoutDetails] = useState(null);
-  const [copied , setCopiedright] = useState(false);
+  const [pointdetails , setPointDetails] = useState(null);
+   const [copied , setCopiedright] = useState(false);
   // const [loading, setLoading] = useState(true);
 
   const fetchUserDetails = async () => {
@@ -51,12 +52,24 @@ function Home() {
       console.error("Error fetching payout details:", error);
     }
   };
+const fetchPointsDetails = async () => {
+    try {
+      const res = await axios.get(`${ROOT_URL}/api/users/referred-selfpoints/${userId}`);
+      if (res.data){
+        console.log("Points Details:", res.data);
+        setPointDetails(res.data);
+      } 
+    } catch (error) {
+      console.error("Error fetching payout details:", error);
+    }
+  };
 
   const fetchDashboardData = async () => {
     // setLoading(true);
     await fetchUserDetails();
     await fetchBankDetails();
     await fetchPayoutDetails();
+    await fetchPointsDetails();
     // setLoading(false);
   };
 
@@ -108,8 +121,10 @@ function Home() {
       <div className="row">
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center mt-4"></div>
+            <div className="text-center"></div>
             <div className="card-body">
+            <div><i className="fa fa-user" style={{color:"white", fontSize:"30px"}}></i>
+</div>
               <h5 className="card-title text-center">{userStatus}</h5>
               <h5 className="card-text text-center">User Status</h5>
             </div>
@@ -118,84 +133,126 @@ function Home() {
 
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center mt-4">
+            <div className="text-center "></div>
               <div className="card-body">
+              <div className="mb-3"><i className="fa fa-book" style={{color:"white", fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center">{activeCourse}</h5>
                 <h5 className="card-text text-center">Package name</h5>
               </div>
-            </div>
+            
           </div>
         </div>
 
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center mt-4">
+            <div className="text-center"></div>
               <div className="card-body">
+              <div><i className="fa fa-id-card" style={{fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center">{kycStatus}</h5>
                 <h5 className="card-text text-center">KYC Status</h5>
               </div>
-            </div>
+            
           </div>
         </div>
 
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center mt-4">
+            <div className="text-center"></div>
               <div className="card-body">
+              <div><i className="fa fa-calendar" style={{fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center">{expiredDate}</h5>
                 <h5 className="card-text text-center">Course Expired Date</h5>
               </div>
             </div>
           </div>
-        </div>
+        
       </div>
 
       <div className="row mt-5">
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className=" mt-4">
+            <div className="text-center"></div>
               <div className="card-body">
+                <div><i className="fa fa-handshake" style={{fontSize:"30px"}}></i></div>
+              
                 <h5 className="card-title text-center">{directTeam}</h5>
                 <h5 className="card-text text-center">Direct Team</h5>
               </div>
-            </div>
+            
           </div>
         </div>
 
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center mt-4">
+            <div className="text-center"></div>
               <div className="card-body">
+                <div><i className="fa fa-money" style={{fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center">Rs: {payout}/-</h5>
                 <h5 className="card-text text-center">Current Payout</h5>
               </div>
             </div>
           </div>
-        </div>
+        
 
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center mt-4">
+            <div className="text-center"></div>
               <div className="card-body">
-
+                 <div><i className="fa fa-bullseye" style={{fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center">{selfPoints}</h5>
                 <h5 className="card-text text-center">Self Points</h5>
               </div>
-            </div>
+            
           </div>
         </div>
          <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center mt-4">
+            <div className="text-center"></div>
               <div className="card-body">
+               <div><i className="fa fa-star" style={{fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center">{referredPoints}</h5>
                 <h5 className="card-text text-center">Referred Points</h5>
               </div>
             </div>
-          </div>
+          
         </div>
         
       </div>
+      <div className="row mt-5">
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle">
+            <div className="text-center"></div>
+              <div className="card-body">
+                <div><i className="fa fa-users" style={{fontSize:"30px"}}></i></div>
+                <h5 className="card-title text-center">{directTeam}</h5>
+                <h5 className="card-text text-center">Total Team</h5>
+              </div>
+            
+          </div>
+        </div>
+         <div className="col-lg-3">
+          <div className="card h-100 cardstyle">
+            <div className="text-center"></div>
+              <div className="card-body">
+               <div><i className="fa fa-medal" style={{fontSize:"30px"}}></i></div>
+                <h5 className="card-title text-center">Not Achived</h5>
+                <h5 className="card-text text-center">Current Rank</h5>
+              </div>
+            
+          </div>
+        </div>
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle">
+            <div className="text-center"></div>
+              <div className="card-body">
+               <div><i className="fa fa-coins" style={{fontSize:"30px"}}></i></div>
+                <h5 className="card-title text-center">0</h5>
+                <h5 className="card-text text-center">Total team point</h5>
+              </div>
+            
+          </div>
+        </div>
+        </div>
       <div className="d-flex justify-content-center flex-column align-items-center">
         <h4 className="mt-5 fw-bold">Your Referral Link </h4>
         <div className="d-flex">

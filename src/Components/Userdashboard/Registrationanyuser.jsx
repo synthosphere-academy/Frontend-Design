@@ -36,11 +36,14 @@ const Registrationanyuser = () => {
     setEmailError(!isValidEmail(value));
   };
 
-  const mobileHandler = (e) => {
-    const value = e.target.value;
-    setPhone(value);
-    setPhoneError(value.length !== 10);
-  };
+ const mobileHandler = (e) => {
+  // Allow only digits
+  const value = e.target.value.replace(/\D/g, ""); // removes all non-numeric characters
+  setPhone(value);
+
+  // Validate 10 digits
+  setPhoneError(value.length !== 10);
+};
 
   const passwordHandler = (e) => {
     const value = e.target.value;
@@ -166,13 +169,13 @@ const Registrationanyuser = () => {
           <div className="col-lg-6">
             <label className="form-label text-white">Phone Number</label>
             <input
-              type="number"
+              type="text"
               className="form-control form-control-lg inputform"
               placeholder="Enter phone number"
               onChange={mobileHandler}
               value={phone}
             />
-            {phoneError && <span className="link-danger">Invalid phone</span>}
+            {phoneError && <span className="link-danger">Please enter 10 digits phone number</span>}
           </div>
 
           <div className="col-lg-6">

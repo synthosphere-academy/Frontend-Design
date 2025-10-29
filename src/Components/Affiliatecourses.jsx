@@ -1,33 +1,79 @@
 import React from "react";
 import "../Css/affiliatecourse.css";
 import { useNavigate } from "react-router-dom";
+  import axios from "axios";
 import swal from "sweetalert";
-
 const Affiliatecourses = () => {
+ 
+
+  // const handle_enroll = (course) => {
+  //   const userStatus = sessionStorage.getItem("userstatus");
+
+  //   if (!userStatus) {
+  //     swal("Not Logged In", "Please login to enroll in the course.", "warning");
+  //     navigate("/login");
+  //     return;
+  //   }
+
+  //   if (userStatus === "pending") {
+  //     swal(
+  //       "Account Not Verified",
+  //       "Your account is under review. Please login again.",
+  //       "error"
+  //     );
+  //   } else if (userStatus === "active") {
+  //     // ✅ Pass course name & price to checkout
+  //     navigate("/checkout", { state: { courseName: course.name, coursePrice: course.price } });
+  //   } else {
+  //     swal("Error", "Invalid account status. Please contact support.", "error");
+  //   }
+  // };
+
+
+const handle_enroll = async (course) => {
   const navigate = useNavigate();
 
-  const handle_enroll = (course) => {
-    const userStatus = sessionStorage.getItem("userstatus");
+  try {
+    // Get userId from sessionStorage (assuming you stored it during login)
+    const userId = sessionStorage.getItem("userid");
 
-    if (!userStatus) {
+    if (!userId) {
       swal("Not Logged In", "Please login to enroll in the course.", "warning");
       navigate("/login");
       return;
     }
 
+    // 🔹 Fetch user details from API
+    const response = await axios.post(`${ROOT_URL}/api/users/getuserdetails`, { userId });
+
+    // Extract user status from API response
+    const userStatus = response.data?.status;
+
+    if (!userStatus) {
+      swal("Error", "Unable to fetch account status. Please try again later.", "error");
+      return;
+    }
+
+    // 🔹 Handle based on user status
     if (userStatus === "pending") {
       swal(
         "Account Not Verified",
-        "Your account is under review. Please login again.",
+        "Your account is under review. Please login again after verification.",
         "error"
       );
     } else if (userStatus === "active") {
-      // ✅ Pass course name & price to checkout
+      // ✅ Navigate to checkout with course info
       navigate("/checkout", { state: { courseName: course.name, coursePrice: course.price } });
     } else {
       swal("Error", "Invalid account status. Please contact support.", "error");
     }
-  };
+
+  } catch (error) {
+    console.error("Error fetching user status:", error);
+    swal("Error", "Something went wrong. Please try again later.", "error");
+  }
+};
+
 
   const courses = [
     {
