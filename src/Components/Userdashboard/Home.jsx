@@ -42,6 +42,7 @@ function Home() {
   };
 
   const fetchPayoutDetails = async () => {
+    console.log("Fetching payout details for userId:", userId);
     try {
       const res = await axios.get(`${ROOT_URL}/api/referral/realtime/${userId}`);
       if (res.data){
@@ -75,6 +76,7 @@ const fetchPointsDetails = async () => {
 
   useEffect(() => {
     const userId = sessionStorage.getItem("userid");
+    console.log("Fetched userId from sessionStorage:", userId);
     if (userId) {
       fetchDashboardData();
     } else {

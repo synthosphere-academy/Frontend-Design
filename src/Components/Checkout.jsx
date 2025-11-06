@@ -14,14 +14,17 @@ const Checkout = () => {
   const { courseName, coursePrice } = location.state || {};
 
   // form states
-  const [fullname, setName] = useState("");
-  const [phoneno, setPhoneno] = useState("");
-  const [email, setEmail] = useState("");
+  // const [fullname, setName] = useState("");
+  // const [phoneno, setPhoneno] = useState("");
+  // const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [emailerror, setEmailerror] = useState(false);
   const [mobilenoerror, setMobileerror] = useState(false);
 
   const userId = sessionStorage.getItem("userid");
+   const fullname = sessionStorage.getItem("username");
+   const phoneno = sessionStorage.getItem("userphone");
+   const email = sessionStorage.getItem("useremail");
   const Course_name = "Crypto Trading Course";
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -38,14 +41,11 @@ const Checkout = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!fullname || !phoneno || !email || !address) {
+    if ( !address) {
       swal("Oops!", "Please fill out all required fields!", "error");
       return;
     }
-    if (emailerror || mobilenoerror) {
-      swal("Oops!", "Please enter valid inputs!", "error");
-      return;
-    }
+    
 
     try {
       // 1️⃣ Create order on backend
@@ -147,8 +147,8 @@ const Checkout = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Full name"
-                onChange={(e) => setName(e.target.value)}
+               
+                value={fullname}
               />
             </div>
             <div className="col mb-4">
@@ -157,12 +157,10 @@ const Checkout = () => {
                 type="text"
                 className="form-control"
                 placeholder="Enter phone number"
-                onKeyUp={mobileHandler}
-                onChange={(e) => setPhoneno(e.target.value)}
+                value={phoneno}
+                
               />
-              {mobilenoerror && (
-                <span className="text-danger">Invalid phone number</span>
-              )}
+            
             </div>
           </div>
 
@@ -182,8 +180,7 @@ const Checkout = () => {
                 type="text"
                 className="form-control"
                 placeholder="you@example.com"
-                onKeyUp={emailHandler}
-                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
               {emailerror && (
                 <span className="text-danger">Invalid email address</span>

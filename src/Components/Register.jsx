@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Css/Register.css";
 // import { useParams } from "react-router-dom";
 // const { refid } = useParams();
@@ -10,7 +10,8 @@ function Register() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [showPassword, setShowPassword] = useState(false);
-  const { parentId } = useParams();
+  const[ showconfirmPassword, setShowConfirmPassword]= useState(false);
+  // const { parentId } = useParams();
   // form fields
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -21,10 +22,11 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [panNo, setpancardno] = useState("");
   const [panPhoto, setpanphoto] = useState("");
-  // const [parentId, setParentId] = useState("SA14316");
+   const [parentId, setParentId] = useState("SA14316");
   //  const [parentId, setParentId] = useState(refid || "SA37499");
   const [mobilenoerror, setmobileerror] = useState(false);
-  const [aadharPhoto, setAadharPhoto] = useState(null);
+  const [aadharFront, setAadharPhoto] = useState(null);
+   const [aadharBack, setAadharPhotoback] = useState(null);
 
   // validation states
   const [emailError, setEmailError] = useState(false);
@@ -89,10 +91,31 @@ function Register() {
   };
 
   const handleAadharPhoto = (e) => {
-    setAadharPhoto(e.target.files[0]);
+     const file = e.target.files[0];
+  if (file && file.size > 1 * 1024 * 1024) { // 1 MB limit
+    swal("Error!", "Aadhar Front image must be smaller than 1 MB!", "error");
+    e.target.value = ""; // reset file input
+    return;
+  }
+  setAadharPhoto(file);
+  };
+   const handleAadharPhoto_back = (e) => {
+   const file = e.target.files[0];
+  if (file && file.size > 1 * 1024 * 1024) { // 1 MB limit
+    swal("Error!", "Aadhar Back image must be smaller than 1 MB!", "error");
+    e.target.value = "";
+    return;
+  }
+  setAadharPhotoback(file);
   };
   const handlepanPhoto = (e) => {
-    setpanphoto(e.target.files[0]);
+     const file = e.target.files[0];
+  if (file && file.size > 1 * 1024 * 1024) { // 1 MB limit
+    swal("Error!", "PAN card image must be smaller than 1 MB!", "error");
+    e.target.value = "";
+    return;
+  }
+  setpanphoto(file);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -125,8 +148,9 @@ function Register() {
       formData.append("panNo", panNo);
       formData.append("password", password);
       formData.append("parentId", parentId);
-      if (aadharPhoto) formData.append("aadharPhoto", aadharPhoto);
+      if (aadharFront) formData.append("aadharFront", aadharFront);
       if (panPhoto) formData.append("panPhoto", panPhoto);
+      if (aadharBack) formData.append("aadharBack", aadharBack);
 
       const res = await axios.post(`${ROOT_URL}/api/users/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -156,8 +180,10 @@ function Register() {
             <input
               type="text"
               className="form-control form-control-lg inputform"
-              value={parentId}
-              readOnly
+              onChange={(e) => setParentId(e.target.value)}
+              placeholder="Enter sponsor Id"
+              // value={parentId}
+             
             />
           </div>
 
@@ -235,12 +261,21 @@ function Register() {
           </div>
 
           <div className="col-lg-6">
-            <label className="form-label text-white">Upload Aadhar Photo</label>
+            <label className="form-label text-white">Upload Aadhar Photo(Front)</label>
             <input
               type="file"
               className="form-control form-control-lg inputform"
               accept=".jpg,.jpeg,.png"
               onChange={handleAadharPhoto}
+            />
+          </div>
+            <div className="col-lg-6">
+            <label className="form-label text-white">Upload Aadhar Photo(Back)</label>
+            <input
+              type="file"
+              className="form-control form-control-lg inputform"
+              accept=".jpg,.jpeg,.png"
+              onChange={handleAadharPhoto_back}
             />
           </div>
           <div className="col-lg-6">
@@ -286,13 +321,30 @@ function Register() {
 
           <div className="col-lg-6">
             <label className="form-label text-white">Confirm Password</label>
+            <div className="d-flex">
             <input
-              type="password"
+                onClick={() => setShowConfirmPassword(!showconfirmPassword)}
               className="form-control form-control-lg inputform"
               placeholder="Confirm Password"
               onChange={confirmPasswordHandler}
               value={confirmPassword}
             />
+            <span
+                onClick={() => setShowConfirmPassword(!showconfirmPassword)}
+                style={{
+                  cursor: "pointer",
+                  marginLeft: "-9%",
+                  fontSize: "20px",
+                }}
+                className="mt-2"
+              >
+                {showPassword ? (
+                  <i className="fa fa-eye"></i>
+                ) : (
+                  <i className="fa fa-eye-slash"></i>
+                )}
+              </span>
+              </div>
             {confirmPassError && (
               <span className="link-danger">Passwords do not match</span>
             )}

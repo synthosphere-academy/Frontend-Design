@@ -90,10 +90,10 @@ const Nav = () => {
                 </div>
               
 
-                : <button className='buttonstyle btn btn-sm text-white'>
-                  <Link to="/register/SA37499"><button className=" childbutton text-white" id='loginbutton' type="submit" >Signup</button></Link>/
-                  <Link to="/login"><button className="childbutton text-white" id='loginbutton' type="submit" >Login</button></Link>
-                </button>
+                : <div><Link to="/register"><button className=" buttonstyle btn btn-sm text-white" id='loginbutton' type="submit" >Signup</button></Link>
+                  <Link to="/login"><button className="buttonstyle btn btn-sm text-white" id='loginbutton' type="submit" >Login</button></Link>
+               </div>
+                  
             } 
              
 

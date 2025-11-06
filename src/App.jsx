@@ -54,7 +54,8 @@ function App() {
         <Routes>
         <Route path="/" element={<Userlayout><Homepage /></Userlayout>} />
         <Route path="/login" element={<Userlayout><Login /></Userlayout>} />
-        <Route path="/register/:parentId" element={<Userlayout><Register /></Userlayout>} />
+        {/* <Route path="/register/:parentId" element={<Userlayout><Register /></Userlayout>} /> */}
+        <Route path="/register" element={<Userlayout><Register /></Userlayout>} />
         <Route path="/contact" element={<Userlayout><Contact /></Userlayout>} />
         <Route path="/blog/:slug" element={<Userlayout><Blog/></Userlayout>} />
         <Route path='/forgotpassword' element={<Userlayout><Forgotpage/></Userlayout>}/>

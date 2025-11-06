@@ -45,9 +45,9 @@ const handle_enroll = async (course) => {
 
     // 🔹 Fetch user details from API
     const response = await axios.post(`${ROOT_URL}/api/users/getuserdetails`, { userId });
-      console.log(response.data.status)
+      console.log(response.data.user.status)
     // Extract user status from API response
-    const userStatus = response.data?.status;
+    const userStatus = response.data?.user?.status;
 
     if (!userStatus) {
       swal("Error", "Unable to fetch account status. Please try again later.", "error");
