@@ -5,7 +5,7 @@ import swal from "sweetalert";
 const KYC = () => {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const userId = sessionStorage.getItem("userid") || "SA12345";
-
+console.log("UserID:", userId);
   const [bankDetails, setBankDetails] = useState(null);
   const [loading, setLoading] = useState(true);
     const [KycError, setKYcError] = useState("");
@@ -27,9 +27,11 @@ const KYC = () => {
   useEffect(() => {
     const fetchBankDetails = async () => {
       try {
-        const response = await axios.get(`${ROOT_URL}/api/bankdetails/${userId}`);
+        const response = await axios.post(`${ROOT_URL}/api/users/full-details`, { userId });
         if (response.data.success && response.data.data) {
-          setBankDetails(response.data.data);
+          console.log("Bank Details:", response.data.data);
+          
+           setBankDetails(response.data.data.bankDetails);
         }
       } catch (error) {
         console.log("Bank details not found:", error);

@@ -159,7 +159,7 @@ function Registrationanyuser() {
 
       if (res.data.success) {
         swal("Success!", "Registration completed successfully!", "success");
-        navigate("/login");
+        navigate("/userdashboard");
       }
     } catch (error) {
       console.error("Registration Error:", error);

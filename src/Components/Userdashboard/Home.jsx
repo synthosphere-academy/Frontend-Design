@@ -1,59 +1,50 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
 import "../../Css/Userdasboard/home.css";
 
 function Home() {
- 
   const userId = sessionStorage.getItem("userid");
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [userDetails, setUserDetails] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
-  const [payoutDetails, setPayoutDetails] = useState(null);
-  const [pointdetails , setPointDetails] = useState(null);
-   const [copied , setCopiedright] = useState(false);
-  // const [loading, setLoading] = useState(true);
+  const [courseDetails, setCourseDetails] = useState(null);
+  const [checkouts, setCheckouts] = useState([]);
+   const [payoutDetails, setPayoutDetails] = useState(null);
+    const [pointdetails , setPointDetails] = useState(null);
+  const [copied, setCopied] = useState(false);
 
-  const fetchUserDetails = async () => {
+  const fetchFullDetails = async () => {
     try {
-     
-     const response = await axios.post(`${ROOT_URL}/api/users/getuserdetails`, { userId });
-     
-           // extract courses from user object
-            setUserDetails(response.data);  // store the whole user object
-             console.log(response.data);
+      const res = await axios.post(`${ROOT_URL}/api/users/full-details`, { userId });
+      if (res.data.success) {
+        console.log("Full details:", res.data.data);
+        setUserDetails(res.data.data.user);
+        setBankDetails(res.data.data.bankDetails);
+        setCourseDetails(res.data.data.courseDetails);
+        setCheckouts(res.data.data.checkouts || []);
+      } else {
+        swal("Error", res.data.message || "Failed to fetch user data", "error");
+      }
     } catch (error) {
-      console.error("Error fetching user details:", error);
+      console.error("Error fetching full details:", error);
+      swal("Error", "Something went wrong while fetching details.", "error");
     }
   };
-
-  const fetchBankDetails = async () => {
-    try {
-      const res = await axios.get(`${ROOT_URL}/api/bankdetails/${userId}`);
-      if (res.data.success){
-        console.log("Bank Details:", res.data.data);
-        setBankDetails(res.data.data);
-      } 
-    } catch (error) {
-      console.error("Error fetching bank details:", error);
-    }
-  };
-
   const fetchPayoutDetails = async () => {
-    console.log("Fetching payout details for userId:", userId);
-    try {
-      const res = await axios.get(`${ROOT_URL}/api/referral/realtime/${userId}`);
-      if (res.data){
-        console.log("Payout Details:", res.data);
-        setPayoutDetails(res.data);
-      } 
-    } catch (error) {
-      console.error("Error fetching payout details:", error);
-    }
-  };
-const fetchPointsDetails = async () => {
+      console.log("Fetching payout details for userId:", userId);
+      try {
+        const res = await axios.get(`${ROOT_URL}/api/referral/realtime/${userId}`);
+        if (res.data){
+          console.log("Payout Details:", res.data);
+          setPayoutDetails(res.data);
+        } 
+      } catch (error) {
+        console.error("Error fetching payout details:", error);
+      }
+    };
+    const fetchPointsDetails = async () => {
     try {
       const res = await axios.get(`${ROOT_URL}/api/users/referred-selfpoints/${userId}`);
       if (res.data){
@@ -65,127 +56,97 @@ const fetchPointsDetails = async () => {
     }
   };
 
-  const fetchDashboardData = async () => {
-    // setLoading(true);
-    await fetchUserDetails();
-    await fetchBankDetails();
-    await fetchPayoutDetails();
-    await fetchPointsDetails();
-    // setLoading(false);
-  };
-
   useEffect(() => {
-    const userId = sessionStorage.getItem("userid");
-    console.log("Fetched userId from sessionStorage:", userId);
-    if (userId) {
-      fetchDashboardData();
-    } else {
-      swal("Error", " Please login again.", "error");
-      // navigate("/login");
-    }
+    if (userId){
+      fetchFullDetails();
+      fetchPayoutDetails();
+      fetchPointsDetails();
+    } 
+    else swal("Error", "Please login again.", "error");
   }, [userId]);
 
-  // Extract data safely
+  // 🧠 Safely extract values
   const userStatus = userDetails?.status || "N/A";
   const kycStatus = bankDetails?.status || "N/A";
-  const activeCourse = userDetails?.packageName || 0;
-  const expiredDate = userDetails?.validityEnd
-  ? new Date(userDetails.validityEnd).toLocaleDateString("en-GB") // DD/MM/YYYY
-  : "N/A";
-
+  const activeCourse = courseDetails?.packageName || "N/A";
+  const expiredDate = courseDetails?.validityEnd
+    ? new Date(courseDetails.validityEnd).toLocaleDateString("en-GB")
+    : "N/A";
   const directTeam = userDetails?.referredIds?.length || 0;
-
-  const payout = payoutDetails?.totalPoints || 0;
+  const referralLink = userDetails?.referralLink || "N/A";
+const payout = payoutDetails?.totalPoints || 0;
   const selfPoints = payoutDetails?.selfPoints || 0;
   const referredPoints = payoutDetails?.referredPoints || 0;
   const totalteampoint = pointdetails?.totalSelfPointsFromReferredUsers || 0;
-  const referralLink = userDetails?.referralLink || "N/A";
-
-   const handleCopyLink = () => {
+  const handleCopyLink = () => {
     if (referralLink) {
-      navigator.clipboard
-        .writeText(referralLink)
-        .then(() => {
-          setCopiedright(true); // Set copied to true
-          setTimeout(() => setCopiedright(false), 4000);
-          // alert('Referral link and code copied to clipboard!');
-        })
-        .catch((error) => {
-          console.error("Error copying referral link and code:", error);
-        });
-    } else {
-      console.error("No referral link to copy");
+      navigator.clipboard.writeText(referralLink).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      });
     }
   };
-  // if (loading) return <p className="text-center mt-5">Loading dashboard...</p>;
 
   return (
     <>
       <div className="row">
+        {/* User Status */}
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center"></div>
-            <div className="card-body">
-            <div><i className="fa fa-user" style={{color:"white", fontSize:"30px"}}></i>
-</div>
-              <h5 className="card-title text-center">{userStatus}</h5>
-              <h5 className="card-text text-center">User Status</h5>
+            <div className="card-body text-center">
+              <i className="fa fa-user" style={{ color: "white", fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{userStatus}</h5>
+              <h5 className="card-text">User Status</h5>
             </div>
           </div>
         </div>
 
+        {/* Package Name */}
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
-            <div className="text-center "></div>
-              <div className="card-body">
-              <div className="mb-3"><i className="fa fa-book" style={{color:"white", fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">{activeCourse}</h5>
-                <h5 className="card-text text-center">Package name</h5>
-              </div>
-            
-          </div>
-        </div>
-
-        <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
-            <div className="text-center"></div>
-              <div className="card-body">
-              <div><i className="fa fa-id-card" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">{kycStatus}</h5>
-                <h5 className="card-text text-center">KYC Status</h5>
-              </div>
-            
-          </div>
-        </div>
-
-        <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
-            <div className="text-center"></div>
-              <div className="card-body">
-              <div><i className="fa fa-calendar" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">{expiredDate}</h5>
-                <h5 className="card-text text-center">Course Expired Date</h5>
-              </div>
+            <div className="card-body text-center">
+              <i className="fa fa-book" style={{ color: "white", fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{activeCourse}</h5>
+              <h5 className="card-text">Package Name</h5>
             </div>
           </div>
-        
+        </div>
+
+        {/* KYC Status */}
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle">
+            <div className="card-body text-center">
+              <i className="fa fa-id-card" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{kycStatus}</h5>
+              <h5 className="card-text">KYC Status</h5>
+            </div>
+          </div>
+        </div>
+
+        {/* Course Expiry */}
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle">
+            <div className="card-body text-center">
+              <i className="fa fa-calendar" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{expiredDate}</h5>
+              <h5 className="card-text">Course Expiry Date</h5>
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* Team & Achievements */}
       <div className="row mt-5">
         <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
-            <div className="text-center"></div>
-              <div className="card-body">
-                <div><i className="fa fa-handshake" style={{fontSize:"30px"}}></i></div>
-              
-                <h5 className="card-title text-center">{directTeam}</h5>
-                <h5 className="card-text text-center">Direct Team</h5>
-              </div>
-            
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i className="fa fa-handshake" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{directTeam}</h5>
+              <h5 className="card-text">Direct Team</h5>
+            </div>
           </div>
         </div>
-
-        <div className="col-lg-3">
+       <div className="col-lg-3">
           <div className="card h-100 cardstyle">
             <div className="text-center"></div>
               <div className="card-body">
@@ -195,9 +156,7 @@ const fetchPointsDetails = async () => {
               </div>
             </div>
           </div>
-        
-
-        <div className="col-lg-3">
+          <div className="col-lg-3">
           <div className="card h-100 cardstyle">
             <div className="text-center"></div>
               <div className="card-body">
@@ -207,8 +166,8 @@ const fetchPointsDetails = async () => {
               </div>
             
           </div>
-        </div>
-         <div className="col-lg-3">
+          </div>
+           <div className="col-lg-3">
           <div className="card h-100 cardstyle">
             <div className="text-center"></div>
               <div className="card-body">
@@ -219,51 +178,43 @@ const fetchPointsDetails = async () => {
             </div>
           
         </div>
-        
-      </div>
-      <div className="row mt-5">
+        </div>
+        <div className="row mt-4">
         <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
-            <div className="text-center"></div>
-              <div className="card-body">
-                <div><i className="fa fa-users" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">{directTeam}</h5>
-                <h5 className="card-text text-center">Total Team</h5>
-              </div>
-            
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i className="fa fa-users" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{directTeam}</h5>
+              <h5 className="card-text">Total Team</h5>
+            </div>
           </div>
         </div>
-         <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
-            <div className="text-center"></div>
-              <div className="card-body">
-               <div><i className="fa fa-medal" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">Not Achived</h5>
-                <h5 className="card-text text-center">Current Rank</h5>
-              </div>
-            
+
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i className="fa fa-medal" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">Not Achieved</h5>
+              <h5 className="card-text">Current Rank</h5>
+            </div>
           </div>
         </div>
-        {/* <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
-            <div className="text-center"></div>
-              <div className="card-body">
-               <div><i className="fa fa-coins" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">0</h5>
-                <h5 className="card-text text-center">Total team point</h5>
-              </div>
-            
-          </div>
-        </div> */}
-        </div>
-      <div className="d-flex justify-content-center flex-column align-items-center">
-        <h4 className="mt-5 fw-bold">Your Referral Link </h4>
+      </div>
+
+      {/* Referral Link Section */}
+      <div className="d-flex justify-content-center flex-column align-items-center mt-5">
+        <h4 className="fw-bold">Your Referral Link</h4>
         <div className="d-flex">
-           <div className="mt-2 ms-2 h5 referral">{referralLink}</div>
-            {
-                  copied ? <span className="ms-2 text-success mt-4">Copied! </span> : <i className="fa fa-copy ms-2 mt-4" style={{fontSize:"19px"}} onClick={handleCopyLink}></i>
-                }
-          {/* <div className="mt-4 ms-3"> <i className="fa fa-copy" style={{fontSize:"19px"}}></i></div> */}
+          <div className="mt-2 ms-2 h5 referral">{referralLink}</div>
+          {copied ? (
+            <span className="ms-2 text-success mt-4">Copied!</span>
+          ) : (
+            <i
+              className="fa fa-copy ms-2 mt-4"
+              style={{ fontSize: "19px", cursor: "pointer" }}
+              onClick={handleCopyLink}
+            ></i>
+          )}
         </div>
       </div>
     </>
