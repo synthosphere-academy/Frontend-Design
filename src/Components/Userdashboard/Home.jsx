@@ -75,7 +75,7 @@ function Home() {
     : "N/A";
   const directTeam = userDetails?.referredIds?.length || 0;
   const referralLink = userDetails?.referralLink || "N/A";
-const payout = payoutDetails?.totalPoints || 0;
+const payout = payoutDetails?.referredPoints || 0;
   const selfPoints = userDetails?.selfPoints || 0;
   // const referredPoints = payoutDetails?.referredPoints || 0;
   const totalteampoint = payoutDetails?.referralPoint || 0;
