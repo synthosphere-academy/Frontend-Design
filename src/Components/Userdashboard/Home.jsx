@@ -91,7 +91,7 @@ const payout = payoutDetails?.totalPoints || 0;
 
   return (
     <>
-      <div className="row">
+      <div className="row g-3">
         {/* User Status */}
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
@@ -138,7 +138,7 @@ const payout = payoutDetails?.totalPoints || 0;
       </div>
 
       {/* Team & Achievements */}
-      <div className="row mt-5">
+      <div className="row mt-1 g-3">
         <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
@@ -181,7 +181,7 @@ const payout = payoutDetails?.totalPoints || 0;
           
         </div>
         </div>
-        <div className="row mt-4">
+        <div className="row mt-2 g-3">
         <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
@@ -205,10 +205,10 @@ const payout = payoutDetails?.totalPoints || 0;
       </div>
 
       {/* Referral Link Section */}
-      <div className="d-flex justify-content-center flex-column align-items-center mt-5 ">
+      <div className="d-flex justify-content-center flex-column align-items-center mt-3 ">
         <h4 className="fw-bold">Your Referral Link</h4>
-        <div className="d-flex">
-          <div className="mt-2 ms-2 h5 referral">{referralLink}</div>
+         <div className="d-flex flex-column flex-sm-row align-items-center mt-3">
+    <div className="h5 referral text-break">{referralLink}</div>
           {copied ? (
             <span className="ms-2 text-success mt-4">Copied!</span>
           ) : (

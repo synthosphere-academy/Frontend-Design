@@ -31,7 +31,7 @@ const Entrolled = () => {
       // console.log(coursesArray);
     } catch (err) {
       console.error(err);
-      swal("Oops!", "Please login again!", "warning");
+      // swal("Oops!", "Please login again!", "warning");
      
     }
   };
@@ -71,7 +71,7 @@ const Entrolled = () => {
             </div>
       
       ) : (
-        <p className="text-center">Loading user data...</p>
+        <p className="text-center">No Enrolled Courses...</p>
       )}
     </div>
     </>

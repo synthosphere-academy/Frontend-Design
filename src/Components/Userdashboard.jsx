@@ -64,11 +64,7 @@ export default function UserDashboard() {
         return <DashboardHome />;
     }
   };
-  const handleLogout = () => {
-     swal("You have been logged out!", "Thank You!", "success");
-    sessionStorage.clear();
-     window.location.assign("/")
-  };
+ 
 
   return (
     <div className="d-flex vh-100 bg-light">
@@ -93,9 +89,9 @@ export default function UserDashboard() {
             <button
               key={item.name}
               onClick={() => setActive(item.name)}
-              className={`d-flex align-items-center w-100 border-0 text-start px-3  bg-transparent sidebar-item ${
+              className={`d-flex align-items-center w-100 border-0 text-start px-3   sidebar-item ${
                 active === item.name ? "active" : ""
-              }`} style={{fontSize:"18px", paddingBottom:"10%"}}
+              }`} style={{ paddingBottom:"10%"}}
             >
               <i className={`bi ${item.icon} me-2`}></i>
               {!isCollapsed && <span>{item.name}</span>}

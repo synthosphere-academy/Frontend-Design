@@ -16,8 +16,11 @@ function Payout() {
         const result = response.data;
 
         if (result.success && result.data.length > 0) {
+          const validPayouts = result.data[0].payouts.filter(
+          (payout) => payout.amount > 0
+        );
           // ✅ Access payouts array inside data[0]
-          setPayouts(result.data[0].payouts);
+          setPayouts(validPayouts);
         } else {
           setPayouts([]);
         }

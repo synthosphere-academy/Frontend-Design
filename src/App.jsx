@@ -37,6 +37,7 @@ import Resetpassword from './Components/Fotgotpassword/Resetpassword';
  import Allmakeupcourse from "./Components/CourseDetails/Allmakeupcourse";
  import Cryptodetails from "./Components/CourseDetails/Cryptodetails";
  import Affiliatecourses from './Components/Affiliatecourses';
+ import Registerbyparent from './Components/Userdashboard/Registerbyparent';
 import './App.css'
 
 
@@ -54,7 +55,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Userlayout><Homepage /></Userlayout>} />
         <Route path="/login" element={<Userlayout><Login /></Userlayout>} />
-        {/* <Route path="/register/:parentId" element={<Userlayout><Register /></Userlayout>} /> */}
+        <Route path="/register/:parentId" element={<Userlayout><Registerbyparent /></Userlayout>} />
         <Route path="/register" element={<Userlayout><Register /></Userlayout>} />
         <Route path="/contact" element={<Userlayout><Contact /></Userlayout>} />
         <Route path="/blog/:slug" element={<Userlayout><Blog/></Userlayout>} />

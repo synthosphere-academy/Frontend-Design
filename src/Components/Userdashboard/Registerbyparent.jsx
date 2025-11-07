@@ -1,18 +1,16 @@
-import React  from "react";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import "../../Css/Register.css";
-// import { useParams } from "react-router-dom";
-// const { refid } = useParams();
-function Registrationanyuser() {
+ import { useParams } from "react-router-dom";
+function Registerbyparent() {
   const navigate = useNavigate();
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [showPassword, setShowPassword] = useState(false);
   const[ showconfirmPassword, setShowConfirmPassword]= useState(false);
-  // const { parentId } = useParams();
+   const { parentId } = useParams();
   // form fields
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -23,8 +21,8 @@ function Registrationanyuser() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [panNo, setpancardno] = useState("");
   const [panPhoto, setpanphoto] = useState("");
-   const [parentId, setParentId] = useState("SA14316");
-  //  const [parentId, setParentId] = useState(refid || "SA37499");
+//    const [parentId, setParentId] = useState("SA14316");
+  
   const [mobilenoerror, setmobileerror] = useState(false);
   const [aadharFront, setAadharPhoto] = useState(null);
    const [aadharBack, setAadharPhotoback] = useState(null);
@@ -157,11 +155,10 @@ function Registrationanyuser() {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-    if (res.data.success) {
-      swal("Success!", "Registration completed successfully!", "success").then(() => {
-        window.location.reload(); // reload page after user clicks OK
-      });
-    }
+      if (res.data.success) {
+        swal("Success!", "Registration completed successfully!", "success");
+        navigate("/login");
+      }
     } catch (error) {
       console.error("Registration Error:", error);
       swal(
@@ -182,8 +179,8 @@ function Registrationanyuser() {
             <input
               type="text"
               className="form-control form-control-lg inputform"
-              onChange={(e) => setParentId(e.target.value)}
-              placeholder="Enter sponsor Id"
+            value={parentId}
+            readOnly
               // value={parentId}
              
             />
@@ -370,4 +367,4 @@ function Registrationanyuser() {
   );
 }
 
-export default Registrationanyuser;
+export default Registerbyparent;
