@@ -39,7 +39,7 @@ function Home() {
         const res = await axios.post(`${ROOT_URL}/api/referral/realtime`,{userId,name});
         if (res.data){
           console.log("Payout Details:", res.data);
-          setPayoutDetails(res.data);
+          setPayoutDetails(res.data.data);
         } 
       } catch (error) {
         console.error("Error fetching payout details:", error);
@@ -79,7 +79,8 @@ const payout = payoutDetails?.totalPoints || 0;
   const selfPoints = userDetails?.selfPoints || 0;
   // const referredPoints = payoutDetails?.referredPoints || 0;
   const totalteampoint = payoutDetails?.referralPoint || 0;
-  const directreferralpoints = pointdetails?.directReferralPoints || 0;
+  console.log("Total Team Points:", totalteampoint);
+  const directreferralpoints = payoutDetails?.directReferralPoints || 0;
   const handleCopyLink = () => {
     if (referralLink) {
       navigator.clipboard.writeText(referralLink).then(() => {
