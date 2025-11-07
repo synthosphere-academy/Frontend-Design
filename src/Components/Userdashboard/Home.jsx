@@ -5,6 +5,7 @@ import "../../Css/Userdasboard/home.css";
 
 function Home() {
   const userId = sessionStorage.getItem("userid");
+  const name = sessionStorage.getItem("username");
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [userDetails, setUserDetails] = useState(null);
@@ -35,7 +36,7 @@ function Home() {
   const fetchPayoutDetails = async () => {
       console.log("Fetching payout details for userId:", userId);
       try {
-        const res = await axios.get(`${ROOT_URL}/api/referral/realtime/${userId}`);
+        const res = await axios.post(`${ROOT_URL}/api/referral/realtime`,{userId,name});
         if (res.data){
           console.log("Payout Details:", res.data);
           setPayoutDetails(res.data);
@@ -75,9 +76,10 @@ function Home() {
   const directTeam = userDetails?.referredIds?.length || 0;
   const referralLink = userDetails?.referralLink || "N/A";
 const payout = payoutDetails?.totalPoints || 0;
-  const selfPoints = payoutDetails?.selfPoints || 0;
-  const referredPoints = payoutDetails?.referredPoints || 0;
-  const totalteampoint = pointdetails?.totalSelfPointsFromReferredUsers || 0;
+  const selfPoints = userDetails?.selfPoints || 0;
+  // const referredPoints = payoutDetails?.referredPoints || 0;
+  const totalteampoint = payoutDetails?.referralPoint || 0;
+  const directreferralpoints = pointdetails?.directReferralPoints || 0;
   const handleCopyLink = () => {
     if (referralLink) {
       navigator.clipboard.writeText(referralLink).then(() => {
@@ -173,7 +175,7 @@ const payout = payoutDetails?.totalPoints || 0;
               <div className="card-body">
                <div><i className="fa fa-star" style={{fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center">{totalteampoint}</h5>
-                <h5 className="card-text text-center">Referred Points</h5>
+                <h5 className="card-text text-center">Total Referred Points</h5>
               </div>
             </div>
           
@@ -184,8 +186,8 @@ const payout = payoutDetails?.totalPoints || 0;
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-users" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">{directTeam}</h5>
-              <h5 className="card-text">Total Team</h5>
+              <h5 className="card-title mt-2">{directreferralpoints}</h5>
+              <h5 className="card-text">Direct Referred Points</h5>
             </div>
           </div>
         </div>
@@ -199,10 +201,11 @@ const payout = payoutDetails?.totalPoints || 0;
             </div>
           </div>
         </div>
+        
       </div>
 
       {/* Referral Link Section */}
-      <div className="d-flex justify-content-center flex-column align-items-center mt-5">
+      <div className="d-flex justify-content-center flex-column align-items-center mt-5 ">
         <h4 className="fw-bold">Your Referral Link</h4>
         <div className="d-flex">
           <div className="mt-2 ms-2 h5 referral">{referralLink}</div>

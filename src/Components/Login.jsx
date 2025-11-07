@@ -130,9 +130,9 @@ function Login() {
                             }}
                           >
                             {showPassword ? (
-                              <i className="fa fa-eye-slash"></i>
-                            ) : (
                               <i className="fa fa-eye"></i>
+                            ) : (
+                              <i className="fa fa-eye-slash"></i>
                             )}
                           </span>
                         </div>
