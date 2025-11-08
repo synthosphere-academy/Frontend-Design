@@ -80,7 +80,7 @@ const payout = payoutDetails?.referredPoints || 0;
   // const referredPoints = payoutDetails?.referredPoints || 0;
   const totalteampoint = payoutDetails?.referralPoint || 0;
   console.log("Total Team Points:", totalteampoint);
-  const directreferralpoints = payoutDetails?.directReferralPoints || 0;
+  const directreferralpoints = payoutDetails?.directReferredPoints || 0;
   const handleCopyLink = () => {
     if (referralLink) {
       navigator.clipboard.writeText(referralLink).then(() => {
@@ -196,7 +196,7 @@ const payout = payoutDetails?.referredPoints || 0;
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-users" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">{totalteampoint - directreferralpoints}</h5>
+              <h5 className="card-title mt-2">{payoutDetails?.referredPoints - directreferralpoints}</h5>
               <h5 className="card-text">Level Points</h5>
             </div>
           </div>
