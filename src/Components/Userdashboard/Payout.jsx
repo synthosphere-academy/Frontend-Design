@@ -48,15 +48,16 @@ function Payout() {
   return (
     <div className="container mt-2">
       
-
+    <div className="text-danger h5 fw-bold text-center">You will receive the payout after deducting 5% TDS.</div>
       <div className="table-responsive shadow rounded">
         <table className="table   align-middle text-center">
           <thead className="table-primary">
             <tr>
               <th>#</th>
-              <th>Amount (₹)</th>
+              <th>Payout Amount (₹)</th>
              
               <th>Date</th>
+               <th>Total Amount(Amount-TDS(5%))</th>
                <th>Status</th>
             </tr>
           </thead>
@@ -67,6 +68,7 @@ function Payout() {
                   <td>{index + 1}</td>
                   <td className="fw-semibold">₹{payout.amount}</td>
                   <td>{new Date(payout.date).toLocaleDateString()}</td>
+                     <td>₹{(payout.amount - payout.amount * 0.05).toFixed(2)}</td>
                   <td>
                     <span
                       

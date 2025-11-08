@@ -11,7 +11,7 @@ function Home() {
   const [userDetails, setUserDetails] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
   const [courseDetails, setCourseDetails] = useState(null);
-  const [checkouts, setCheckouts] = useState([]);
+  const [payoutusers, setpayout] = useState([]);
    const [payoutDetails, setPayoutDetails] = useState(null);
     const [pointdetails , setPointDetails] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -24,7 +24,7 @@ function Home() {
         setUserDetails(res.data.data.user);
         setBankDetails(res.data.data.bankDetails);
         setCourseDetails(res.data.data.courseDetails);
-        setCheckouts(res.data.data.checkouts || []);
+        setpayout(res.data.data.payout);
       } else {
         swal("Error", res.data.message || "Failed to fetch user data", "error");
       }
@@ -76,7 +76,7 @@ function Home() {
   const directTeam = userDetails?.referredIds?.length || 0;
   const referralLink = userDetails?.referralLink || "N/A";
 const payout = payoutDetails?.referredPoints || 0;
-  const selfPoints = userDetails?.selfPoints || 0;
+  const selfPoints = userDetails?.totalSelfPoints || 0;
   // const referredPoints = payoutDetails?.referredPoints || 0;
   const totalteampoint = payoutDetails?.referralPoint || 0;
   console.log("Total Team Points:", totalteampoint);
@@ -150,32 +150,32 @@ const payout = payoutDetails?.referredPoints || 0;
           </div>
         </div>
        <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
+          <div className="card h-100 cardstyle text-center">
             <div className="text-center"></div>
               <div className="card-body">
                 <div><i className="fa fa-money" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">Rs: {payout}/-</h5>
+                <h5 className="card-title text-center mt-2">Rs: {payout}/-</h5>
                 <h5 className="card-text text-center">Current Payout</h5>
               </div>
             </div>
           </div>
           <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
+          <div className="card h-100 cardstyle text-center">
             <div className="text-center"></div>
               <div className="card-body">
                  <div><i className="fa fa-bullseye" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">{selfPoints}</h5>
+                <h5 className="card-title text-center mt-2">{selfPoints}</h5>
                 <h5 className="card-text text-center">Self Points</h5>
               </div>
             
           </div>
           </div>
            <div className="col-lg-3">
-          <div className="card h-100 cardstyle">
+          <div className="card h-100 cardstyle text-center">
             <div className="text-center"></div>
               <div className="card-body">
                <div><i className="fa fa-star" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center">{totalteampoint}</h5>
+                <h5 className="card-title text-center mt-2">{totalteampoint}</h5>
                 <h5 className="card-text text-center">Total Referred Points</h5>
               </div>
             </div>
@@ -192,7 +192,24 @@ const payout = payoutDetails?.referredPoints || 0;
             </div>
           </div>
         </div>
-
+         <div className="col-lg-3">
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i className="fa fa-users" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{totalteampoint - directreferralpoints}</h5>
+              <h5 className="card-text">Level Points</h5>
+            </div>
+          </div>
+        </div>
+         <div className="col-lg-3">
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i className="fa fa-coins" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{payoutusers?.totalPoints ||0}</h5>
+              <h5 className="card-text">Accumulated points</h5>
+            </div>
+          </div>
+        </div>
         <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
