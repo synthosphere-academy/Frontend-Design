@@ -187,8 +187,8 @@ const payout = payoutDetails?.referredPoints || 0;
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-users" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">{directreferralpoints}</h5>
-              <h5 className="card-text">Direct Referred Points</h5>
+              <h5 className="card-title mt-2">₹{directreferralpoints}</h5>
+              <h5 className="card-text">Direct Referred Bonus</h5>
             </div>
           </div>
         </div>
@@ -196,8 +196,8 @@ const payout = payoutDetails?.referredPoints || 0;
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-users" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">{payoutDetails?.referredPoints - directreferralpoints}</h5>
-              <h5 className="card-text">Level Points</h5>
+              <h5 className="card-title mt-2">₹{payoutDetails?.referredPoints - directreferralpoints}</h5>
+              <h5 className="card-text">Level Bonus</h5>
             </div>
           </div>
         </div>
@@ -205,8 +205,8 @@ const payout = payoutDetails?.referredPoints || 0;
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-coins" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">{payoutusers?.totalPoints ||0}</h5>
-              <h5 className="card-text">Accumulated points</h5>
+              <h5 className="card-title mt-2">₹{payoutusers?.totalPoints ||0}</h5>
+              <h5 className="card-text">Accumulated Bonus</h5>
             </div>
           </div>
         </div>
