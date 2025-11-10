@@ -25,7 +25,7 @@ function Ourteam() {
         {
             image:[face3],
             team_member:"Kushal Saha",
-            team_member_role:"Co-founder & C.E.O",
+            team_member_role:"Co-founder & C.F.O",
             team_member_description: "Empower your future with courses that fuel creativity and technological breakthroughs."
             },
             {
