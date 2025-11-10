@@ -1,30 +1,31 @@
 import '../Css/Ourteam.css'
-import face1 from '../Images/sourav.jpg';
-import face2 from '../Images/dipan.jpg';
-import face3 from '../Images/kushal.jpg';
-import face4 from '../Images/subham.png';
-import face5  from "../Images/figo.jpg";
+import face1 from '../Images/about7.jpg';
+import face2 from '../Images/about5.jpg';
+import face3 from '../Images/about6.jpg';
+import face4 from '../Images/about2.jpg';
+import face5  from "../Images/about1.jpg";
 import Teamslider from './Teamslider';
-import face6 from "../Images/srijani.jpg";
+import face6 from "../Images/about4.jpg";
+import face7 from "../Images/about3.jpg";
 function Ourteam() {
     const ourteamInfo = [
        
-        // {
-        //     image:[face1],
-        //     team_member:"Sourav Basak ",
-        //     team_member_role:"Co-founder",
-        //     team_member_description: "Empowering minds, shaping futures – Synthosphere Academy's courses redefine education in the age of synthetic intelligence"
-        // },
+        {
+            image:[face1],
+            team_member:"Sourav Basak ",
+            team_member_role:"Founder & C.E.O",
+            team_member_description: "Empowering minds, shaping futures – Synthosphere Academy's courses redefine education in the age of synthetic intelligence"
+        },
         {
         image:[face2],
         team_member:"Dipan Das",
-        team_member_role:"Co-founder",
+        team_member_role:"Co-founder & C.O.O",
         team_member_description: "Join us in the future of technology with this Academy's visionary courses, driving innovation and progress forward."
         },
         {
             image:[face3],
             team_member:"Kushal Saha",
-            team_member_role:"Co-founder",
+            team_member_role:"Co-founder & C.E.O",
             team_member_description: "Empower your future with courses that fuel creativity and technological breakthroughs."
             },
             {
@@ -36,7 +37,7 @@ function Ourteam() {
                 {
                     image:[face5],
                     team_member:"Kalyan Das",
-                    team_member_role:"Graphics designer",
+                    team_member_role:"Head graphics designer",
                     team_member_description: "Fuel your passion for technology and innovation with our Academy's forward-thinking curriculum."
                     },
                     {
@@ -44,6 +45,12 @@ function Ourteam() {
                         team_member:"Srijani Banerjee",
                         team_member_role:"IT head",
                         team_member_description: "Master the tools of tomorrow with our Academy’s visionary courses—your future starts now!"
+                        },
+                         {
+                        image:[face7],
+                        team_member:"Shilpi Saha",
+                        team_member_role:"Nail art trainer & expert",
+                        team_member_description: "Learn. Evolve. Succeed. Step into the future with our transformative learning experience."
                         },
 
        

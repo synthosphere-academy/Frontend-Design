@@ -38,7 +38,7 @@ const Nav = () => {
                 <a className="nav-link active text-white" aria-current="page" href="/">Home</a>
               </li>
               {/* <li className="nav-item pe-2 ">
-                <a className="nav-link active text-white" aria-current="page" href="/course">Courses</a>
+                <a className="nav-link active text-white" aria-current="page" href="/ourteam">Our team</a>
               </li> */}
               <li className="nav-item dropdown ">
                 <a className="nav-link  text-white" href="/course" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -12,6 +12,7 @@
     transform: scale(1.05);
     background-color: #d7ddf3;
   }
+  
 @media (min-width: 768px) {
     .select_package{
         width: 25%;

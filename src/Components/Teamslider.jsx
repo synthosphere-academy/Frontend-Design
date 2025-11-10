@@ -32,8 +32,8 @@ const Teamslider = ({users}) => {
       <div className='d-flex flex-column text-center h-100'>
             <div className='d-flex justify-content-center'>
             <img className="rounded-circle shadow-1-strong mb-4"
-           src={user.image}alt="avatar"
-            style={{width:"130px"}} />
+           src={user.image} alt="avatar"
+            style={{width:"50%", height:"55%"}} />
             </div>
            <h5 className="mb-3">{user.team_member}</h5>
            <p> {user.team_member_role}</p>
