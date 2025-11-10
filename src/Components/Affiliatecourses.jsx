@@ -1,11 +1,11 @@
 import React from "react";
 import "../Css/affiliatecourse.css";
-import { useNavigate } from "react-router-dom";
-  import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import swal from "sweetalert";
 const Affiliatecourses = () => {
-  const navigate = useNavigate();
-const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+  // const navigate = useNavigate();
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   // const handle_enroll = (course) => {
   //   const userStatus = sessionStorage.getItem("userstatus");
 
@@ -29,131 +29,153 @@ const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   //   }
   // };
 
+  const handle_enroll = async (course) => {
+    try {
+      // Get userId from sessionStorage (assuming you stored it during login)
+      const userId = sessionStorage.getItem("userid");
+      console.log(userId);
+      if (!userId) {
+        swal(
+          "Not Logged In",
+          "Please login to enroll in the course.",
+          "warning"
+        );
+        // navigate("/login");
+        return;
+      }
 
-const handle_enroll = async (course) => {
- 
-
-  try {
-    // Get userId from sessionStorage (assuming you stored it during login)
-    const userId = sessionStorage.getItem("userid");
-    console.log(userId)
-    if (!userId) {
-      swal("Not Logged In", "Please login to enroll in the course.", "warning");
-      // navigate("/login");
-      return;
-    }
-
-    // 🔹 Fetch user details from API
-    const response = await axios.post(`${ROOT_URL}/api/users/getuserdetails`, { userId });
-      console.log(response.data.user.status)
-    // Extract user status from API response
-    const userStatus = response.data?.user?.status;
-
-    if (!userStatus) {
-      swal("Error", "Unable to fetch account status. Please try again later.", "error");
-      return;
-    }
-
-    // 🔹 Handle based on user status
-    if (userStatus === "pending") {
-      swal(
-        "Account Not Verified",
-        "Your account is under review. Please login again after verification.",
-        "error"
+      // 🔹 Fetch user details from API
+      const response = await axios.post(
+        `${ROOT_URL}/api/users/getuserdetails`,
+        { userId }
       );
-    } else if (userStatus === "active") {
-      // ✅ Navigate to checkout with course info
-      navigate("/checkout", { state: { courseName: course.name, coursePrice: course.price } });
-    } else {
-      swal("Error", "Invalid account status. Please contact support.", "error");
+      console.log(response.data.user.status);
+      // Extract user status from API response
+      const userStatus = response.data?.user?.status;
+
+      if (!userStatus) {
+        swal(
+          "Error",
+          "Unable to fetch account status. Please try again later.",
+          "error"
+        );
+        return;
+      }
+
+      // 🔹 Handle based on user status
+      if (userStatus === "pending") {
+        swal(
+          "Account Not Verified",
+          "Your account is under review. Please login again after verification.",
+          "error"
+        );
+      } else if (userStatus === "active") {
+        // ✅ Navigate to checkout with course info
+        window.location.href = course.paymentUrl;
+       
+      } else {
+        swal(
+          "Error",
+          "Invalid account status. Please contact support.",
+          "error"
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching user status:", error);
+      swal("Error", "Something went wrong. Please try again later.", "error");
     }
-
-  } catch (error) {
-    console.error("Error fetching user status:", error);
-    swal("Error", "Something went wrong. Please try again later.", "error");
-  }
-};
-
+  };
 
   const courses = [
     {
       name: "Learner Course",
       price: " 1770",
+      subcription: "One Month",
+      paymentUrl: "https://rzp.io/rzp/snXe9FQ",
       points: "1500",
       features: [
         "Basic Crypto Knowledge",
-"Basic Buy/Sell On Centralised Exchange",
-"Crypto Sip Guide",
-"Portfolio Management Guide",
-"Monthly Spot Call",
-"Basic Fundamental Analysis, Technical Analysis"
+        "Basic Buy/Sell On Centralised Exchange",
+        "Crypto Sip Guide",
+        "Portfolio Management Guide",
+        "One Month Spot Call",
+        "Basic Fundamental Analysis, Technical Analysis",
+        "Online 17 Education Videos",
       ],
     },
     {
       name: "Master Course",
       price: " 3540",
-        points: "3000",
+      subcription: "Three Months",
+      paymentUrl: "https://rzp.io/rzp/5mLcADG",
+      points: "3000",
       features: [
-        
-       "Advance Crypto Trading Knowledge",
-"Spot, Future, Margin Trading",
-"Regular Future Trading Call",
-"Risk Management Strategy",
-"Regular PNL Strategy",
-"Liquidation Strategy",
-"Portfolio Management (Advance)",
-"Advance Fundamental Analysis, Technical Analysis"
+        "Advance Crypto Trading Knowledge",
+        "Spot, Future, Margin Trading",
+        "Regular Future Trading Call",
+        "Risk Management Strategy",
+        "Regular PNL Strategy",
+        "Liquidation Strategy",
+        "Portfolio Management (Advance)",
+        "Advance Fundamental Analysis, Technical Analysis",
       ],
     },
     {
       name: "Pro Master Course",
       price: " 7080",
-        points: "6000",
+      subcription: "Six Months",
+      paymentUrl: "https://rzp.io/rzp/Evi8l73",
+      points: "6000",
       features: [
         "Crypto Education A To Z",
-"Premium Future Trading Strategy",
-"Gem Coin Finding Strategy",
-"Regular Premium Call",
-"Premium Portfolio Management",
-"Five Long-Term Holding Coin Name Suggestion",
-"Fund Management Strategy",
-"A To Z Fundamental Analysis, Technical Analysis"
+        "Premium Future Trading Strategy",
+        "Gem Coin Finding Strategy",
+        "Regular Premium Call",
+        "Premium Portfolio Management",
+        "Five Long-Term Holding Coin Name Suggestion",
+        "Fund Management Strategy",
+        "A To Z Fundamental Analysis, Technical Analysis",
       ],
     },
     {
       name: "Teacher Course",
       price: " 11800 ",
-        points: "10000",
+      points: "10000",
+      paymentUrl: "https://rzp.io/rzp/0tfCXyMC",
       features: [
-       "Whales Wallet Tracking",
-"Crypto Taxation",
-"Crypto Rules And Knowledge",
-"Fundamental Analysis and Technical Analysis (Complete)",
-"DEX And CEX Arbitrage Model"
+        "Whales Wallet Tracking",
+        "Crypto Taxation",
+        "Crypto Rules And Knowledge",
+        "Fundamental Analysis and Technical Analysis (Complete)",
+        "DEX And CEX Arbitrage Model",
       ],
     },
     {
       name: "Pro Teacher Course",
       price: " 59000",
-        points: "25000",
+      points: "25000",
+      paymentUrl: "https://rzp.io/rzp/l0v8sIii",
       features: [
         "Whale Wallet Tracking",
-"Crypto Taxation",
-"Crypto Rules And Knowledge",
-"Fundamental Analysis and Technical Analysis (Complete)",
-"DEX And CEX Arbitrage Model"
+        "Crypto Taxation",
+        "Crypto Rules And Knowledge",
+        "Fundamental Analysis and Technical Analysis (Complete)",
+        "DEX And CEX Arbitrage Model",
       ],
     },
     {
       name: "Monthly Subscription",
       price: " 944",
-        points: "800",
+      points: "800",
+      paymentUrl: "https://rzp.io/rzp/yx0C4LX",
       gold: true,
-      features: ["Monthly Trading Guidance",
-"Monthly Special Classes",
-"Expert Advice",
-"Two Coin Suggestion",
-"One Special Call"],
+      features: [
+        "Monthly Trading Guidance",
+        "Monthly Special Classes",
+        "Expert Advice",
+        "Two Coin Suggestion",
+        "One Special Call",
+      ],
     },
   ];
 
@@ -171,8 +193,12 @@ const handle_enroll = async (course) => {
                   >
                     {course.name}
                   </h3>
-                  <div className="fw-bold h5 mt-2">RS.{course.price}/- (Incl. GST)</div>
-                  <div className="fw-bold h5 mt-2" style={{color:"gold"}}>🌟{course.points} Points</div>
+                  <div className="fw-bold h5 mt-2">
+                    RS.{course.price}/- (Incl. GST)
+                  </div>
+                  <div className="fw-bold h5 mt-2" style={{ color: "gold" }}>
+                    🌟{course.points} Points
+                  </div>
                 </div>
 
                 <div className="flex-grow-1 mt-3">
