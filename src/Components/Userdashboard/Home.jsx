@@ -16,6 +16,7 @@ function Home() {
     const [pointdetails , setPointDetails] = useState(null);
     const [teampoints , setteampoints] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [userrank_user,setUserrank]= useState("No Rank");
 
   const fetchFullDetails = async () => {
     try {
@@ -72,6 +73,48 @@ function Home() {
       console.error("Error fetching payout details:", error);
     }
   };
+  
+const tableData = [
+  { no: 1, name: "Class 1", minTeam: 0, minDirect: 3, minPoint: 1, maxPoint: 5000 },
+  { no: 2, name: "Class 2", minTeam: 50, minDirect: 10, minPoint: 5001, maxPoint: 15000 },
+  { no: 3, name: "Class 3", minTeam: 100, minDirect: 20, minPoint: 15000, maxPoint: 50000 },
+  { no: 4, name: "Class 4", minTeam: 200, minDirect: 30, minPoint: 50001, maxPoint: 100000 },
+  { no: 5, name: "Class 5", minTeam: 500, minDirect: 40, minPoint: 100001, maxPoint: 300000 },
+  { no: 6, name: "Class 6", minTeam: 1000, minDirect: 50, minPoint: 300001, maxPoint: 600000 },
+  { no: 7, name: "Class 7", minTeam: 2000, minDirect: 60, minPoint: 600001, maxPoint: 1200000 },
+  { no: 8, name: "Class 8", minTeam: 5000, minDirect: 70, minPoint: 1200001, maxPoint: 2500000 },
+  { no: 9, name: "Class 9", minTeam: 10000, minDirect: 100, minPoint: 2500001, maxPoint: 5000000 },
+  { no: 10, name: "Class 10", minTeam: 20000, minDirect: 150, minPoint: 5000001, maxPoint: 10000000 },
+  { no: 11, name: "H.S.", minTeam: 40000, minDirect: 200, minPoint: 10000001, maxPoint: 25000000 },
+  { no: 12, name: "Graduate", minTeam: 80000, minDirect: 250, minPoint: 25000001, maxPoint: 50000000 },
+  { no: 13, name: "Post Graduate", minTeam: 100000, minDirect: 300, minPoint: 50000001, maxPoint: 100000000 },
+  { no: 14, name: "PhD", minTeam: 150000, minDirect: 500, minPoint: 100000001, maxPoint: 250000000 },
+];
+const getUserRank = (totalTeam, directTeam, points) => {
+  let achievedRank = "No Rank";
+
+  for (let i = 0; i < tableData.length; i++) {
+    const rank = tableData[i];
+
+    // If user’s points fall within this class’s point range
+    if (points >= rank.minPoint && points <= rank.maxPoint) {
+      // Check if they also meet team/direct requirements
+      if (
+        totalTeam >= rank.minTeam &&
+        directTeam >= rank.minDirect
+      ) {
+        achievedRank = rank.name;
+      } else {
+        // If they don't meet the team/direct, keep previous rank (don’t downgrade)
+        achievedRank = tableData[i - 1]?.name || rank.name;
+      }
+      break;
+    }
+  }
+
+  return achievedRank;
+};
+
 
   useEffect(() => {
     if (userId){
@@ -79,9 +122,27 @@ function Home() {
       fetchPayoutDetails();
       fetchPointsDetails();
       fetchTeamDetails();
+     
     } 
+
     else swal("Error", "Please login again.", "error");
   }, [userId]);
+
+useEffect(() => {
+  if (teampoints && userDetails) {
+    const totalTeam = teampoints?.totalDownlineCount || 0;
+    const totalpoints = teampoints?.totalPoints || 0;
+    const directTeam = userDetails?.referredIds?.length || 0;
+
+    console.log("Total Team:", totalTeam);
+    console.log("Direct Team:", directTeam);
+    console.log("Points:", totalpoints);
+
+    const userrank = getUserRank(totalTeam, directTeam, totalpoints);
+    console.log("Matched Rank:", userrank);
+    setUserrank(userrank);
+  }
+}, [teampoints, userDetails]);
 
   // 🧠 Safely extract values
   const userStatus = userDetails?.status || "N/A";
@@ -98,6 +159,8 @@ const payout = payoutDetails?.referredPoints || 0;
   const totalteampoint = payoutDetails?.referralPoint || 0;
   console.log("Total Team Points:", totalteampoint);
   const directreferralpoints = payoutDetails?.directReferredPoints || 0;
+//  const totalTeam = teampoints?.totalDownlineCount ||0
+// const totalpoints = teampoints?.totalPoints ||0
   const handleCopyLink = () => {
     if (referralLink) {
       navigator.clipboard.writeText(referralLink).then(() => {
@@ -231,7 +294,7 @@ const payout = payoutDetails?.referredPoints || 0;
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-medal" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">Not Achieved</h5>
+              <h5 className="card-title mt-2">{userrank_user}</h5>
               <h5 className="card-text">Current Rank</h5>
             </div>
           </div>
