@@ -82,16 +82,16 @@ const Welcome = () => {
 
                           </div>
                             <div className="row">
-                              <div className="col-lg-6 col-sm-12 name">
+                              {/* <div className="col-lg-6 col-sm-12 name">
                                 <p>Hello {name}</p>
-                              </div>
+                              </div> */}
                               <div className="col-lg-6 col-sm-12 udbhablogo">
                                 
                               </div>
                             </div>
                             <p style={{textAlign:"justify", lineHeight:"1.5"}}>
 
-                            A Warm Welcome and Congratulations on Joining Synthosphere Academy!<br/>
+                            A Warm Welcome and Congratulations on Joining Synthosphere Academy!<br/><br/>
 Dear, Sir/Madam <br/>
 On behalf of the entire team, we would like to extend a heartfelt welcome to Synthosphere Academy! We are absolutely thrilled to have you join our community of aspiring and experienced crypto enthusiasts.
 More importantly, we want to offer our sincere congratulations on taking this powerful step forward by investing in your knowledge and future. By Enrollment the Synthosphere Academy {userDetails?.packageName }, you have committed to mastering the complexities of the cryptocurrency world, and we are here to support you every step of the way.
