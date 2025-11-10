@@ -6,29 +6,7 @@ import swal from "sweetalert";
 const Affiliatecourses = () => {
   // const navigate = useNavigate();
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-  // const handle_enroll = (course) => {
-  //   const userStatus = sessionStorage.getItem("userstatus");
-
-  //   if (!userStatus) {
-  //     swal("Not Logged In", "Please login to enroll in the course.", "warning");
-  //     navigate("/login");
-  //     return;
-  //   }
-
-  //   if (userStatus === "pending") {
-  //     swal(
-  //       "Account Not Verified",
-  //       "Your account is under review. Please login again.",
-  //       "error"
-  //     );
-  //   } else if (userStatus === "active") {
-  //     // ✅ Pass course name & price to checkout
-  //     navigate("/checkout", { state: { courseName: course.name, coursePrice: course.price } });
-  //   } else {
-  //     swal("Error", "Invalid account status. Please contact support.", "error");
-  //   }
-  // };
-
+ 
   const handle_enroll = async (course) => {
     try {
       // Get userId from sessionStorage (assuming you stored it during login)
@@ -72,7 +50,6 @@ const Affiliatecourses = () => {
       } else if (userStatus === "active") {
         // ✅ Navigate to checkout with course info
         window.location.href = course.paymentUrl;
-       
       } else {
         swal(
           "Error",
@@ -110,14 +87,15 @@ const Affiliatecourses = () => {
       paymentUrl: "https://rzp.io/rzp/5mLcADG",
       points: "3000",
       features: [
-        "Advance Crypto Trading Knowledge",
-        "Spot, Future, Margin Trading",
-        "Regular Future Trading Call",
-        "Risk Management Strategy",
-        "Regular PNL Strategy",
-        "Liquidation Strategy",
-        "Portfolio Management (Advance)",
+        "Advance Crypto Knowledge",
+        "Pro Buy/Sell On Centralized Exchange",
+        "Advance Crypto SIP Guide",
+        "Advance Portfolio Management",
+        "Spot & Future Trading Call (2 Months)",
         "Advance Fundamental Analysis, Technical Analysis",
+        "Online 22 Videos",
+        "Regular PNL Strategy",
+        "Basic Liquidation Strategy",
       ],
     },
     {
@@ -127,14 +105,36 @@ const Affiliatecourses = () => {
       paymentUrl: "https://rzp.io/rzp/Evi8l73",
       points: "6000",
       features: [
-        "Crypto Education A To Z",
+        "A To Z Advance Crypto Knowledge",
+
+        "Pro Buy/Sell On Centralized Exchange",
+
+        "Advance Crypto SIP Guide",
+
+        "Advance Portfolio Management",
+
+        "Spot & Future Trading Call (4 Months)",
+
+        "Advance Fundamental Analysis, Technical Analysis",
+
+        "Online 25 Videos",
+
+        "Risk Management Strategy",
+        "Regular PNL Strategy",
+
+        "Basic Liquidation Strategy",
+
+        "Gem Coin Finding Technique",
+
         "Premium Future Trading Strategy",
-        "Gem Coin Finding Strategy",
-        "Regular Premium Call",
-        "Premium Portfolio Management",
-        "Five Long-Term Holding Coin Name Suggestion",
-        "Fund Management Strategy",
-        "A To Z Fundamental Analysis, Technical Analysis",
+
+        "Premium Portfolio Management Strategy",
+
+        "Five Long-Term Holding Coins Name",
+
+        "Trading Fund Management Strategy",
+
+        "A To Z Advance Fundamental Analysis, Technical Analysis",
       ],
     },
     {
@@ -143,11 +143,43 @@ const Affiliatecourses = () => {
       points: "10000",
       paymentUrl: "https://rzp.io/rzp/0tfCXyMC",
       features: [
+        "A To Z Advance Crypto Knowledge",
+
+        "Pro Buy/Sell On Centralized Exchange",
+
+        "Advance Crypto SIP Guide",
+
+        "Advance Portfolio Management",
+
+        "Spot & Future Trading Call (6 Months)",
+
+        "Advance Fundamental Analysis, Technical Analysis",
+
+        "Online 27 Videos",
+
+        "Risk Management Strategy",
+
+        "Regular PNL Strategy",
+
+        "Basic Liquidation Strategy",
+        "Gem Coin Finding Strategy",
+        "Premium Future Trading Strategy",
+
+        "Premium Portfolio Management Strategy",
+
+        "Five Long-Term Holding Coins Name",
+
+        "Trading Fund Management Strategy",
+
+        "A To Z Advance Fundamental Analysis, Technical Analysis",
+
         "Whales Wallet Tracking",
+
         "Crypto Taxation",
-        "Crypto Rules And Knowledge",
-        "Fundamental Analysis and Technical Analysis (Complete)",
-        "DEX And CEX Arbitrage Model",
+
+        "Crypto Rules & Knowledge",
+
+        "DEX & CEX Arbitrage Model",
       ],
     },
     {
@@ -156,11 +188,25 @@ const Affiliatecourses = () => {
       points: "25000",
       paymentUrl: "https://rzp.io/rzp/l0v8sIii",
       features: [
-        "Whale Wallet Tracking",
-        "Crypto Taxation",
-        "Crypto Rules And Knowledge",
-        "Fundamental Analysis and Technical Analysis (Complete)",
-        "DEX And CEX Arbitrage Model",
+        "Advance Crypto SIP Guide",
+"Advance Portfolio Management",
+"Spot & Future Trading Call (12 Months)",
+"Advance Fundamental Analysis, Technical Analysis",
+"Online 30 Videos",
+"Risk Management Strategy",
+"Regular PNL Strategy",
+"Basic Liquidation Strategy",
+"Gem Coin Finding Strategy",
+"Premium Future Trading Strategy",
+"Premium Portfolio Management Strategy",
+"Five Long-Term Holding Coins Name",
+"Trading Fund Management Strategy",
+"A To Z Advance Fundamental Analysis, Technical Analysis",
+"Whales Wallet Tracking",
+"Crypto Taxation",
+"Crypto Rules & Knowledge",
+"Dex & Cex Arbitrage Model",
+"Monthly 2% Scholarship"
       ],
     },
     {
@@ -175,6 +221,7 @@ const Affiliatecourses = () => {
         "Expert Advice",
         "Two Coin Suggestion",
         "One Special Call",
+        "Trade Call Signals(1 Month)"
       ],
     },
   ];
@@ -182,8 +229,9 @@ const Affiliatecourses = () => {
   return (
     <div className="container ">
       <div className="row justify-content-start">
-        {courses.map((course, index) => (
-          <div key={index} className="col-md-3 my-1">
+         {courses.map((course, index) => (
+        
+         <div key={index} className="col-md-3 my-1">
             <div className="card p-3 mt-3 w-100 h-100 rounded-3 cardpackage">
               <div className="card-body d-flex flex-column">
                 <div className="text-center">
@@ -212,7 +260,7 @@ const Affiliatecourses = () => {
               </div>
 
               <div className="d-flex justify-content-center">
-                {/* ✅ Send course info when clicked */}
+              
                 <button
                   onClick={() => handle_enroll(course)}
                   className="btn btn-primary w-75 mb-3 rounded-3"
@@ -221,9 +269,11 @@ const Affiliatecourses = () => {
                 </button>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          </div> 
+        ))} 
+     
+
+            </div>
     </div>
   );
 };
