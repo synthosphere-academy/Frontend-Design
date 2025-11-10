@@ -14,6 +14,7 @@ function Home() {
   const [payoutusers, setpayout] = useState([]);
    const [payoutDetails, setPayoutDetails] = useState(null);
     const [pointdetails , setPointDetails] = useState(null);
+    const [teampoints , setteampoints] = useState(null);
   const [copied, setCopied] = useState(false);
 
   const fetchFullDetails = async () => {
@@ -25,6 +26,21 @@ function Home() {
         setBankDetails(res.data.data.bankDetails);
         setCourseDetails(res.data.data.courseDetails);
         setpayout(res.data.data.payout);
+      } else {
+        swal("Error", res.data.message || "Failed to fetch user data", "error");
+      }
+    } catch (error) {
+      console.error("Error fetching full details:", error);
+      swal("Error", "Something went wrong while fetching details.", "error");
+    }
+  };
+   const fetchTeamDetails = async () => {
+    try {
+      const res = await axios.post(`${ROOT_URL}/api/referral/teamsummary`, { userId });
+      if (res) {
+        console.log("Fullteam details:", res.data);
+        setteampoints(res.data);
+       
       } else {
         swal("Error", res.data.message || "Failed to fetch user data", "error");
       }
@@ -62,6 +78,7 @@ function Home() {
       fetchFullDetails();
       fetchPayoutDetails();
       fetchPointsDetails();
+      fetchTeamDetails();
     } 
     else swal("Error", "Please login again.", "error");
   }, [userId]);
@@ -216,6 +233,24 @@ const payout = payoutDetails?.referredPoints || 0;
               <i className="fa fa-medal" style={{ fontSize: "30px" }}></i>
               <h5 className="card-title mt-2">Not Achieved</h5>
               <h5 className="card-text">Current Rank</h5>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i className="fa fa-coins" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{teampoints?.totalPoints ||0}</h5>
+              <h5 className="card-text">Accumulated Referred Point</h5>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i className="fa fa-handshake" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">{teampoints?.totalDownlineCount ||0}</h5>
+              <h5 className="card-text">Total Team</h5>
             </div>
           </div>
         </div>

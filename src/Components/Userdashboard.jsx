@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
  import Genealogytree from "./Userdashboard/Genealogytree";
  import Welcome from "./Userdashboard/Welcome";
  import Registrationanyuser from "./Userdashboard/Registrationanyuser";
+ import Rank from "./Userdashboard/Rank";
 
  import swal from "sweetalert";
 import KYC from "./Userdashboard/KYC";
@@ -32,6 +33,7 @@ export default function UserDashboard() {
     { name: "Genealogy Tree", icon: "fa fa-tree" },
     { name: "Direct Team", icon: "fa fa-group" },
     { name: "Payout", icon: "fa fa-money" },
+    { name: "Rank", icon: "fa fa-trophy" },
   ];
 
   const username = sessionStorage.getItem("username")|| "User Name";
@@ -60,6 +62,8 @@ export default function UserDashboard() {
         return <Genealogytree />;  
       case "Payout":
         return <Payout />;
+      case "Rank":
+        return <Rank />;
       default:
         return <DashboardHome />;
     }
@@ -91,7 +95,7 @@ export default function UserDashboard() {
               onClick={() => setActive(item.name)}
               className={`d-flex align-items-center w-100 border-0 text-start px-3   sidebar-item ${
                 active === item.name ? "active" : ""
-              }`} style={{ paddingBottom:"10%"}}
+              }`} style={{ paddingBottom:"7%"}}
             >
               <i className={`bi ${item.icon} me-2`}></i>
               {!isCollapsed && <span>{item.name}</span>}
