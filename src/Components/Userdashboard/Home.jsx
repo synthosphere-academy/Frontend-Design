@@ -176,7 +176,7 @@ const payout = payoutDetails?.referredPoints || 0;
               <div className="card-body">
                <div><i className="fa fa-star" style={{fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center mt-2">{totalteampoint}</h5>
-                <h5 className="card-text text-center">Total Referred Points</h5>
+                <h5 className="card-text text-center">Current Referred Points</h5>
               </div>
             </div>
           

@@ -1,10 +1,10 @@
 import React from "react";
 import "../Css/affiliatecourse.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 const Affiliatecourses = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
  
   const handle_enroll = async (course) => {
@@ -49,7 +49,7 @@ const Affiliatecourses = () => {
         );
       } else if (userStatus === "active") {
         // ✅ Navigate to checkout with course info
-        window.location.href = course.paymentUrl;
+       navigate("/checkout", { state: { courseName: course.name, coursePrice: course.price } });
       } else {
         swal(
           "Error",
@@ -124,17 +124,17 @@ const Affiliatecourses = () => {
 
         "Basic Liquidation Strategy",
 
-        "Gem Coin Finding Technique",
+        // "Gem Coin Finding Technique",
 
-        "Premium Future Trading Strategy",
+        // "Premium Future Trading Strategy",
 
-        "Premium Portfolio Management Strategy",
+        // "Premium Portfolio Management Strategy",
 
-        "Five Long-Term Holding Coins Name",
+        // "Five Long-Term Holding Coins Name",
 
-        "Trading Fund Management Strategy",
+        // "Trading Fund Management Strategy",
 
-        "A To Z Advance Fundamental Analysis, Technical Analysis",
+        // "A To Z Advance Fundamental Analysis, Technical Analysis",
       ],
     },
     {
@@ -159,27 +159,27 @@ const Affiliatecourses = () => {
 
         "Risk Management Strategy",
 
-        "Regular PNL Strategy",
+        // "Regular PNL Strategy",
 
-        "Basic Liquidation Strategy",
-        "Gem Coin Finding Strategy",
-        "Premium Future Trading Strategy",
+        // "Basic Liquidation Strategy",
+        // "Gem Coin Finding Strategy",
+        // "Premium Future Trading Strategy",
 
-        "Premium Portfolio Management Strategy",
+        // "Premium Portfolio Management Strategy",
 
-        "Five Long-Term Holding Coins Name",
+        // "Five Long-Term Holding Coins Name",
 
-        "Trading Fund Management Strategy",
+        // "Trading Fund Management Strategy",
 
-        "A To Z Advance Fundamental Analysis, Technical Analysis",
+        // "A To Z Advance Fundamental Analysis, Technical Analysis",
 
-        "Whales Wallet Tracking",
+        // "Whales Wallet Tracking",
 
-        "Crypto Taxation",
+        // "Crypto Taxation",
 
-        "Crypto Rules & Knowledge",
+        // "Crypto Rules & Knowledge",
 
-        "DEX & CEX Arbitrage Model",
+        // "DEX & CEX Arbitrage Model",
       ],
     },
     {
@@ -196,17 +196,17 @@ const Affiliatecourses = () => {
 "Risk Management Strategy",
 "Regular PNL Strategy",
 "Basic Liquidation Strategy",
-"Gem Coin Finding Strategy",
-"Premium Future Trading Strategy",
-"Premium Portfolio Management Strategy",
-"Five Long-Term Holding Coins Name",
-"Trading Fund Management Strategy",
-"A To Z Advance Fundamental Analysis, Technical Analysis",
-"Whales Wallet Tracking",
-"Crypto Taxation",
-"Crypto Rules & Knowledge",
-"Dex & Cex Arbitrage Model",
-"Monthly 2% Scholarship"
+// "Gem Coin Finding Strategy",
+// "Premium Future Trading Strategy",
+// "Premium Portfolio Management Strategy",
+// "Five Long-Term Holding Coins Name",
+// "Trading Fund Management Strategy",
+// "A To Z Advance Fundamental Analysis, Technical Analysis",
+// "Whales Wallet Tracking",
+// "Crypto Taxation",
+// "Crypto Rules & Knowledge",
+// "Dex & Cex Arbitrage Model",
+// "Monthly 2% Scholarship"
       ],
     },
     {
