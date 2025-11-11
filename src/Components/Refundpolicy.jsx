@@ -59,7 +59,7 @@ We want you to be satisfied with your experience at Synthosphere Academy. If you
     You can cancel your subscription at any time, but refunds for subscription fees will only be provided if the cancellation is made within the first 30 days of purchase.
     </li>
 <li>Contact Us:<br/>
-   If you have any questions about our refund policy, please contact us at support@synthosphereacademy.in. Synthosphere Academy reserves the right to modify this refund policy at any time without prior notice.
+   If you have any questions about our refund policy, please contact us at support@synthosphereacademy.com. Synthosphere Academy reserves the right to modify this refund policy at any time without prior notice.
    </li>
    
 

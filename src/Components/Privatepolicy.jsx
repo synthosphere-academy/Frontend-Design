@@ -98,7 +98,7 @@ on our website or through other means of communication.
 </li>
 <li>Contact Us:</li> 
 If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy 
-practices, please contact us at support@synthosphereacademy.in.<br/>
+practices, please contact us at support@synthosphereacademy.com.<br/>
 By using Synthosphere Academy, you agree to the terms of this Privacy Policy. If you do not 
 agree with any aspect of this policy, please do not use our platform.<br/><br/>
 Thank you for entrusting us with your learning journey.<br/>
