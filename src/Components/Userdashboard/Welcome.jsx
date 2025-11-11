@@ -5,10 +5,31 @@ import axios from "axios";
 import swal from "sweetalert";
 import html2canvas from "html2canvas";
 const Welcome = () => {
+   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+  const [orderdata, setorderdata] = useState([]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      const userId = sessionStorage.getItem('userid');
+      console.log("UserID:", userId);
+
+      if (!userId) return;
+
+      try {
+        const response = await axios.post(`${ROOT_URL}/api/users/getorderdetailsbyuser`, { userId });
+        setorderdata(response.data);
+        console.log("Fetched Orders:", response.data);
+      } catch (err) {
+        console.error("Error fetching orders:", err);
+      }
+    };
+
+    fetchOrders();
+  }, []);
     const name = sessionStorage.getItem("username") || "User Name";
+    const useremail = sessionStorage.getItem("useremail")||"useremail"
     const userId = sessionStorage.getItem("userid") || "UserID";
     const invoiceRef = useRef();
-   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
      const [userDetails, setUserDetails] = useState(null);
      const fetchFullDetails = async () => {
     try {
@@ -46,6 +67,10 @@ const Welcome = () => {
       pdf.save("invoice.pdf"); // You can customize the name of the file
     });
   };
+   const data = {
+    company: "SYNTHOSPHERE TECHNOLOGIES PRIVATE LIMITED"
+   } 
+
   return (
     <>
        <div className="invoice mt-5">
@@ -94,7 +119,7 @@ const Welcome = () => {
                             A Warm Welcome and Congratulations on Joining Synthosphere Academy!<br/><br/>
 Dear, Sir/Madam <br/>
 On behalf of the entire team, we would like to extend a heartfelt welcome to Synthosphere Academy! We are absolutely thrilled to have you join our community of aspiring and experienced crypto enthusiasts.
-More importantly, we want to offer our sincere congratulations on taking this powerful step forward by investing in your knowledge and future. By Enrollment the Synthosphere Academy {userDetails?.packageName }, you have committed to mastering the complexities of the cryptocurrency world, and we are here to support you every step of the way.
+More importantly, we want to offer our sincere congratulations on taking this powerful step forward by investing in your knowledge and future. By Enrollment the Synthosphere Academy {userDetails?.packageName || "course" }, you have committed to mastering the complexities of the cryptocurrency world, and we are here to support you every step of the way.
 If you have any questions during your onboarding process, please do not hesitate to reach out to our support team.
 Let's build a brighter financial future together!
 
@@ -111,6 +136,108 @@ Website - synthosphereacademy.com
                       </div>
                     </div>
                   </div>
+                 {orderdata.length > 0 && (
+                      <>
+                        <div className="h4 fw-bold text-center mt-5">Invoice</div>
+                        <div className="container mt-3">
+                          <div className="p-4 bg-white shadow rounded mt-3">
+                            {/* Header */}
+                            <div className="d-flex justify-content-between align-items-center">
+                              <div>
+                                <h5 className="mt-2 fw-bold">{data.company}</h5>
+                              </div>
+                              <div className="text-end">
+                                <img
+                                  src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg"
+                                  alt="Razorpay"
+                                  width={120}
+                                />
+                                <p className="small text-secondary mb-0">
+                                  Invoicing and payments powered by Razorpay
+                                </p>
+                              </div>
+                            </div>
+                            <hr />
+
+                            {orderdata.map((order, index) => (
+                              <div key={index}>
+                                <h5 className="fw-bold">
+                                  Payment Receipt{" "}
+                                  <span className="fw-normal">
+                                    Transaction Reference:{" "}
+                                    {order.razorpay_payment_id}
+                                  </span>
+                                </h5>
+                                <p>
+                                  This is a payment receipt for your transaction
+                                  on {order.coursename}
+                                </p>
+
+                                <div className="row mt-4">
+                                  <div className="col-md-4">
+                                    <p className="text-secondary mb-1">
+                                      AMOUNT PAID (INCLUDING GST)
+                                    </p>
+                                    <h4>₹ {order.amount.toFixed(2)}</h4>
+                                  </div>
+                                  <div className="col-md-4">
+                                    <p className="text-secondary mb-1">
+                                      ISSUED TO
+                                    </p>
+                                    <p>
+                                      {name}
+                                      <br />
+                                      {useremail}
+                                    </p>
+                                  </div>
+                                  <div className="col-md-4">
+                                    <p className="text-secondary mb-1">
+                                      PAID ON
+                                    </p>
+                                    <p>
+                                      {new Date(order.createdAt).toLocaleDateString()}
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <table className="table mt-3 border">
+                                  <thead className="table-light">
+                                    <tr>
+                                      <th>DESCRIPTION</th>
+                                      <th className="text-end">UNIT PRICE</th>
+                                      <th className="text-center">QTY</th>
+                                      <th className="text-end">AMOUNT</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>{order.packagename}</td>
+                                      <td className="text-end">
+                                        ₹ {order.amount.toFixed(2)}
+                                      </td>
+                                      <td className="text-center">1</td>
+                                      <td className="text-end">
+                                        ₹ {order.amount.toFixed(2)}
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <th colSpan={3} className="text-end">
+                                        Total
+                                      </th>
+                                      <th className="text-end">
+                                        ₹ {order.amount.toFixed(2)}
+                                      </th>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    )}
                 </div>
               </div>
             </div>
