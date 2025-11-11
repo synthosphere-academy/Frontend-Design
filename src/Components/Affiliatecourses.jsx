@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "../Css/affiliatecourse.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +6,14 @@ import swal from "sweetalert";
 const Affiliatecourses = () => {
   const navigate = useNavigate();
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
- 
+   const [expandedCards, setExpandedCards] = useState({});
+
+  const toggleExpand = (index) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
   const handle_enroll = async (course) => {
     try {
       // Get userId from sessionStorage (assuming you stored it during login)
@@ -124,17 +131,17 @@ const Affiliatecourses = () => {
 
         "Basic Liquidation Strategy",
 
-        // "Gem Coin Finding Technique",
+        "Gem Coin Finding Technique",
 
-        // "Premium Future Trading Strategy",
+        "Premium Future Trading Strategy",
 
-        // "Premium Portfolio Management Strategy",
+        "Premium Portfolio Management Strategy",
 
-        // "Five Long-Term Holding Coins Name",
+        "Five Long-Term Holding Coins Name",
 
-        // "Trading Fund Management Strategy",
+        "Trading Fund Management Strategy",
 
-        // "A To Z Advance Fundamental Analysis, Technical Analysis",
+        "A To Z Advance Fundamental Analysis, Technical Analysis",
       ],
     },
     {
@@ -159,27 +166,27 @@ const Affiliatecourses = () => {
 
         "Risk Management Strategy",
 
-        // "Regular PNL Strategy",
+        "Regular PNL Strategy",
 
-        // "Basic Liquidation Strategy",
-        // "Gem Coin Finding Strategy",
-        // "Premium Future Trading Strategy",
+        "Basic Liquidation Strategy",
+        "Gem Coin Finding Strategy",
+        "Premium Future Trading Strategy",
 
-        // "Premium Portfolio Management Strategy",
+        "Premium Portfolio Management Strategy",
 
-        // "Five Long-Term Holding Coins Name",
+        "Five Long-Term Holding Coins Name",
 
-        // "Trading Fund Management Strategy",
+        "Trading Fund Management Strategy",
 
-        // "A To Z Advance Fundamental Analysis, Technical Analysis",
+        "A To Z Advance Fundamental Analysis, Technical Analysis",
 
-        // "Whales Wallet Tracking",
+        "Whales Wallet Tracking",
 
-        // "Crypto Taxation",
+        "Crypto Taxation",
 
-        // "Crypto Rules & Knowledge",
+        "Crypto Rules & Knowledge",
 
-        // "DEX & CEX Arbitrage Model",
+        "DEX & CEX Arbitrage Model",
       ],
     },
     {
@@ -196,17 +203,17 @@ const Affiliatecourses = () => {
 "Risk Management Strategy",
 "Regular PNL Strategy",
 "Basic Liquidation Strategy",
-// "Gem Coin Finding Strategy",
-// "Premium Future Trading Strategy",
-// "Premium Portfolio Management Strategy",
-// "Five Long-Term Holding Coins Name",
-// "Trading Fund Management Strategy",
-// "A To Z Advance Fundamental Analysis, Technical Analysis",
-// "Whales Wallet Tracking",
-// "Crypto Taxation",
-// "Crypto Rules & Knowledge",
-// "Dex & Cex Arbitrage Model",
-// "Monthly 2% Scholarship"
+"Gem Coin Finding Strategy",
+"Premium Future Trading Strategy",
+"Premium Portfolio Management Strategy",
+"Five Long-Term Holding Coins Name",
+"Trading Fund Management Strategy",
+"A To Z Advance Fundamental Analysis, Technical Analysis",
+"Whales Wallet Tracking",
+"Crypto Taxation",
+"Crypto Rules & Knowledge",
+"Dex & Cex Arbitrage Model",
+"Monthly 2% Scholarship"
       ],
     },
     {
@@ -229,8 +236,13 @@ const Affiliatecourses = () => {
   return (
     <div className="container ">
       <div className="row justify-content-start">
-         {courses.map((course, index) => (
-        
+      {courses.map((course, index) => {
+          const isExpanded = expandedCards[index];
+          const visibleFeatures = isExpanded
+            ? course.features
+            : course.features.slice(0, 8); //
+         {/* {courses.map((course, index) => ( */}
+        return(
          <div key={index} className="col-md-3 my-1">
             <div className="card p-3 mt-3 w-100 h-100 rounded-3 cardpackage">
               <div className="card-body d-flex flex-column">
@@ -248,15 +260,32 @@ const Affiliatecourses = () => {
                     🌟{course.points} Points
                   </div>
                 </div>
+            <div className="flex-grow-1 mt-3">
+                    {visibleFeatures.map((f, i) => (
+                      <div key={i} className="d-flex mt-2">
+                        <div>🌟</div>
+                        <div className="ms-2">{f}</div>
+                      </div>
+                    ))}
 
-                <div className="flex-grow-1 mt-3">
+                    {course.features.length > 8 && (
+                      <button
+                        className="btn btn-link p-0 mt-2 text-primary text-decoration-none"
+                        style={{ fontWeight: "500" }}
+                        onClick={() => toggleExpand(index)}
+                      >
+                        {isExpanded ? "See Less ▲" : "See More ▼"}
+                      </button>
+                    )}
+                  </div>
+                {/* <div className="flex-grow-1 mt-3">
                   {course.features.map((f, i) => (
                     <div key={i} className="d-flex mt-2">
                       <div>🌟</div>
                       <div className="ms-2">{f}</div>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
 
               <div className="d-flex justify-content-center">
@@ -270,7 +299,8 @@ const Affiliatecourses = () => {
               </div>
             </div>
           </div> 
-        ))} 
+        );
+      })}
      
 
             </div>
