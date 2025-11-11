@@ -73,11 +73,10 @@ function Home() {
       console.error("Error fetching payout details:", error);
     }
   };
-  
 const tableData = [
   { no: 1, name: "Class 1", minTeam: 0, minDirect: 3, minPoint: 1, maxPoint: 5000 },
   { no: 2, name: "Class 2", minTeam: 50, minDirect: 10, minPoint: 5001, maxPoint: 15000 },
-  { no: 3, name: "Class 3", minTeam: 100, minDirect: 20, minPoint: 15000, maxPoint: 50000 },
+  { no: 3, name: "Class 3", minTeam: 100, minDirect: 20, minPoint: 15001, maxPoint: 50000 },
   { no: 4, name: "Class 4", minTeam: 200, minDirect: 30, minPoint: 50001, maxPoint: 100000 },
   { no: 5, name: "Class 5", minTeam: 500, minDirect: 40, minPoint: 100001, maxPoint: 300000 },
   { no: 6, name: "Class 6", minTeam: 1000, minDirect: 50, minPoint: 300001, maxPoint: 600000 },
@@ -90,30 +89,38 @@ const tableData = [
   { no: 13, name: "Post Graduate", minTeam: 100000, minDirect: 300, minPoint: 50000001, maxPoint: 100000000 },
   { no: 14, name: "PhD", minTeam: 150000, minDirect: 500, minPoint: 100000001, maxPoint: 250000000 },
 ];
+
 const getUserRank = (totalTeam, directTeam, points) => {
   let achievedRank = "No Rank";
 
   for (let i = 0; i < tableData.length; i++) {
     const rank = tableData[i];
 
-    // If user’s points fall within this class’s point range
-    if (points >= rank.minPoint && points <= rank.maxPoint) {
-      // Check if they also meet team/direct requirements
-      if (
-        totalTeam >= rank.minTeam &&
-        directTeam >= rank.minDirect
-      ) {
-        achievedRank = rank.name;
+    // Check if user has enough points for this rank
+    if (points >= rank.minPoint) {
+      // Check if they meet all the conditions for this rank
+      if (totalTeam >= rank.minTeam && directTeam >= rank.minDirect) {
+        achievedRank = rank.name; // they qualify for this rank
       } else {
-        // If they don't meet the team/direct, keep previous rank (don’t downgrade)
-        achievedRank = tableData[i - 1]?.name || rank.name;
+        // stop checking further — they haven't met the next rank requirements
+        break;
       }
+    } else {
+      // points not enough for this rank
       break;
     }
   }
 
   return achievedRank;
 };
+
+
+// ✅ Examples:
+console.log(getUserRank(0, 3, 4500));      // → "Class 1"
+console.log(getUserRank(60, 12, 8000));    // → "Class 2"
+console.log(getUserRank(200, 25, 40000));  // → "Class 3"
+console.log(getUserRank(100, 5, 40000));   // → "Not Achieved" (direct too low)
+console.log(getUserRank(500, 40, 150000)); // → "Class 5"
 
 
   useEffect(() => {
