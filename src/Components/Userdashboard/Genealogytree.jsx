@@ -42,7 +42,7 @@ const Genealogytree = () => {
   if (!data) return <div className="text-center mt-5">No data found.</div>;
 
   // Determine parent background color
-  const parentBgColor = data.mainUser.status === "active" ? "#3fc83f" : "#d82a2a";
+  const parentBgColor =  data?.mainUser?.selfPoints === 0 ? "#d82a2a" : "#3fc83f";;
 
   return (
     <div className="genealogy-container">
@@ -70,7 +70,7 @@ const Genealogytree = () => {
       <div className="child-nodes">
         {data.referredUsers && data.referredUsers.length > 0 ? (
           data.referredUsers.map((ref, index) => {
-            const bgColor = ref.status === "active" ? "#3fc83f" : "#d82a2a";
+            const bgColor = ref?.selfPoints === 0 ? "#d82a2a" :"#3fc83f" ;
 
             return (
               <div

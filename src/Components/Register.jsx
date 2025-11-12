@@ -255,7 +255,12 @@ function Register() {
               type="text"
               className="form-control form-control-lg inputform"
               placeholder="Enter Pancard Number"
-              onChange={(e) => setpancardno(e.target.value)}
+              onChange={(e) => {
+      const value = e.target.value
+        .toUpperCase()                // convert to uppercase
+        .replace(/[^A-Z0-9]/g, "");  // remove non-alphanumeric chars
+      setpancardno(value);
+    }}
               value={panNo}
             />
           </div>
@@ -280,7 +285,7 @@ function Register() {
           </div>
           <div className="col-lg-6">
             <label className="form-label text-white">
-              Upload Pancard Photo
+              Upload Pan Card Photo
             </label>
             <input
               type="file"

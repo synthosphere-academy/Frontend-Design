@@ -81,7 +81,7 @@ function Payout() {
               ))
             ) : (
               <tr>
-                <td colSpan="4" className="text-muted">
+                <td colSpan="5" className="text-muted">
                   No payouts found
                 </td>
               </tr>
