@@ -147,6 +147,8 @@ const Affiliatecourses = () => {
     {
       name: "Teacher Course",
       price: " 11800 ",
+       subcription: "One year",
+      subcription: "Six Months",
       points: "10000",
       paymentUrl: "https://rzp.io/rzp/0tfCXyMC",
       features: [
@@ -192,6 +194,7 @@ const Affiliatecourses = () => {
     {
       name: "Pro Teacher Course",
       price: " 59000",
+      subcription: "One year",
       points: "25000",
       paymentUrl: "https://rzp.io/rzp/l0v8sIii",
       features: [
@@ -258,6 +261,9 @@ const Affiliatecourses = () => {
                   </div>
                   <div className="fw-bold h5 mt-2" style={{ color: "gold" }}>
                     🌟{course.points} Points
+                  </div>
+                   <div className="fw-bold h4 mt-2" style={{ color: "gold" }}>
+                  {course?.subcription ? `${course.subcription} Subcription` : ""}
                   </div>
                 </div>
             <div className="flex-grow-1 mt-3">

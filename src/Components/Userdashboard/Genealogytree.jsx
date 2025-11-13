@@ -42,7 +42,7 @@ const Genealogytree = () => {
   if (!data) return <div className="text-center mt-5">No data found.</div>;
 
   // Determine parent background color
-  const parentBgColor =  data?.mainUser?.selfPoints === 0 ? "#d82a2a" : "#3fc83f";;
+  const parentBgColor =  data?.mainUser?.totalSelfPoints === 0 ? "#d82a2a" : "#3fc83f";;
 
   return (
     <div className="genealogy-container">
@@ -70,14 +70,13 @@ const Genealogytree = () => {
       <div className="child-nodes">
         {data.referredUsers && data.referredUsers.length > 0 ? (
           data.referredUsers.map((ref, index) => {
-            const bgColor = ref?.selfPoints === 0 ? "#d82a2a" :"#3fc83f" ;
+            const bgColor = ref?.totalSelfPoints === 0 ? "#d82a2a" :"#3fc83f" ;
 
             return (
               <div
                 key={index}
                   className="d-flex flex-column align-items-center "
                 onClick={() => fetchUserTree(ref.userId)}
-              
               >
              <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: bgColor, color: "#fff" }}/>
                 <h5 className="fw-bold mt-1">{ref.name}</h5>
