@@ -17,6 +17,7 @@ function Home() {
     const [teampoints , setteampoints] = useState(null);
   const [copied, setCopied] = useState(false);
   const [userrank_user,setUserrank]= useState("No Rank");
+   const [users, setUsers] = useState([]);
 
   const fetchFullDetails = async () => {
     try {
@@ -113,14 +114,27 @@ const getUserRank = (totalTeam, directTeam, points) => {
 
   return achievedRank;
 };
+const fetchUsers = async () => {
+  try {
+    const res = await axios.post(`${ROOT_URL}/api/referral/teamsummary`, { userId });
+    if (res.data.success) {
+      const data = res.data; // use local variable
+      setUsers(data);
+
+      const totalTeam = data.totalDownlineCount;
+      const directTeam = data.directReferrals;
+      const totalpoints = data.totalPoints;
+
+      const userrank = getUserRank(totalTeam, directTeam, totalpoints);
+      console.log("Matched Rank:", userrank);
+      setUserrank(userrank);
+    }
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+};
 
 
-// ✅ Examples:
-console.log(getUserRank(0, 3, 4500));      // → "Class 1"
-console.log(getUserRank(60, 12, 8000));    // → "Class 2"
-console.log(getUserRank(200, 25, 40000));  // → "Class 3"
-console.log(getUserRank(100, 5, 40000));   // → "Not Achieved" (direct too low)
-console.log(getUserRank(500, 40, 150000)); // → "Class 5"
 
 
   useEffect(() => {
@@ -129,28 +143,16 @@ console.log(getUserRank(500, 40, 150000)); // → "Class 5"
       fetchPayoutDetails();
       fetchPointsDetails();
       fetchTeamDetails();
-     
+      fetchUsers();
+    
     } 
-
     else swal("Error", "Please login again.", "error");
   }, [userId]);
 
-useEffect(() => {
-  if (teampoints && userDetails) {
-    const totalTeam = teampoints?.totalDownlineCount || 0;
-    const totalpoints = teampoints?.totalPoints || 0;
-    const directTeam = userDetails?.referredIds?.length || 0;
 
-    console.log("Total Team:", totalTeam);
-    console.log("Direct Team:", directTeam);
-    console.log("Points:", totalpoints);
-
-    const userrank = getUserRank(totalTeam, directTeam, totalpoints);
-    console.log("Matched Rank:", userrank);
-    setUserrank(userrank);
-  }
-}, [teampoints, userDetails]);
-
+    // const userrank = getUserRank(totalTeam, directTeam, totalpoints);
+    // console.log("Matched Rank:", userrank);
+    // setUserrank(userrank);
   // 🧠 Safely extract values
   const userStatus = userDetails?.status || "N/A";
   const kycStatus = bankDetails?.status || "N/A";
