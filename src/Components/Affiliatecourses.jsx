@@ -148,7 +148,6 @@ const Affiliatecourses = () => {
       name: "Teacher Course",
       price: " 11800 ",
        subcription: "One year",
-      subcription: "Six Months",
       points: "10000",
       paymentUrl: "https://rzp.io/rzp/0tfCXyMC",
       features: [

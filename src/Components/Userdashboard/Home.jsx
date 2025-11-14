@@ -134,9 +134,6 @@ const fetchUsers = async () => {
   }
 };
 
-
-
-
   useEffect(() => {
     if (userId){
       fetchFullDetails();
