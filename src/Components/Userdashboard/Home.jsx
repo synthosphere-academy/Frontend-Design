@@ -235,6 +235,7 @@ const payout = payoutDetails?.referredPoints || 0;
             </div>
           </div>
         </div>
+        
        <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="text-center"></div>
@@ -252,8 +253,7 @@ const payout = payoutDetails?.referredPoints || 0;
                  <div><i className="fa fa-bullseye" style={{fontSize:"30px"}}></i></div>
                 <h5 className="card-title text-center mt-2">{selfPoints}</h5>
                 <h5 className="card-text text-center">Self Points</h5>
-              </div>
-            
+              </div>   
           </div>
           </div>
            <div className="col-lg-3">
@@ -265,7 +265,6 @@ const payout = payoutDetails?.referredPoints || 0;
                 <h5 className="card-text text-center">Current Referred Points</h5>
               </div>
             </div>
-          
         </div>
         </div>
         <div className="row mt-2 g-3">
@@ -325,7 +324,6 @@ const payout = payoutDetails?.referredPoints || 0;
         </div>
         
       </div>
-
       {/* Referral Link Section */}
       <div className="d-flex justify-content-center flex-column align-items-center mt-3 ">
         <h4 className="fw-bold">Your Referral Link</h4>

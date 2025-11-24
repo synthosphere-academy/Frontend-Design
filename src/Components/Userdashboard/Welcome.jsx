@@ -95,7 +95,7 @@ const Welcome = () => {
                         <div className="col-lg-12">
                           <div className="container mt-4">
                           <div className="row">
-                          <div className="col-lg-12 text-end">
+                          <div className="col-lg-12 text-center">
                           <img
                                   src={pic2}
                                   width={130}
@@ -142,7 +142,7 @@ Website - synthosphereacademy.com
                         <div className="container mt-3">
                           <div className="p-4 bg-white shadow rounded mt-3">
                             {/* Header */}
-                            <div className="d-flex justify-content-between align-items-center">
+                            <div className="d-flex flex-column flex-md-row justify-content-between align-items-start">
                               <div>
                                 <h5 className="mt-2 fw-bold">{data.company}</h5>
                               </div>
@@ -199,7 +199,7 @@ Website - synthosphereacademy.com
                                     </p>
                                   </div>
                                 </div>
-
+                                 <div className='table-responsive'>
                                 <table className="table mt-3 border">
                                   <thead className="table-light">
                                     <tr>
@@ -232,6 +232,7 @@ Website - synthosphereacademy.com
                                     </tr>
                                   </tfoot>
                                 </table>
+                                </div>
                               </div>
                             ))}
                           </div>

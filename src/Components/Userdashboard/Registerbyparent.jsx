@@ -362,7 +362,7 @@ function Registerbyparent() {
           </div>
 
           <div className="pt-1 text-center">
-            <button className="btn-lg signupbutton w-25" type="submit">
+            <button className="btn-lg signupbutton w-lg-25 w-sm-100" type="submit">
               Sign Up
             </button>
           </div>

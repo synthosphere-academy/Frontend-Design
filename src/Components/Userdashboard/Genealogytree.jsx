@@ -46,7 +46,7 @@ const Genealogytree = () => {
 
   return (
     <div className="genealogy-container">
-    <button className="btn mt-1 mb-4 w-25 text-white" style={{backgroundColor:"#9a357f"}}  onClick={handleGoToTop} >
+    <button className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white" style={{backgroundColor:"#9a357f"}}  onClick={handleGoToTop} >
             Extreme top
           </button>
       

@@ -181,7 +181,7 @@ console.log("UserID:", userId);
         </div>
 
         <div className="text-center mt-4">
-          <button type="submit" className=" signupbutton w-25" disabled={submitting}>
+          <button type="submit" className=" signupbutton w-lg-25 w-sm-100" disabled={submitting}>
             {submitting ? "Saving..." : "Submit"}
           </button>
         </div>
