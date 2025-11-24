@@ -1,32 +1,45 @@
-import React, { useEffect, useRef } from 'react';
-import Player from '@vimeo/player';
+import React, { useEffect, useRef } from "react";
 
-const VimeoPlayer = ({ videoId,width, height, autoplay = false, onEnd }) => {
-  const playerRef = useRef(null);
+const VimeoPlayer = ({ videoId, onEnd }) => {
+  const iframeRef = useRef(null);
 
   useEffect(() => {
-    // Initialize the Vimeo player
-    const player = new Player(playerRef.current, {
-      id: videoId,
-      width,
-      height,
-      autoplay,
-    });
+    const iframe = iframeRef.current;
 
-    // Add event listener for when the video ends
-    player.on('ended', () => {
-      console.log('Video has ended');
-      if (onEnd) onEnd(); // Call the onEnd callback if provided
-    });
+    // Load Vimeo API script
+    const script = document.createElement("script");
+    script.src = "https://player.vimeo.com/api/player.js";
 
-    // Cleanup on component unmount
-    return () => {
-      player.off('ended'); // Remove the event listener
-      player.destroy();    // Destroy the player instance
+    script.onload = () => {
+      const player = new window.Vimeo.Player(iframe);
+
+      // Listen for video end event
+      player.on("ended", () => {
+        if (onEnd) onEnd();
+      });
     };
-  }, [videoId,width, height, onEnd]);
 
-  return <div ref={playerRef}></div>;
+    document.body.appendChild(script);
+  }, [videoId]);
+
+  return (
+ 
+
+    <iframe
+      src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479`}
+      width="100%"
+      height="500"
+      frameBorder="0"
+      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    ></iframe>
+  );
 };
+
+
+
+
+{/* <iframe src="https://player.vimeo.com/video/994712386?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="lesson 20 hin"></iframe> */}
 
 export default VimeoPlayer;
