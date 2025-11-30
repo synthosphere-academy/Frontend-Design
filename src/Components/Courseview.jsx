@@ -5,9 +5,11 @@ import "../Css/courseview.css";
 const Courseview = () => {
 
   const videos = [
-    { id: 1, title: "Video 1 – Introduction", vimeoId: "994710723" },
-    { id: 2, title: "Video 2 – Basics", vimeoId: "994711582" },
-    { id: 3, title: "Video 3 – Advanced", vimeoId: "994710723" }
+    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://geo.dailymotion.com/player.html?video=k62ulUedyJ8vYlEhFao" },
+    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://geo.dailymotion.com/player.html?video=k77D3yjxoi8UiIEi9aY" },
+    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://geo.dailymotion.com/player.html?video=k6aWpJSwHPkwxkEi9dg" },
+    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://geo.dailymotion.com/player.html?video=k6rxPVrOPBHSrXEi9he"},
+    { id: 5, title:"Video 5– What is Bitcoin & Altcoin", vimeoId:"https://geo.dailymotion.com/player.html?video=k16M0ZRC1OjjqZEi9jG"}
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0].vimeoId);
@@ -34,7 +36,7 @@ const Courseview = () => {
         position: "relative",
       }}
     >
-      <iframe
+      {/* <iframe
         src={`https://player.vimeo.com/video/${currentVideo}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1`}
         style={{
           position: "absolute",
@@ -43,11 +45,18 @@ const Courseview = () => {
           width: "100%",
           height: "100%",
         }}
-        frameBorder="0"
+        // frameBorder="0"
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         title={`vimeo-${currentVideo}`}
-      ></iframe>
+      ></iframe> */}
+      <iframe src={currentVideo} style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+        }} allowfullscreentitle="Dailymotion Video Player" allow="web-share"></iframe>
     </div>
     </div>
 
