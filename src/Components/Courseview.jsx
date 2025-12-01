@@ -5,11 +5,11 @@ import "../Css/courseview.css";
 const Courseview = () => {
 
   const videos = [
-    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://geo.dailymotion.com/player.html?video=k62ulUedyJ8vYlEhFao" },
-    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://geo.dailymotion.com/player.html?video=k77D3yjxoi8UiIEi9aY" },
-    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://geo.dailymotion.com/player.html?video=k6aWpJSwHPkwxkEi9dg" },
-    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://geo.dailymotion.com/player.html?video=k6rxPVrOPBHSrXEi9he"},
-    { id: 5, title:"Video 5– What is Bitcoin & Altcoin", vimeoId:"https://geo.dailymotion.com/player.html?video=k16M0ZRC1OjjqZEi9jG"}
+    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://www.youtube.com/embed/w8_QO89iIFA?si=juiW-QZhbfT28sDu" },
+    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://www.youtube.com/embed/tOiaIIRkKUc?si=f1z4xLPyJbKNghx0" },
+    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://www.youtube.com/embed/z8ZT2KRhjmM?si=mFPtmiGc7Hdib2XZ" },
+    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://www.youtube.com/embed/bVDlvE6ijQs?si=u7L6U0CYjQoRLuvT"},
+    { id: 5, title:"Video 5– What is Bitcoin & Altcoin", vimeoId:"https://www.youtube.com/embed/9z69oKzxVng?si=cOy7n1Ks7DwcuRVh"}
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0].vimeoId);
@@ -36,27 +36,29 @@ const Courseview = () => {
         position: "relative",
       }}
     >
-      {/* <iframe
-        src={`https://player.vimeo.com/video/${currentVideo}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1`}
-        style={{
+     
+
+      {/* <iframe src={currentVideo} style={{
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
           height: "100%",
-        }}
-        // frameBorder="0"
-        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        title={`vimeo-${currentVideo}`}
-      ></iframe> */}
-      <iframe src={currentVideo} style={{
+        }}   allow="fullscreen; web-share"
+         allowFullScreen></iframe> */}
+         <iframe width="560" height="315" 
+         src={currentVideo}
+        //  src="https://www.youtube.com/embed/w8_QO89iIFA?si=juiW-QZhbfT28sDu"
+          title="YouTube video player" frameborder="0" allow= " fullscreen, accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+           style={{
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%",
-        }} allowfullscreentitle="Dailymotion Video Player" allow="web-share"></iframe>
+          height: "100%"}} >
+
+          </iframe>
     </div>
     </div>
 
