@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import VimeoPlayer from "./Vimeoplayer";
 import "../Css/courseview.css";
 
 const Courseview = () => {
 
   const videos = [
-    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://www.youtube.com/embed/w8_QO89iIFA?si=juiW-QZhbfT28sDu" },
-    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://www.youtube.com/embed/tOiaIIRkKUc?si=f1z4xLPyJbKNghx0" },
-    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://www.youtube.com/embed/z8ZT2KRhjmM?si=mFPtmiGc7Hdib2XZ" },
-    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://www.youtube.com/embed/bVDlvE6ijQs?si=u7L6U0CYjQoRLuvT"},
-    { id: 5, title:"Video 5– What is Bitcoin & Altcoin", vimeoId:"https://www.youtube.com/embed/9z69oKzxVng?si=cOy7n1Ks7DwcuRVh"}
+    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_1_1_fznzy5&profile=cld-default" },
+    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_2_hbk69a&profile=cld-default" },
+    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_3_ainru6&profile=cld-default" },
+    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_4_dvc14a&profile=cld-default"},
+    { id: 5, title:"Video 5– What is Bitcoin & Altcoin", vimeoId:"https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_5_p8nnt5&profile=cld-default"}
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0].vimeoId);
@@ -34,8 +33,7 @@ const Courseview = () => {
       style={{
         padding: "56.25% 0 0 0",
         position: "relative",
-      }}
-    >
+      }}>
      
 
       {/* <iframe src={currentVideo} style={{
@@ -46,19 +44,36 @@ const Courseview = () => {
           height: "100%",
         }}   allow="fullscreen; web-share"
          allowFullScreen></iframe> */}
-         <iframe width="560" height="315" 
-         src={currentVideo}
-        //  src="https://www.youtube.com/embed/w8_QO89iIFA?si=juiW-QZhbfT28sDu"
-          title="YouTube video player" frameborder="0" allow= " fullscreen, accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+         {/* <iframe width="560"
+         height="315" 
+        //  src={currentVideo}
+        src="https://drive.google.com/file/d/16Vocz4iaQxy4fkYI3Mw7EQDyuliCEN6s/preview"
+          title="YouTube video player" frameborder="0" 
+          allow= " fullscreen, accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin"
           allowFullScreen
-           style={{
+          style={{
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%"}} >
+          height: "100%"}}>
+          </iframe> */}
+ <iframe
+  src={currentVideo}
+  width="640"
+  height="360" 
+   style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%"}}
+  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+  allowfullscreen
+  frameborder="0"
+></iframe>
 
-          </iframe>
     </div>
     </div>
 
