@@ -4,11 +4,11 @@ import "../Css/courseview.css";
 const Courseview = () => {
 
   const videos = [
-    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_1_1_fznzy5&profile=cld-default" },
-    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_2_hbk69a&profile=cld-default" },
-    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_3_ainru6&profile=cld-default" },
-    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_4_dvc14a&profile=cld-default"},
-    { id: 5, title:"Video 5– What is Bitcoin & Altcoin", vimeoId:"https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_5_p8nnt5&profile=cld-default"}
+    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://www.youtube.com/embed/w8_QO89iIFA?si=1s54nDck594ng7Jz" },
+    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://www.youtube.com/embed/tOiaIIRkKUc?si=q4zDXorUUUQU2HvN" },
+    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://www.youtube.com/embed/z8ZT2KRhjmM?si=XAiAOxndJmryupme" },
+    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://www.youtube.com/embed/bVDlvE6ijQs?si=tb6D-oSGl8CJhMmn"},
+    { id: 5, title:"Video 5– What is Bitcoin & Altcoin", vimeoId:"https://www.youtube.com/embed/9z69oKzxVng?si=prqWDhhcJkQfMugx"}
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0].vimeoId);
@@ -71,7 +71,7 @@ const Courseview = () => {
           height: "100%"}}
   allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
   allowfullscreen
-  frameborder="0"
+ 
 ></iframe>
 
     </div>
