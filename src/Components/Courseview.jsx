@@ -4,31 +4,36 @@ import "../Css/courseview.css";
 const Courseview = () => {
 
   const videos = [
-    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://www.youtube.com/embed/w8_QO89iIFA?si=1s54nDck594ng7Jz" },
-    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://www.youtube.com/embed/tOiaIIRkKUc?si=q4zDXorUUUQU2HvN" },
-    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://www.youtube.com/embed/z8ZT2KRhjmM?si=XAiAOxndJmryupme" },
-    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://www.youtube.com/embed/bVDlvE6ijQs?si=tb6D-oSGl8CJhMmn"},
-    { id: 5, title:"Video 5– What is Bitcoin & Altcoin", vimeoId:"https://www.youtube.com/embed/9z69oKzxVng?si=prqWDhhcJkQfMugx"}
+    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_1_1_fznzy5&profile=cld-default" },
+    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_2_hbk69a&profile=cld-default" },
+    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_3_ainru6&profile=cld-default" },
+    { id: 4, title:"Video 4 – Difference  Between Token & Coin", vimeoId:"https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_4_dvc14a&profile=cld-default"},
+    { id: 5, title:"Video 5 – What is Bitcoin & Altcoin", vimeoId:"https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_5_p8nnt5&profile=cld-default"}
   ];
 
-  const [currentVideo, setCurrentVideo] = useState(videos[0].vimeoId);
+  const [currentVideo, setCurrentVideo] = useState(videos[0]);
 
-  const handleVideoClick = (vimeoId) => {
-    setCurrentVideo(vimeoId);
-  };
+ 
+  const handleVideoClick = (video) => {
+  setCurrentVideo(video);
+};
 
-  const handleEnd = () => {
-    const currentIndex = videos.findIndex(v => v.vimeoId === currentVideo);
-    if (currentIndex < videos.length - 1) {
-      setCurrentVideo(videos[currentIndex + 1].vimeoId);
-    }
-  };
+
+  // const handleEnd = () => {
+  //   const currentIndex = videos.findIndex(v => v.vimeoId === currentVideo);
+  //   if (currentIndex < videos.length - 1) {
+  //     setCurrentVideo(videos[currentIndex + 1].vimeoId);
+  //   }
+  // };
 
   return (
     <div className="container">
       <div className="row justify-content-center">
 
         <div className="col-lg-8 col-12">
+          <h4 className="fw-bold mb-4
+          ">{currentVideo.title}</h4>
+
             <div
       style={{
         padding: "56.25% 0 0 0",
@@ -36,31 +41,10 @@ const Courseview = () => {
       }}>
      
 
-      {/* <iframe src={currentVideo} style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-        }}   allow="fullscreen; web-share"
-         allowFullScreen></iframe> */}
-         {/* <iframe width="560"
-         height="315" 
-        //  src={currentVideo}
-        src="https://drive.google.com/file/d/16Vocz4iaQxy4fkYI3Mw7EQDyuliCEN6s/preview"
-          title="YouTube video player" frameborder="0" 
-          allow= " fullscreen, accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-          style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%"}}>
-          </iframe> */}
+    
+       
  <iframe
-  src={currentVideo}
+    src={currentVideo.vimeoId}
   width="640"
   height="360" 
    style={{
@@ -75,6 +59,7 @@ const Courseview = () => {
 ></iframe>
 
     </div>
+ 
     </div>
 
         <div className="col-lg-4 col-12">
@@ -89,7 +74,8 @@ const Courseview = () => {
                   key={video.id}
                   className="video-item p-3 mb-3 border rounded"
                   style={{ cursor: "pointer" }}
-                  onClick={() => handleVideoClick(video.vimeoId)}
+                 onClick={() => handleVideoClick(video)}
+
                 >
                   <span className="fw-bold">▶ {video.title}</span>
                 </div>
