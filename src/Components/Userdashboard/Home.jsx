@@ -329,7 +329,8 @@ const payout = payoutDetails?.referredPoints || 0;
         <h4 className="fw-bold">Your Referral Link</h4>
          <div className="d-flex flex-column flex-sm-row align-items-center mt-3">
     <div className="h5 referral text-break">{referralLink}</div>
-          {copied ? (
+          {
+            copied ? (
             <span className="ms-2 text-success mt-4">Copied!</span>
           ) : (
             <i

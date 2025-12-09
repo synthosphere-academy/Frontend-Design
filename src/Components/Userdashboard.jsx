@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 // import "./UserDashboard.css"; // custom styles (below)
@@ -17,6 +17,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Courseview from "./Courseview";
 import KYC from "./Userdashboard/KYC";
 export default function UserDashboard() {
+  useEffect(() => {
+  const handleMenuChange = (e) => {
+    setActive(e.detail);
+  };
+
+  window.addEventListener("changeMenu", handleMenuChange);
+
+  return () => {
+    window.removeEventListener("changeMenu", handleMenuChange);
+  };
+}, []);
+
   const [active, setActive] = useState("Dashboard");
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -55,8 +67,8 @@ export default function UserDashboard() {
         return <Affiliatecourses />;
       case "Enrolled Courses":
         return <Entrolled />;
-         case "Videos":
-        return <Courseview />;  
+     case "Videos":
+  return <Courseview  />;
       case "Order History":
         return <Orderhistory />;
       case "Direct Team":

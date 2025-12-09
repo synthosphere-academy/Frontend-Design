@@ -7,19 +7,67 @@ const Courseview = () => {
   const [orderdata, setorderdata] = useState(null);
 
   const videos = [
-    { id: 1, title: "Video 1 – Introduction", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_1_1_fznzy5&profile=cld-default" },
-    { id: 2, title: "Video 2 – What is Cryptocurrency", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_2_hbk69a&profile=cld-default" },
-    { id: 3, title: "Video 3 – What is Marketcap", vimeoId: "https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_3_ainru6&profile=cld-default" },
-    { id: 4, title:"Video 4 – Difference Between Token & Coin", vimeoId:"https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_4_dvc14a&profile=cld-default"},
-    { id: 5, title:"Video 5 – What is Bitcoin & Altcoin", vimeoId:"https://player.cloudinary.com/embed/?cloud_name=dxgacly4i&public_id=Final_Vid_5_p8nnt5&profile=cld-default"}
+    {
+      id: 1,
+      title: "Video 1 – Introduction",
+      vimeoId:
+        "1144782050",
+    },
+    {
+      id: 2,
+      title: "Video 2 – What is Cryptocurrency",
+      vimeoId:
+        "1144782610",
+    },
+    {
+      id: 3,
+      title: "Video 3 – What is Marketcap",
+      vimeoId:
+        "1144782421",
+    },
+    {
+      id: 4,
+      title: "Video 4 – Difference Between Token & Coin",
+      vimeoId:
+        "1144782304",
+    },
+    {
+      id: 5,
+      title: "Video 5 – What is Bitcoin & Altcoin",
+      vimeoId:
+        "1144782119",
+    },
+    {
+      id: 6,
+      title: "Video 6 – What Is Bitcoin & Altcoin?",
+      vimeoId:
+        "1144794300",
+    },
+    {
+      id: 7,
+      title: "Video 7 – How to Start Your First Trading?",
+      vimeoId:
+        "1144794217",
+    },
+    {
+      id: 8,
+      title: "Video 8 – Open Your Crypto Trading Account With FIU Registered Crypto Exchange, KYC Verification.",
+      vimeoId:
+        "1144794162",
+    },
+    {
+      id: 9,
+      title: "Video 9 – What Is CEX, DEX & Wallet?",
+      vimeoId:
+        "1144794085",
+    }
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0]);
-
   // Fetch Order Data
   useEffect(() => {
     const fetchOrders = async () => {
-        // const userId = "SA30374"
+      // const userId = "SA30374"
       const userId = sessionStorage.getItem("userid");
       if (!userId) return;
 
@@ -59,14 +107,13 @@ const Courseview = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-
         {/* Main Video Player */}
         <div className="col-lg-8 col-12">
           <h4 className="fw-bold mb-4">{currentVideo.title}</h4>
 
           <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
             <iframe
-              src={currentVideo.vimeoId}
+              src={`https://player.vimeo.com/video/${currentVideo.vimeoId}`}
               width="640"
               height="360"
               style={{
@@ -80,6 +127,26 @@ const Courseview = () => {
               allowFullScreen
             ></iframe>
           </div>
+          {orderdata === null && (
+    <div className="mt-4 p-3 border rounded text-center bg-light">
+      <div className=" h5 fw-bold text-danger">
+        For more videos, purchase any package
+      </div>
+   <button
+  className="btn btn-primary mt-2"
+  onClick={() => {
+    const event = new CustomEvent("changeMenu", {
+      detail: "Our Packages"
+    });
+    window.dispatchEvent(event);
+  }}
+>
+  Buy Package
+</button>
+
+
+    </div>
+  )}
         </div>
 
         {/* Video List */}
@@ -101,10 +168,8 @@ const Courseview = () => {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   );

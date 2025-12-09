@@ -139,8 +139,8 @@ Website - synthosphereacademy.com
                  {orderdata.length > 0 && (
                       <>
                         <div className="h4 fw-bold text-center mt-5">Invoice</div>
-                        <div className="container mt-3">
-                          <div className="p-4 bg-white shadow rounded mt-3">
+                        <div className="container mt-3 mb-3">
+                          <div className="p-4 bg-white shadow rounded">
                             {/* Header */}
                             <div className="d-flex flex-column flex-md-row justify-content-between align-items-start">
                               <div>
