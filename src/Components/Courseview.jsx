@@ -39,7 +39,7 @@ const Courseview = () => {
     },
     {
       id: 6,
-      title: "Video 6 – What Is Bitcoin & Altcoin?",
+      title: "Video 6 – What is Crypto trading? Types of Crypto Trading.",
       vimeoId:
         "1144794300",
     },
