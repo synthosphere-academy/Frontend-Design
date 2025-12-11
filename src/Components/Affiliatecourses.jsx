@@ -250,18 +250,28 @@ const Affiliatecourses = () => {
               <div className="card-body d-flex flex-column">
                 <div className="text-center">
                   <h3
-                    className="fw-bold"
-                    style={{ color: course.gold ? "gold" : "inherit" }}
-                  >
-                    {course.name}
-                  </h3>
+  className="fw-bold"
+  style={
+    course.gold
+      ? {
+          background: "linear-gradient(90deg, #b53f96, #480DB9)",
+          color: "transparent",
+          WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+        }
+      : { color: "inherit" }
+  }
+>
+  {course.name}
+</h3>
+
                   <div className="fw-bold h5 mt-2">
                     RS.{course.price}/- (Incl. GST)
                   </div>
-                  <div className="fw-bold h5 mt-2" style={{ color: "gold" }}>
-                    🌟{course.points} Points
+                  <div className="fw-bold h5 mt-2" style={{ color: "#ffae42" }}>
+                    🌟  {course.points} Points
                   </div>
-                   <div className="fw-bold h4 mt-2" style={{ color: "gold" }}>
+                   <div className="fw-bold h4 mt-2" style={{  background: "linear-gradient(90deg, #b53f96, #480DB9)", color: "transparent" , backgroundClip: "text", WebkitBackgroundClip: "text"  }}>
                   {course?.subcription ? `${course.subcription} Subcription` : ""}
                   </div>
                 </div>

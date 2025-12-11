@@ -3,6 +3,8 @@ import "../../Css/rankachive.css";
 import axios from "axios";
 
 const Rank = () => {
+  const [userRanks, setUserRanks] = useState([]);
+
   const [achievedRankIndex, setAchievedRankIndex] = useState(-1);
   const [userSummary, setUserSummary] = useState(null);
 
@@ -82,10 +84,37 @@ const Rank = () => {
       console.error("Error fetching user rank:", error);
     }
   };
+const fetchUserStatus = async () => {
+  try {
+    const res = await axios.get(`${ROOT_URL}/api/rank/user/${userId}`);
+
+    if (res.data.success) {
+      setUserRanks(res.data.data); // array of documents
+    }
+  } catch (error) {
+    console.error("Error fetching user ranks:", error);
+  }
+};
 
   useEffect(() => {
-    if (userId) fetchUserRank();
+    if (userId) {
+      fetchUserRank()
+      fetchUserStatus();
+    };
+
   }, [userId]);
+
+  const getRankStatus = (rankName) => {
+  if (!userRanks.length) return "Not paid yet";
+
+  const rewardObj = userRanks[0]?.rewards?.find(
+    (r) => r.rankName === rankName
+  );
+
+  if (!rewardObj) return "Not paid yet";
+
+  return rewardObj.status; // pending / approved
+};
 
   return (
     <div className="table-container table-responsive">
@@ -125,9 +154,23 @@ const Rank = () => {
                 </td>
 
                 {/* Status */}
-                <td>
-                  Not paid yet
-                </td>
+                <td
+  style={{
+    color:
+      getRankStatus(item.name) === "approved"
+        ? "green"
+        : getRankStatus(item.name) === "pending"
+        ? "orange"
+        : "red",
+    fontWeight: "bold",
+  }}
+>
+  {getRankStatus(item.name) === "approved"
+    ? "Approved"
+    : getRankStatus(item.name) === "pending"
+    ? "Pending"
+    : "Not Paid Yet"}
+</td>
               </tr>
             );
           })}
