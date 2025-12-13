@@ -133,11 +133,11 @@ export default function UserDashboard() {
       {/* Main content */}
       <div className="flex-grow-1 p-4 overflow-auto">
       <div className="row">
-        <div className="col-md-2">
+        <div className=" col-12 col-md-2 text-center text-md-start order-1 order-md-2">
             <h4 className="fw-bold text-dark">{active}</h4>
         </div>
-        <div className="col-md-10 text-end">
-        <div className="d-flex flex-row justify-content-end align-items-center">
+        <div className="col-12 col-md-10  order-2 order-md-1">
+        <div className="d-flex flex-row justify-content-center justify-content-md-end align-items-center">
            <h4 className="fw-bold text-dark">My User ID:</h4>
            <h4 className="ms-2 fw-bold text-dark">{userid}</h4>
         </div>
