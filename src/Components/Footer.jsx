@@ -46,7 +46,7 @@ function Footer() {
 
                     </div>
                     <div className='row mt-3'>
-                        <div className='col-lg-12 text-center'><span className='text-white copyright'>Copyright © Synthosphere Academy <span>{todayyear}</span>. Powered by<a className="text-white text-decoration-none" href='https://synthospheretech.com/'> Synthosphere Technologies Private Limited</a></span></div>
+                        <div className='col-lg-12 text-center mb-3 '><span className='text-white copyright '>Copyright © Synthosphere Academy <span>{todayyear}</span>. Powered by<a className="text-white text-decoration-none" href='https://synthospheretech.com/'> Synthosphere Technologies Private Limited</a></span></div>
                     </div>
                     </div>
                 </div>

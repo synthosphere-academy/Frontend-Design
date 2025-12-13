@@ -1,0 +1,35 @@
+/* Profile Card */
+.profile-card {
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+/* Avatar */
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b43f95, #6f42c1);
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+
+
+/* Mobile Optimization */
+@media (max-width: 576px) {
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 24px;
+  }
+
+  .profile-card {
+    border-radius: 10px;
+  }
+}

@@ -14,14 +14,14 @@
 
 /* Hover effect */
 .sidebar-item:hover {
-  background-color: #b43f95;
+  background-color: #9a457e;
   color: #ffffff;
    padding: 12px 16px; /* orange text on hover */
 }
 
 /* Active (clicked) item */
 .sidebar-item.active {
-  background-color: #b43f95; /* orange background */
+  background-color: #b74498; /* orange background */
   color: white; /* white text */
  
    padding: 12px 16px;

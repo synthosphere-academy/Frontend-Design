@@ -139,7 +139,8 @@ export default function UserDashboard() {
                 <i className="fa fa-bars" />
               </button>
             )}
-            <h4 className="fw-bold text-dark mb-0 activename">{active}</h4>
+            <h4 className="fw-bold text-dark mb-0 
+            ">{active}</h4>
           </div>
 
           <div className="col-6 text-end">

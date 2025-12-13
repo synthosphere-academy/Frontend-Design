@@ -325,22 +325,25 @@ const payout = payoutDetails?.referredPoints || 0;
         
       </div>
       {/* Referral Link Section */}
-      <div className="d-flex justify-content-center flex-column align-items-center mt-3 ">
-        <h4 className="fw-bold">Your Referral Link</h4>
-         <div className="d-flex flex-column flex-sm-row align-items-center mt-3">
-    <div className="h5 referral text-break">{referralLink}</div>
-          {
-            copied ? (
-            <span className="ms-2 text-success mt-4">Copied!</span>
-          ) : (
-            <i
-              className="fa fa-copy ms-2 mt-4"
-              style={{ fontSize: "19px", cursor: "pointer" }}
-              onClick={handleCopyLink}
-            ></i>
-          )}
-        </div>
-      </div>
+     <div className="d-flex justify-content-center flex-column align-items-center mt-3">
+  <h4 className="fw-bold">Your Referral Link</h4>
+
+  <div className="referral-pill d-flex align-items-center">
+  <span className="referral-scroll">{referralLink}</span>
+
+  {copied ? (
+    <span className="ms-4 text-success">Copied!</span>
+  ) : (
+    <i
+      className="fa fa-copy ms-2"
+      onClick={handleCopyLink}
+      style={{ cursor: "pointer" }}
+    />
+  )}
+</div>
+
+</div>
+
     </>
   );
 }

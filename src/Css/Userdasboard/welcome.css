@@ -1,0 +1,23 @@
+
+.invoice-desktop {
+  min-width: 1024px;
+}
+
+/* Allow horizontal scroll on mobile */
+@media (max-width: 768px) {
+  .invoice {
+    overflow-x: auto;
+  }
+
+  .invoice-desktop {
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+}
+
+/* Better scaling for very small devices */
+@media (max-width: 480px) {
+  .invoice-desktop {
+    transform: scale(0.8);
+  }
+}

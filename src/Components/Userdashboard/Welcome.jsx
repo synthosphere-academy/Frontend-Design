@@ -4,6 +4,8 @@ import jsPDF from "jspdf";
 import axios from "axios";
 import swal from "sweetalert";
 import html2canvas from "html2canvas";
+
+import "../../Css/Userdasboard/welcome.css";
 const Welcome = () => {
    const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [orderdata, setorderdata] = useState([]);
@@ -87,7 +89,8 @@ const Welcome = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div ref={invoiceRef}>
+              <div ref={invoiceRef} className="invoice-desktop">
+
                 <div className="card">
                   <div className="card-body">
                     <div className="double-border">

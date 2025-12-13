@@ -276,6 +276,7 @@ function Registrationanyuser() {
               accept=".jpg,.jpeg,.png"
               onChange={handleAadharPhoto}
             />
+             <label className="text-white">Aadhar Front image must be smaller than 1 MB</label>
           </div>
             <div className="col-lg-6">
             <label className="form-label text-white">Upload Aadhar Photo(Back)</label>
@@ -285,6 +286,7 @@ function Registrationanyuser() {
               accept=".jpg,.jpeg,.png"
               onChange={handleAadharPhoto_back}
             />
+               <label className="text-white">Aadhar Back image must be smaller than 1 MB</label>
           </div>
           <div className="col-lg-6">
             <label className="form-label text-white">
@@ -296,6 +298,7 @@ function Registrationanyuser() {
               accept=".jpg,.jpeg,.png"
               onChange={handlepanPhoto}
             />
+             <label className="text-white">PAN card image must be smaller than 1 MB</label>
           </div>
           <div className="col-lg-6">
             <label className="form-label text-white">Password</label>

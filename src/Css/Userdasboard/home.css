@@ -2,8 +2,38 @@
   background: linear-gradient(135deg, #9a357f, #c64292);
   color: white;
 }
-.referral{
-    background-color: wheat;
-    padding: 4%;
-    border-radius: 15px;
+
+/* Desktop: show full link, no scroll */
+
+/* Mobile only: one-line + scroll */
+
+/* Pill container */
+.referral-pill {
+  background: #fde6b7;
+  border-radius: 25px;
+  padding: 10px 14px;
+  max-width: 100%;
 }
+
+/* Desktop: show full link */
+.referral-scroll {
+  white-space: normal;
+  overflow: visible;
+}
+
+/* Mobile: horizontal scroll INSIDE pill */
+@media (max-width: 768px) {
+  .referral-scroll {
+    max-width: 70vw;          /* forces overflow */
+    white-space: nowrap;
+    overflow-x: auto;
+    display: block;
+  }
+
+  /* Hide scrollbar but keep scroll */
+  .referral-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+

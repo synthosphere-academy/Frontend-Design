@@ -1,86 +1,58 @@
-import { useState , useEffect} from 'react';
-import axios from "axios";
+import { useEffect } from "react";
+import user from "../../Images/userphoto.png";
+import "../../Css/myprofile.css";
 function Myprofile() {
-  // const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-   const userId = sessionStorage.getItem('userid');
-   const username = sessionStorage.getItem('username');
-   const useremail = sessionStorage.getItem('useremail');
-   const userphone = sessionStorage.getItem('userphone');
-   const userstatus = sessionStorage.getItem('userstatus');
-  // const [userdata, setuserdata] = useState([]);
-  // useEffect(() => {
-  //   const userId = sessionStorage.getItem('userid');
-  //   console.log(userId);
-  //      axios
-  //     .get(ROOT_URL + `/api/auth/getuser/${userId}`)
-  //     .then((userdetail) => {
-  //       setuserdata(userdetail.data);
-  //       console.log(userdata);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-    // const formattedregistrationDate = new Date(userdata.createdAt).toLocaleDateString();
-    // const formattedbirthDate = new Date(userdata.date).toLocaleDateString();
-  return (
-    <div>
-     
-      <div className='card w-75 p-5 shadow-lg border-0'>
-      
-      <div className="row">
-        {/* <div className="col-lg-2 fw-bold">
-          <span style={{fontSize:"18px"}}>Joining Date:</span>
-        </div> */}
-        {/* <div className="col-lg-10 ">
-          <span style={{fontSize:"18px"}}>{formattedregistrationDate}</span>
-        </div> */}
-      </div>
-      <div className="row ">
-        <div className="col-lg-2 fw-bold" >
-          <span style={{fontSize:"18px"}}>User ID:</span>
-        </div>
-        <div className="col-lg-10 ">
-          <span style={{fontSize:"18px"}}>{userId || "None" }</span>
-        </div>
-      </div>
-      <div className="row mt-4">
-        <div className="col-lg-2 fw-bold" >
-          <span style={{fontSize:"18px"}}>Full Name:</span>
-        </div>
-        <div className="col-lg-10 ">
-          <span style={{fontSize:"18px"}}>{username || "None"}</span>
-        </div>
-      </div>
-      <div className="row mt-4">
-        <div className="col-lg-2 fw-bold">
-          <span style={{fontSize:"18px"}}>Phone No:</span>
-        </div>
-        <div className="col-lg-10 ">
-          <span style={{fontSize:"18px"}}>{userphone || "None"}</span>
-        </div>
-      </div>
-     
-      <div className="row mt-4">
-        <div className="col-lg-2 fw-bold">
-          <span style={{fontSize:"18px"}}>Email:</span>
-        </div>
-        <div className="col-lg-10 ">
-          <span>{useremail || "None"}</span>
-        </div>
-      </div>
-        <div className="row mt-4">
-        <div className="col-lg-2 fw-bold">
-          <span style={{fontSize:"18px"}}>Status:</span>
-        </div>
-        <div className="col-lg-10 ">
-          <span style={{fontSize:"18px"}}>{userstatus || "None"}</span>
-        </div>
-      </div>
-      </div>
-  
-     
+  const userId = sessionStorage.getItem("userid");
+  const username = sessionStorage.getItem("username");
+  const useremail = sessionStorage.getItem("useremail");
+  const userphone = sessionStorage.getItem("userphone");
+  const userstatus = sessionStorage.getItem("userstatus");
 
+  return (
+    <div className="container py-4">
+      <div className="row justify-content-center">
+        <div className="col-12 col-lg-8">
+          <div className="card profile-card shadow border-0">
+            <div className="card-body p-4 p-md-5">
+              {/* Header */}
+              <div className="text-center mb-4">
+                <div className="profile-avatar mb-3">
+                <img src={user} width="70px"/>
+                </div>
+                <h4 className="fw-bold mb-1">{username || "User Name"}</h4>
+                <div className="text-center">
+                
+                </div>
+              </div>
+
+              <hr />
+
+              {/* Profile Info */}
+              <div className="profile-info">
+                <ProfileRow label="User ID" value={userId} />
+                <ProfileRow label="Full Name" value={username} />
+                <ProfileRow label="Phone Number" value={userphone} />
+                <ProfileRow label="Email Address" value={useremail} />
+                <ProfileRow label="Account Status" value={userstatus} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Myprofile
+/* Reusable Row Component */
+const ProfileRow = ({ label, value }) => (
+  <div className="row align-items-center py-2">
+    <div className="col-5 col-md-4 fw-semibold text-muted">
+      {label}
+    </div>
+    <div className="col-7 col-md-8 text-dark">
+      {value || "None"}
+    </div>
+  </div>
+);
+
+export default Myprofile;
