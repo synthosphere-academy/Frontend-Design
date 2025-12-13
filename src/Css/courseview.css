@@ -69,3 +69,37 @@ padding: 0%;
       background-color: #c266a9;; 
     color: white
 }
+/* Right-side video list scroll */
+.video-list-wrapper {
+  max-height: calc(100vh - 140px); /* adjust if header/footer exists */
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Smooth scrolling */
+.video-list-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.video-list-wrapper::-webkit-scrollbar-thumb {
+  background-color: #dcc8d6;
+  border-radius: 4px;
+}
+
+.video-list-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .video-list-wrapper {
+    max-height: 300px; /* smaller height on mobile */
+  }
+}
+@media (max-width: 768px) {
+  .video-title-mobile {
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: center;
+  }
+}

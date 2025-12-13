@@ -60,6 +60,30 @@ const Courseview = () => {
       title: "Video 9 – What Is CEX, DEX & Wallet?",
       vimeoId:
         "1144794085",
+    },
+    {
+      id: 10,
+      title: " Video 10 – Deposit, Withdraw, Transfer for Cryptocurrency.",
+      vimeoId:
+        "1146159983",
+    },
+    {
+      id: 12,
+      title: " Video 12 – Basic Fundamental Analysis.",
+      vimeoId:
+        "1146160018"
+    },
+    {
+      id: 13,
+      title: "Video 13 – Basic Technical Analysis.",
+      vimeoId:
+        "1146159841"
+    },
+    {
+      id: 14,
+      title: "Video 14 – Candlestick Patterns.",
+      vimeoId:
+        "1146159928"
     }
   ];
 
@@ -109,7 +133,7 @@ const Courseview = () => {
       <div className="row justify-content-center">
         {/* Main Video Player */}
         <div className="col-lg-8 col-12">
-          <h4 className="fw-bold mb-4">{currentVideo.title}</h4>
+          <h4 className="fw-bold mb-4 d-none d-md-block">{currentVideo.title}</h4>
 
           <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
             <iframe
@@ -127,6 +151,7 @@ const Courseview = () => {
               allowFullScreen
             ></iframe>
           </div>
+          <h5 className="fw-bold mt-3 d-block d-md-none video-title-mobile"> {currentVideo.title}</h5>
           {orderdata === null && (
     <div className="mt-4 p-3 border rounded text-center bg-light">
       <div className=" h5 fw-bold text-danger">
@@ -150,7 +175,7 @@ const Courseview = () => {
         </div>
 
         {/* Video List */}
-        <div className="col-lg-4 col-12">
+        <div className="col-lg-4 col-12  video-list-wrapper">
           <div className="videolist-area ms-2 mb-3">
             <div className="course-title mb-4 mt-4">
               <h5 className="fw-bold">Course Videos</h5>
