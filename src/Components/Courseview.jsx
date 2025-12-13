@@ -81,7 +81,7 @@ const Courseview = () => {
     },
     {
       id: 14,
-      title: "Video 14 – Candlestick Patterns.",
+      title: "Video 14 – Trading with timeframe",
       vimeoId:
         "1146159928"
     }

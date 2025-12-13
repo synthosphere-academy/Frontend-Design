@@ -163,12 +163,9 @@ function Registrationanyuser() {
       });
     }
     } catch (error) {
-      console.error("Registration Error:", error);
-      swal(
-        "Error!",
-        error.response?.data?.message || "Something went wrong!",
-        "error"
-      );
+       console.error("Registration Error:", error);
+            const message = error.response?.data?.message || error.message || "Server not responding";
+            swal("Error!", message, "error");
     }
   };
 
