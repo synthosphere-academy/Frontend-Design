@@ -68,6 +68,12 @@ const Courseview = () => {
         "1146159983",
     },
     {
+      id: 11,
+      title: " Video 11 – Practical Buy & Sell",
+      vimeoId:
+        "1146305836"
+    },
+    {
       id: 12,
       title: " Video 12 – Basic Fundamental Analysis.",
       vimeoId:
@@ -81,10 +87,23 @@ const Courseview = () => {
     },
     {
       id: 14,
-      title: "Video 14 – Trading with timeframe",
+      title: "Video 14 – Basic Knowledge of Trading Time Frame",
       vimeoId:
         "1146159928"
+    },
+    {
+      id: 15,
+      title: "Video 15 - Portfolio management",
+      vimeoId:
+        "1146305654"
+    },
+    {
+      id: 16,
+      title: "Video 16 - Power of Holding Cryptocurrency",
+      vimeoId:
+        "1146305542"
     }
+
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0]);
