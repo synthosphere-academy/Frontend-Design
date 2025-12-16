@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "../../Css/Userdasboard/orderhistory.css";
 
@@ -8,13 +8,16 @@ const Orderhistory = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const userId = sessionStorage.getItem('userid');
+      const userId = sessionStorage.getItem("userid");
       console.log("UserID:", userId);
 
       if (!userId) return;
 
       try {
-        const response = await axios.post(`${ROOT_URL}/api/users/getorderdetailsbyuser`, { userId });
+        const response = await axios.post(
+          `${ROOT_URL}/api/users/getorderdetailsbyuser`,
+          { userId }
+        );
         setorderdata(response.data);
         console.log("Fetched Orders:", response.data);
       } catch (err) {
@@ -27,9 +30,8 @@ const Orderhistory = () => {
 
   return (
     <div className="container py-3">
-      
       {orderdata.length > 0 ? (
-        <div className='table-responsive'>
+        <div className="table-responsive">
           <table className="table table-striped">
             <thead className="table-primary">
               <tr>
@@ -42,16 +44,18 @@ const Orderhistory = () => {
               </tr>
             </thead>
             <tbody>
-              {orderdata.map((order,index) => (
-                <tr key={order._id}>
-                  <td>{index+1}</td>
-                  <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                  <td>{order.coursename || "N/A"}</td>
-                  <td>{order.packagename || "N/A"}</td>
-                  <td>{order.amount || "N/A"}</td>
-                  <td>{order.razorpay_payment_id || "N/A"}</td>
-                </tr>
-              ))}
+              {orderdata
+                .filter((order) => order.paymentStatus === "paid")
+                .map((order, index) => (
+                  <tr key={order._id}>
+                    <td>{index + 1}</td>
+                    <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                    <td>{order.coursename || "N/A"}</td>
+                    <td>{order.packagename || "N/A"}</td>
+                    <td>{order.amount || "N/A"}</td>
+                    <td>{order.razorpay_payment_id || "N/A"}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
