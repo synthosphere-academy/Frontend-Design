@@ -102,7 +102,14 @@ const Courseview = () => {
       title: "Video 16 - Power of Holding Cryptocurrency",
       vimeoId:
         "1146305542"
-    }
+    },
+    {
+      id: 17,
+      title: "Video 17 - Practice Makes Perfection",
+      vimeoId:
+        "1146335360"
+    },
+    
 
   ];
 
