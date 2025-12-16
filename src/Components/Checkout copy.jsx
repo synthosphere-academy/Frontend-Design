@@ -50,14 +50,7 @@ const Checkout = () => {
     try {
       // 1️⃣ Create order on backend
       const { data } = await axios.post(`${ROOT_URL}/api/users/checkout`, {
-        amount: Number(coursePrice), 
-         userId,
-      fullname,
-      phoneno,
-      email,
-      address,
-      packagename: courseName,
-      coursename: Course_name,
+        amount: Number(coursePrice), // amount in paise
       });
 
       const { order } = data;
@@ -65,23 +58,40 @@ const Checkout = () => {
       // 2️⃣ Configure Razorpay
       const options = {
         // key: "rzp_live_RSwodshzvv3moq", // replace with your live/test key
-        key: "rzp_test_Rrt6SRaU3EQgQW",
+        key: "rzp_test_fljf9prKP3Ri1D",
         amount: order.amount,
         currency: "INR",
         name: "Synthosphere Academy",
         description: courseName,
         image: pic1,
         order_id: order.id,
-        handler: async function () {
-          // alert(response.razorpay_payment_id);
-          // alert(response.razorpay_order_id);
-          // alert(response.razorpay_signature);
+        handler: async function (response) {
+          try {
+            await axios.post(`${ROOT_URL}/api/users/paymentverification_students`, {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              fullname,
+              phoneno,
+              email,
+              address,
+              userId,
+              packagename: courseName,
+              coursename: Course_name,
+              
+              amount: coursePrice,
+            });
+
             swal(
-          "Payment Successful!",
-          "We are processing your enrollment.",
-          "success"
-        );
-        navigate("/paymentSucess");
+              "Thank you for your purchase!",
+              "You've successfully enrolled in the course.",
+              "success"
+            );
+            navigate("/paymentSucess");
+          } catch (err) {
+            console.error(err);
+            swal("Payment verification failed!", "Please contact support.", "error");
+          }
         },
         prefill: {
           name: fullname,
