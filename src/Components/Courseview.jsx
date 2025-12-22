@@ -109,8 +109,12 @@ const Courseview = () => {
       vimeoId:
         "1146335360"
     },
-    
-
+    {
+      id: 18,
+      title: "Video 18 - What is Google Authenticator?",
+      vimeoId:
+        "1148583052"
+    }
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0]);
