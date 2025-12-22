@@ -64,8 +64,8 @@ const Checkout = () => {
 
       // 2️⃣ Configure Razorpay
       const options = {
-        key: "rzp_live_RSwodshzvv3moq", // replace with your live/test key
-        // key: "rzp_test_Rrt6SRaU3EQgQW",
+        // key: "rzp_live_RSwodshzvv3moq", // replace with your live/test key
+        key: "rzp_test_Rrt6SRaU3EQgQW",
         amount: order.amount,
         currency: "INR",
         name: "Synthosphere Academy",

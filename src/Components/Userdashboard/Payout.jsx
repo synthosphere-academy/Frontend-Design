@@ -70,9 +70,7 @@ function Payout() {
                   <td>{new Date(payout.date).toLocaleDateString()}</td>
                      <td>₹{(payout.amount - payout.amount * 0.05).toFixed(2)}</td>
                   <td>
-                    <span
-                      
-                    >
+                    <span>
                       {payout.status}
                     </span>
                   </td>
