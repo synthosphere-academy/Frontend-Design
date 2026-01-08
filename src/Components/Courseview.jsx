@@ -135,6 +135,7 @@ const Courseview = () => {
         if (response.data?.error) {
           setorderdata(null);
         } else {
+          console.log("Order Data:", response.data);
           setorderdata(response.data);
         }
       } catch (err) {
@@ -147,7 +148,12 @@ const Courseview = () => {
   }, []);
 
   // Filter videos based on order data
-  const filteredVideos = orderdata === null ? [videos[0]] : videos;
+  // const filteredVideos = orderdata === null ? [videos[0]] : videos;
+  const filteredVideos =
+  !orderdata || orderdata[0]?.paymentStatus !== "paid"
+    ? [videos[0]]
+    : videos;
+
 
   // Update current video when orderdata changes
   useEffect(() => {
@@ -182,7 +188,7 @@ const Courseview = () => {
             ></iframe>
           </div>
           <h5 className="fw-bold mt-3 d-block d-md-none video-title-mobile"> {currentVideo.title}</h5>
-          {orderdata === null && (
+          {(!orderdata || orderdata[0]?.paymentStatus !== "paid") && (
     <div className="mt-4 p-3 border rounded text-center bg-light">
       <div className=" h5 fw-bold text-danger">
         For more videos, purchase any package
