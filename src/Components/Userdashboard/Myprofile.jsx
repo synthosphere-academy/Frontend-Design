@@ -33,7 +33,7 @@ function Myprofile() {
                 <ProfileRow label="Full Name" value={username} />
                 <ProfileRow label="Phone Number" value={userphone} />
                 <ProfileRow label="Email Address" value={useremail} />
-                <ProfileRow label="Account Status" value={userstatus} />
+                <ProfileRow label="Account Status" value={userstatus}  />
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@ const ProfileRow = ({ label, value }) => (
     <div className="col-5 col-md-4 fw-semibold text-muted">
       {label}
     </div>
-    <div className="col-7 col-md-8 text-dark">
+    <div className="col-7 col-md-8">
       {value || "None"}
     </div>
   </div>
