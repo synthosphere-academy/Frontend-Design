@@ -34,6 +34,7 @@ const Directteam = () => {
       >
         <thead>
           <tr>
+            <th className="text-center">S/N</th>
             <th className="text-center">User ID</th>
             <th className="text-center">Username</th>
             {/* <th className="text-center">Status</th> */}
@@ -43,6 +44,7 @@ const Directteam = () => {
           {data.referredUsers && data.referredUsers.length > 0 ? (
             data.referredUsers.map((user, index) => (
               <tr key={index}>
+               <td className="text-center">{index + 1}</td>
                 <td className="text-center">{user.userId}</td>
                 <td className="text-center">{user.name}</td>
                 {/* <td className="text-center">{user.status}</td> */}

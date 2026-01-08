@@ -23,7 +23,7 @@ const Nav = () => {
           <a className="navbar-brand" href="/"><img src={logo} width={60} /></a>
           <a href='/' className="text-decoration-none">
           <div className='d-flex flex-column'>
-          <span className='text-white logoname'>Sythosphere Academy</span>
+          <span className='text-white logoname'>Synthosphere Academy</span>
           <span className=' text-white isologo'>An ISO 9001:2015 Certified</span>
 
           </div>
