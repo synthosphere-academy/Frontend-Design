@@ -4,7 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-
+import pic1 from "../Images/success.png";
+import pic2 from "../Images/error.png";
 function Login() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
@@ -55,14 +56,47 @@ function Login() {
       sessionStorage.setItem("userphone", user.phone);
       sessionStorage.setItem("userstatus", user.status);
 
-      swal("Login Successful!", "Welcome back!", "success");
+      // swal("Login Successful!", "Welcome back!", "success");
+      swal({
+  content: {
+    element: "div",
+    attributes: {
+      innerHTML: `
+        <div>
+          <img src="${pic1}" alt="success" class="swal-icon-animate"  />
+          <h2 style="margin-top:10px;">Congratulations!</h2>
+          <p style="margin-top:10px; font-size:18px;">Login Successful</p>
+        </div>
+      `,
+    },
+  },
+  buttons: true,
+
+  className: "swal-toast",
+});
 
       navigate("/"); // Redirect after login
     } catch (err) {
       console.error("Login Error:", err);
       const msg =
         err.response?.data?.message || "Email/Phone or password incorrect!";
-      swal("Oops!", msg, "error");
+     swal({
+  content: {
+    element: "div",
+    attributes: {
+      innerHTML: `
+        <div>
+          <img src="${pic2}" alt="error" class="swal-icon-animate"  />
+          <h2 style="margin-top:15px;">Oops!</h2>
+          <p style="margin-top:16px; font-size:18px;">${msg}</p>
+        </div>
+      `,
+    },
+  },
+  buttons: true,
+
+  className: "swal-toast",
+});
     }
   };
 

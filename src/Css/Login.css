@@ -40,6 +40,7 @@ right: 64px;
       display: none;
 
     }
+   
     #loginform{
         border-radius: 20px 20px 20px 20px; 
     }
@@ -48,4 +49,38 @@ right: 64px;
         right: 60px;  
     }
   }
-  
+.swal-toast {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+
+  width: 90%;
+  max-width: 420px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+
+  animation: none !important; /* IMPORTANT */
+}
+
+
+.swal-icon-animate {
+  width: 70px;
+  margin-bottom: 8px;
+animation: iconPulse 1.8s ease-in-out infinite;
+}
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.20);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
