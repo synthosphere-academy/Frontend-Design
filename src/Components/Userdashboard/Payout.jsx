@@ -67,7 +67,7 @@ function Payout() {
                 <tr key={payout._id}>
                   <td>{index + 1}</td>
                   <td className="fw-semibold">₹{payout.amount}</td>
-                  <td>{new Date(payout.date).toLocaleDateString()}</td>
+                  <td>{payout.date}</td>
                      <td>₹{(payout.amount - payout.amount * 0.05).toFixed(2)}</td>
                   <td>
                     <span>
