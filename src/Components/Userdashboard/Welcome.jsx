@@ -139,7 +139,8 @@ Website - synthosphereacademy.com
                       </div>
                     </div>
                   </div>
-                 {orderdata.length > 0 && (
+                 {orderdata.filter((order) => order.paymentStatus === "paid")
+                .map((order, index) => (
                       <>
                         <div className="h4 fw-bold text-center mt-5">Invoice</div>
                         <div className="container mt-3 mb-3">
@@ -147,7 +148,7 @@ Website - synthosphereacademy.com
                             {/* Header */}
                             <div className="d-flex flex-column flex-md-row justify-content-between align-items-start">
                               <div>
-                                <h5 className="mt-2 fw-bold">{data.company}</h5>
+                                <h5 className="mt-2 fw-bold">{order.company}</h5>
                               </div>
                               <div className="text-end">
                                 <img
@@ -161,8 +162,9 @@ Website - synthosphereacademy.com
                               </div>
                             </div>
                             <hr />
-
-                            {orderdata.map((order, index) => (
+                             {orderdata.filter((order) => order.paymentStatus === "paid")
+                .map((order, index) => (
+                           
                               <div key={index}>
                                 <h5 className="fw-bold">
                                   Payment Receipt{" "}
@@ -241,7 +243,7 @@ Website - synthosphereacademy.com
                           </div>
                         </div>
                       </>
-                    )}
+                   ) )}
                 </div>
               </div>
             </div>

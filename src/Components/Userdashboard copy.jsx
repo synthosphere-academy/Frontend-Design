@@ -35,7 +35,7 @@ export default function UserDashboard() {
     {name: "Welcome" , icon:"fa fa-envelope-o"},
       { name: "Registration", icon: "fa fa-user-plus" },
     { name: "My Profile", icon: "fa fa-user" },
-     {name: "KYC Form", icon: "fa fa-id-card"},
+     {name: "Bank Details", icon: "fa fa-id-card"},
      { name: "Our Packages", icon: "fa fa-graduation-cap" },
     { name: "Enrolled Courses", icon: "fa fa-book" },
     { name: "Order History", icon: "fa fa-history" },
@@ -59,7 +59,7 @@ export default function UserDashboard() {
         return <Registrationanyuser />;
       case "My Profile":
         return <Myprofile />;
-         case "KYC Form":
+         case "Bank Details":
         return <KYC />; 
       case "Our Packages":
         return <Affiliatecourses />;
