@@ -15,6 +15,7 @@ import Registrationanyuser from "./Userdashboard/Registrationanyuser";
 import Rank from "./Userdashboard/Rank";
 import Courseview from "./Courseview";
 import KYC from "./Userdashboard/KYC";
+import Idcard from "./Userdashboard/Idcard";
 
 export default function UserDashboard() {
   const [active, setActive] = useState("Dashboard");
@@ -47,9 +48,10 @@ export default function UserDashboard() {
   const menuItems = [
     { name: "Dashboard", icon: "fa fa-home" },
     { name: "Welcome", icon: "fa fa-envelope-o" },
+     { name: "ID Card", icon: "fa fa-id-card-o" },
     { name: "Registration", icon: "fa fa-user-plus" },
     { name: "My Profile", icon: "fa fa-user" },
-    { name: "Bank Details", icon: "fa fa-id-card" },
+    { name: "Bank Details", icon: "fa fa-bank" },
     { name: "Our Packages", icon: "fa fa-graduation-cap" },
     { name: "Enrolled Courses", icon: "fa fa-book" },
     { name: "Order History", icon: "fa fa-history" },
@@ -67,6 +69,7 @@ export default function UserDashboard() {
     switch (active) {
       case "Dashboard": return <Home />;
       case "Welcome": return <Welcome />;
+      case "ID Card": return <Idcard />;
       case "Registration": return <Registrationanyuser />;
       case "My Profile": return <Myprofile />;
       case "Bank Details": return <KYC />;
