@@ -149,16 +149,25 @@ const Courseview = () => {
 
   // Filter videos based on order data
   // const filteredVideos = orderdata === null ? [videos[0]] : videos;
-  const filteredVideos =
-  !orderdata || orderdata[0]?.paymentStatus !== "paid"
-    ? [videos[0]]
-    : videos;
+  // const filteredVideos =
+  // !orderdata || orderdata[0]?.paymentStatus !== "paid"
+  //   ? [videos[0]]
+  //   : videos;
 
+  // // Update current video when orderdata changes
+  // useEffect(() => {
+  //   setCurrentVideo(filteredVideos[0]);
+  // }, [orderdata]);
+  const hasPaidOrder =
+  Array.isArray(orderdata) &&
+  orderdata.some((order) => order.paymentStatus === "paid");
 
-  // Update current video when orderdata changes
-  useEffect(() => {
-    setCurrentVideo(filteredVideos[0]);
-  }, [orderdata]);
+const filteredVideos = hasPaidOrder ? videos : [videos[0]];
+
+useEffect(() => {
+  setCurrentVideo(filteredVideos[0]);
+}, [hasPaidOrder]);
+
 
   const handleVideoClick = (video) => {
     setCurrentVideo(video);
@@ -204,7 +213,6 @@ const Courseview = () => {
 >
   Buy Package
 </button>
-
 
     </div>
   )}

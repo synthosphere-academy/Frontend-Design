@@ -181,9 +181,9 @@ function Login() {
                         </div>
 
                         <div className="d-flex justify-content-between">
-                          <a className="text-success" href="/forgotpassword">
+                          {/* <a className="text-success" href="/forgotpassword">
                             Forgot password?
-                          </a>
+                          </a> */}
                           <span className="text-white register_text">
                             Don’t have an account?{" "}
                             <a className="reg text-success" href="/register">
