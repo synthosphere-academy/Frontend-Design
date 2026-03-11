@@ -1,7 +1,7 @@
 /* Sidebar item default style */
 .sidebar-item {
   color: #000000;
-  padding: 10px 18px;
+  padding: 5px 10px;
   border: none;
   width: 100%;
   text-align: left;
@@ -16,7 +16,7 @@
 .sidebar-item:hover {
   background-color: #9a457e;
   color: #ffffff;
-   padding: 12px 16px; /* orange text on hover */
+  padding: 12px 16px; /* orange text on hover */
 }
 
 /* Active (clicked) item */
