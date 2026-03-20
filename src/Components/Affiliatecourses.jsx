@@ -84,7 +84,7 @@ const Affiliatecourses = () => {
         "Portfolio Management Guide",
         "One Month Spot Call",
         "Basic Fundamental Analysis, Technical Analysis",
-        "Online 17 Education Videos",
+        "Online 18 Education Videos",
       ],
     },
     {
