@@ -86,7 +86,7 @@ const Affiliatecourses = () => {
         "Portfolio Management Guide",
         "One Month Spot Call",
         "Basic Fundamental Analysis, Technical Analysis",
-        "Online Videos",
+        "Online Educational Videos",
       ],
     },
     {
@@ -102,7 +102,7 @@ const Affiliatecourses = () => {
         "Advance Portfolio Management",
         "Spot & Future Trading Call (2 Months)",
         "Advance Fundamental Analysis, Technical Analysis",
-        "Online Videos",
+        "Online Educational Videos",
         "Regular PNL Strategy",
         "Basic Liquidation Strategy",
       ],
@@ -126,7 +126,7 @@ const Affiliatecourses = () => {
 
         "Advance Fundamental Analysis, Technical Analysis",
 
-        "Online Videos",
+        "Online Educational Videos",
 
         "Risk Management Strategy",
         "Regular PNL Strategy",
@@ -165,7 +165,7 @@ const Affiliatecourses = () => {
 
         "Advance Fundamental Analysis, Technical Analysis",
 
-        "Online Videos",
+        "Online Educational Videos",
 
         "Risk Management Strategy",
 
@@ -203,7 +203,7 @@ const Affiliatecourses = () => {
         "Advance Portfolio Management",
         "Spot & Future Trading Call (12 Months)",
         "Advance Fundamental Analysis, Technical Analysis",
-        "Online Videos",
+        "Online Educational Videos",
         "Risk Management Strategy",
         "Regular PNL Strategy",
         "Basic Liquidation Strategy",
