@@ -3,13 +3,9 @@ import axios from "axios";
 import "../Css/courseview.css";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import certificate from "../Images/academy_certificate.png";
-import Player from "@vimeo/player";
-import { useRef } from "react";
-import { number } from "prop-types";
+import certificate from "../Images/academy_certificate.jpg";
+
 const Courseview = () => {
-  const iframeRef = useRef(null);
-  const playerRef = useRef(null);
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const [orderdata, setorderdata] = useState(null);
   const [showquiz, setshowquiz] = useState(false);
@@ -18,72 +14,23 @@ const Courseview = () => {
   const [showResult, setShowResult] = useState(false);
   const [showCertificate, setShowCertificate] = useState(false);
   const [watchedVideos, setWatchedVideos] = useState([]);
-  const [userProgress, setUserProgress] = useState(null);
 
   const questions = [
     {
-      question: "What is Cryptocurrency?",
-      number: 1,
-      options: ["Physical money","Digital currency using cryptography","Bank-issued notes"],
-      answer: "Digital currency using cryptography",
+      question: "What is React?",
+      options: ["Library", "Framework", "Language"],
+      answer: "Library",
     },
     {
-      question: "What is Blockchain?",
-      number: 2,
-      options: ["A type of wallet","A decentralized ledger system", "A trading app"],
-      answer: "A decentralized ledger system",
+      question: "What is JSX?",
+      options: ["HTML in JS", "CSS", "Database"],
+      answer: "HTML in JS",
     },
     {
-      question: "Which is the first cryptocurrency?",
-      number: 3,
-      options: ["Bitcoin", "Ethereum", "Ripple"],
-      answer: "Bitcoin",
+      question: "What is JSX?",
+      options: ["HTML in JS", "CSS", "Database"],
+      answer: "HTML in JS",
     },
-    {
-      question: "What is a Wallet in crypto?",
-      number: 4,
-      options: ["A place to store physical coins", "Software to store digital assets", "A bank account"],
-      answer: "Software to store digital assets",
-    },
-    {
-      question: "What does “Dex” mean ?",
-      number: 5,
-      options: ["Decentralized Exchange (Uniswap, Metamask)", "Binance, Coin DCX", "Bank account"],
-      answer: "Decentralized Exchange (Uniswap, Metamask)",
-    },
-    {
-      question: "What is Mining in Crypto?",
-      number: 6,
-      options: ["Buying coins", "Validating transactions and adding blocks", "Sending money"],
-      answer: "Validating transactions and adding blocks",
-
-    },
-    {
-      question: "What is Ethereum mainly used for?",
-      number: 7,
-      options: ["Only payments", "Smart contracts and dApps", "Gaming only"],
-      answer: "Smart contracts and dApps",
-    },
-    {
-      question: "What is a Private Key?",
-      number: 8,
-      options: ["Public password", "Secret code to access your crypto wallet", "Bank PIN"],
-      answer: "Secret code to access your crypto wallet",
-    },
-    {
-      question: "What is a halving?",
-      number: 9,
-      options: ["4 years circle of bitcoin mining reward", "Bullrun", "Future trading"],
-      answer: "4 years circle of bitcoin mining reward",
-    },
-    {
-      question: "What is an Exchange?",
-      number: 10,
-      options: ["Crypto storage device", "Platform to buy/sell crypto", "Mining machine"],
-      answer: "Platform to buy/sell crypto",
-
-    }
-
   ];
   const generateCertificate = () => {
     const input = document.getElementById("certificate");
@@ -99,43 +46,18 @@ const Courseview = () => {
       pdf.save("certificate.pdf");
     });
   };
-
-  const handleAnswer = async (option) => {
-  let newScore = score;
-
-  // ✅ Calculate score manually
-  if (option === questions[currentQ].answer) {
-    newScore = score + 1;
-    setScore(newScore);
-  }
-
-  const next = currentQ + 1;
-
-  if (next < questions.length) {
-    setCurrentQ(next);
-  } else {
-    setShowResult(true);
-
-    const userId = sessionStorage.getItem("userid");
-
-    const passed = newScore === questions.length;
-
-    try {
-      await axios.post(`${ROOT_URL}/api/users/submit-quiz`, {
-        userId,
-        passed,
-      });
-
-      // ✅ Auto show certificate if passed
-      if (passed) {
-         setShowCertificate(true);
-        setshowquiz(false);
-      }
-    } catch (err) {
-      console.error("Quiz submit error:", err);
+  const handleAnswer = (option) => {
+    if (option === questions[currentQ].answer) {
+      setScore(score + 1);
     }
-  }
-};
+
+    const next = currentQ + 1;
+    if (next < questions.length) {
+      setCurrentQ(next);
+    } else {
+      setShowResult(true);
+    }
+  };
 
   const videos = [
     {
@@ -232,84 +154,6 @@ const Courseview = () => {
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0]);
-
-  useEffect(() => {
-    if (!iframeRef.current) return;
-
-    const player = new Player(iframeRef.current);
-    playerRef.current = player;
-
-    let watched = false;
-
-    player.on("timeupdate", (data) => {
-      if (data.percent >= 0.9) {
-        watched = true;
-      }
-    });
-
-    player.on("ended", async () => {
-      if (!watched) return;
-
-      const userId = sessionStorage.getItem("userid");
-
-      await axios.post(`${ROOT_URL}/api/users/watch-video`, {
-        userId,
-        videoId: currentVideo.id,
-      });
-
-      setWatchedVideos((prev) => {
-        if (!prev.includes(currentVideo.id)) {
-          return [...prev, currentVideo.id];
-        }
-        return prev;
-      });
-    });
-
-    // ✅ NO destroy here
-  }, [currentVideo]);
-  /////Load watched videos on page load
-  useEffect(() => {
-    const fetchWatched = async () => {
-      const userId = sessionStorage.getItem("userid");
-      if (!userId) return;
-
-      const res = await axios.post(`${ROOT_URL}/api/users/get-watched-videos`, {
-        userId,
-      });
-
-      const watchedIds = res.data.map((v) => v.videoId);
-      setWatchedVideos(watchedIds);
-    };
-
-    fetchWatched();
-  }, []);
-///////////////get user progress (quiz passed or not)
-useEffect(() => {
-  const fetchProgress = async () => {
-    const userId = sessionStorage.getItem("userid");
-    if (!userId) return;
-
-    try {
-      const res = await axios.post(
-        `${ROOT_URL}/api/users/get-progress`,
-        { userId }
-      );
-
-      setUserProgress(res.data);
-
-      // ✅ If already completed → show certificate
-      if (res.data?.certificateGenerated) {
-        setShowCertificate(true);
-        setshowquiz(false);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  fetchProgress();
-}, []);
-
   // Fetch Order Data
   useEffect(() => {
     const fetchOrders = async () => {
@@ -339,6 +183,17 @@ useEffect(() => {
     fetchOrders();
   }, []);
 
+  // Filter videos based on order data
+  // const filteredVideos = orderdata === null ? [videos[0]] : videos;
+  // const filteredVideos =
+  // !orderdata || orderdata[0]?.paymentStatus !== "paid"
+  //   ? [videos[0]]
+  //   : videos;
+
+  // // Update current video when orderdata changes
+  // useEffect(() => {
+  //   setCurrentVideo(filteredVideos[0]);
+  // }, [orderdata]);
   const hasPaidOrder =
     Array.isArray(orderdata) &&
     orderdata.some((order) => order.paymentStatus === "paid");
@@ -349,16 +204,22 @@ useEffect(() => {
     setCurrentVideo(filteredVideos[0]);
   }, [hasPaidOrder]);
 
-  const handleVideoClick = async (video) => {
-    setCurrentVideo(video);
-  };
-  //////////unlock quiz after video 18
-   const allVideowatched = watchedVideos.length === videos.length;
-const date = new Date().toLocaleDateString("en-GB", {
-  day: "2-digit",
-  month: "numeric",
-  year: "numeric",
-});
+ 
+    const handleVideoClick = async (video) => {
+  setCurrentVideo(video);
+
+  const userId = sessionStorage.getItem("userid");
+
+  const res = await axios.post(
+    `${ROOT_URL}/api/users/watch-video`,
+    { userId, videoId: video.id }
+  );
+
+  const watchedIds = res.data.watchedVideos.map(v => v.videoId);
+  setWatchedVideos(watchedIds);
+};
+
+
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -370,8 +231,6 @@ const date = new Date().toLocaleDateString("en-GB", {
 
           <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
             <iframe
-              key={currentVideo.vimeoId}
-              ref={iframeRef}
               src={`https://player.vimeo.com/video/${currentVideo.vimeoId}`}
               width="640"
               height="360"
@@ -393,32 +252,27 @@ const date = new Date().toLocaleDateString("en-GB", {
           {!showquiz && (
             <div
               className="fw-bold mb-4 d-none d-md-block text-center"
-              onClick={() => {
-                if (allVideowatched) {
-                  setshowquiz(true);
-                }
-              }}
-              style={{
-                opacity: allVideowatched ? 1 : 0.5,
-              }}
+              onClick={() => setshowquiz(true)}
+              style={{ cursor: "pointer" }}
             >
-              <span
-                className="user-id-badge mt-5"
-                style={{ cursor: allVideowatched ? "pointer" : "not-allowed" }}
-              >
-                {allVideowatched
-                  ? "Get Your Certificate"
-                  : `Watch all videos to unlock your certificate (${watchedVideos.length}/${videos.length})`}
+              <span className="user-id-badge mt-5">
+                Unlock Your Certificate
               </span>
             </div>
           )}
-
-          {showquiz &&  !userProgress?.certificateGenerated && (
+          {/* {showquiz && (
+            <div className="mt-4 p-3 border rounded text-center bg-light">
+              <div className=" h5 fw-bold text-danger">
+                Quiz Time!
+              </div>
+            </div>
+          )} */}
+          {showquiz && (
             <div className="quiz-box mt-5">
               {!showResult ? (
                 <>
                   <div className="mt-4 p-3 border rounded text-center bg-light">
-                    <h4>{questions[currentQ].number}. {questions[currentQ].question}</h4>
+                    <h4>{questions[currentQ].question}</h4>
 
                     {questions[currentQ].options.map((opt, i) => (
                       <button
@@ -439,7 +293,13 @@ const date = new Date().toLocaleDateString("en-GB", {
 
                   {score === questions.length ? (
                     <>
-                      
+                      <button
+                        className="btn mt-2 text-white "
+                        style={{ backgroundColor: "#b43f95" }}
+                        onClick={() => setShowCertificate(true)}
+                      >
+                        View Certificate
+                      </button>
                     </>
                   ) : (
                     <>
@@ -448,8 +308,7 @@ const date = new Date().toLocaleDateString("en-GB", {
                       </p>
 
                       <button
-                        className="btn  mt-2"
-                        style={{ backgroundColor: "#0e1255", color: "white" }}
+                        className="btn btn-primary mt-2"
                         onClick={() => {
                           setCurrentQ(0);
                           setScore(0);
@@ -491,39 +350,32 @@ const date = new Date().toLocaleDateString("en-GB", {
                 }}
               >
                 {/* User Name */}
-                
+                <div style={{ position: "absolute",
+                    top: "29%",
+                    left: "40%",
+                    transform: "translate(-50%, -50%)",
+                    
+                    color: "#003470",
+                    
+                      fontSize: "25px",
+                      fontWeight: "bold",
+                      fontFamily: "cursive", }}>Crypto Trading Basic to Advanced</div>
                 <div
                   style={{
                     position: "absolute",
-                    top: "57%",
-                    left: "11%",
-                    transform: "translateY(-50%)",
-                    color: "rgb(0, 0, 0)",
-                    fontSize: "22px",
-                    fontWeight: "bold",
-                    fontFamily: "cursive",
-                     whiteSpace: "nowrap", 
-                  }}
-                >
-                  {sessionStorage.getItem("username") || "Your Name"}
-                </div>
-                 <div
-                  style={{
-                    position: "absolute",
-                    top: "84%",
-                    left: "22%",
+                    top: "49%",
+                    left: "21%",
                     transform: "translate(-50%, -50%)",
-
+                    
                     color: "rgb(0, 0, 0)",
-
-                    fontSize: "14px",
-                    fontWeight: 300,
-                    fontFamily: "cursive",
+                    
+                      fontSize: "22px",
+                      fontWeight: "bold",
+                      fontFamily: "cursive",
                   }}
                 >
-                  {
-                    date
-                  }
+
+                {sessionStorage.getItem("username") || "Your Name"}
                 </div>
               </div>
             </div>
@@ -559,29 +411,19 @@ const date = new Date().toLocaleDateString("en-GB", {
               {filteredVideos.map((video) => (
                 <div
                   key={video.id}
-                  className="d-flex flex-row align-items-center video-item p-3 mb-3 border rounded"
+                  className="video-item p-3 mb-3 border rounded"
                   style={{ cursor: "pointer" }}
                   onClick={() => handleVideoClick(video)}
                 >
-                  <div>
-                    {watchedVideos.includes(video.id) && (
-                      <span
-                        className="me-3 p-1 border rounded"
-                        style={{
-                          color: "#8b32bf",
-                          fontWeight: "900",
-                          borderColor: "#8b32bf",
-                        }}
-                      >
-                        ✔
-                      </span>
-                    )}
-                  </div>
-                  <div>
-                    {" "}
-                    <span className="fw-bold">▶ {video.title}</span>
-                  </div>
-               
+                 {/* ✅ Tick mark */}
+    {watchedVideos.includes(video.id) && (
+      
+      <span  className ="me-3 p-1" style={{ color: "#8b32bf", fontWeight: "900" }}>
+        ✔
+      </span>
+      
+    )}
+                  <span className="fw-bold">▶ {video.title}</span>
                 </div>
               ))}
             </div>
@@ -591,23 +433,10 @@ const date = new Date().toLocaleDateString("en-GB", {
         {!showquiz && (
           <div
             className="fw-bold mb-4 d-block d-md-none video-title-mobile"
-            onClick={() => {
-              if (allVideowatched) {
-                setshowquiz(true);
-              }
-            }}
-            style={{
-              opacity: allVideowatched ? 1 : 0.5,
-            }}
+            onClick={() => setshowquiz(true)}
+            style={{ cursor: "pointer" }}
           >
-            <span
-              className="user-id-badge mt-5"
-              style={{ cursor: allVideowatched ? "pointer" : "not-allowed" }}
-            >
-              {allVideowatched
-                ? "Get Your Certificate"
-                : `Complete all videos to unlock your certificate (${watchedVideos.length}/${videos.length})`}
-            </span>
+            <span className="user-id-badge mt-5">Unlock Your Certificate</span>
           </div>
         )}
       </div>

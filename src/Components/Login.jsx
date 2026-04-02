@@ -173,7 +173,7 @@ function Login() {
 
                         <div className="pt-1 mb-4 text-center">
                           <button
-                             className="btn-lg signupbutton w-25"
+                             className="btn-lg signupbutton px-4"
                             type="submit"
                           >
                             Login

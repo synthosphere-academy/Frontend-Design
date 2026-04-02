@@ -132,14 +132,14 @@ function Courses() {
       <div className="text-center display-4 fw-bold mt-5">All Courses</div>
 
       <div className="container py-5 cardcontainer">
-      <div className="h2 fw-bold mb-3">Physical Courses:</div>
+      {/* <div className="h2 fw-bold mb-3">Physical Courses:</div> */}
       <div className="container py-5 cardcontainer">
                   <div className="row  g-4">
-                    {/* 1st card */}
-                    <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+                  
+                    {/* <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                       <div className="card-container">
                         <div className="card-flip">
-                          {/* Front */}
+                         
                           <div className="card-front">
                             <img
                               className="card-img-top"
@@ -166,7 +166,7 @@ function Courses() {
                             </div>
                           </div>
       
-                          {/* Back */}
+                          
                           <div className="card-back">
                             <div
                               className="card-body"
@@ -189,13 +189,13 @@ function Courses() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
       
-                    {/* 2nd card */}
-                    <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+                    
+                    {/* <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                       <div className="card-container">
                         <div className="card-flip">
-                          {/* Front */}
+                          
                           <div className="card-front">
                             <img
                               className="card-img-top"
@@ -222,7 +222,7 @@ function Courses() {
                             </div>
                           </div>
       
-                          {/* Back */}
+                          
                           <div className="card-back">
                             <div
                               className="card-body"
@@ -249,9 +249,9 @@ function Courses() {
                           </div>
                         </div>
                       </div>
-                    </div>
-                    {/* End 2nd card */}
-                    {/* 3rd */}
+                    </div> */}
+                    
+                  
                     <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                                    <div className="card-container">
                                      <div className="card-flip">
@@ -307,13 +307,13 @@ function Courses() {
                                      </div>
                                    </div>
                                  </div>
-                    {/* 4th */}
+                    
                   
-                    {/* 5th */}
-                    <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+                   
+                    {/* <div className="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                       <div className="card-container">
                         <div className="card-flip">
-                          {/* Front */}
+                         
                           <div className="card-front">
                             <img
                               className="card-img-top"
@@ -339,7 +339,7 @@ function Courses() {
                             </div>
                           </div>
       
-                          {/* Back */}
+                          
                           <div className="card-back">
                             <div
                               className="card-body"
@@ -361,12 +361,10 @@ function Courses() {
                           </div>
                         </div>
                       </div>
-                    </div>
-                    {/* 6th */}
+                    </div> */}
+                    
                    
-                    {/*  7th */}
                    
-                    {/* 8th */}
                     
                   </div>
                 </div>

@@ -29,7 +29,7 @@ const KYC = () => {
       try {
         const response = await axios.post(
           `${ROOT_URL}/api/users/full-details`,
-          { userId }
+          { userId },
         );
 
         if (response.data.success && response.data.data) {
@@ -103,9 +103,7 @@ const KYC = () => {
 
     const form = new FormData();
 
-    Object.entries(formData).forEach(([key, value]) =>
-      form.append(key, value)
-    );
+    Object.entries(formData).forEach(([key, value]) => form.append(key, value));
 
     if (passbookPhoto) {
       form.append("passbookPhoto", passbookPhoto);
@@ -119,7 +117,7 @@ const KYC = () => {
         form,
         {
           headers: { "Content-Type": "multipart/form-data" },
-        }
+        },
       );
 
       swal("Success", response.data.message || "KYC submitted!", "success");
@@ -133,7 +131,7 @@ const KYC = () => {
       swal(
         "Error",
         error.response?.data?.message || "Failed to submit KYC",
-        "error"
+        "error",
       );
     }
   };
@@ -145,35 +143,42 @@ const KYC = () => {
   // Show table if KYC exists AND not rejected
   if (bankDetails && bankDetails.status?.toLowerCase() !== "rejected") {
     return (
-      <div className="container my-4 d-flex justify-content-center">
-        <table className="table table-striped w-75 shadow-sm">
-          <thead>
-            <tr>
-              <th className="text-center">User ID</th>
-              <th className="text-center">Name as per Document</th>
-              <th className="text-center">KYC Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="text-center">{bankDetails.userId}</td>
-              <td className="text-center">
-                {bankDetails.nameAsPerDocument}
-              </td>
-              <td className="text-center">
-                <span
-                  className={`badge ${
-                    bankDetails.status === "verified"
-                      ? "bg-success"
-                      : "bg-warning"
-                  }`}
-                >
-                  {bankDetails.status}
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className=" container my-4">
+        <div className="table-responsive">
+          <table className="table table-striped shadow-sm text-center">
+            <thead>
+              <tr>
+                <th style={{ minWidth: "120px" }} className="text-center">
+                  User ID
+                </th>
+                <th style={{ minWidth: "120px" }} className="text-center">
+                  Name as per Document
+                </th>
+                <th style={{ minWidth: "100px" }} className="text-center">
+                  KYC Status
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="text-center">{bankDetails.userId}</td>
+                <td className="text-center">{bankDetails.nameAsPerDocument}</td>
+                <td>
+                  <span
+                    className={`badge ${
+                      bankDetails.status === "verified"
+                        ? "bg-success"
+                        : "bg-warning text-dark"
+                    }`}
+                    style={{ whiteSpace: "normal" }}
+                  >
+                    {bankDetails.status}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
@@ -198,7 +203,8 @@ const KYC = () => {
         {/* Message for rejected */}
         {bankDetails?.status === "rejected" && (
           <div className="alert alert-danger text-center">
-            Your bank details were rejected. Please correct the details and submit again.
+            Your bank details were rejected. Please correct the details and
+            submit again.
           </div>
         )}
 
@@ -290,9 +296,7 @@ const KYC = () => {
             />
           </div>
 
-          {KycError && (
-            <span className="text-danger">{KycError}</span>
-          )}
+          {KycError && <span className="text-danger">{KycError}</span>}
         </div>
 
         <div className="text-center mt-4">

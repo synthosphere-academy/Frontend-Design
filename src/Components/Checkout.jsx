@@ -115,13 +115,13 @@ const Checkout = () => {
 
       <div className="container checkoutform mb-3">
         <form onSubmit={handleSubmit}>
-          <div className="row align-items-center">
-            <div className="col-6">
+          <div className="row align-items-center text-center text-md-start">
+  <div className="col-12 col-md-6 mb-1">
               <p className="h4 mt-1 p-3">
                 <strong>Course:</strong> {courseName}
               </p>
             </div>
-            <div className="col-3 text-center">
+            <div className="col-12 col-md-6 text-md-end">
               <span className="totalamount">
                 Price: ₹{coursePrice} (Incl. GST)
               </span>

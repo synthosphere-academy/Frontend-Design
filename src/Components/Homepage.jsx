@@ -7,7 +7,7 @@ import Steps from './Steps'
 import Ourteam from './Ourteam';
 import Chooseus from './Chooseus'
 // import Ourblog from './Ourblog';
-import Typeofcourse from "./Typeofcourse";
+// import Typeofcourse from "./Typeofcourse";
 
 
 function Homepage() {
@@ -15,7 +15,7 @@ function Homepage() {
     <>
     
       <Banner/>
-      <Typeofcourse/>
+      {/* <Typeofcourse/> */}
       <Features/>
       <Steps/>
       {/* <Mostpopularcourse/> */}
