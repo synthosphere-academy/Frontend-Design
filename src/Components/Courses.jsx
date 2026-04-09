@@ -369,7 +369,7 @@ function Courses() {
                   </div>
                 </div>
       </div>
-      <div className="container py-5 cardcontainer ">
+      {/* <div className="container py-5 cardcontainer ">
         <h4 className="fw-bold h2">Online courses:</h4>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           <div>
@@ -558,7 +558,7 @@ function Courses() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

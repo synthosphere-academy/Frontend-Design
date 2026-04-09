@@ -51,7 +51,7 @@ function Banner() {
                             <h1 className='display-2 text fw-bold'>Find your course</h1>
                             <h1 className='display-2 text fw-bold'>Change your life</h1><br />
                             <span className='para'>Discover Synthosphere Academy:  Elevate Your Knowledge. Offering Expert-Led Programs, Innovative Resources and a Vibrant Community, Empowering You to Thrive in the World of Synthesis and Beyond.</span><br /><br />
-                            <div className="search mt-5">
+                            {/* <div className="search mt-5">
                             <img className='searchicon' src={icon} width={20}/>
                                
                                 <input type="text" className="form-control" id='searchinput' 
@@ -66,7 +66,7 @@ function Banner() {
                
                 }
             </ul>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="col-lg-6">
                             <img src={bg} width="95%" />
