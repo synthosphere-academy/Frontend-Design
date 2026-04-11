@@ -80,6 +80,15 @@ const Genealogytree = () => {
               >
              <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: bgColor, color: "#fff" }}/>
                 <h5 className="fw-bold mt-1">{ref.name}</h5>
+                {ref.courseStatus === "active" && (
+                  <span style={{fontSize: "15px" }}>⭐</span>
+                  
+                  )}
+
+                  {ref.courseStatus === "expired" && (
+                      <i class="fa fa-star-half-full" style={{color:"#e0bc38"}}></i>
+                  
+                  )}
                 <p>{ref.userId}</p>
               </div>
             );
@@ -93,3 +102,5 @@ const Genealogytree = () => {
 };
 
 export default Genealogytree;
+
+

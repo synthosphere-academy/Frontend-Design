@@ -7,7 +7,7 @@ const Directteam = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const userId =  sessionStorage.getItem("userid")
+      const userId = sessionStorage.getItem("userid");
       if (!userId) return;
 
       try {
@@ -37,17 +37,30 @@ const Directteam = () => {
             <th className="text-center">S/N</th>
             <th className="text-center">User ID</th>
             <th className="text-center">Username</th>
-            {/* <th className="text-center">Status</th> */}
+            <th className="text-center">Smart Trader</th>
           </tr>
         </thead>
         <tbody>
           {data.referredUsers && data.referredUsers.length > 0 ? (
             data.referredUsers.map((user, index) => (
               <tr key={index}>
-               <td className="text-center">{index + 1}</td>
+                <td className="text-center">{index + 1}</td>
                 <td className="text-center">{user.userId}</td>
                 <td className="text-center">{user.name}</td>
-                {/* <td className="text-center">{user.status}</td> */}
+                <td className="text-center">
+                  {user.courseStatus === "active" && (
+                    <span style={{ color: "green", fontSize: "20px" }}>⭐</span>
+                  )}
+
+                  {user.courseStatus === "expired" && (
+                    <i
+                      className="fa fa-star-half-o"
+                      style={{ color: "orange" }}
+                    ></i>
+                  )}
+
+                  {user.courseStatus === "none" && "-"}
+                </td>
               </tr>
             ))
           ) : (
