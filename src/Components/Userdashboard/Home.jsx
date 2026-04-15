@@ -12,16 +12,64 @@ function Home() {
   const [bankDetails, setBankDetails] = useState(null);
   const [courseDetails, setCourseDetails] = useState(null);
   const [payoutusers, setpayout] = useState([]);
-   const [payoutDetails, setPayoutDetails] = useState(null);
-    const [pointdetails , setPointDetails] = useState(null);
-    const [teampoints , setteampoints] = useState(null);
+  const [payoutDetails, setPayoutDetails] = useState(null);
+  const [pointdetails, setPointDetails] = useState(null);
+  const [teampoints, setteampoints] = useState(null);
   const [copied, setCopied] = useState(false);
-  const [userrank_user,setUserrank]= useState("No Rank");
-   const [users, setUsers] = useState([]);
+  const [userrank_user, setUserrank] = useState("No Rank");
+  // const [users, setUsers] = useState([]);
+  const [scholarship, setScholarship] = useState("None");
+  const levelColor = {
+  Bronze: "#ffc263eb",
+  Silver: "#d2b6b6",
+  Gold: "#ffd700",
+  Platinum: "#00bcd4",
+  Diamond: "#99efff",
+};
+  const scholarshipAchiever = async () => {
+    try {
+      const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
+      // setUsers(response.data.data);
+      const userData = response.data.data.referredUsers || [];
+      console.log("directteam data:", response.data);
+
+      const activeUsers = userData.filter(
+        (user) => user.courseStatus === "active",
+      ).length;
+      const expiredUsers = userData.filter(
+        (user) => user.courseStatus === "expired",
+      ).length;
+       const totalUsers = activeUsers + expiredUsers;
+      // const totalUsers = 52
+      ;
+      let level = "Not Achieved";
+
+      if (totalUsers >= 50) {
+        level = "Diamond";
+      } else if (totalUsers >= 40) {
+        level = "Platinum";
+      } else if (totalUsers >= 30) {
+        level = "Gold";
+      } else if (totalUsers >= 20) {
+        level = "Silver";
+      } else if (totalUsers >= 10) {
+        level = "Bronze";
+      }
+      setScholarship(level);
+
+      console.log("Active:", activeUsers);
+      console.log("Expired:", expiredUsers);
+      console.log("Scholarship:", level);
+    } catch (error) {
+      console.error("Error fetching referral data:", error);
+    }
+  };
 
   const fetchFullDetails = async () => {
     try {
-      const res = await axios.post(`${ROOT_URL}/api/users/full-details`, { userId });
+      const res = await axios.post(`${ROOT_URL}/api/users/full-details`, {
+        userId,
+      });
       if (res.data.success) {
         console.log("Full details:", res.data.data);
         setUserDetails(res.data.data.user);
@@ -36,13 +84,14 @@ function Home() {
       swal("Error", "Something went wrong while fetching details.", "error");
     }
   };
-   const fetchTeamDetails = async () => {
+  const fetchTeamDetails = async () => {
     try {
-      const res = await axios.post(`${ROOT_URL}/api/referral/teamsummary`, { userId });
+      const res = await axios.post(`${ROOT_URL}/api/referral/teamsummary`, {
+        userId,
+      });
       if (res) {
         console.log("Fullteam details:", res.data);
         setteampoints(res.data);
-       
       } else {
         swal("Error", res.data.message || "Failed to fetch user data", "error");
       }
@@ -52,104 +101,206 @@ function Home() {
     }
   };
   const fetchPayoutDetails = async () => {
-      console.log("Fetching payout details for userId:", userId);
-      try {
-        const res = await axios.post(`${ROOT_URL}/api/referral/realtime`,{userId,name});
-        if (res.data){
-          console.log("Payout Details:", res.data);
-          setPayoutDetails(res.data.data);
-        } 
-      } catch (error) {
-        console.error("Error fetching payout details:", error);
-      }
-    };
-    const fetchPointsDetails = async () => {
+    console.log("Fetching payout details for userId:", userId);
     try {
-      const res = await axios.get(`${ROOT_URL}/api/users/referred-selfpoints/${userId}`);
-      if (res.data){
-        console.log("Points Details:", res.data);
-        setPointDetails(res.data);
-      } 
+      const res = await axios.post(`${ROOT_URL}/api/referral/realtime`, {
+        userId,
+        name,
+      });
+      if (res.data) {
+        console.log("Payout Details:", res.data);
+        setPayoutDetails(res.data.data);
+      }
     } catch (error) {
       console.error("Error fetching payout details:", error);
     }
   };
-const tableData = [
-  { no: 1, name: "Class 1", minTeam: 0, minDirect: 3, minPoint: 1, maxPoint: 5000 },
-  { no: 2, name: "Class 2", minTeam: 50, minDirect: 10, minPoint: 5001, maxPoint: 15000 },
-  { no: 3, name: "Class 3", minTeam: 100, minDirect: 20, minPoint: 15001, maxPoint: 50000 },
-  { no: 4, name: "Class 4", minTeam: 200, minDirect: 30, minPoint: 50001, maxPoint: 100000 },
-  { no: 5, name: "Class 5", minTeam: 500, minDirect: 40, minPoint: 100001, maxPoint: 300000 },
-  { no: 6, name: "Class 6", minTeam: 1000, minDirect: 50, minPoint: 300001, maxPoint: 600000 },
-  { no: 7, name: "Class 7", minTeam: 2000, minDirect: 60, minPoint: 600001, maxPoint: 1200000 },
-  { no: 8, name: "Class 8", minTeam: 5000, minDirect: 70, minPoint: 1200001, maxPoint: 2500000 },
-  { no: 9, name: "Class 9", minTeam: 10000, minDirect: 100, minPoint: 2500001, maxPoint: 5000000 },
-  { no: 10, name: "Class 10", minTeam: 20000, minDirect: 150, minPoint: 5000001, maxPoint: 10000000 },
-  { no: 11, name: "H.S.", minTeam: 40000, minDirect: 200, minPoint: 10000001, maxPoint: 25000000 },
-  { no: 12, name: "Graduate", minTeam: 80000, minDirect: 250, minPoint: 25000001, maxPoint: 50000000 },
-  { no: 13, name: "Post Graduate", minTeam: 100000, minDirect: 300, minPoint: 50000001, maxPoint: 100000000 },
-  { no: 14, name: "PhD", minTeam: 150000, minDirect: 500, minPoint: 100000001, maxPoint: 250000000 },
-];
+  const fetchPointsDetails = async () => {
+    try {
+      const res = await axios.get(
+        `${ROOT_URL}/api/users/referred-selfpoints/${userId}`,
+      );
+      if (res.data) {
+        console.log("Points Details:", res.data);
+        setPointDetails(res.data);
+      }
+    } catch (error) {
+      console.error("Error fetching payout details:", error);
+    }
+  };
+  const tableData = [
+    {
+      no: 1,
+      name: "Class 1",
+      minTeam: 0,
+      minDirect: 3,
+      minPoint: 1,
+      maxPoint: 5000,
+    },
+    {
+      no: 2,
+      name: "Class 2",
+      minTeam: 50,
+      minDirect: 10,
+      minPoint: 5001,
+      maxPoint: 15000,
+    },
+    {
+      no: 3,
+      name: "Class 3",
+      minTeam: 100,
+      minDirect: 15,
+      minPoint: 15001,
+      maxPoint: 50000,
+    },
+    {
+      no: 4,
+      name: "Class 4",
+      minTeam: 200,
+      minDirect: 20,
+      minPoint: 50001,
+      maxPoint: 100000,
+    },
+    {
+      no: 5,
+      name: "Class 5",
+      minTeam: 500,
+      minDirect: 25,
+      minPoint: 100001,
+      maxPoint: 300000,
+    },
+    {
+      no: 6,
+      name: "Class 6",
+      minTeam: 1000,
+      minDirect: 30,
+      minPoint: 300001,
+      maxPoint: 600000,
+    },
+    {
+      no: 7,
+      name: "Class 7",
+      minTeam: 2000,
+      minDirect: 35,
+      minPoint: 600001,
+      maxPoint: 1200000,
+    },
+    {
+      no: 8,
+      name: "Class 8",
+      minTeam: 5000,
+      minDirect: 40,
+      minPoint: 1200001,
+      maxPoint: 2500000,
+    },
+    {
+      no: 9,
+      name: "Class 9",
+      minTeam: 10000,
+      minDirect: 45,
+      minPoint: 2500001,
+      maxPoint: 5000000,
+    },
+    {
+      no: 10,
+      name: "Class 10",
+      minTeam: 20000,
+      minDirect: 50,
+      minPoint: 5000001,
+      maxPoint: 10000000,
+    },
+    {
+      no: 11,
+      name: "H.S.",
+      minTeam: 40000,
+      minDirect: 60,
+      minPoint: 10000001,
+      maxPoint: 25000000,
+    },
+    {
+      no: 12,
+      name: "Graduate",
+      minTeam: 80000,
+      minDirect: 80,
+      minPoint: 25000001,
+      maxPoint: 50000000,
+    },
+    {
+      no: 13,
+      name: "Post Graduate",
+      minTeam: 100000,
+      minDirect: 100,
+      minPoint: 50000001,
+      maxPoint: 100000000,
+    },
+    {
+      no: 14,
+      name: "PhD",
+      minTeam: 150000,
+      minDirect: 150,
+      minPoint: 100000001,
+      maxPoint: 250000000,
+    },
+  ];
 
-const getUserRank = (totalTeam, directTeam, points) => {
-  let achievedRank = "No Rank";
+  const getUserRank = (totalTeam, directTeam, points) => {
+    let achievedRank = "No Rank";
 
-  for (let i = 0; i < tableData.length; i++) {
-    const rank = tableData[i];
+    for (let i = 0; i < tableData.length; i++) {
+      const rank = tableData[i];
 
-    // Check if user has enough points for this rank
-    if (points >= rank.minPoint) {
-      // Check if they meet all the conditions for this rank
-      if (totalTeam >= rank.minTeam && directTeam >= rank.minDirect) {
-        achievedRank = rank.name; // they qualify for this rank
+      // Check if user has enough points for this rank
+      if (points >= rank.minPoint) {
+        // Check if they meet all the conditions for this rank
+        if (totalTeam >= rank.minTeam && directTeam >= rank.minDirect) {
+          achievedRank = rank.name; // they qualify for this rank
+        } else {
+          // stop checking further — they haven't met the next rank requirements
+          break;
+        }
       } else {
-        // stop checking further — they haven't met the next rank requirements
+        // points not enough for this rank
         break;
       }
-    } else {
-      // points not enough for this rank
-      break;
     }
-  }
 
-  return achievedRank;
-};
-const fetchUsers = async () => {
-  try {
-    const res = await axios.post(`${ROOT_URL}/api/referral/teamsummary`, { userId });
-    if (res.data.success) {
-      const data = res.data; // use local variable
-      setUsers(data);
+    return achievedRank;
+  };
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.post(`${ROOT_URL}/api/referral/teamsummary`, {
+        userId,
+      });
+      if (res.data.success) {
+        const data = res.data; // use local variable
 
-      const totalTeam = data.totalDownlineCount;
-      const directTeam = data.directReferrals;
-      const totalpoints = data.totalPoints;
+        const totalTeam = data.totalDownlineCount;
+        const directTeam = data.directReferrals;
+        const totalpoints = data.totalPoints;
 
-      const userrank = getUserRank(totalTeam, directTeam, totalpoints);
-      console.log("Matched Rank:", userrank);
-      setUserrank(userrank);
+        const userrank = getUserRank(totalTeam, directTeam, totalpoints);
+        console.log("Matched Rank:", userrank);
+        setUserrank(userrank);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
     }
-  } catch (error) {
-    console.error("Error fetching user data:", error);
-  }
-};
+  };
 
   useEffect(() => {
-    if (userId){
+    if (userId) {
       fetchFullDetails();
       fetchPayoutDetails();
       fetchPointsDetails();
       fetchTeamDetails();
       fetchUsers();
-    
-    } 
-    else swal("Error", "Please login again.", "error");
+      scholarshipAchiever();
+    } else swal("Error", "Please login again.", "error");
   }, [userId]);
 
-
-    // const userrank = getUserRank(totalTeam, directTeam, totalpoints);
-    // console.log("Matched Rank:", userrank);
-    // setUserrank(userrank);
+  // const userrank = getUserRank(totalTeam, directTeam, totalpoints);
+  // console.log("Matched Rank:", userrank);
+  // setUserrank(userrank);
   // 🧠 Safely extract values
   const userStatus = userDetails?.status || "N/A";
   const kycStatus = bankDetails?.status || "N/A";
@@ -159,14 +310,14 @@ const fetchUsers = async () => {
     : "N/A";
   const directTeam = userDetails?.referredIds?.length || 0;
   const referralLink = userDetails?.referralLink || "N/A";
-const payout = payoutDetails?.referredPoints || 0;
+  const payout = payoutDetails?.referredPoints || 0;
   const selfPoints = userDetails?.totalSelfPoints || 0;
   // const referredPoints = payoutDetails?.referredPoints || 0;
   const totalteampoint = payoutDetails?.referralPoint || 0;
   console.log("Total Team Points:", totalteampoint);
   const directreferralpoints = payoutDetails?.directReferredPoints || 0;
-//  const totalTeam = teampoints?.totalDownlineCount ||0
-// const totalpoints = teampoints?.totalPoints ||0
+  //  const totalTeam = teampoints?.totalDownlineCount ||0
+  // const totalpoints = teampoints?.totalPoints ||0
   const handleCopyLink = () => {
     if (referralLink) {
       navigator.clipboard.writeText(referralLink).then(() => {
@@ -183,7 +334,13 @@ const payout = payoutDetails?.referredPoints || 0;
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
             <div className="card-body text-center">
-              <i className="fa fa-user" style={{ color: "white", fontSize: "30px" }}></i>
+              <i
+                className="fa fa-user"
+                style={{
+                  color: userStatus === "active" ? "rgb(148 231 62)" : "white",
+                  fontSize: "30px",
+                }}
+              ></i>
               <h5 className="card-title mt-2">{userStatus}</h5>
               <h5 className="card-text">User Status</h5>
             </div>
@@ -194,7 +351,10 @@ const payout = payoutDetails?.referredPoints || 0;
         <div className="col-lg-3">
           <div className="card h-100 cardstyle">
             <div className="card-body text-center">
-              <i className="fa fa-book" style={{ color: "white", fontSize: "30px" }}></i>
+              <i
+                className="fa fa-book"
+                style={{ color: "white", fontSize: "30px" }}
+              ></i>
               <h5 className="card-title mt-2">{activeCourse}</h5>
               <h5 className="card-text">Package Name</h5>
             </div>
@@ -206,7 +366,24 @@ const payout = payoutDetails?.referredPoints || 0;
           <div className="card h-100 cardstyle">
             <div className="card-body text-center">
               <i className="fa fa-id-card" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">{kycStatus}</h5>
+              <h5 className="card-title mt-2">
+                {" "}
+                {kycStatus === "verified" ? (
+                  <>
+                    Verified{" "}
+                    <i
+                      className="fa fa-check-circle"
+                      style={{
+                        color: "rgb(148 231 62)",
+                        marginLeft: "5px",
+                        fontSize: "21px",
+                      }}
+                    ></i>
+                  </>
+                ) : (
+                  "Not Verified"
+                )}
+              </h5>
               <h5 className="card-text">KYC Status</h5>
             </div>
           </div>
@@ -235,39 +412,45 @@ const payout = payoutDetails?.referredPoints || 0;
             </div>
           </div>
         </div>
-        
-       <div className="col-lg-3">
+
+        <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="text-center"></div>
-              <div className="card-body">
-                <div><i className="fa fa-money" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center mt-2">Rs: {payout}/-</h5>
-                <h5 className="card-text text-center">Current Payout</h5>
+            <div className="card-body">
+              <div>
+                <i className="fa fa-money" style={{ fontSize: "30px" }}></i>
               </div>
+              <h5 className="card-title text-center mt-2">Rs: {payout}/-</h5>
+              <h5 className="card-text text-center">Current Payout</h5>
             </div>
           </div>
-          <div className="col-lg-3">
+        </div>
+        <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="text-center"></div>
-              <div className="card-body">
-                 <div><i className="fa fa-bullseye" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center mt-2">{selfPoints}</h5>
-                <h5 className="card-text text-center">Self Points</h5>
-              </div>   
-          </div>
-          </div>
-           <div className="col-lg-3">
-          <div className="card h-100 cardstyle text-center">
-            <div className="text-center"></div>
-              <div className="card-body">
-               <div><i className="fa fa-star" style={{fontSize:"30px"}}></i></div>
-                <h5 className="card-title text-center mt-2">{totalteampoint}</h5>
-                <h5 className="card-text text-center">Current Referred Points</h5>
+            <div className="card-body">
+              <div>
+                <i className="fa fa-bullseye" style={{ fontSize: "30px" }}></i>
               </div>
+              <h5 className="card-title text-center mt-2">{selfPoints}</h5>
+              <h5 className="card-text text-center">Self Points</h5>
             </div>
+          </div>
         </div>
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle text-center">
+            <div className="text-center"></div>
+            <div className="card-body">
+              <div>
+                <i className="fa fa-star" style={{ fontSize: "30px" }}></i>
+              </div>
+              <h5 className="card-title text-center mt-2">{totalteampoint}</h5>
+              <h5 className="card-text text-center">Current Referred Points</h5>
+            </div>
+          </div>
         </div>
-        <div className="row mt-2 g-3">
+      </div>
+      <div className="row mt-2 g-3">
         <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
@@ -277,20 +460,24 @@ const payout = payoutDetails?.referredPoints || 0;
             </div>
           </div>
         </div>
-         <div className="col-lg-3">
+        <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-users" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">₹{payoutDetails?.referredPoints - directreferralpoints}</h5>
+              <h5 className="card-title mt-2">
+                ₹{payoutDetails?.referredPoints - directreferralpoints}
+              </h5>
               <h5 className="card-text">Level Bonus</h5>
             </div>
           </div>
         </div>
-         <div className="col-lg-3">
+        <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-coins" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">₹{payoutusers?.totalPoints ||0}</h5>
+              <h5 className="card-title mt-2">
+                ₹{payoutusers?.totalPoints || 0}
+              </h5>
               <h5 className="card-text">Accumulated Bonus</h5>
             </div>
           </div>
@@ -308,7 +495,9 @@ const payout = payoutDetails?.referredPoints || 0;
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-coins" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">{teampoints?.totalPoints ||0}</h5>
+              <h5 className="card-title mt-2">
+                {teampoints?.totalPoints || 0}
+              </h5>
               <h5 className="card-text">Accumulated Referred Point</h5>
             </div>
           </div>
@@ -317,33 +506,60 @@ const payout = payoutDetails?.referredPoints || 0;
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
               <i className="fa fa-handshake" style={{ fontSize: "30px" }}></i>
-              <h5 className="card-title mt-2">{teampoints?.totalDownlineCount ||0}</h5>
+              <h5 className="card-title mt-2">
+                {teampoints?.totalDownlineCount || 0}
+              </h5>
               <h5 className="card-text">Total Team</h5>
             </div>
           </div>
         </div>
-        
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i className="fa-solid fa-award" style={{ fontSize: "30px" }}></i>
+              <h5 className="card-title mt-2">
+                {payoutDetails?.currentdirectReferredpoints || 0}
+              </h5>
+              <h5 className="card-text">Direct Referred Points</h5>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-3">
+          <div className="card h-100 cardstyle text-center">
+            <div className="card-body">
+              <i
+                className="fa fa-trophy"
+                style={{
+                  color: levelColor[scholarship] || "white",
+                  fontSize: "30px",
+                }}
+              ></i>
+              <h5 className="mt-2 fw-bold" style={{ color: levelColor[scholarship] || "white" }}>
+                {scholarship}
+              </h5>
+              <h5 className="card-text">Scholarship Achiever</h5>
+            </div>
+          </div>
+        </div>
       </div>
       {/* Referral Link Section */}
-     <div className="d-flex justify-content-center flex-column align-items-center mt-3">
-  <h4 className="fw-bold">Your Referral Link</h4>
+      <div className="d-flex justify-content-center flex-column align-items-center mt-3">
+        <h4 className="fw-bold">Your Referral Link</h4>
 
-  <div className="referral-pill d-flex align-items-center">
-  <span className="referral-scroll">{referralLink}</span>
+        <div className="referral-pill d-flex align-items-center">
+          <span className="referral-scroll">{referralLink}</span>
 
-  {copied ? (
-    <span className="ms-4 text-success">Copied!</span>
-  ) : (
-    <i
-      className="fa fa-copy ms-2"
-      onClick={handleCopyLink}
-      style={{ cursor: "pointer" }}
-    />
-  )}
-</div>
-
-</div>
-
+          {copied ? (
+            <span className="ms-4 text-success">Copied!</span>
+          ) : (
+            <i
+              className="fa fa-copy ms-2"
+              onClick={handleCopyLink}
+              style={{ cursor: "pointer" }}
+            />
+          )}
+        </div>
+      </div>
     </>
   );
 }
