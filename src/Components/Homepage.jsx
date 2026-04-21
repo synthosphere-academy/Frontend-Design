@@ -8,6 +8,7 @@ import Ourteam from './Ourteam';
 import Chooseus from './Chooseus'
 // import Ourblog from './Ourblog';
 // import Typeofcourse from "./Typeofcourse";
+import CryptoBeginnerSection from "./CryptoBeginnerSection";
 
 
 function Homepage() {
@@ -15,6 +16,7 @@ function Homepage() {
     <>
     
       <Banner/>
+      <CryptoBeginnerSection/>
       {/* <Typeofcourse/> */}
       <Features/>
       <Steps/>

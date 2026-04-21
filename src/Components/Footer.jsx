@@ -25,8 +25,8 @@ function Footer() {
                         </div>
                         <div className="col-lg-4 me-auto text-center">
                             <div className='float-lg-end googleapp'>
-                            <span className='text-white'>Coming soon</span><br/>
-                            <a className=" btnfooter btn btn-google mb-3" title="Google Play">Google Play</a>
+                            {/* <span className='text-white'>Coming soon</span><br/> */}
+                            <a target='_blank' href='https://play.google.com/store/apps/details?id=com.prophetcyco.app_synthosphere&pcampaignid=web_share' className=" btnfooter btn btn-google mb-3" title="Google Play">Google Play</a>
                           
                             <div>
                            {/* <a href="mailto:support@synthosphereacademy.in"><i className="fa fa-envelope text-white" style={{fontSize:"19px"}}></i></a> */}
