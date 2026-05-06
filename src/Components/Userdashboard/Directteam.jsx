@@ -25,7 +25,6 @@ const Directteam = () => {
   if (!data) {
     return <div className="text-center mt-5">Loading...</div>;
   }
-
   return (
     <div className="d-flex justify-content-center mt-4">
       <table

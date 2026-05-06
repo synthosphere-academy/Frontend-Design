@@ -6,13 +6,18 @@ import user from "../../Images/userphoto.png";
 const Genealogytree = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [history, setHistory] = useState([]);
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
    const [rootUserId, setRootUserId] = useState(null);
-  const fetchUserTree = async (userId) => {
+  const fetchUserTree = async (userId, isBack = false) => {
     if (!userId) return;
 
     try {
       setLoading(true);
+       // Save current user to history (only when going forward)
+    if (!isBack && data?.mainUser) {
+      setHistory((prev) => [...prev, data.mainUser]);
+    }
       const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
       console.log(response.data.data);
       setData(response.data.data); // API returns { mainUser, referredUsers }
@@ -37,6 +42,14 @@ const Genealogytree = () => {
       swal("Error", "Root user not found.", "error");
     }
   };
+  const handleGoBack = () => {
+  if (history.length === 0) return;
+
+  const lastUser = history[history.length - 1];
+
+  setHistory((prev) => prev.slice(0, -1)); // remove last
+  fetchUserTree(lastUser.userId, true); // go back
+};
 
   if (loading) return <div className="text-center mt-5">Loading genealogy...</div>;
   if (!data) return <div className="text-center mt-5">No data found.</div>;
@@ -46,9 +59,21 @@ const Genealogytree = () => {
 
   return (
     <div className="genealogy-container">
-    <button className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white" style={{backgroundColor:"#9a357f"}}  onClick={handleGoToTop} >
+    <div className="d-flex gap-2">
+    <button
+    className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white"
+    style={{ backgroundColor: "#9a357f" }}
+    onClick={handleGoBack}
+    disabled={history.length === 0}
+  >
+    ⬅ Back
+  </button>
+ <button className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white" style={{backgroundColor:"#9a357f"}}  onClick={handleGoToTop} >
             Extreme top
           </button>
+           
+    </div>
+   
       
       {/* Parent Node */}
       <div className="parent-node">
