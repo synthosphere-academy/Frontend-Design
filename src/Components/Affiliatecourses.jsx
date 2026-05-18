@@ -237,7 +237,7 @@ const Affiliatecourses = () => {
     },
      {
       name: "Premium Monthly Subscription",
-      price: "1880",
+      price: "1888",
       points: "1600",
       paymentUrl: "https://rzp.io/rzp/yx0C4LX",
       gold: true,
