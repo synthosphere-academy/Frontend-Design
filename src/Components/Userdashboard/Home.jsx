@@ -420,7 +420,7 @@ function Home() {
               <div>
                 <i className="fa fa-money" style={{ fontSize: "30px" }}></i>
               </div>
-              <h5 className="card-title text-center mt-2">Rs: {payout}/-</h5>
+              <h5 className="card-title text-center mt-2">₹{payout}</h5>
               <h5 className="card-text text-center">Current Payout</h5>
             </div>
           </div>
@@ -465,7 +465,8 @@ function Home() {
             <div className="card-body">
               <i className="fa fa-users" style={{ fontSize: "30px" }}></i>
               <h5 className="card-title mt-2">
-                ₹{payoutDetails?.referredPoints - directreferralpoints}
+                {/* ₹{payoutDetails?.referredPoints - directreferralpoints} */}
+                ₹{parseFloat(((payoutDetails?.referredPoints || 0) - (directreferralpoints || 0)).toFixed(1))}
               </h5>
               <h5 className="card-text">Level Bonus</h5>
             </div>
@@ -476,7 +477,8 @@ function Home() {
             <div className="card-body">
               <i className="fa fa-coins" style={{ fontSize: "30px" }}></i>
               <h5 className="card-title mt-2">
-                ₹{payoutusers?.totalPoints || 0}
+                {/* ₹{payoutusers?.totalPoints || 0} */}
+                ₹{parseFloat((payoutusers?.totalPoints || 0).toFixed(1))}
               </h5>
               <h5 className="card-text">Accumulated Bonus</h5>
             </div>
@@ -533,6 +535,7 @@ function Home() {
                   color: levelColor[scholarship] || "white",
                   fontSize: "30px",
                 }}
+
               ></i>
               <h5 className="mt-2 fw-bold" style={{ color: levelColor[scholarship] || "white" }}>
                 {scholarship}
