@@ -55,7 +55,7 @@ export default function UserDashboard() {
     { name: "Our Packages", icon: "fa fa-graduation-cap" },
     { name: "Enrolled Courses", icon: "fa fa-book" },
     { name: "Order History", icon: "fa fa-history" },
-    { name: "Videos", icon: "fa fa-video" },
+    { name: "Courseview", icon: "fa fa-video" },
     { name: "Genealogy Tree", icon: "fa fa-tree" },
     { name: "Direct Team", icon: "fa fa-group" },
     { name: "Payout", icon: "fa fa-money" },
@@ -75,7 +75,7 @@ export default function UserDashboard() {
       case "Bank Details": return <KYC />;
       case "Our Packages": return <Affiliatecourses />;
       case "Enrolled Courses": return <Entrolled />;
-      case "Videos": return <Courseview />;
+      case "Courseview": return <Courseview />;
       case "Order History": return <Orderhistory />;
       case "Direct Team": return <Directteam />;
       case "Genealogy Tree": return <Genealogytree />;

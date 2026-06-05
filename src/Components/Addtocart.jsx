@@ -1,3 +1,4 @@
+
 import "../Css/addtocart.css";
 import paypal from "../Images/PayPal.svg";
 import visa from "../Images/Visa.svg";

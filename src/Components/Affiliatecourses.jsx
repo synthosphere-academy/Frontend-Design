@@ -193,31 +193,59 @@ const Affiliatecourses = () => {
       ],
     },
     {
-      name: "Pro Teacher Course",
-      price: " 59000",
-      subcription: "One year",
-      points: "25000",
-      paymentUrl: "https://rzp.io/rzp/l0v8sIii",
+      name: "Classic Traders",
+      subcription: "One Month",
+      price: "708",
+      points: "600",
       features: [
-        "Advance Crypto SIP Guide",
-        "Advance Portfolio Management",
-        "Spot & Future Trading Call (12 Months)",
-        "Advance Fundamental Analysis, Technical Analysis",
-        "Online Educational Videos",
-        "Risk Management Strategy",
-        "Regular PNL Strategy",
-        "Basic Liquidation Strategy",
-        "Gem Coin Finding Strategy",
-        "Premium Future Trading Strategy",
-        "Premium Portfolio Management Strategy",
-        "Five Long-Term Holding Coins Name",
-        "Trading Fund Management Strategy",
-        "A To Z Advance Fundamental Analysis, Technical Analysis",
-        "Whales Wallet Tracking",
-        "Crypto Taxation",
-        "Crypto Rules & Knowledge",
-        "Dex & Cex Arbitrage Model",
-        "Monthly 2% Scholarship",
+        "Regular live trading",
+        "Regular live Technical Analysis",
+        "Live Fundamental Analysis",
+        "Live chart drawing",
+        "Live full trading strategy"
+      ],
+    },
+    // {
+    //   name: "Pro Teacher Course",
+    //   price: " 59000",
+    //   subcription: "One year",
+    //   points: "25000",
+    //   paymentUrl: "https://rzp.io/rzp/l0v8sIii",
+    //   features: [
+    //     "Advance Crypto SIP Guide",
+    //     "Advance Portfolio Management",
+    //     "Spot & Future Trading Call (12 Months)",
+    //     "Advance Fundamental Analysis, Technical Analysis",
+    //     "Online Educational Videos",
+    //     "Risk Management Strategy",
+    //     "Regular PNL Strategy",
+    //     "Basic Liquidation Strategy",
+    //     "Gem Coin Finding Strategy",
+    //     "Premium Future Trading Strategy",
+    //     "Premium Portfolio Management Strategy",
+    //     "Five Long-Term Holding Coins Name",
+    //     "Trading Fund Management Strategy",
+    //     "A To Z Advance Fundamental Analysis, Technical Analysis",
+    //     "Whales Wallet Tracking",
+    //     "Crypto Taxation",
+    //     "Crypto Rules & Knowledge",
+    //     "Dex & Cex Arbitrage Model",
+    //     "Monthly 2% Scholarship",
+    //   ],
+    // },
+     {
+      name: "Basic Subscription",
+      price: "472",
+      points: "400",
+
+      gold: true,
+      features: [
+        "Monthly Trading Guidance",
+        "Monthly Special Classes",
+        "Expert Advice",
+        "Two Coin Suggestion",
+        "One Special Call",
+        "Trade Call Signals(1 Month)",
       ],
     },
     {
@@ -265,105 +293,123 @@ const Affiliatecourses = () => {
         "Trade Call Signals(1 Month)",
       ],
     },
+   
   ];
-
   return (
     <div className="container ">
       <div className="row justify-content-start">
-        {courses.map((course, index) => {
-          const isExpanded = expandedCards[index];
-          const visibleFeatures = isExpanded
-            ? course.features
-            : course.features.slice(0, 8); //
-          {
-            /* {courses.map((course, index) => ( */
-          }
-          return (
-            <div key={index} className="col-md-3 my-1">
-              <div className="card p-3 mt-3 w-100 h-100 rounded-3 cardpackage">
-                <div className="card-body d-flex flex-column">
-                  <div className="text-center">
-                    <h3
-                      className="fw-bold"
-                      style={
-                        course.gold
-                          ? {
-                              background:
-                                "linear-gradient(90deg, #b53f96, #480DB9)",
-                              color: "transparent",
-                              WebkitBackgroundClip: "text",
-                              backgroundClip: "text",
-                            }
-                          : { color: "inherit" }
-                      }
-                    >
-                      {course.name}
-                    </h3>
+  {courses.map((course, index) => {
+    const isExpanded = expandedCards[index];
+    const visibleFeatures = isExpanded
+      ? course.features
+      : course.features.slice(0, 8);
 
-                    <div className="fw-bold h5 mt-2">
-                      RS.{course.price}/- (Incl. GST)
-                    </div>
-                    <div
-                      className="fw-bold h5 mt-2"
-                      style={{ color: "#ffae42" }}
-                    >
-                      🌟 {course.points} Points
-                    </div>
-                    <div
-                      className="fw-bold h4 mt-2"
-                      style={{
-                        background: "linear-gradient(90deg, #b53f96, #480DB9)",
-                        color: "transparent",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                      }}
-                    >
-                      {course?.subcription
-                        ? `${course.subcription} Subcription`
-                        : ""}
-                    </div>
-                  </div>
-                  <div className="flex-grow-1 mt-3">
-                    {visibleFeatures.map((f, i) => (
-                      <div key={i} className="d-flex mt-2">
-                        <div>🌟</div>
-                        <div className="ms-2">{f}</div>
-                      </div>
-                    ))}
+    return (
+      <React.Fragment key={index}>
+        {/* Monthly Subscription Heading */}
+        {index === 5 && (
+          <div className="col-12 mt-5 mb-3">
+            <h2
+              className="text-center fw-bold"
+              style={{
+                background: "linear-gradient(90deg, #b53f96, #480DB9)",
+                color: "transparent",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+              }}
+            >
+              Monthly Subscriptions
+            </h2>
+          </div>
+        )}
 
-                    {course.features.length > 8 && (
-                      <button
-                        className="btn btn-link p-0 mt-2 text-primary text-decoration-none"
-                        style={{ fontWeight: "500" }}
-                        onClick={() => toggleExpand(index)}
-                      >
-                        {isExpanded ? "See Less ▲" : "See More ▼"}
-                      </button>
-                    )}
-                  </div>
-                  {/* <div className="flex-grow-1 mt-3">
-                  {course.features.map((f, i) => (
-                    <div key={i} className="d-flex mt-2">
-                      <div>🌟</div>
-                      <div className="ms-2">{f}</div>
-                    </div>
-                  ))}
-                </div> */}
+        <div className="col-md-3 my-1">
+          <div className="card p-3 mt-3 w-100 h-100 rounded-3 cardpackage">
+         
+
+            <div className="card-body d-flex flex-column">
+              <div className="text-center">
+                <h3
+                  className="fw-bold"
+                  style={
+                    course.gold
+                      ? {
+                          background:
+                            "linear-gradient(90deg, #b53f96, #480DB9)",
+                          color: "transparent",
+                          WebkitBackgroundClip: "text",
+                          backgroundClip: "text",
+                        }
+                      : { color: "inherit" }
+                  }
+                >
+                  {course.name}
+                </h3>
+
+                <div className="fw-bold h5 mt-2">
+                  RS.{course.price}/- (Incl. GST)
                 </div>
 
-                <div className="d-flex justify-content-center">
-                  <button
-                    onClick={() => handle_enroll(course)}
-                    className="btn btn-primary w-75 mb-3 rounded-3"
-                  >
-                    Enroll Now
-                  </button>
+                <div
+                  className="fw-bold h5 mt-2"
+                  style={{ color: "#ffae42" }}
+                >
+                  🌟 {course.points} Points
+                </div>
+
+                <div
+                  className="fw-bold h4 mt-2"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #b53f96, #480DB9)",
+                    color: "transparent",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                  }}
+                >
+                  {course?.subcription
+                    ? `${course.subcription} Subscription`
+                    : ""}
                 </div>
               </div>
+
+              <div className="flex-grow-1 mt-3">
+                {visibleFeatures.map((f, i) => (
+                  <div key={i} className="d-flex mt-2">
+                    <div>🌟</div>
+                    <div className="ms-2">{f}</div>
+                  </div>
+                ))}
+
+                {course.features.length > 8 && (
+                  <button
+                    className="btn btn-link p-0 mt-2 text-primary text-decoration-none"
+                    style={{ fontWeight: "500" }}
+                    onClick={() => toggleExpand(index)}
+                  >
+                    {isExpanded ? "See Less ▲" : "See More ▼"}
+                  </button>
+                )}
+              </div>
             </div>
-          );
-        })}
-      </div>
+
+            <div className="d-flex justify-content-center">
+              <button
+                onClick={() => handle_enroll(course)}
+                className="btn btn-primary w-75 mb-3 rounded-3"
+              >
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Basic Subscription Heading after Super Premium */}
+       
+      </React.Fragment>
+    );
+  })}
+</div>
     </div>
   );
 };

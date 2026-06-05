@@ -23,8 +23,11 @@ const Entrolled = () => {
       const response = await axios.post(`${ROOT_URL}/api/users/full-details`, { userId });
 
       // extract courses from user object
-       setUserData(response.data.data.courseDetails);  // store the whole user object
-        console.log(response.data);
+      //  setUserData(response.data.data.courseDetails.purchaseHistory);  // store the whole user object
+      setUserData(
+  [...response.data.data.courseDetails.purchaseHistory].reverse()
+); 
+      console.log(response.data);
       // const coursesArray = Object.values(coursesData); // convert object to array
 
       // setenrollcourse(coursesArray);
@@ -44,36 +47,34 @@ const Entrolled = () => {
   return (
     <>
        <div className="container">
-      {userData ? (
-        <div className='table-responsive'>
-          <table className="table table-striped">
-            <thead className="table-primary">
-              <tr>
-               
-                <th>Course Name</th>
-                <th>Package Name</th>
-                  <th>Date</th>
-                
-              </tr>
-            </thead>
-              <tbody>
-                
-                  <tr key={userData._id}>
-                  
-                  <td>{userData.courseName || "N/A"}</td>
-                  <td>{userData.packageName || "N/A"}</td>
-                  <td>{new Date(userData.createdAt).toLocaleDateString()}</td>
-                
-                </tr>
-           
-            </tbody>
-            </table>
-            </div>
-      
-      ) : (
-        <p className="text-center">No Enrolled Courses...</p>
-      )}
+  {userData?.length > 0 ? (
+    <div className="table-responsive">
+      <table className="table table-striped">
+        <thead className="table-primary">
+          <tr>
+            <th>Course Name</th>
+            <th>Package Name</th>
+            <th>Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {userData.map((item, index) => (
+            <tr key={index}>
+              <td>{item.courseName || "N/A"}</td>
+              <td>{item.packageName || "N/A"}</td>
+              <td>{item.amount || "N/A"}</td> 
+              <td>{item.date || "N/A"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
+  ) : (
+    <p className="text-center">No Enrolled Courses...</p>
+  )}
+</div>
     </>
   );
 };
