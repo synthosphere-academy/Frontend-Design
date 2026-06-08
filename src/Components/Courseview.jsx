@@ -83,7 +83,6 @@ const Courseview = () => {
       answer: "Platform to buy/sell crypto",
 
     }
-
   ];
   const generateCertificate = () => {
     const input = document.getElementById("certificate");

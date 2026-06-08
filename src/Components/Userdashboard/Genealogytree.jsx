@@ -7,8 +7,11 @@ const Genealogytree = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState([]);
+  // const [searchUserId, setSearchUserId] = useState("");
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
    const [rootUserId, setRootUserId] = useState(null);
+const [searchUser, setSearchUser] = useState("");
+const [searchResults, setSearchResults] = useState([]);
   const fetchUserTree = async (userId, isBack = false) => {
     if (!userId) return;
 
@@ -29,6 +32,28 @@ const Genealogytree = () => {
     }
   };
 
+
+const handleSearch = async (value) => {
+  setSearchUser(value);
+
+  if (!value.trim()) {
+    setSearchResults([]);
+    return;
+  }
+
+  try {
+    const response = await axios.post(
+      `${ROOT_URL}/api/referral/searchtree`,
+      {
+        query: value,
+      }
+    );
+
+    setSearchResults(response.data.data || []);
+  } catch (error) {
+    console.error(error);
+  }
+};
   // Initial Load
   useEffect(() => {
      const userId = sessionStorage.getItem("userid"); 
@@ -42,6 +67,22 @@ const Genealogytree = () => {
       swal("Error", "Root user not found.", "error");
     }
   };
+
+//   const handleSearch = () => {
+//   if (!searchUserId.trim()) {
+//     swal("Error", "Please enter User ID", "error");
+//     return;
+//   }
+
+//   fetchUserTree(searchUserId);
+// };
+
+const handleSelectUser = (user) => {
+  setSearchUser(`${user.name}`);
+  setSearchResults([]);
+
+  fetchUserTree(user.userId);
+};
   const handleGoBack = () => {
   if (history.length === 0) return;
 
@@ -59,6 +100,42 @@ const Genealogytree = () => {
 
   return (
     <div className="genealogy-container">
+  
+<div className="position-relative mb-3">
+  <input
+    type="text"
+    className="form-control"
+    placeholder="Search Name or User ID"
+    value={searchUser}
+    onChange={(e) => handleSearch(e.target.value)}
+  />
+
+  {searchResults.length > 0 && (
+    <div
+      className="border bg-white position-absolute w-100"
+      style={{
+        zIndex: 1000,
+        maxHeight: "250px",
+        overflowY: "auto",
+      }}
+    >
+      {searchResults.map((user) => (
+        <div
+          key={user.userId}
+          className="p-2 border-bottom"
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => handleSelectUser(user)}
+        >
+          <strong>{user.name}</strong>
+         
+        
+        </div>
+      ))}
+    </div>
+  )}
+</div>
     <div className="d-flex gap-2">
     <button
     className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white"
