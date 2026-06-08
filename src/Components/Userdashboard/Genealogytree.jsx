@@ -101,7 +101,7 @@ const handleSelectUser = (user) => {
   return (
     <div className="genealogy-container">
   
-<div className="position-relative mb-3">
+{/* <div className="position-relative mb-3">
   <input
     type="text"
     className="form-control"
@@ -135,7 +135,7 @@ const handleSelectUser = (user) => {
       ))}
     </div>
   )}
-</div>
+</div> */}
     <div className="d-flex gap-2">
     <button
     className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white"
