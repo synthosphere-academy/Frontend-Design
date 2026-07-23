@@ -330,12 +330,12 @@ function Home() {
 
   return (
     <>
-   <div className="container my-3">
+   {/* <div className="container my-3">
   <div className="row justify-content-center">
     <div className="col-lg-8 col-md-10">
       <div className="card shadow-sm p-4">
         <div className="row align-items-center">
-          {/* Left Side Image */}
+         
           <div className="col-md-6 mb-3 mb-md-0">
           <a  href="https://us06web.zoom.us/j/88072784768?pwd=mwbz06a8L9jfs3PFj1PhavFVUIXx6I.1"
               target="_blank"
@@ -350,7 +350,7 @@ function Home() {
           </div>
 
 
-          {/* Right Side Content */}
+         
           <div className="col-md-6 text-center text-md-start">
             <h3 className="fw-bold mb-3">Join the Zoom Class</h3>
              <p className="fw-bold mb-3">Date: 23rd July, Thursday </p>
@@ -378,7 +378,7 @@ function Home() {
       </div>
     </div>
   </div>
-</div>
+</div> */}
       <div className="row g-3">
         {/* User Status */}
         <div className="col-lg-3">
