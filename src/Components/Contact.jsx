@@ -146,9 +146,9 @@ function Contact() {
                 <div className="card-body">
                   <h5 className="card-title text-center">Socials</h5>
                   <h6 className="card-text text-center">
-                 <a href='https://www.facebook.com/profile.php?id=61560565260565&mibextid=ZbWKwL' target='_blank'><i className="fa fa-facebook-f facebook"></i></a> 
-                 <a href='https://www.instagram.com/synthosphere_academy?' target='_blank'><i class="fa fa-instagram ms-3 instagram" ></i></a>
-                    
+                 <a href='https://www.facebook.com/profile.php?id=61560565260565&mibextid=ZbWKwL' target='_blank'><i className="fa-brands fa-facebook facebook"></i></a> 
+                 <a href='https://www.instagram.com/synthosphere_academy?' target='_blank'><i class="fa-brands fa-instagram ms-3 instagram" ></i></a>
+                     <a href='https://t.me/+YxHXXOUVMtE4ZTQ1' target='_blank'><i class="fa-brands fa-telegram ms-3 instagram" ></i></a>
                    
                     {/* <img  className='ms-2'src={link}/> */}
                   </h6>

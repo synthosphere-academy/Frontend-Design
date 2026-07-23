@@ -29,6 +29,13 @@ function Footer() {
                             <a target='_blank' href='https://play.google.com/store/apps/details?id=com.prophetcyco.app_synthosphere&pcampaignid=web_share' className=" btnfooter btn btn-google mb-3" title="Google Play">Google Play</a>
                           
                             <div>
+                           
+                 <a href='https://www.facebook.com/profile.php?id=61560565260565&mibextid=ZbWKwL' target='_blank'><i className="fa-brands fa-facebook facebook text-white"></i></a> 
+                 <a href='https://www.instagram.com/synthosphere_academy?' target='_blank'><i class="fa-brands fa-instagram ms-3 instagram text-white" ></i></a>
+                     <a href='https://t.me/+YxHXXOUVMtE4ZTQ1' target='_blank'><i class="fa-brands fa-telegram ms-3 instagram text-white" ></i></a>
+                   
+                   
+                   
                            {/* <a href="mailto:support@synthosphereacademy.in"><i className="fa fa-envelope text-white" style={{fontSize:"19px"}}></i></a> */}
                             {/* <a href='https://www.facebook.com/profile.php?id=61560565260565&mibextid=ZbWKwL' target='_blank'><i className="fa fa-facebook text-white ms-3 " style={{fontSize:"19px"}}></i></a>  */}
                             {/* <a href='https://www.instagram.com/synthosphere_academy?' target='_blank'><i className="fa fa-instagram ms-3 text-white"style={{fontSize:"19px"}} ></i></a> */}
