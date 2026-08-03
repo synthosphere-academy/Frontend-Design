@@ -24,13 +24,58 @@ import Idcard from "./Userdashboard/Idcard";
 // import Sellhistory from "./Userdashboard/P2P/Sellhistory";
 // import P2pdashboard from "./Userdashboard/P2P/P2pdashboard";
 import Classschedule from "./Userdashboard/Classschedule";
+import Supportchat from "./Userdashboard/Supportchat";
+import socket from "../socket";
+import axios from "axios";
+
+
+
 export default function UserDashboard() {
   const [active, setActive] = useState("Dashboard");
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [openP2P, setOpenP2P] = useState(false);
-  const [selectedSellOrder , setselectedSellOrder] = useState(null);
+  const [selectedSellOrder, setselectedSellOrder] = useState(null);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+const userId = sessionStorage.getItem("userid");
+const fetchUnreadCount = async () => {
+  try {
+    const res = await axios.get(
+      `${ROOT_URL}/api/chat/unread/${userId}`
+    );
 
+    setUnreadCount(res.data.unreadCount);
+    // console.log("Unread Count:", res.data.unreadCount);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+useEffect(() => {
+  if (userId) {
+    fetchUnreadCount();
+  }
+}, [userId]);
+useEffect(() => {
+  if (!userId) return;
+
+  socket.emit("join", userId);
+
+  const handleNewMessage = (newMessage) => {
+    if (
+      newMessage.senderType === "admin"
+    ) {
+      fetchUnreadCount();
+    }
+  };
+
+  socket.on("newMessage", handleNewMessage);
+
+  return () => {
+    socket.off("newMessage", handleNewMessage);
+  };
+}, [userId]);
   /* 🔹 detect mobile */
   useEffect(() => {
     const checkScreen = () => setIsMobile(window.innerWidth <= 768);
@@ -54,37 +99,32 @@ export default function UserDashboard() {
   //   return () => window.removeEventListener("changeMenu", handleMenuChange);
   // }, [isMobile]);
   useEffect(() => {
-  const handleMenuChange = (e) => {
+    const handleMenuChange = (e) => {
+      if (typeof e.detail === "string") {
+        setActive(e.detail);
+        setselectedSellOrder(null);
+      } else {
+        setActive(e.detail.menu);
+        setselectedSellOrder(e.detail.sellOrder || null);
+      }
 
-    if (typeof e.detail === "string") {
+      if (isMobile) {
+        setIsCollapsed(true);
+      }
+    };
 
-      setActive(e.detail);
-      setselectedSellOrder(null);
+    window.addEventListener("changeMenu", handleMenuChange);
 
-    } else {
-
-      setActive(e.detail.menu);
-      setselectedSellOrder(e.detail.sellOrder || null);
-
-    }
-
-    if (isMobile) {
-      setIsCollapsed(true);
-    }
-  };
-
-  window.addEventListener("changeMenu", handleMenuChange);
-
-  return () => {
-    window.removeEventListener("changeMenu", handleMenuChange);
-  };
-}, [isMobile]);
+    return () => {
+      window.removeEventListener("changeMenu", handleMenuChange);
+    };
+  }, [isMobile]);
 
   const menuItems = [
     { name: "Dashboard", icon: "fa fa-home" },
-    { name: "Welcome", icon: "fa fa-envelope-o" },
+    { name: "Welcome", icon: "fa-regular fa-envelope-open" },
     { name: "Class Schedule", icon: "fa fa-calendar" },
-    { name: "ID Card", icon: "fa fa-id-card-o" },
+    { name: "ID Card", icon: "fa-solid  fa-id-card" },
     { name: "Registration", icon: "fa fa-user-plus" },
     { name: "My Profile", icon: "fa fa-user" },
     { name: "Bank Details", icon: "fa fa-bank" },
@@ -93,15 +133,15 @@ export default function UserDashboard() {
     { name: "Order History", icon: "fa fa-history" },
     { name: "Courseview", icon: "fa fa-video" },
     { name: "Genealogy Tree", icon: "fa fa-tree" },
-    { name: "Direct Team", icon: "fa fa-group" },
-    { name: "Payout", icon: "fa fa-money" },
+    { name: "Direct Team", icon: "fa-solid fa-people-group" },
+    { name: "Payout", icon: "fa-solid  fa-money-bill" },
     { name: "Rank", icon: "fa fa-trophy" },
     // { name: "Deposit", icon: "fa fa-money" },
-    // { name: "Create Sell Order", icon: "fa fa-shopping-cart" },
-    // { name: "Create Buy Order", icon: "fa fa-shopping-cart" },
-    // { name: "My Buy Orders", icon: "fa fa-shopping-cart" },
-    // { name: "Buy order History", icon: "fa fa-history" },
-    // { name: "Sell order History", icon: "fa fa-history" },
+    // { name: "Create Sell Order", icon: "fa-solid fa-shopping-cart" },
+    // { name: "Create Buy Order", icon: "fa-solid fa-shopping-cart" },
+    // { name: "My Buy Orders", icon: "fa-solid fa-shopping-cart" },
+    // { name: "Buy order History", icon: "fa-solid fa-history" },
+    // { name: "Sell order History", icon: "fa-solid fa-history" },
   ];
 
   const username = sessionStorage.getItem("username") || "User Name";
@@ -145,20 +185,18 @@ export default function UserDashboard() {
       //   return <Sellordercreate />;
       // case "Create Buy Order":
       //   return <Buyusdt />;
-  //     case "Create Buy Order":
-  // return (
-  //   <Buyusdt
-  //     sellOrder={selectedSellOrder}
-  //   />
-  // );
-  //     case "My Buy Orders":
-  //       return <Mybuyorder />;
-  //     case "Buy order History":
-  //       return <Buyhistory />;
-  //     case "Sell order History":
-  //       return <Sellhistory />;
-  //     case "P2P Dashboard":
-  //       return <P2pdashboard />;
+      // case "Create Buy Order":
+      //   return <Buyusdt sellOrder={selectedSellOrder} />;
+      // case "My Buy Orders":
+      //   return <Mybuyorder />;
+      // case "Buy order History":
+      //   return <Buyhistory />;
+      // case "Sell order History":
+      //   return <Sellhistory />;
+      // case "P2P Dashboard":
+      //   return <P2pdashboard />;
+      case "Support":
+        return <Supportchat />;
       default:
         return <Home />;
     }
@@ -209,88 +247,87 @@ export default function UserDashboard() {
             className="d-flex align-items-center justify-content-between w-100 border-0 text-start px-3 sidebar-item"
           >
             <span>
-              <i className="fa fa-exchange me-2"></i>
+              <i className="fa-solid  fa-exchange me-2"></i>
               P2P
             </span>
 
             <i
               className={`fa ${openP2P ? "fa-chevron-up" : "fa-chevron-down"}`}
             ></i>
-          </button> */}
-          {/* {openP2P && (
-  <div className="ps-4">
-    <button
-      onClick={() => setActive("P2P Dashboard")}
-      className={`sidebar-item w-100 border-0 text-start ${
-        active === "P2P Dashboard" ? "active" : ""
-      }`}
-    >
-     <i className="fa fa-money me-2"></i>
-      P2P Dashboard
-    </button>
+          </button>
+          {openP2P && (
+            <div className="ps-4">
+              <button
+                onClick={() => setActive("P2P Dashboard")}
+                className={`sidebar-item w-100 border-0 text-start ${
+                  active === "P2P Dashboard" ? "active" : ""
+                }`}
+              >
+                <i className="fa-solid  fa-money-bill me-2"></i>
+                P2P Dashboard
+              </button>
 
-    <button
-      onClick={() => setActive("Deposit")}
-      className={`sidebar-item w-100 border-0 text-start ${
-        active === "Deposit" ? "active" : ""
-      }`}
-    >
-     <i className="fa fa-money me-2"></i>
-      Deposit
-    </button>
+              <button
+                onClick={() => setActive("Deposit")}
+                className={`sidebar-item w-100 border-0 text-start ${
+                  active === "Deposit" ? "active" : ""
+                }`}
+              >
+                <i className="fa-solid  fa-money-bill me-2"></i>
+                Deposit
+              </button>
 
-    <button
-      onClick={() => setActive("Create Sell Order")}
-      className={`sidebar-item w-100 border-0 text-start ${
-        active === "Create Sell Order" ? "active" : ""
-      }`}
-    >
-    <i className="fa fa-money me-2"></i>
-      Create Sell Order
-    </button>
+              <button
+                onClick={() => setActive("Create Sell Order")}
+                className={`sidebar-item w-100 border-0 text-start ${
+                  active === "Create Sell Order" ? "active" : ""
+                }`}
+              >
+                <i className="fa-solid  fa-money-bill me-2"></i>
+                Create Sell Order
+              </button>
 
-    <button
-      onClick={() => setActive("Create Buy Order")}
-      className={`sidebar-item w-100 border-0 text-start ${
-        active === "Create Buy Order" ? "active" : ""
-      }`}
-    >
-    <i className="fa fa-money me-2"></i>
-      Create Buy Order
-    </button>
+              <button
+                onClick={() => setActive("Create Buy Order")}
+                className={`sidebar-item w-100 border-0 text-start ${
+                  active === "Create Buy Order" ? "active" : ""
+                }`}
+              >
+                <i className="fa-solid  fa-money-bill me-2"></i>
+                Create Buy Order
+              </button>
 
-    <button
-      onClick={() => setActive("My Buy Orders")}
-      className={`sidebar-item w-100 border-0 text-start ${
-        active === "My Buy Orders" ? "active" : ""
-      }`}
-    >
-    <i className="fa fa-money me-2"></i>
-      My Buy Orders
-    </button>
+              <button
+                onClick={() => setActive("My Buy Orders")}
+                className={`sidebar-item w-100 border-0 text-start ${
+                  active === "My Buy Orders" ? "active" : ""
+                }`}
+              >
+                <i className="fa-solid  fa-money-bill me-2"></i>
+                My Buy Orders
+              </button>
 
-    <button
-      onClick={() => setActive("Buy order History")}
-      className={`sidebar-item w-100 border-0 text-start ${
-        active === "Buy order History" ? "active" : ""
-      }`}
-    >
-    <i className="fa fa-money me-2"></i>
-      Buy Order History
-    </button>
+              <button
+                onClick={() => setActive("Buy order History")}
+                className={`sidebar-item w-100 border-0 text-start ${
+                  active === "Buy order History" ? "active" : ""
+                }`}
+              >
+                <i className="fa-solid  fa-money-bill me-2"></i>
+                Buy Order History
+              </button>
 
-    <button
-      onClick={() => setActive("Sell order History")}
-      className={`sidebar-item w-100 border-0 text-start ${
-        active === "Sell order History" ? "active" : ""
-      }`}
-    >
-    <i className="fa fa-money me-2"></i>
-      Sell Order History
-    </button>
-
-  </div>
-)} */}
+              <button
+                onClick={() => setActive("Sell order History")}
+                className={`sidebar-item w-100 border-0 text-start ${
+                  active === "Sell order History" ? "active" : ""
+                }`}
+              >
+                <i className="fa-solid  fa-money-bill me-2"></i>
+                Sell Order History
+              </button>
+            </div>
+          )} */}
         </div>
       </div>
 
@@ -324,6 +361,22 @@ export default function UserDashboard() {
         </div>
 
         <div>{renderContent()}</div>
+        {/* Floating Support Button */}
+        <button
+          onClick={() => setActive("Support")}
+          className="support-floating-btn"
+        >
+          {unreadCount > 0 && (
+    <span className="support-count " style={{color:"white", fontWeight:"bold"}}>
+      {unreadCount}
+    </span>
+  )}
+          <i className="fa fa-comments"></i>
+
+          <span>Support</span>
+
+          {/* পরে unreadCount > 0 হলে দেখাবো */}
+        </button>
       </div>
     </div>
   );
