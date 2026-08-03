@@ -38,13 +38,13 @@ import Resetpassword from './Components/Fotgotpassword/Resetpassword';
  import Cryptodetails from "./Components/CourseDetails/Cryptodetails";
  import Affiliatecourses from './Components/Affiliatecourses';
  import Registerbyparent from './Components/Userdashboard/Registerbyparent';
- import Depositform from "./Components/Userdashboard/P2P/Depositform";
- import Sellordercreate from './Components/Userdashboard/P2P/Sellordercreate';
- import Buyusdt from './Components/Userdashboard/P2P/Buyusdt';
- import Mybuyorder from "./Components/Userdashboard/P2P/Mybuyorder";
- import Buyhistory from "./Components/Userdashboard/P2P/Buyhistory";
- import Sellhistory from "./Components/Userdashboard/P2P/Sellhistory";
- import P2pdashboard from './Components/Userdashboard/P2P/P2pdashboard';
+//  import Depositform from "./Components/Userdashboard/P2P/Depositform";
+//  import Sellordercreate from './Components/Userdashboard/P2P/Sellordercreate';
+//  import Buyusdt from './Components/Userdashboard/P2P/Buyusdt';
+//  import Mybuyorder from "./Components/Userdashboard/P2P/Mybuyorder";
+//  import Buyhistory from "./Components/Userdashboard/P2P/Buyhistory";
+//  import Sellhistory from "./Components/Userdashboard/P2P/Sellhistory";
+//  import P2pdashboard from './Components/Userdashboard/P2P/P2pdashboard';
 import './App.css'
 
 
