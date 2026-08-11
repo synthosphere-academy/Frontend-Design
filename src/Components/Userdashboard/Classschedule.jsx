@@ -321,32 +321,107 @@ const [schedule, setSchedule] = useState([]);
           { userId },
         );
 
-        setorderdata(response.data);
+//         setorderdata(response.data);
+//           const eligiblePackages = [
+//   "Learner Course",
+//   "Master Course",
+//   "Pro Master Course",
+//   "Teacher Course",
 
-        // শুধুমাত্র paid order
-        const paidOrders = response.data.filter(
-          (order) => order.paymentStatus === "paid",
-        );
+// ];
 
-        // Batch 10 Date Range
-        // const startDate = new Date("2026-07-01T00:00:00");
-        // const endDate = new Date("2026-07-15T23:59:59");
+//         const paidOrders = response.data.filter(
+//   (order) =>
+//     order.paymentStatus === "paid" &&
+//     eligiblePackages.includes(order.packageName)
+// );
 
-        // const hasBatch10 = paidOrders.some((order) => {
-        //   const orderDate = new Date(order.createdAt);
-        //   return orderDate >= startDate && orderDate <= endDate;
-        // });
 
-        // setShowBatch(hasBatch10);
-        const matchedBatch = batchConfig.find((batch) =>
-  paidOrders.some((order) => {
-    const orderDate = new Date(order.createdAt);
+//         // শুধুমাত্র paid order
+//         // const paidOrders = response.data.filter(
+//         //   (order) => order.paymentStatus === "paid",
+//         // );
 
-    return (
-      orderDate >= new Date(batch.startDate) &&
-      orderDate <= new Date(batch.endDate)
-    );
-  })
+//         // Batch 10 Date Range
+//         // const startDate = new Date("2026-07-01T00:00:00");
+//         // const endDate = new Date("2026-07-15T23:59:59");
+
+//         // const hasBatch10 = paidOrders.some((order) => {
+//         //   const orderDate = new Date(order.createdAt);
+//         //   return orderDate >= startDate && orderDate <= endDate;
+//         // });
+
+//         // setShowBatch(hasBatch10);
+//         const matchedBatch = batchConfig.find((batch) =>
+//   paidOrders.some((order) => {
+//     const orderDate = new Date(order.createdAt);
+
+//     return (
+//       orderDate >= new Date(batch.startDate) &&
+//       orderDate <= new Date(batch.endDate)
+//     );
+//   })
+// );
+
+// if (matchedBatch) {
+//   setShowBatch(true);
+//   setBatchName(matchedBatch.batch);
+//   setSchedule(matchedBatch.classData);
+// } else {
+//   setShowBatch(false);
+//   setBatchName("");
+//   setSchedule([]);
+// }
+console.log("Order Data:", response.data); // Debugging line
+setorderdata(response.data);
+
+const eligiblePackages = [
+  "Learner Course",
+  "Master Course",
+  "Pro Master Course",
+  "Teacher Course",
+];
+
+// DD/MM/YYYY format parse করার function
+const parsePurchaseDate = (dateStr) => {
+  const [datePart, timePart] = dateStr.split(", ");
+  const [day, month, year] = datePart.split("/").map(Number);
+
+  let [time, modifier] = timePart.split(" ");
+  let [hours, minutes, seconds] = time.split(":").map(Number);
+
+  if (modifier.toLowerCase() === "pm" && hours !== 12) hours += 12;
+  if (modifier.toLowerCase() === "am" && hours === 12) hours = 0;
+
+  return new Date(year, month - 1, day, hours, minutes, seconds);
+};
+
+// শুধু eligible course purchase নাও
+const coursePurchases = (response.data.purchaseHistory || []).filter(
+  (purchase) =>
+    purchase.status === "completed" &&
+    eligiblePackages.includes(purchase.packageName)
+);
+
+if (coursePurchases.length === 0) {
+  setShowBatch(false);
+  setBatchName("");
+  setSchedule([]);
+  return;
+}
+
+// latest eligible course purchase
+const latestCoursePurchase = coursePurchases.sort(
+  (a, b) => parsePurchaseDate(b.date) - parsePurchaseDate(a.date)
+)[0];
+
+const purchaseDate = parsePurchaseDate(latestCoursePurchase.date);
+
+// purchase date অনুযায়ী batch select
+const matchedBatch = batchConfig.find(
+  (batch) =>
+    purchaseDate >= new Date(batch.startDate) &&
+    purchaseDate <= new Date(batch.endDate)
 );
 
 if (matchedBatch) {
