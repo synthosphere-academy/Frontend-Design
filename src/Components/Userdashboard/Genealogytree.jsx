@@ -188,7 +188,7 @@ const handleSelectUser = (user) => {
                   )}
 
                   {ref.courseStatus === "expired" && (
-                      <i class="fa fa-star-half-full" style={{color:"#e0bc38"}}></i>
+                      <i class="fa-regular fa-star-half" style={{color:"#e0bc38"}}></i>
                   
                   )}
                 <p>{ref.userId}</p>

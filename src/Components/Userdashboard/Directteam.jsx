@@ -35,6 +35,7 @@ const Directteam = () => {
           <tr>
             <th className="text-center">S/N</th>
             <th className="text-center">User ID</th>
+            
             <th className="text-center">Username</th>
             <th className="text-center">Smart Trader</th>
           </tr>
@@ -53,7 +54,7 @@ const Directteam = () => {
 
                   {user.courseStatus === "expired" && (
                     <i
-                      className="fa fa-star-half-o"
+                      className="fa-regular fa-star-half"
                       style={{ color: "orange" }}
                     ></i>
                   )}
