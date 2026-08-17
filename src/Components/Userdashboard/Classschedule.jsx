@@ -146,72 +146,152 @@ const batchConfig = [
       {
         classNo: 1,
         topic: "Introduction to Crypto",
-        date: "3rd August 2026",
+        date: "17th August 2026",
         time: "7:00 PM",
       },
       {
         classNo: 2,
-        date: "5th August 2026",
+        date: "18th August 2026",
         time: "7:00 PM",
       },
       {
         classNo: 3,
         topic: "Introduction to Crypto",
-        date: "6th August 2026",
+        date: "19th August 2026",
         time: "7:00 PM",
       },
       {
         classNo: 4,
         topic: "Introduction to Crypto",
-        date: "7th August 2026",
+        date: "20th August 2026",
         time: "7:00 PM",
       },
       {
         classNo: 5,
         topic: "Introduction to Crypto",
-        date: "8th August 2026",
+        date: "21st August 2026",
         time: "7:00 PM",
       },
       {
         classNo: 6,
         topic: "Introduction to Crypto",
-        date: "10th August 2026",
+        date: "22nd August 2026",
         time: "7:00 PM",
       },
       {
         classNo: 7,
         topic: "Introduction to Crypto",
-        date: "11th August 2026",
+        date: "24th August 2026",
         time: "7:00 PM",
       },
        {
         classNo: 8,
         topic: "Introduction to Crypto",
-        date: "12th August 2026",
+        date: "25th August 2026",
         time: "7:00 PM",
       },
         {
         classNo: 9,
         topic: "Introduction to Crypto",
-        date: "13th August 2026",
+        date: "26th August 2026",
         time: "7:00 PM",
       },
         {
         classNo: 10,
         topic: "Introduction to Crypto",
-        date: "14th August 2026",
+        date: "27th August 2026",
         time: "7:00 PM",
       },
       {
         classNo: 11,
         topic: "Introduction to Crypto",
-        date: "15th August 2026",
+        date: "28th August 2026",
         time: "7:00 PM",
       },
       {
         classNo: 12,
         topic: "Introduction to Crypto",
+        date: "29th August 2026",
+        time: "7:00 PM",
+      },
+    
+    ],
+  },
+   {
+    batch: "Batch 12",
+    startDate: "2026-08-01T00:00:00",
+    endDate: "2026-08-15T23:59:59",
+    classData: [
+      {
+        classNo: 1,
+        
+        topic: "Introduction to Crypto",
         date: "17th August 2026",
+        time: "7:00 PM",
+      },
+      {
+        classNo: 2,
+        date: "18th August 2026",
+        time: "7:00 PM",
+      },
+      {
+        classNo: 3,
+        topic: "Introduction to Crypto",
+        date: "19th August 2026",
+        time: "7:00 PM",
+      },
+      {
+        classNo: 4,
+        topic: "Introduction to Crypto",
+        date: "20th August 2026",
+        time: "7:00 PM",
+      },
+      {
+        classNo: 5,
+        topic: "Introduction to Crypto",
+        date: "21st August 2026",
+        time: "7:00 PM",
+      },
+      {
+        classNo: 6,
+        topic: "Introduction to Crypto",
+        date: "22nd August 2026",
+        time: "7:00 PM",
+      },
+      {
+        classNo: 7,
+        topic: "Introduction to Crypto",
+        date: "24th August 2026",
+        time: "7:00 PM",
+      },
+       {
+        classNo: 8,
+        topic: "Introduction to Crypto",
+        date: "25th August 2026",
+        time: "7:00 PM",
+      },
+        {
+        classNo: 9,
+        topic: "Introduction to Crypto",
+        date: "26th August 2026",
+        time: "7:00 PM",
+      },
+        {
+        classNo: 10,
+        topic: "Introduction to Crypto",
+        date: "27th August 2026",
+        time: "7:00 PM",
+      },
+      {
+        classNo: 11,
+        topic: "Introduction to Crypto",
+        date: "28th August 2026",
+        time: "7:00 PM",
+      },
+      {
+        classNo: 12,
+        topic: "Introduction to Crypto",
+        date: "29th August 2026",
         time: "7:00 PM",
       },
     
@@ -317,7 +397,7 @@ const [schedule, setSchedule] = useState([]);
 
       try {
         const response = await axios.post(
-          `${ROOT_URL}/api/users/getorderdetailsbyuser`,
+          `${ROOT_URL}/api/users/full-details`,
           { userId },
         );
 
@@ -372,8 +452,8 @@ const [schedule, setSchedule] = useState([]);
 //   setBatchName("");
 //   setSchedule([]);
 // }
-console.log("Order Data:", response.data); // Debugging line
-setorderdata(response.data);
+console.log("Order Data of a user:", response.data.data); // Debugging line
+setorderdata(response.data.data);
 
 const eligiblePackages = [
   "Learner Course",
@@ -397,7 +477,7 @@ const parsePurchaseDate = (dateStr) => {
 };
 
 // শুধু eligible course purchase নাও
-const coursePurchases = (response.data.purchaseHistory || []).filter(
+const coursePurchases = (response.data.data.courseDetails.purchaseHistory || []).filter(
   (purchase) =>
     purchase.status === "completed" &&
     eligiblePackages.includes(purchase.packageName)
@@ -512,7 +592,44 @@ if (!showBatch) {
                     
                    {/* <td className="text-center"> 📅 {item.date}
                    </td> */}
-                  <td className="text-center">
+                   <td className="text-center">
+  {new Date(
+    item.date.replace(/(\d+)(st|nd|rd|th)/, "$1")
+  ) < new Date().setHours(0, 0, 0, 0) ? (
+    <>
+    <span className="btn btn-outline-primary btn-sm fw-semibold"  style={{
+          borderRadius: "20px",
+          minWidth: "120px",
+        }}>
+      📅 {item.date}</span>
+       <span className="ms-4" style={{ color: "green", fontWeight: "bold" }}>
+        Class completed  <i class="fa-regular fa-square-check" style={{ color: "green", fontSize:"16px" }}></i>
+      </span>
+      </>
+   
+  ) : (
+    <>
+      <a
+        href="https://us06web.zoom.us/j/81195469231?pwd=V4qbcBkBRS2wa1BjOuobmIuiS48AvO.1"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn btn-outline-primary btn-sm fw-semibold"
+        style={{
+          borderRadius: "20px",
+          minWidth: "120px",
+        }}
+      >
+        📅 {item.date}
+      </a>
+
+      <span className="ms-3" >
+        <i className="fa-regular fa-hand-point-left me-2"></i>
+        Click Here
+      </span>
+    </>
+  )}
+</td>
+                  {/* <td className="text-center">
                     <a
                       href="https://us06web.zoom.us/j/81195469231?pwd=V4qbcBkBRS2wa1BjOuobmIuiS48AvO.1"
                       target="_blank"
@@ -526,9 +643,9 @@ if (!showBatch) {
                       📅 {item.date}
                     </a>
                     <span className="ms-3">
-                      <i className="fa fa-hand-o-left me-2"></i>Click Here{" "}
+                      <i className="fa-regular fa-hand-point-left me-2"></i>Click Here{" "}
                     </span>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
