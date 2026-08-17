@@ -524,13 +524,43 @@ if (!showBatch) {
   return (
     <div className="container py-5">
       <div
-        className="alert alert-info text-center shadow-sm"
-        style={{ borderRadius: "15px" }}
+        className="alert text-center shadow-sm"
+        style={{
+          borderRadius: "15px",
+          backgroundColor: "#f3e8ff",
+          border: "1px solid #d8b4fe",
+        }}
       >
-        <h5 className="fw-bold mb-2">📅 Class Schedule</h5>
-        <p className="mb-0">
-          Class schedule will be available from <strong>Batch 8
-          </strong>.
+        <h5 className="fw-bold mb-3">
+          📅 Your Batch Class Has Been Completed
+        </h5>
+
+      <p className="mb-3">
+  Your batch classes have been completed.
+  <br />
+  You can now join the ongoing classes of <strong>any of our batches</strong> as per their scheduled timings.
+</p>
+
+        <a
+          href="https://us06web.zoom.us/j/81195469231?pwd=V4qbcBkBRS2wa1BjOuobmIuiS48AvO.1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary px-4 py-2 fw-semibold"
+          style={{
+            borderRadius: "25px",
+          }}
+        >
+           Click Here to Join Class
+        </a>
+
+        <p className="mt-4 mb-0">
+          📞 <strong>For any details:</strong>{" "}
+          <a
+            href="tel:6291583772"
+            className="fw-semibold text-decoration-none"
+          >
+            +91 6291583772
+          </a>
         </p>
       </div>
     </div>
