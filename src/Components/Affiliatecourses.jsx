@@ -193,6 +193,18 @@ const Affiliatecourses = () => {
       ],
     },
     {
+      name: "Expert Advice",
+      subcription: "One Month",
+      price: "1180",
+      points: "1000",
+      features: [
+        "Trading with Expert",
+        "Scalping trading with Expert",
+        "Full Expert Guidance",
+        
+      ],
+    },
+    {
       name: "Classic Traders",
       subcription: "One Month",
       price: "708",
