@@ -84,20 +84,63 @@ const Courseview = () => {
 
     }
   ];
+  // const generateCertificate = () => {
+  //   const input = document.getElementById("certificate");
+
+  //   html2canvas(input, { scale: 1.2 }).then((canvas) => {
+  //     const imgData = canvas.toDataURL("image/jpeg", 0.8);
+
+  //     // 👉 Set PDF to landscape
+  //     const pdf = new jsPDF("landscape", "px", [canvas.width, canvas.height]);
+
+  //     pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+
+  //     pdf.save("certificate.pdf");
+  //   });
+  // };
   const generateCertificate = () => {
-    const input = document.getElementById("certificate");
+  const input = document.getElementById("certificate");
 
-    html2canvas(input, { scale: 1.2 }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/jpeg", 0.8);
+  html2canvas(input, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: "#ffffff",
+    width: input.offsetWidth,
+    height: input.offsetHeight,
+  }).then((canvas) => {
+    const imgData = canvas.toDataURL("image/jpeg", 0.95);
 
-      // 👉 Set PDF to landscape
-      const pdf = new jsPDF("landscape", "px", [canvas.width, canvas.height]);
+    const pdf = new jsPDF("landscape", "mm", "a4");
 
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
 
-      pdf.save("certificate.pdf");
-    });
-  };
+    const imgWidth = canvas.width;
+    const imgHeight = canvas.height;
+
+    const ratio = Math.min(
+      pageWidth / imgWidth,
+      pageHeight / imgHeight
+    );
+
+    const finalWidth = imgWidth * ratio;
+    const finalHeight = imgHeight * ratio;
+
+    const x = (pageWidth - finalWidth) / 2;
+    const y = (pageHeight - finalHeight) / 2;
+
+    pdf.addImage(
+      imgData,
+      "JPEG",
+      x,
+      y,
+      finalWidth,
+      finalHeight
+    );
+
+    pdf.save("certificate.pdf");
+  });
+};
 
   const handleAnswer = async (option) => {
   let newScore = score;
@@ -475,56 +518,54 @@ const date = new Date().toLocaleDateString("en-GB", {
                   <i className="fa fa-download"></i> Download
                 </button>
               </div>
-              <div
-                className="mt-3"
-                id="certificate"
-                style={{
-                  position: "relative",
-                  width: "90%",
-                  height: "500px",
-                  backgroundImage: `url(${certificate})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  border: "1px solid #ccc",
-                  borderRadius: "10px",
-                }}
-              >
-                {/* User Name */}
-                
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "57%",
-                    left: "11%",
-                    transform: "translateY(-50%)",
-                    color: "rgb(0, 0, 0)",
-                    fontSize: "22px",
-                    fontWeight: "bold",
-                    fontFamily: "cursive",
-                     whiteSpace: "nowrap", 
-                  }}
-                >
-                  {sessionStorage.getItem("username") || "Your Name"}
-                </div>
-                 <div
-                  style={{
-                    position: "absolute",
-                    top: "84%",
-                    left: "22%",
-                    transform: "translate(-50%, -50%)",
+             <div
+  className="mt-3"
+  id="certificate"
+  style={{
+    position: "relative",
+    width: "90%",
+    aspectRatio: "907 / 728",
+    backgroundImage: `url(${certificate})`,
+    backgroundSize: "100% 100%",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    border: "1px solid #ccc",
+    borderRadius: "10px",
+  }}
+>
+  {/* User Name */}
+  <div
+    style={{
+      position: "absolute",
+      top: "57%",
+      left: "11%",
+      transform: "translateY(-50%)",
+      color: "rgb(0, 0, 0)",
+      fontSize: "22px",
+      fontWeight: "bold",
+      fontFamily: "cursive",
+      whiteSpace: "nowrap",
+    }}
+  >
+    {sessionStorage.getItem("username") || "Your Name"}
+  </div>
 
-                    color: "rgb(0, 0, 0)",
-
-                    fontSize: "14px",
-                    fontWeight: 300,
-                    fontFamily: "cursive",
-                  }}
-                >
-                  {
-                    date
-                  }
-                </div>
-              </div>
+  {/* Date */}
+  <div
+    style={{
+      position: "absolute",
+      top: "84%",
+      left: "22%",
+      transform: "translate(-50%, -50%)",
+      color: "rgb(0, 0, 0)",
+      fontSize: "14px",
+      fontWeight: 300,
+      fontFamily: "cursive",
+    }}
+  >
+    {date}
+  </div>
+</div>
             </div>
           )}
           {(!orderdata || orderdata[0]?.paymentStatus !== "paid") && (
