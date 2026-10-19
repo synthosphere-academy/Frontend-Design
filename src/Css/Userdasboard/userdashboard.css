@@ -106,6 +106,76 @@
   font-size: 14px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+.coupon-id-badge {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #fff86d,
+    #eff159,
+    
+    #ffd700
+  );
+
+  color: #270404;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 16px;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+  /* Blinking + glowing effect */
+  animation: couponBlink 1.2s infinite alternate;
+}
+
+/* Moving shine effect */
+.coupon-id-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+
+  transform: skewX(-25deg);
+  animation: couponShine 2s infinite;
+  pointer-events: none;
+}
+
+/* Blinking glow */
+/* @keyframes couponBlink {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 5px #ffeb3b,
+                0 0 10px #ffd700;
+  }
+  100% {
+    opacity: 0.7;
+    box-shadow: 0 0 15px #ffeb3b,
+                0 0 25px #ffd700;
+  }
+} */
+
+/* Shine travels across the badge */
+@keyframes couponShine {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
 
 /* Desktop enhancement */
 @media (min-width: 768px) {

@@ -38,7 +38,11 @@ export default function UserDashboard() {
   const [selectedSellOrder, setselectedSellOrder] = useState(null);
   const [unreadCount, setUnreadCount] = useState(0);
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+   const [error, setError] = useState("");
 const userId = sessionStorage.getItem("userid");
+
+
+
 const fetchUnreadCount = async () => {
   try {
     const res = await axios.get(
@@ -52,11 +56,50 @@ const fetchUnreadCount = async () => {
   }
 };
 
+const [couponCode, setCouponCode] = useState(null);
+const [couponLoading, setCouponLoading] = useState(true);
+
+const fetchCoupon = async () => {
+  try {
+    const currentUserId = sessionStorage.getItem("userid");
+
+    if (!currentUserId) {
+      console.error("User ID missing from sessionStorage");
+      setError("User ID not found.");
+      return;
+    }
+
+    console.log("Coupon API URL:", ROOT_URL);
+    console.log("Coupon User ID:", currentUserId);
+
+    const response = await axios.get(
+      `${ROOT_URL}/api/referral/coupon/${encodeURIComponent(currentUserId)}`
+    );
+
+    console.log("Coupon API response:", response.data);
+
+    setCouponCode(response.data.couponCode ?? null);
+  } catch (err) {
+    console.error(
+      "Coupon fetch error:",
+      err.response?.data || err.message
+    );
+    setError("Unable to load coupon code.");
+  } finally {
+    setCouponLoading(false);
+  }
+};
+
 useEffect(() => {
   if (userId) {
     fetchUnreadCount();
+    fetchCoupon();
+  } else {
+    setCouponLoading(false);
+    setError("User ID not found.");
   }
 }, [userId]);
+
 useEffect(() => {
   if (!userId) return;
 
@@ -335,7 +378,7 @@ useEffect(() => {
       <div className="flex-grow-1 p-4 overflow-auto">
         {/* 🔹 TOP BAR */}
         <div className="row align-items-center mb-3">
-          <div className="col-6 d-flex align-items-center">
+          <div className="col-4 d-flex align-items-center">
             {isMobile && (
               <button
                 className="btn btn-outline-secondary me-4"
@@ -344,21 +387,39 @@ useEffect(() => {
                 <i className="fa fa-bars" />
               </button>
             )}
-            <h4
+            <h5
               className="fw-bold text-dark mb-0 
             "
             >
               {active}
-            </h4>
+            </h5>
           </div>
-
-          <div className="col-6 text-end">
+            
+          <div className="col-8 text-end">
             <span className="user-id-badge">
               <span className="label">User ID:</span>
               <span className="value ms-2">{userid}</span>
             </span>
           </div>
         </div>
+        {/* <div className="col-12 d-flex align-items-center justify-content-center text-center mb-3">
+              
+            <span className="coupon-id-badge">
+              <span className="label">Your Lucky Number:</span>
+              <span className="value ms-2">{couponCode}</span>
+            </span>
+         
+            </div> */}
+            
+{couponCode && (
+  <div className="col-12 d-flex align-items-center justify-content-center text-center mb-3">
+    <span className="coupon-id-badge">
+      <span className="label">Your Lucky Number:</span>
+      <span className="value ms-2">{couponCode}</span>
+    </span>
+  </div>
+)}
+
 
         <div>{renderContent()}</div>
         {/* Floating Support Button */}
