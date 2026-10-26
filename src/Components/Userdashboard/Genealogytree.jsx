@@ -12,6 +12,7 @@ const Genealogytree = () => {
    const [rootUserId, setRootUserId] = useState(null);
 const [searchUser, setSearchUser] = useState("");
 const [searchResults, setSearchResults] = useState([]);
+ const userId_user = sessionStorage.getItem("userid"); 
   const fetchUserTree = async (userId, isBack = false) => {
     if (!userId) return;
 
@@ -182,7 +183,7 @@ const handleSelectUser = (user) => {
               >
              <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: bgColor, color: "#fff" }}/>
                 <h5 className="fw-bold mt-1">{ref.name}</h5>
-                {ref.courseStatus === "active" && (
+                {userId_user === "SA91551" && ref.courseStatus === "active" && (
                   <span style={{fontSize: "15px" }}>⭐</span>
                   
                   )}
@@ -191,6 +192,10 @@ const handleSelectUser = (user) => {
                       <i class="fa-regular fa-star-half" style={{color:"#e0bc38"}}></i>
                   
                   )}
+                  {userId_user === "SA91551" && ref.courseStatus === "none" && (
+                    <span style={{fontSize: "15px" }}>⭐</span>
+                  )}
+                {/* <p>Status: {ref.status}</p> */}
                 <p>{ref.userId}</p>
               </div>
             );

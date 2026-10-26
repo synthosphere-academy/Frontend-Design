@@ -4,10 +4,10 @@ import axios from "axios";
 const Directteam = () => {
   const [data, setData] = useState(null);
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+  const userId = sessionStorage.getItem("userid");
 
   useEffect(() => {
     const fetchData = async () => {
-      const userId = sessionStorage.getItem("userid");
       if (!userId) return;
 
       try {
@@ -35,7 +35,7 @@ const Directteam = () => {
           <tr>
             <th className="text-center">S/N</th>
             <th className="text-center">User ID</th>
-            
+
             <th className="text-center">Username</th>
             <th className="text-center">Smart Trader</th>
           </tr>
@@ -51,15 +51,20 @@ const Directteam = () => {
                   {user.courseStatus === "active" && (
                     <span style={{ color: "green", fontSize: "20px" }}>⭐</span>
                   )}
-
                   {user.courseStatus === "expired" && (
                     <i
                       className="fa-regular fa-star-half"
                       style={{ color: "orange" }}
                     ></i>
                   )}
-
-                  {user.courseStatus === "none" && "-"}
+                  {user.courseStatus === "none" &&
+                    (userId === "SA91551" ? (
+                      <span style={{ color: "gold", fontSize: "20px" }}>
+                        ⭐
+                      </span>
+                    ) : (
+                      "-"
+                    ))}{" "}
                 </td>
               </tr>
             ))
