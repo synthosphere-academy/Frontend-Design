@@ -579,17 +579,38 @@ function Home() {
         <div className="col-lg-3">
           <div className="card h-100 cardstyle text-center">
             <div className="card-body">
-              <i
+              {/* <i
                 className="fa fa-trophy"
                 style={{
                   color: levelColor[scholarship] || "white",
                   fontSize: "30px",
                 }}
 
-              ></i>
-              <h5 className="mt-2 fw-bold" style={{ color: levelColor[scholarship] || "white" }}>
-                {scholarship}
+              ></i> */}
+              <i
+  className="fa fa-trophy"
+  style={{
+    color:
+      userId === "SA91551"
+        ? levelColor["Bronze"]
+        : levelColor[scholarship] || "white",
+    fontSize: "30px",
+  }}
+></i>
+              {/* <h5
+  className="mt-2 fw-bold"
+  style={{
+    color:
+      userId === "SA91551"
+        ? levelColor["Bronze"] 
+        : levelColor[scholarship] || "white",
+  }}
+>
+</h5> */}
+              {/* <h5 className="mt-2 fw-bold" style={{ color: levelColor[scholarship] || "white" }}> */}
+               <h5 className="mt-2 fw-bold" style={{ color: levelColor[scholarship] || "white" }}> {userId === "SA91551" ? "Bronze" : scholarship}
               </h5>
+              
               <h5 className="card-text">Scholarship Achiever</h5>
             </div>
           </div>
