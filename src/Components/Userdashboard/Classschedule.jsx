@@ -297,6 +297,86 @@ const batchConfig = [
     
     ],
   },
+     {
+    batch: "Batch 17",
+    startDate: "2026-10-15T00:00:00",
+    endDate: "2026-10-31T23:59:59",
+    classData: [
+      {
+        classNo: 1,
+        
+        topic: "Introduction to Crypto",
+        date: "5th November 2026",
+        time: "6:30 PM",
+      },
+      {
+        classNo: 2,
+        date: "6th November 2026",
+        time: "6:30 PM",
+      },
+      {
+        classNo: 3,
+        topic: "Introduction to Crypto",
+        date: "7th November 2026",
+        time: "6:30 PM",
+      },
+      {
+        classNo: 4,
+        topic: "Introduction to Crypto",
+        date: "9th November 2026",
+        time: "6:30 PM",
+      },
+      {
+        classNo: 5,
+        topic: "Introduction to Crypto",
+        date: "10th November 2026",
+        time: "6:30 PM",
+      },
+      {
+        classNo: 6,
+        topic: "Introduction to Crypto",
+        date: "11th November 2026",
+        time: "6:30 PM",
+      },
+      {
+        classNo: 7,
+        topic: "Introduction to Crypto",
+        date: "12th November 2026",
+        time: "5:00 PM",
+      },
+       {
+        classNo: 8,
+        topic: "Introduction to Crypto",
+        date: "13th November 2026",
+        time: "5:00 PM",
+      },
+        {
+        classNo: 9,
+        topic: "Introduction to Crypto",
+        date: "14th November 2026",
+        time: "5:00 PM",
+      },
+        {
+        classNo: 10,
+        topic: "Introduction to Crypto",
+        date: "16th November 2026",
+        time: "5:00 PM",
+      },
+      {
+        classNo: 11,
+        topic: "Introduction to Crypto",
+        date: "17th November 2026",
+        time: "5:00 PM",
+      },
+      {
+        classNo: 12,
+        topic: "Introduction to Crypto",
+        date: "18th November 2026",
+        time: "5:00 PM",
+      },
+    
+    ],
+  },
 ];
 // const classData = [
 //   {
@@ -676,8 +756,8 @@ if (!showBatch) {
                       <i className="fa-regular fa-hand-point-left me-2"></i>Click Here{" "}
                     </span>
                   </td> */}
-                </tr>
-              ))}
+                </tr> 
+              ))} 
             </tbody>
           </table>
         </div>
