@@ -34,8 +34,8 @@ export default function UserDashboard() {
   const [active, setActive] = useState("Dashboard");
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [openP2P, setOpenP2P] = useState(false);
-  const [selectedSellOrder, setselectedSellOrder] = useState(null);
+  // const [openP2P, setOpenP2P] = useState(false);
+  // const [selectedSellOrder, setselectedSellOrder] = useState(null);
   const [unreadCount, setUnreadCount] = useState(0);
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
    const [error, setError] = useState("");
@@ -56,44 +56,43 @@ const fetchUnreadCount = async () => {
   }
 };
 
-const [couponCode, setCouponCode] = useState(null);
-const [couponLoading, setCouponLoading] = useState(true);
+// const [couponCode, setCouponCode] = useState(null);
+// const [couponLoading, setCouponLoading] = useState(true);
 
-const fetchCoupon = async () => {
-  try {
-    const currentUserId = sessionStorage.getItem("userid");
+// const fetchCoupon = async () => {
+//   try {
+//     const currentUserId = sessionStorage.getItem("userid");
 
-    if (!currentUserId) {
-      console.error("User ID missing from sessionStorage");
-      setError("User ID not found.");
-      return;
-    }
+//     if (!currentUserId) {
+//       console.error("User ID missing from sessionStorage");
+//       setError("User ID not found.");
+//       return;
+//     }
 
-    console.log("Coupon API URL:", ROOT_URL);
-    console.log("Coupon User ID:", currentUserId);
+//     console.log("Coupon API URL:", ROOT_URL);
+//     console.log("Coupon User ID:", currentUserId);
 
-    const response = await axios.get(
-      `${ROOT_URL}/api/referral/coupon/${encodeURIComponent(currentUserId)}`
-    );
+//     const response = await axios.get(
+//       `${ROOT_URL}/api/referral/coupon/${encodeURIComponent(currentUserId)}`
+//     );
 
-    console.log("Coupon API response:", response.data);
+//     console.log("Coupon API response:", response.data);
 
-    setCouponCode(response.data.couponCode ?? null);
-  } catch (err) {
-    console.error(
-      "Coupon fetch error:",
-      err.response?.data || err.message
-    );
-    setError("Unable to load coupon code.");
-  } finally {
-    setCouponLoading(false);
-  }
-};
+//     setCouponCode(response.data.couponCode ?? null);
+//   } catch (err) {
+//     console.error(
+//       "Coupon fetch error:",
+//       err.response?.data || err.message
+//     );
+//     setError("Unable to load coupon code.");
+//   } finally {
+//     setCouponLoading(false);
+//   }
+// };
 
 useEffect(() => {
   if (userId) {
     fetchUnreadCount();
-    fetchCoupon();
   } else {
     setCouponLoading(false);
     setError("User ID not found.");
@@ -227,7 +226,7 @@ useEffect(() => {
       // case "Create Sell Order":
       //   return <Sellordercreate />;
       // case "Create Buy Order":
-      //   return <Buyusdt />;
+      //    return <Buyusdt />;
       // case "Create Buy Order":
       //   return <Buyusdt sellOrder={selectedSellOrder} />;
       // case "My Buy Orders":
@@ -297,8 +296,8 @@ useEffect(() => {
             <i
               className={`fa ${openP2P ? "fa-chevron-up" : "fa-chevron-down"}`}
             ></i>
-          </button>
-          {openP2P && (
+          </button> */}
+          {/* {openP2P && (
             <div className="ps-4">
               <button
                 onClick={() => setActive("P2P Dashboard")}
@@ -411,14 +410,7 @@ useEffect(() => {
          
             </div> */}
             
-{couponCode && (
-  <div className="col-12 d-flex align-items-center justify-content-center text-center mb-3">
-    <span className="coupon-id-badge">
-      <span className="label">Your Lucky Number:</span>
-      <span className="value ms-2">{couponCode}</span>
-    </span>
-  </div>
-)}
+
 
 
         <div>{renderContent()}</div>
