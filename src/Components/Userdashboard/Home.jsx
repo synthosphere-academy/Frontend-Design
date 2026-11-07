@@ -468,7 +468,7 @@ function Home() {
             <div className="text-center"></div>
             <div className="card-body">
               <div>
-                <i className="fa fa-money" style={{ fontSize: "30px" }}></i>
+                <i className="fa-solid  fa-money-bill" style={{ fontSize: "30px" }}></i>
               </div>
               <h5 className="card-title text-center mt-2">₹{payout}</h5>
               <h5 className="card-text text-center">Current Payout</h5>

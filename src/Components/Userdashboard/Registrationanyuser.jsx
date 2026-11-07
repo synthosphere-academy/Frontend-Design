@@ -56,19 +56,30 @@ function Registrationanyuser() {
     setPhoneError(numericValue.length !== 10);
   };
 
-  const aadharHandler = (e) => {
-    const value = e.target.value;
+  // const aadharHandler = (e) => {
+  //   const value = e.target.value;
 
-    // Allow only digits
-    const numericValue = value.replace(/\D/g, "");
+  //   // Allow only digits
+  //   const numericValue = value.replace(/\D/g, "");
 
-    // Update state
-    setAadharNo(numericValue);
+  //   // Update state
+  //   setAadharNo(numericValue);
 
-    // Aadhaar must be exactly 12 digits
-    setAadharError(numericValue.length !== 12);
-  };
+  //   // Aadhaar must be exactly 12 digits
+  //   setAadharError(numericValue.length !== 12);
+  // };
+const aadharHandler = (e) => {
+  // Only 12 digits allowed
+  const numericValue = e.target.value.replace(/\D/g, "").slice(0, 12);
 
+  // Display format: 5454-6565-5656
+  const formattedValue = numericValue.match(/.{1,4}/g)?.join("-") || "";
+
+  setAadharNo(formattedValue);
+
+  // Validate only 12 digits, excluding hyphens
+  setAadharError(numericValue.length !== 12);
+};
   const passwordHandler = (e) => {
     const value = e.target.value;
     setPassword(value);
@@ -145,7 +156,8 @@ function Registrationanyuser() {
       formData.append("phone", phone);
       formData.append("email", email);
       formData.append("address", address);
-      formData.append("aadharNo", aadharNo);
+      // formData.append("aadharNo", aadharNo);
+       formData.append("aadharNo", aadharNo.replace(/-/g, ""));
       formData.append("panNo", panNo);
       formData.append("password", password);
       formData.append("parentId", parentId);
@@ -206,7 +218,7 @@ function Registrationanyuser() {
               value={phone}
             />
             {phoneError && (
-              <span className="link-danger">Invalid phone number</span>
+              <span className="link-danger">Please enter a valid 10-digit phone number</span>
             )}
           </div>
 
@@ -237,10 +249,10 @@ function Registrationanyuser() {
             <input
               type="text"
               className="form-control form-control-lg inputform"
-              placeholder="Enter 12-digit Aadhaar number"
+              placeholder="XXXX-XXXX-XXXX"
               onChange={aadharHandler}
               value={aadharNo}
-              maxLength={12}
+              maxLength={14}
             />
             {aadharError && (
               <small className="text-danger">

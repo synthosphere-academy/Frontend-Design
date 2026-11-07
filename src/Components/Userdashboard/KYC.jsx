@@ -17,6 +17,7 @@ const KYC = () => {
     bankName: "",
     accountNo: "",
     branchName: "",
+    accountType: "savings",
     ifscCode: "",
   });
 
@@ -47,9 +48,10 @@ const KYC = () => {
                 bankName: bank.bankName || "",
                 accountNo: bank.accountNo || "",
                 branchName: bank.branchName || "",
+                accountType: bank.accountType || "savings",
                 ifscCode: bank.ifscCode || "",
               });
-            }
+            } 
           }
         }
       } catch (error) {
@@ -263,7 +265,41 @@ const KYC = () => {
               onChange={handleChange}
             />
           </div>
+         <div className="col-md-6">
+  <label className="form-label d-block">Account Type</label>
 
+  <div className="d-flex gap-4 mt-2">
+    <div className="form-check">
+      <input
+        type="radio"
+        id="savings"
+        name="accountType"
+        value="savings"
+        className="form-check-input"
+        checked={formData.accountType === "savings"}
+        onChange={handleChange}
+      />
+      <label className="form-check-label" htmlFor="savings">
+        Savings
+      </label>
+    </div>
+
+    <div className="form-check">
+      <input
+        type="radio"
+        id="current"
+        name="accountType"
+        value="current"
+        className="form-check-input"
+        checked={formData.accountType === "current"}
+        onChange={handleChange}
+      />
+      <label className="form-check-label" htmlFor="current">
+        Current
+      </label>
+    </div>
+  </div>
+</div>
           <div className="col-md-6">
             <label className="form-label">Branch Name</label>
             <input

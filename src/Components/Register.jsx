@@ -55,19 +55,31 @@ function Register() {
     setPhoneError(numericValue.length !== 10);
   };
 
-  const aadharHandler = (e) => {
-    const value = e.target.value;
+  // const aadharHandler = (e) => {
+  //   const value = e.target.value;
 
-    // Allow only digits
-    const numericValue = value.replace(/\D/g, "");
+  //   // Allow only digits
+  //   const numericValue = value.replace(/\D/g, "");
 
-    // Update state
-    setAadharNo(numericValue);
+  //   // Update state
+  //   setAadharNo(numericValue);
 
-    // Aadhaar must be exactly 12 digits
-    setAadharError(numericValue.length !== 12);
-  };
+  //   // Aadhaar must be exactly 12 digits
+  //   setAadharError(numericValue.length !== 12);
+  // };
+const aadharHandler = (e) => {
+  // Allow only digits and maximum 12 digits
+  const numericValue = e.target.value.replace(/\D/g, "").slice(0, 12);
 
+  // Add hyphen after every 4 digits
+  const formattedValue = numericValue.match(/.{1,4}/g)?.join("-") || "";
+
+  // Update state with formatted value
+  setAadharNo(formattedValue);
+
+  // Aadhaar must be exactly 12 digits
+  setAadharError(numericValue.length !== 12);
+};
   const passwordHandler = (e) => {
     const value = e.target.value;
     setPassword(value);
@@ -144,7 +156,8 @@ function Register() {
       formData.append("phone", phone);
       formData.append("email", email);
       formData.append("address", address);
-      formData.append("aadharNo", aadharNo);
+      //  formData.append("aadharNo", aadharNo);
+      formData.append("aadharNo", aadharNo.replace(/-/g, ""));
       formData.append("panNo", panNo);
       formData.append("password", password);
       formData.append("parentId", parentId);
