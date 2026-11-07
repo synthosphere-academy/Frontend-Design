@@ -248,10 +248,10 @@ const aadharHandler = (e) => {
             <input
               type="text"
               className="form-control form-control-lg inputform"
-              placeholder="Enter 12-digit Aadhaar number"
+               placeholder="XXXX-XXXX-XXXX"
               onChange={aadharHandler}
               value={aadharNo}
-              maxLength={12}
+              maxLength={14}
             />
             {aadharError && (
               <small className="text-danger">
