@@ -58,7 +58,24 @@
 	}
 }
 
+.password-requirements {
+  font-size: 15px;
+  line-height: 1.9;
+}
 
+.password-requirements div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-requirements .valid {
+  color: #22c55e;
+}
+
+.password-requirements .invalid {
+  color: white;
+}
 @media (max-width: 600px) {
     .formcontainer{
 		width: 95%;

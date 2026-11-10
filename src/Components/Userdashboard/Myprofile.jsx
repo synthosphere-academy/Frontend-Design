@@ -51,6 +51,12 @@ const ProfileRow = ({ label, value }) => (
     </div>
     <div className="col-7 col-md-8">
       {value || "None"}
+       {label === "Account Status" &&
+        value?.toLowerCase() === "active" && (
+          <span className="ms-2 text-success">
+            <i className="fa fa-check-circle"></i>
+          </span>
+        )}
     </div>
   </div>
 );

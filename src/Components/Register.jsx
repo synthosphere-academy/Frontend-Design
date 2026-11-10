@@ -24,6 +24,7 @@ function Register() {
   const [panPhoto, setpanphoto] = useState("");
    const [parentId, setParentId] = useState("SA14316");
   //  const [parentId, setParentId] = useState(refid || "SA37499");
+   const [dateOfBirth, setDateOfBirth] = useState("");
   const [mobilenoerror, setmobileerror] = useState(false);
   const [aadharFront, setAadharPhoto] = useState(null);
    const [aadharBack, setAadharPhotoback] = useState(null);
@@ -80,22 +81,27 @@ const aadharHandler = (e) => {
   // Aadhaar must be exactly 12 digits
   setAadharError(numericValue.length !== 12);
 };
+  // const passwordHandler = (e) => {
+  //   const value = e.target.value;
+  //   setPassword(value);
+  //   if (!/[A-Z]/.test(value)) {
+  //     setPasswordError("Must contain one uppercase letter");
+  //   } else if (!/[!@#$%^&*(),.?\":{}|<>]/.test(value)) {
+  //     setPasswordError("Must contain one special character");
+  //   } else if (!/\d/.test(value)) {
+  //     setPasswordError("Must contain one number");
+  //   } else if (value.length < 8) {
+  //     setPasswordError("Must be at least 8 characters");
+  //   } else {
+  //     setPasswordError("");
+  //   }
+  // };
   const passwordHandler = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-    if (!/[A-Z]/.test(value)) {
-      setPasswordError("Must contain one uppercase letter");
-    } else if (!/[!@#$%^&*(),.?\":{}|<>]/.test(value)) {
-      setPasswordError("Must contain one special character");
-    } else if (!/\d/.test(value)) {
-      setPasswordError("Must contain one number");
-    } else if (value.length < 8) {
-      setPasswordError("Must be at least 8 characters");
-    } else {
-      setPasswordError("");
-    }
-  };
+  const value = e.target.value;
+  setPassword(value);
 
+  setPasswordError("");
+};
   const confirmPasswordHandler = (e) => {
     const value = e.target.value;
     setConfirmPassword(value);
@@ -156,6 +162,7 @@ const aadharHandler = (e) => {
       formData.append("phone", phone);
       formData.append("email", email);
       formData.append("address", address);
+       formData.append("dateOfBirth", dateOfBirth);
       //  formData.append("aadharNo", aadharNo);
       formData.append("aadharNo", aadharNo.replace(/-/g, ""));
       formData.append("panNo", panNo);
@@ -242,6 +249,19 @@ const aadharHandler = (e) => {
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
+             <div className="col-lg-6">
+  <label className="form-label text-white">
+    Date of Birth
+  </label>
+
+  <input
+    type="date"
+    className="form-control form-control-lg inputform"
+    value={dateOfBirth}
+    onChange={(e) => setDateOfBirth(e.target.value)}
+    max={new Date().toISOString().split("T")[0]}
+  />
+</div>
 
           <div className="col-lg-6">
             <label className="form-label text-white">Aadhar Number</label>
@@ -332,9 +352,32 @@ const aadharHandler = (e) => {
                 )}
               </span>
             </div>
-            {passwordError && (
+            {/* {passwordError && (
               <span className="link-danger">{passwordError}</span>
-            )}
+            )} */}
+            <div className="mt-2 password-requirements">
+
+  <div className={/[A-Z]/.test(password) ? "valid" : "invalid"}>
+    <i className={`fa ${/[A-Z]/.test(password) ? "fa-check-circle" : "fa-circle"}`}></i>
+    <span>Must contain one uppercase letter</span>
+  </div>
+
+  <div className={/[!@#$%^&*(),.?":{}|<>]/.test(password) ? "valid" : "invalid"}>
+    <i className={`fa ${/[!@#$%^&*(),.?":{}|<>]/.test(password) ? "fa-check-circle" : "fa-circle"}`}></i>
+    <span>Must contain one special character</span>
+  </div>
+
+  <div className={/\d/.test(password) ? "valid" : "invalid"}>
+    <i className={`fa ${/\d/.test(password) ? "fa-check-circle" : "fa-circle"}`}></i>
+    <span>Must contain one number</span>
+  </div>
+
+  <div className={password.length >= 8 ? "valid" : "invalid"}>
+    <i className={`fa ${password.length >= 8 ? "fa-check-circle" : "fa-circle"}`}></i>
+    <span>Must be at least 8 characters</span>
+  </div>
+
+</div>
           </div>
 
           <div className="col-lg-6">

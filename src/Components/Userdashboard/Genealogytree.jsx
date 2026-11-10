@@ -183,7 +183,7 @@ const handleSelectUser = (user) => {
               >
              <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: bgColor, color: "#fff" }}/>
                 <h5 className="fw-bold mt-1">{ref.name}</h5>
-                {userId_user === "SA91551" && ref.courseStatus === "active" && (
+                {ref.courseStatus === "active" && (
                   <span style={{fontSize: "15px" }}>⭐</span>
                   
                   )}
@@ -192,7 +192,7 @@ const handleSelectUser = (user) => {
                       <i class="fa-regular fa-star-half" style={{color:"#e0bc38"}}></i>
                   
                   )}
-                  {userId_user === "SA91551" && ref.courseStatus === "none" && (
+                  {ref.courseStatus === "none" && (
                     <span style={{fontSize: "15px" }}>⭐</span>
                   )}
                 {/* <p>Status: {ref.status}</p> */}

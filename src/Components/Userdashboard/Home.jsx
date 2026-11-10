@@ -8,7 +8,20 @@ function Home() {
   const userId = sessionStorage.getItem("userid");
   const name = sessionStorage.getItem("username");
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
+  const [followed, setFollowed] = useState({
+  instagram: false,
+  facebook: false,
+  twitter: false,
+});
 
+const handleSocialClick = (platform, url) => {
+  window.open(url, "_blank", "noopener,noreferrer");
+
+  setFollowed((prev) => ({
+    ...prev,
+    [platform]: true,
+  }));
+};
   const [userDetails, setUserDetails] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
   const [courseDetails, setCourseDetails] = useState(null);
@@ -617,7 +630,7 @@ function Home() {
         </div>
       </div>
       {/* Referral Link Section */}
-      <div className="d-flex justify-content-center flex-column align-items-center mt-3">
+      {/* <div className="d-flex justify-content-center flex-column align-items-center mt-3">
         <h4 className="fw-bold">Your Referral Link</h4>
 
         <div className="referral-pill d-flex align-items-center">
@@ -633,6 +646,77 @@ function Home() {
             />
           )}
         </div>
+      </div> */}
+     <div className="referral-container d-flex align-items-center justify-content-between mt-3">
+
+  {/* Left: Social Media */}
+  <div className="d-flex align-items-center gap-3 social-follow-box">
+
+    <div
+      className="social-follow-item"
+      onClick={() =>
+        handleSocialClick("instagram", "https://www.instagram.com/synthosphere_academy?")
+      }
+    >
+      <i className="fab fa-instagram instagram-icon"></i>
+      {followed.instagram && <i style={{fontSize:"14px"}} className="fas fa-check-circle text-success"></i>}
+    </div>
+
+    <div
+      className="social-follow-item"
+      onClick={() =>
+        handleSocialClick("facebook", "https://www.facebook.com/profile.php?id=61560565260565&mibextid=ZbWKwL")
+      }
+    >
+      <i className="fab fa-facebook facebook-icon"></i>
+      {followed.facebook && <i style={{fontSize:"14px"}} className="fas fa-check-circle text-success"></i>}
+    </div>
+
+    <div
+      className="social-follow-item"
+      onClick={() =>
+        handleSocialClick("youtube", "https://youtube.com/@synthosphereacademy_official?si=jYvA4I6J84tplNMl")
+      }
+    >
+      <i className="fab fa-youtube youtube-icon"></i>
+      {followed.youtube && <i style={{fontSize:"14px"}} className="fas fa-check-circle text-success"></i>}
+    </div>
+    {activeCourse && activeCourse !== "N/A" && (
+    <div
+      className="social-follow-item"
+      onClick={() =>
+        handleSocialClick("telegram", "https://t.me/+YxHXXOUVMtE4ZTQ1")
+      }
+    >
+      <i className="fab fa-telegram telegram-icon"></i>
+      {followed.telegram && <i style={{fontSize:"14px"}} className="fas fa-check-circle text-success"></i>}
+    </div>
+    )}
+
+  </div>
+
+  {/* Middle: Referral Link */}
+<div className="referral-link-center">
+  <h4 className="fw-bold">Your Referral Link</h4>
+
+  <div className="referral-pill d-flex align-items-center">
+    <span className="referral-scroll">{referralLink}</span>
+
+    {copied ? (
+      <span className="ms-4 text-success">Copied!</span>
+    ) : (
+      <i
+        className="fa fa-copy ms-2"
+        onClick={handleCopyLink}
+        style={{ cursor: "pointer" }}
+      />
+    )}
+  </div>
+</div>
+
+</div>
+      <div>
+        <div ></div>
       </div>
     </>
   );

@@ -21,6 +21,61 @@
   overflow: visible;
 }
 
+
+.social-follow-box {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  background: #fff;
+}
+
+.social-follow-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.instagram-icon { color: #E4405F; }
+.facebook-icon { color: #1877F2; }
+.youtube-icon { color: #FF0000; }
+.telegram-icon { color: #0088CC; }
+
+.referral-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 80px;
+}
+
+.social-follow-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.referral-link-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .referral-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .referral-link-center {
+    position: static;
+    transform: none;
+  }
+}
 /* Mobile: horizontal scroll INSIDE pill */
 @media (max-width: 768px) {
   .referral-scroll {
