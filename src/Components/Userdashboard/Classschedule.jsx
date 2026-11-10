@@ -720,7 +720,7 @@ if (!showBatch) {
   ) : (
     <>
       <a
-        href="https://us06web.zoom.us/j/81195469231?pwd=V4qbcBkBRS2wa1BjOuobmIuiS48AvO.1"
+        href="https://us06web.zoom.us/j/84936152756?pwd=WSO7dSppgmamC8XSYaqLWYfHcbGos0.1"
         target="_blank"
         rel="noopener noreferrer"
         className="btn btn-outline-primary btn-sm fw-semibold"
