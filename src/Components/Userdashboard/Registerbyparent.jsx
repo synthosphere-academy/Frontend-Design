@@ -291,7 +291,7 @@ function Registerbyparent() {
             />
           </div>
 
-          <div className="col-lg-6">
+          <div className="col-lg-12">
             <label className="form-label text-white">Upload Aadhar Photo(Front)</label>
             <input
               type="file"
@@ -301,7 +301,7 @@ function Registerbyparent() {
             />
              <label className="text-white">Aadhar Front image must be smaller than 1 MB</label>
           </div>
-            <div className="col-lg-6">
+            <div className="col-lg-12">
             <label className="form-label text-white">Upload Aadhar Photo(Back)</label>
             <input
               type="file"
@@ -311,7 +311,7 @@ function Registerbyparent() {
             />
               <label className="text-white">Aadhar Back image must be smaller than 1 MB</label>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-12">
             <label className="form-label text-white">
               Upload Pan Card Photo
             </label>
@@ -380,7 +380,8 @@ function Registerbyparent() {
             <label className="form-label text-white">Confirm Password</label>
             <div className="d-flex">
             <input
-                onClick={() => setShowConfirmPassword(!showconfirmPassword)}
+                // onClick={() => setShowConfirmPassword(!showconfirmPassword)}
+                  type={showconfirmPassword ? "text" : "password"}
               className="form-control form-control-lg inputform"
               placeholder="Confirm Password"
               onChange={confirmPasswordHandler}
@@ -395,7 +396,7 @@ function Registerbyparent() {
                 }}
                 className="mt-2"
               >
-                {showPassword ? (
+                {showconfirmPassword ? (
                   <i className="fa fa-eye"></i>
                 ) : (
                   <i className="fa fa-eye-slash"></i>

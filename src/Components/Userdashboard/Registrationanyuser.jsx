@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
@@ -11,7 +11,7 @@ function Registrationanyuser() {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
 
   const [showPassword, setShowPassword] = useState(false);
-  const[ showconfirmPassword, setShowConfirmPassword]= useState(false);
+  const [showconfirmPassword, setShowConfirmPassword] = useState(false);
   // const { parentId } = useParams();
   // form fields
   const [name, setName] = useState("");
@@ -24,11 +24,11 @@ function Registrationanyuser() {
   const [panNo, setpancardno] = useState("");
   const [panPhoto, setpanphoto] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-   const [parentId, setParentId] = useState("SA14316");
+  const [parentId, setParentId] = useState("SA14316");
   //  const [parentId, setParentId] = useState(refid || "SA37499");
   const [mobilenoerror, setmobileerror] = useState(false);
   const [aadharFront, setAadharPhoto] = useState(null);
-   const [aadharBack, setAadharPhotoback] = useState(null);
+  const [aadharBack, setAadharPhotoback] = useState(null);
 
   // validation states
   const [emailError, setEmailError] = useState(false);
@@ -69,18 +69,18 @@ function Registrationanyuser() {
   //   // Aadhaar must be exactly 12 digits
   //   setAadharError(numericValue.length !== 12);
   // };
-const aadharHandler = (e) => {
-  // Only 12 digits allowed
-  const numericValue = e.target.value.replace(/\D/g, "").slice(0, 12);
+  const aadharHandler = (e) => {
+    // Only 12 digits allowed
+    const numericValue = e.target.value.replace(/\D/g, "").slice(0, 12);
 
-  // Display format: 5454-6565-5656
-  const formattedValue = numericValue.match(/.{1,4}/g)?.join("-") || "";
+    // Display format: 5454-6565-5656
+    const formattedValue = numericValue.match(/.{1,4}/g)?.join("-") || "";
 
-  setAadharNo(formattedValue);
+    setAadharNo(formattedValue);
 
-  // Validate only 12 digits, excluding hyphens
-  setAadharError(numericValue.length !== 12);
-};
+    // Validate only 12 digits, excluding hyphens
+    setAadharError(numericValue.length !== 12);
+  };
   // const passwordHandler = (e) => {
   //   const value = e.target.value;
   //   setPassword(value);
@@ -97,11 +97,11 @@ const aadharHandler = (e) => {
   //   }
   // };
   const passwordHandler = (e) => {
-  const value = e.target.value;
-  setPassword(value);
+    const value = e.target.value;
+    setPassword(value);
 
-  setPasswordError("");
-};
+    setPasswordError("");
+  };
 
   const confirmPasswordHandler = (e) => {
     const value = e.target.value;
@@ -110,31 +110,34 @@ const aadharHandler = (e) => {
   };
 
   const handleAadharPhoto = (e) => {
-     const file = e.target.files[0];
-  if (file && file.size > 1 * 1024 * 1024) { // 1 MB limit
-    swal("Error!", "Aadhar Front image must be smaller than 1 MB!", "error");
-    e.target.value = ""; // reset file input
-    return;
-  }
-  setAadharPhoto(file);
+    const file = e.target.files[0];
+    if (file && file.size > 1 * 1024 * 1024) {
+      // 1 MB limit
+      swal("Error!", "Aadhar Front image must be smaller than 1 MB!", "error");
+      e.target.value = ""; // reset file input
+      return;
+    }
+    setAadharPhoto(file);
   };
-   const handleAadharPhoto_back = (e) => {
-   const file = e.target.files[0];
-  if (file && file.size > 1 * 1024 * 1024) { // 1 MB limit
-    swal("Error!", "Aadhar Back image must be smaller than 1 MB!", "error");
-    e.target.value = "";
-    return;
-  }
-  setAadharPhotoback(file);
+  const handleAadharPhoto_back = (e) => {
+    const file = e.target.files[0];
+    if (file && file.size > 1 * 1024 * 1024) {
+      // 1 MB limit
+      swal("Error!", "Aadhar Back image must be smaller than 1 MB!", "error");
+      e.target.value = "";
+      return;
+    }
+    setAadharPhotoback(file);
   };
   const handlepanPhoto = (e) => {
-     const file = e.target.files[0];
-  if (file && file.size > 1 * 1024 * 1024) { // 1 MB limit
-    swal("Error!", "PAN card image must be smaller than 1 MB!", "error");
-    e.target.value = "";
-    return;
-  }
-  setpanphoto(file);
+    const file = e.target.files[0];
+    if (file && file.size > 1 * 1024 * 1024) {
+      // 1 MB limit
+      swal("Error!", "PAN card image must be smaller than 1 MB!", "error");
+      e.target.value = "";
+      return;
+    }
+    setpanphoto(file);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -165,7 +168,7 @@ const aadharHandler = (e) => {
       formData.append("address", address);
       formData.append("dateOfBirth", dateOfBirth);
       // formData.append("aadharNo", aadharNo);
-       formData.append("aadharNo", aadharNo.replace(/-/g, ""));
+      formData.append("aadharNo", aadharNo.replace(/-/g, ""));
       formData.append("panNo", panNo);
       formData.append("password", password);
       formData.append("parentId", parentId);
@@ -177,15 +180,22 @@ const aadharHandler = (e) => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-    if (res.data.success) {
-      swal("Success!", "Registration completed successfully!", "success").then(() => {
-        window.location.reload(); // reload page after user clicks OK
-      });
-    }
+      if (res.data.success) {
+        swal(
+          "Success!",
+          "Registration completed successfully!",
+          "success",
+        ).then(() => {
+          window.location.reload(); // reload page after user clicks OK
+        });
+      }
     } catch (error) {
-       console.error("Registration Error:", error);
-            const message = error.response?.data?.message || error.message || "Server not responding";
-            swal("Error!", message, "error");
+      console.error("Registration Error:", error);
+      const message =
+        error.response?.data?.message ||
+        error.message ||
+        "Server not responding";
+      swal("Error!", message, "error");
     }
   };
 
@@ -202,7 +212,6 @@ const aadharHandler = (e) => {
               onChange={(e) => setParentId(e.target.value)}
               placeholder="Enter sponsor Id"
               // value={parentId}
-             
             />
           </div>
 
@@ -222,12 +231,14 @@ const aadharHandler = (e) => {
               type="text"
               className="form-control form-control-lg inputform"
               placeholder="Enter phone number"
-                maxLength={10}
+              maxLength={10}
               onChange={mobileHandler}
               value={phone}
             />
             {phoneError && (
-              <span className="link-danger">Please enter a valid 10-digit phone number</span>
+              <span className="link-danger">
+                Please enter a valid 10-digit phone number
+              </span>
             )}
           </div>
 
@@ -253,18 +264,16 @@ const aadharHandler = (e) => {
             />
           </div>
           <div className="col-lg-6">
-  <label className="form-label text-white">
-    Date of Birth
-  </label>
+            <label className="form-label text-white">Date of Birth</label>
 
-  <input
-    type="date"
-    className="form-control form-control-lg inputform"
-    value={dateOfBirth}
-    onChange={(e) => setDateOfBirth(e.target.value)}
-    max={new Date().toISOString().split("T")[0]}
-  />
-</div>
+            <input
+              type="date"
+              className="form-control form-control-lg inputform"
+              value={dateOfBirth}
+              onChange={(e) => setDateOfBirth(e.target.value)}
+              max={new Date().toISOString().split("T")[0]}
+            />
+          </div>
 
           <div className="col-lg-6">
             <label className="form-label text-white">Aadhar Number</label>
@@ -288,38 +297,46 @@ const aadharHandler = (e) => {
               type="text"
               className="form-control form-control-lg inputform"
               placeholder="Enter Pancard Number"
-             maxLength={10}
+              maxLength={10}
               value={panNo}
               onChange={(e) => {
-      const value = e.target.value
-        .toUpperCase()                // convert to uppercase
-        .replace(/[^A-Z0-9]/g, "");  // remove non-alphanumeric chars
-      setpancardno(value);
-    }}
+                const value = e.target.value
+                  .toUpperCase() // convert to uppercase
+                  .replace(/[^A-Z0-9]/g, ""); // remove non-alphanumeric chars
+                setpancardno(value);
+              }}
             />
           </div>
 
-          <div className="col-lg-6">
-            <label className="form-label text-white">Upload Aadhar Photo(Front)</label>
+          <div className="col-lg-12">
+            <label className="form-label text-white">
+              Upload Aadhar Photo(Front)
+            </label>
             <input
               type="file"
               className="form-control form-control-lg inputform"
               accept=".jpg,.jpeg,.png"
               onChange={handleAadharPhoto}
             />
-             <label className="text-white">Aadhar Front image must be smaller than 1 MB</label>
+            <label className="text-white">
+              Aadhar Front image must be smaller than 1 MB
+            </label>
           </div>
-            <div className="col-lg-6">
-            <label className="form-label text-white">Upload Aadhar Photo(Back)</label>
+          <div className="col-lg-12">
+            <label className="form-label text-white">
+              Upload Aadhar Photo(Back)
+            </label>
             <input
               type="file"
               className="form-control form-control-lg inputform"
               accept=".jpg,.jpeg,.png"
               onChange={handleAadharPhoto_back}
             />
-               <label className="text-white">Aadhar Back image must be smaller than 1 MB</label>
+            <label className="text-white">
+              Aadhar Back image must be smaller than 1 MB
+            </label>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-12">
             <label className="form-label text-white">
               Upload Pan Card Photo
             </label>
@@ -329,7 +346,9 @@ const aadharHandler = (e) => {
               accept=".jpg,.jpeg,.png"
               onChange={handlepanPhoto}
             />
-             <label className="text-white">PAN card image must be smaller than 1 MB</label>
+            <label className="text-white">
+              PAN card image must be smaller than 1 MB
+            </label>
           </div>
           <div className="col-lg-6">
             <label className="form-label text-white">Password</label>
@@ -360,41 +379,51 @@ const aadharHandler = (e) => {
               <span className="link-danger">{passwordError}</span>
             )} */}
             <div className="mt-2 password-requirements">
+              <div className={/[A-Z]/.test(password) ? "valid" : "invalid"}>
+                <i
+                  className={`fa ${/[A-Z]/.test(password) ? "fa-check-circle" : "fa-circle"}`}
+                ></i>
+                <span>Must contain one uppercase letter</span>
+              </div>
 
-  <div className={/[A-Z]/.test(password) ? "valid" : "invalid"}>
-    <i className={`fa ${/[A-Z]/.test(password) ? "fa-check-circle" : "fa-circle"}`}></i>
-    <span>Must contain one uppercase letter</span>
-  </div>
+              <div
+                className={
+                  /[!@#$%^&*(),.?":{}|<>]/.test(password) ? "valid" : "invalid"
+                }
+              >
+                <i
+                  className={`fa ${/[!@#$%^&*(),.?":{}|<>]/.test(password) ? "fa-check-circle" : "fa-circle"}`}
+                ></i>
+                <span>Must contain one special character</span>
+              </div>
 
-  <div className={/[!@#$%^&*(),.?":{}|<>]/.test(password) ? "valid" : "invalid"}>
-    <i className={`fa ${/[!@#$%^&*(),.?":{}|<>]/.test(password) ? "fa-check-circle" : "fa-circle"}`}></i>
-    <span>Must contain one special character</span>
-  </div>
+              <div className={/\d/.test(password) ? "valid" : "invalid"}>
+                <i
+                  className={`fa ${/\d/.test(password) ? "fa-check-circle" : "fa-circle"}`}
+                ></i>
+                <span>Must contain one number</span>
+              </div>
 
-  <div className={/\d/.test(password) ? "valid" : "invalid"}>
-    <i className={`fa ${/\d/.test(password) ? "fa-check-circle" : "fa-circle"}`}></i>
-    <span>Must contain one number</span>
-  </div>
-
-  <div className={password.length >= 8 ? "valid" : "invalid"}>
-    <i className={`fa ${password.length >= 8 ? "fa-check-circle" : "fa-circle"}`}></i>
-    <span>Must be at least 8 characters</span>
-  </div>
-
-</div>
+              <div className={password.length >= 8 ? "valid" : "invalid"}>
+                <i
+                  className={`fa ${password.length >= 8 ? "fa-check-circle" : "fa-circle"}`}
+                ></i>
+                <span>Must be at least 8 characters</span>
+              </div>
+            </div>
           </div>
 
           <div className="col-lg-6">
             <label className="form-label text-white">Confirm Password</label>
             <div className="d-flex">
-            <input
-                onClick={() => setShowConfirmPassword(!showconfirmPassword)}
-              className="form-control form-control-lg inputform"
-              placeholder="Confirm Password"
-              onChange={confirmPasswordHandler}
-              value={confirmPassword}
-            />
-            <span
+              <input
+                type={showconfirmPassword ? "text" : "password"}
+                className="form-control form-control-lg inputform"
+                placeholder="Confirm Password"
+                onChange={confirmPasswordHandler}
+                value={confirmPassword}
+              />
+              <span
                 onClick={() => setShowConfirmPassword(!showconfirmPassword)}
                 style={{
                   cursor: "pointer",
@@ -403,13 +432,13 @@ const aadharHandler = (e) => {
                 }}
                 className="mt-2"
               >
-                {showPassword ? (
+                {showconfirmPassword ? (
                   <i className="fa fa-eye"></i>
                 ) : (
                   <i className="fa fa-eye-slash"></i>
                 )}
               </span>
-              </div>
+            </div>
             {confirmPassError && (
               <span className="link-danger">Passwords do not match</span>
             )}
@@ -423,7 +452,10 @@ const aadharHandler = (e) => {
           </div>
 
           <div className="pt-1 text-center">
-            <button className="btn-lg signupbutton  w-lg-25 w-sm-100" type="submit">
+            <button
+              className="btn-lg signupbutton  w-lg-25 w-sm-100"
+              type="submit"
+            >
               Sign Up
             </button>
           </div>
