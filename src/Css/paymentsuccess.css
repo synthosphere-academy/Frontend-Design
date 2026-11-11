@@ -5,6 +5,14 @@
 .paymentcontainer{
     width: 48%;
 }
+
+@media (max-width: 480px) {
+  .buttonstyle {
+    font-size: 13px;
+    padding: 10px 5px;
+    min-height: 48px;
+  }
+}
  @media screen and (max-width: 640px) {
         .paymentcontainer {
             width: 90%
