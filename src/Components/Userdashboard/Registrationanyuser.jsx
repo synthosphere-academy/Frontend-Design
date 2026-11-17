@@ -24,7 +24,7 @@ function Registrationanyuser() {
   const [panNo, setpancardno] = useState("");
   const [panPhoto, setpanphoto] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [parentId, setParentId] = useState("SA14316");
+  const [parentId, setParentId] = useState("");
   //  const [parentId, setParentId] = useState(refid || "SA37499");
   const [mobilenoerror, setmobileerror] = useState(false);
   const [aadharFront, setAadharPhoto] = useState(null);
@@ -36,6 +36,7 @@ function Registrationanyuser() {
   const [passwordError, setPasswordError] = useState("");
   const [aadharError, setAadharError] = useState(false);
   const [confirmPassError, setConfirmPassError] = useState(false);
+  const [sponsorError, setSponsorError] = useState("");
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
@@ -108,7 +109,19 @@ function Registrationanyuser() {
     setConfirmPassword(value);
     setConfirmPassError(value !== password);
   };
+  const sponsorHandler = (e) => {
+    const value = e.target.value.toUpperCase().trim();
 
+    setParentId(value);
+
+    if (!value) {
+      setSponsorError("Sponsor ID is required");
+    } else if (!/^SA\d{5}$/.test(value)) {
+      setSponsorError("Sponsor ID must be in SA12345 format");
+    } else {
+      setSponsorError("");
+    }
+  };
   const handleAadharPhoto = (e) => {
     const file = e.target.files[0];
     if (file && file.size > 1 * 1024 * 1024) {
@@ -141,7 +154,11 @@ function Registrationanyuser() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!parentId || !/^SA\d{5}$/.test(parentId)) {
+      swal("Oops!", "Please enter a valid Sponsor ID (e.g. SA12345)", "error");
+      return;
+    }
+    6;
     // validation
     if (!name || !phone || !email || !address || !aadharNo || !password) {
       swal("Oops!", "Please fill all required fields!", "error");
@@ -206,13 +223,24 @@ function Registrationanyuser() {
         <form className="row g-3 py-2" onSubmit={handleSubmit}>
           <div className="col-lg-6">
             <label className="form-label text-white">Sponser ID</label>
-            <input
+            {/* <input
               type="text"
               className="form-control form-control-lg inputform"
               onChange={(e) => setParentId(e.target.value)}
               placeholder="Enter sponsor Id"
               // value={parentId}
+            /> */}
+            <input
+              type="text"
+              className="form-control form-control-lg inputform"
+              value={parentId}
+              onChange={sponsorHandler}
+              placeholder="Example: SA12345"
+              maxLength={7}
             />
+            {sponsorError && (
+              <small className="text-danger">{sponsorError}</small>
+            )}
           </div>
 
           <div className="col-lg-6">
@@ -270,8 +298,24 @@ function Registrationanyuser() {
               type="date"
               className="form-control form-control-lg inputform"
               value={dateOfBirth}
-              onChange={(e) => setDateOfBirth(e.target.value)}
-              max={new Date().toISOString().split("T")[0]}
+              onChange={(e) => {
+                const value = e.target.value;
+                const year = Number(value.split("-")[0]);
+
+                if (value && (year < 1945 || year > 2010)) {
+                  setDateOfBirth("");
+                  swal(
+                    "Invalid Date!",
+                    "Date of birth must be between 1945 and 2015.",
+                    "error",
+                  );
+                  return;
+                }
+
+                setDateOfBirth(value);
+              }}
+              min="1945-01-01"
+              max="2015-12-31"
             />
           </div>
 

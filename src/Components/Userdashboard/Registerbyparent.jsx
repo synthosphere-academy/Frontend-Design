@@ -34,7 +34,7 @@ function Registerbyparent() {
   const [passwordError, setPasswordError] = useState("");
   const [aadharError, setAadharError] = useState(false);
   const [confirmPassError, setConfirmPassError] = useState(false);
-
+  
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
   const emailHandler = (e) => {
@@ -250,13 +250,36 @@ function Registerbyparent() {
     Date of Birth
   </label>
 
-  <input
+  {/* <input
     type="date"
     className="form-control form-control-lg inputform"
     value={dateOfBirth}
     onChange={(e) => setDateOfBirth(e.target.value)}
     max={new Date().toISOString().split("T")[0]}
-  />
+  /> */}
+    <input
+              type="date"
+              className="form-control form-control-lg inputform"
+              value={dateOfBirth}
+              onChange={(e) => {
+                const value = e.target.value;
+                const year = Number(value.split("-")[0]);
+
+                if (value && (year < 1945 || year > 2010)) {
+                  setDateOfBirth("");
+                  swal(
+                    "Invalid Date!",
+                    "Date of birth must be between 1945 and 2015.",
+                    "error",
+                  );
+                  return;
+                }
+
+                setDateOfBirth(value);
+              }}
+              min="1945-01-01"
+              max="2015-12-31"
+            />
 </div>
 
           <div className="col-lg-6">
