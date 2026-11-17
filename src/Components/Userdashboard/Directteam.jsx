@@ -6,21 +6,48 @@ const Directteam = () => {
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
   const userId = sessionStorage.getItem("userid");
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (!userId) return;
+
+  //     try {
+  //       const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
+  //       setData(response.data.data); // updated for new API structure
+  //       console.log("Referral data:", response.data.data);
+  //     } catch (error) {
+  //       console.error("Error fetching referral data:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
   useEffect(() => {
-    const fetchData = async () => {
-      if (!userId) return;
+  const fetchData = async () => {
+    if (!userId) return;
 
-      try {
-        const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
-        setData(response.data.data); // updated for new API structure
-        console.log("Referral data:", response.data.data);
-      } catch (error) {
-        console.error("Error fetching referral data:", error);
-      }
-    };
+    try {
+      const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
 
-    fetchData();
-  }, []);
+      const referredUsers = response.data.data?.referredUsers || [];
+
+      // Oldest user first based on createdAt
+      const sortedUsers = [...referredUsers].sort(
+        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+      );
+
+      setData({
+        ...response.data.data,
+        referredUsers: sortedUsers,
+      });
+
+      console.log("Referral data:", sortedUsers);
+    } catch (error) {
+      console.error("Error fetching referral data:", error);
+    }
+  };
+
+  fetchData();
+}, [ROOT_URL, userId]);
 
   if (!data) {
     return <div className="text-center mt-5">Loading...</div>;

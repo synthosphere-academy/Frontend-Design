@@ -193,7 +193,7 @@ const handleSelectUser = (user) => {
                   
                   )}
                   {ref.courseStatus === "none" && (
-                    <span style={{fontSize: "15px" }}>⭐</span>
+                    <span style={{fontSize: "15px" }}></span>
                   )}
                 {/* <p>Status: {ref.status}</p> */}
                 <p>{ref.userId}</p>
