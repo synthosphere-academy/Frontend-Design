@@ -26,7 +26,6 @@ function Registrationanyuser() {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [parentId, setParentId] = useState("");
   //  const [parentId, setParentId] = useState(refid || "SA37499");
-  const [mobilenoerror, setmobileerror] = useState(false);
   const [aadharFront, setAadharPhoto] = useState(null);
   const [aadharBack, setAadharPhotoback] = useState(null);
 
@@ -158,7 +157,7 @@ function Registrationanyuser() {
       swal("Oops!", "Please enter a valid Sponsor ID (e.g. SA12345)", "error");
       return;
     }
-    6;
+
     // validation
     if (!name || !phone || !email || !address || !aadharNo || !password) {
       swal("Oops!", "Please fill all required fields!", "error");
@@ -169,7 +168,20 @@ function Registrationanyuser() {
       swal("Oops!", "Please correct all validation errors!", "error");
       return;
     }
+    if (!dateOfBirth) {
+      swal("Oops!", "Please select your date of birth!", "error");
+      return;
+    }
+    const year = Number(dateOfBirth.split("-")[0]);
 
+    if (year < 1945 || year > 2015) {
+      swal(
+        "Invalid Date!",
+        "Date of birth must be between 1945 and 2015.",
+        "error",
+      );
+      return;
+    }
     const checkbox = document.getElementById("checkbox_terms");
     if (!checkbox.checked) {
       swal("Oops!", "You must agree to the terms & conditions!", "error");
@@ -239,7 +251,7 @@ function Registrationanyuser() {
               maxLength={7}
             />
             {sponsorError && (
-              <small className="text-danger">{sponsorError}</small>
+              <small className="text-warning">{sponsorError}</small>
             )}
           </div>
 
@@ -264,7 +276,7 @@ function Registrationanyuser() {
               value={phone}
             />
             {phoneError && (
-              <span className="link-danger">
+              <span className="link-warning">
                 Please enter a valid 10-digit phone number
               </span>
             )}
@@ -279,9 +291,8 @@ function Registrationanyuser() {
               onChange={emailHandler}
               value={email}
             />
-            {emailError && <span className="link-danger">Invalid email</span>}
+            {emailError && <span className="link-warning">Invalid email</span>}
           </div>
-
           <div className="col-lg-6">
             <label className="form-label text-white">Address</label>
             <input
@@ -293,27 +304,11 @@ function Registrationanyuser() {
           </div>
           <div className="col-lg-6">
             <label className="form-label text-white">Date of Birth</label>
-
             <input
               type="date"
               className="form-control form-control-lg inputform"
               value={dateOfBirth}
-              onChange={(e) => {
-                const value = e.target.value;
-                const year = Number(value.split("-")[0]);
-
-                if (value && (year < 1945 || year > 2010)) {
-                  setDateOfBirth("");
-                  swal(
-                    "Invalid Date!",
-                    "Date of birth must be between 1945 and 2015.",
-                    "error",
-                  );
-                  return;
-                }
-
-                setDateOfBirth(value);
-              }}
+              onChange={(e) => setDateOfBirth(e.target.value)}
               min="1945-01-01"
               max="2015-12-31"
             />
@@ -330,7 +325,7 @@ function Registrationanyuser() {
               maxLength={14}
             />
             {aadharError && (
-              <small className="text-danger">
+              <small className="text-warning">
                 Aadhaar number must be 12 digits
               </small>
             )}

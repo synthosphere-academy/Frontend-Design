@@ -22,10 +22,9 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [panNo, setpancardno] = useState("");
   const [panPhoto, setpanphoto] = useState("");
-   const [parentId, setParentId] = useState("SA14316");
+   const [parentId, setParentId] = useState("SA81149");
   //  const [parentId, setParentId] = useState(refid || "SA37499");
    const [dateOfBirth, setDateOfBirth] = useState("");
-  const [mobilenoerror, setmobileerror] = useState(false);
   const [aadharFront, setAadharPhoto] = useState(null);
    const [aadharBack, setAadharPhotoback] = useState(null);
 
@@ -36,6 +35,7 @@ function Register() {
   const [aadharError, setAadharError] = useState(false);
    const [sponsorError, setSponsorError] = useState("");
   const [confirmPassError, setConfirmPassError] = useState(false);
+  const [dateOfBirthError, setDateOfBirthError] = useState("");
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
@@ -150,9 +150,12 @@ const aadharHandler = (e) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+     if (!parentId || !/^SA\d{5}$/.test(parentId)) {
+      swal("Oops!", "Please enter a valid Sponsor ID (e.g. SA12345)", "error");
+      return;
+    }
     // validation
-    if (!name || !phone || !email || !address || !aadharNo || !password) {
+    if (!name || !phone || !email || !address || !aadharNo || !panNo || !password) {
       swal("Oops!", "Please fill all required fields!", "error");
       return;
     }
@@ -161,7 +164,21 @@ const aadharHandler = (e) => {
       swal("Oops!", "Please correct all validation errors!", "error");
       return;
     }
+    // Date of Birth validation
+if (!dateOfBirth) {
+  swal("Oops!", "Please select your date of birth!", "error");
+  return;
+}
+const year = Number(dateOfBirth.split("-")[0]);
 
+if (year < 1945 || year > 2015) {
+  swal(
+    "Invalid Date!",
+    "Date of birth must be between 1945 and 2015.",
+    "error"
+  );
+  return;
+}
     const checkbox = document.getElementById("checkbox_terms");
     if (!checkbox.checked) {
       swal("Oops!", "You must agree to the terms & conditions!", "error");
@@ -176,6 +193,7 @@ const aadharHandler = (e) => {
       formData.append("email", email);
       formData.append("address", address);
        formData.append("dateOfBirth", dateOfBirth);
+       
       //  formData.append("aadharNo", aadharNo);
       formData.append("aadharNo", aadharNo.replace(/-/g, ""));
       formData.append("panNo", panNo);
@@ -224,7 +242,7 @@ const aadharHandler = (e) => {
               maxLength={7}
             />
             {sponsorError && (
-              <small className="text-danger">{sponsorError}</small>
+              <small className="text-warning">{sponsorError}</small>
             )}
           </div>
 
@@ -246,9 +264,10 @@ const aadharHandler = (e) => {
               placeholder="Enter phone number"
               onChange={mobileHandler}
               value={phone}
+              maxLength={10}
             />
             {phoneError && (
-              <span className="link-danger">Invalid phone number</span>
+              <span className="link-warning">Invalid phone number</span>
             )}
           </div>
 
@@ -261,7 +280,7 @@ const aadharHandler = (e) => {
               onChange={emailHandler}
               value={email}
             />
-            {emailError && <span className="link-danger">Invalid email</span>}
+            {emailError && <span className="link-warning">Invalid email</span>}
           </div>
 
           <div className="col-lg-6">
@@ -273,42 +292,22 @@ const aadharHandler = (e) => {
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
-             <div className="col-lg-6">
+             
+ 
+  <div className="col-lg-6">
   <label className="form-label text-white">
     Date of Birth
   </label>
-
-  {/* <input
+  <input
     type="date"
     className="form-control form-control-lg inputform"
     value={dateOfBirth}
     onChange={(e) => setDateOfBirth(e.target.value)}
-    max={new Date().toISOString().split("T")[0]}
-  /> */}
-    <input
-              type="date"
-              className="form-control form-control-lg inputform"
-              value={dateOfBirth}
-              onChange={(e) => {
-                const value = e.target.value;
-                const year = Number(value.split("-")[0]);
-
-                if (value && (year < 1945 || year > 2010)) {
-                  setDateOfBirth("");
-                  swal(
-                    "Invalid Date!",
-                    "Date of birth must be between 1945 and 2015.",
-                    "error",
-                  );
-                  return;
-                }
-
-                setDateOfBirth(value);
-              }}
-              min="1945-01-01"
-              max="2015-12-31"
-            />
+    min="1945-01-01"
+    max="2015-12-31"
+  />
 </div>
+ 
 
           <div className="col-lg-6">
             <label className="form-label text-white">Aadhar Number</label>
@@ -321,7 +320,7 @@ const aadharHandler = (e) => {
               maxLength={14}
             />
             {aadharError && (
-              <small className="text-danger">
+              <small className="text-warning">
                 Aadhaar number must be 12 digits
               </small>
             )}
@@ -339,6 +338,7 @@ const aadharHandler = (e) => {
       setpancardno(value);
     }}
               value={panNo}
+              maxLength={10}
             />
           </div>
 
@@ -455,7 +455,7 @@ const aadharHandler = (e) => {
               </span>
               </div>
             {confirmPassError && (
-              <span className="link-danger">Passwords do not match</span>
+              <span className="link-warning">Passwords do not match</span>
             )}
           </div>
 

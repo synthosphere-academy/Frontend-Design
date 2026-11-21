@@ -39,6 +39,11 @@ const handleSocialClick = (platform, url) => {
   Gold: "#ffd700",
   Platinum: "#00bcd4",
   Diamond: "#99efff",
+  "Blue diamond": "#0000ff",
+  "Purple diamond": "#800080",
+  "White diamond": "#F6F6F2",
+  "Royal diamond": "#4169e1",
+  "Black diamond": "#000000",
 };
   const scholarshipAchiever = async () => {
     try {
@@ -57,8 +62,22 @@ const handleSocialClick = (platform, url) => {
       // const totalUsers = 52
       ;
       let level = "Not Achieved";
-
-      if (totalUsers >= 50) {
+      if (totalUsers >= 100) {
+        level = "Black diamond";
+      }
+      else if (totalUsers >= 90) {
+        level = "Royal diamond";
+      }
+      else if (totalUsers >= 80) {
+        level = "White diamond";
+      }
+      else if (totalUsers >= 70) {
+        level = "Purple diamond";
+      }
+      else if (totalUsers >= 60) {
+        level = "Blue diamond";
+      }
+      else if (totalUsers >= 50) {
         level = "Diamond";
       } else if (totalUsers >= 40) {
         level = "Platinum";

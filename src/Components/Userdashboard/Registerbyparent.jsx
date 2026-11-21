@@ -143,7 +143,20 @@ function Registerbyparent() {
       swal("Oops!", "Please correct all validation errors!", "error");
       return;
     }
+    if (!dateOfBirth) {
+      swal("Oops!", "Please select your date of birth!", "error");
+      return;
+    }
+    const year = Number(dateOfBirth.split("-")[0]);
 
+    if (year < 1945 || year > 2015) {
+      swal(
+        "Invalid Date!",
+        "Date of birth must be between 1945 and 2015.",
+        "error",
+      );
+      return;
+    }
     const checkbox = document.getElementById("checkbox_terms");
     if (!checkbox.checked) {
       swal("Oops!", "You must agree to the terms & conditions!", "error");
@@ -220,7 +233,7 @@ function Registerbyparent() {
               value={phone}
             />
             {phoneError && (
-              <span className="link-danger">Invalid phone number</span>
+              <span className="link-warning">Invalid phone number</span>
             )}
           </div>
 
@@ -233,7 +246,7 @@ function Registerbyparent() {
               onChange={emailHandler}
               value={email}
             />
-            {emailError && <span className="link-danger">Invalid email</span>}
+            {emailError && <span className="link-warning">Invalid email</span>}
           </div>
 
           <div className="col-lg-6">
@@ -249,37 +262,14 @@ function Registerbyparent() {
   <label className="form-label text-white">
     Date of Birth
   </label>
-
-  {/* <input
+  <input
     type="date"
     className="form-control form-control-lg inputform"
     value={dateOfBirth}
     onChange={(e) => setDateOfBirth(e.target.value)}
-    max={new Date().toISOString().split("T")[0]}
-  /> */}
-    <input
-              type="date"
-              className="form-control form-control-lg inputform"
-              value={dateOfBirth}
-              onChange={(e) => {
-                const value = e.target.value;
-                const year = Number(value.split("-")[0]);
-
-                if (value && (year < 1945 || year > 2010)) {
-                  setDateOfBirth("");
-                  swal(
-                    "Invalid Date!",
-                    "Date of birth must be between 1945 and 2015.",
-                    "error",
-                  );
-                  return;
-                }
-
-                setDateOfBirth(value);
-              }}
-              min="1945-01-01"
-              max="2015-12-31"
-            />
+    min="1945-01-01"
+    max="2015-12-31"
+  />
 </div>
 
           <div className="col-lg-6">
@@ -293,7 +283,7 @@ function Registerbyparent() {
               maxLength={14}
             />
             {aadharError && (
-              <small className="text-danger">
+              <small className="text-warning">
                 Aadhaar number must be 12 digits
               </small>
             )}
@@ -427,7 +417,7 @@ function Registerbyparent() {
               </span>
               </div>
             {confirmPassError && (
-              <span className="link-danger">Passwords do not match</span>
+              <span className="link-warning">Passwords do not match</span>
             )}
           </div>
 
