@@ -96,7 +96,12 @@ function Registerbyparent() {
   //     setPasswordError("");
   //   }
   // };
+  const passwordHandler = (e) => {
+  const value = e.target.value;
+  setPassword(value);
 
+  setPasswordError("");
+};
   const confirmPasswordHandler = (e) => {
     const value = e.target.value;
     setConfirmPassword(value);
