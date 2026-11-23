@@ -2,466 +2,131 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 const batchConfig = [
   {
-    batch: "Batch 9",
-    startDate: "2026-06-17T00:00:00",
-    endDate: "2026-06-29T23:59:59",
-    classData: [
-      {
-        classNo: 5,
-        topic: "Blockchain Basics",
-        date: "1st August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 8,
-        topic: "Introduction to Crypto",
-        date: "23rd July 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 9,
-        topic: "Blockchain Basics",
-        date: "25th July 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 10,
-        topic: "Blockchain Basics",
-        date: "28th July 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 11,
-        topic: "Blockchain Basics",
-        date: "30th July 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 12,
-        topic: "Blockchain Basics",
-        date: "4th August 2026",
-        time: "7:00 PM",
-      },
-      
-      // ...
-    ],
+    batch: "Batch 17",
+    startDate: "2026-10-16T00:00:00",
+    endDate: "2026-10-31T23:59:59",
   },
-
   {
-    batch: "Batch 10",
-    startDate: "2026-07-01T00:00:00",
-    endDate: "2026-07-15T23:59:59",
-    classData: [
-      
-        {
+    batch: "Batch 18",
+    startDate: "2026-11-01T00:00:00",
+    endDate: "2026-11-15T23:59:59",
+  },
+   {
+    batch: "Batch 19",
+    startDate: "2026-11-16T00:00:00",
+    endDate: "2026-11-30T23:59:59",
+  },
+  {
+    batch: "Batch 20",
+    startDate: "2026-12-01T00:00:00",
+    endDate: "2026-12-15T23:59:59",
+  },
+  {
+    batch: "Batch 21",
+    startDate: "2026-12-16T00:00:00",
+    endDate: "2026-12-31T23:59:59",
+  }
+];
+const commonClassData = [
+  {
     classNo: 1,
-    topic: "Introduction to Crypto",
-    date: "20th July 2026",
-    time: "7:00 PM",
-   
-  },
-    
-      {
-    classNo: 2,
-    topic: "Blockchain Basics",
-    date: "22th July 2026",
-    time: "7:00 PM",
-   
-  },
-  {
-    classNo: 3,
-    topic: "Wallet Setup",
-    date: "27th July 2026",
-    time: "7:00 PM",
-    
-  },
-  {
-    classNo: 4,
-    topic: "Spot Trading",
-    date: "29th July 2026",
-    time: "7:00 PM",
-   
-  },
-  {
-    classNo: 5,
-    topic: "Futures Trading",
-    date: "3rd August 2026",
-    time: "7:00 PM",
-    
-  },
-  {
-    classNo: 6,
-    topic: "Risk Management",
-    date: "5th August 2026",
-    time: "7:00 PM",
-   
-  },
-  {
-    classNo: 7,
-    topic: "Technical Analysis",
-    date: "10th August 2026",
-    time: "7:00 PM",
-   
-  },
-  {
-    classNo: 8,
-    topic: "Indicators",
-    date: "12th August 2026",
-    time: "7:00 PM",
-   
-  },
-  {
-    classNo: 9,
-    topic: "Live Trading",
-    date: "17th August 2026",
-    time: "7:00 PM",
-   
-  },
-  {
-    classNo: 10,
-    topic: "Portfolio Management",
-    date: "19th August 2026",
-    time: "7:00 PM",  
-  },
-  {
-    classNo: 11,
-    topic: "Advanced Strategies",
-    date: "24th August 2026",
-    time: "7:00 PM",
-  },
-  {
-    classNo: 12,
-    topic: "Final Q&A",
-    date: "26th August 2026",
-    time: "7:00 PM",
-  },
+    topic: [
+      "Introduction to Synthosphere Academy",
+      "Introduction to Cryptocurrency",
+      "Basic knowledge of Blockchain technology",
+      
     ],
   },
-
   {
-    batch: "Batch 11",
-    startDate: "2026-07-16T00:00:00",
-    endDate: "2026-07-31T23:59:59",
-    classData: [
-      {
-        classNo: 1,
-        topic: "Introduction to Crypto",
-        date: "17th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 2,
-        date: "18th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 3,
-        topic: "Introduction to Crypto",
-        date: "19th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 4,
-        topic: "Introduction to Crypto",
-        date: "20th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 5,
-        topic: "Introduction to Crypto",
-        date: "21st August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 6,
-        topic: "Introduction to Crypto",
-        date: "22nd August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 7,
-        topic: "Introduction to Crypto",
-        date: "24th August 2026",
-        time: "7:00 PM",
-      },
-       {
-        classNo: 8,
-        topic: "Introduction to Crypto",
-        date: "25th August 2026",
-        time: "7:00 PM",
-      },
-        {
-        classNo: 9,
-        topic: "Introduction to Crypto",
-        date: "26th August 2026",
-        time: "7:00 PM",
-      },
-        {
-        classNo: 10,
-        topic: "Introduction to Crypto",
-        date: "27th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 11,
-        topic: "Introduction to Crypto",
-        date: "28th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 12,
-        topic: "Introduction to Crypto",
-        date: "29th August 2026",
-        time: "7:00 PM",
-      },
-    
+    classNo: 2,
+    topic: [
+      "About bitcoin and alt coins",
+      "Mining mechanism (POW, POS)",
+      "BTC halving and bull run",
+     
     ],
   },
    {
-    batch: "Batch 12",
-    startDate: "2026-08-01T00:00:00",
-    endDate: "2026-08-15T23:59:59",
-    classData: [
-      {
-        classNo: 1,
-        
-        topic: "Introduction to Crypto",
-        date: "17th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 2,
-        date: "18th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 3,
-        topic: "Introduction to Crypto",
-        date: "19th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 4,
-        topic: "Introduction to Crypto",
-        date: "20th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 5,
-        topic: "Introduction to Crypto",
-        date: "21st August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 6,
-        topic: "Introduction to Crypto",
-        date: "22nd August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 7,
-        topic: "Introduction to Crypto",
-        date: "24th August 2026",
-        time: "7:00 PM",
-      },
-       {
-        classNo: 8,
-        topic: "Introduction to Crypto",
-        date: "25th August 2026",
-        time: "7:00 PM",
-      },
-        {
-        classNo: 9,
-        topic: "Introduction to Crypto",
-        date: "26th August 2026",
-        time: "7:00 PM",
-      },
-        {
-        classNo: 10,
-        topic: "Introduction to Crypto",
-        date: "27th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 11,
-        topic: "Introduction to Crypto",
-        date: "28th August 2026",
-        time: "7:00 PM",
-      },
-      {
-        classNo: 12,
-        topic: "Introduction to Crypto",
-        date: "29th August 2026",
-        time: "7:00 PM",
-      },
-    
+    classNo: 3,
+    topic: [
+       "About Exchanges, CEX, DEX and wallets",
+      "KYC and crypto tax in India",
+      "Deposit withdrawal transfer",
+      "Portfolio management, power of SIP",
+     
     ],
   },
-     {
-    batch: "Batch 17",
-    startDate: "2026-10-15T00:00:00",
-    endDate: "2026-10-31T23:59:59",
-    classData: [
-      {
-        classNo: 1,
-        
-        topic: "Introduction to Crypto",
-        date: "5th November 2026",
-        time: "6:30 PM",
-      },
-      {
-        classNo: 2,
-        date: "6th November 2026",
-        time: "6:30 PM",
-      },
-      {
-        classNo: 3,
-        topic: "Introduction to Crypto",
-        date: "7th November 2026",
-        time: "6:30 PM",
-      },
-      {
-        classNo: 4,
-        topic: "Introduction to Crypto",
-        date: "9th November 2026",
-        time: "6:30 PM",
-      },
-      {
-        classNo: 5,
-        topic: "Introduction to Crypto",
-        date: "10th November 2026",
-        time: "6:30 PM",
-      },
-      {
-        classNo: 6,
-        topic: "Introduction to Crypto",
-        date: "11th November 2026",
-        time: "6:30 PM",
-      },
-      {
-        classNo: 7,
-        topic: "Introduction to Crypto",
-        date: "12th November 2026",
-        time: "5:00 PM",
-      },
-       {
-        classNo: 8,
-        topic: "Introduction to Crypto",
-        date: "13th November 2026",
-        time: "5:00 PM",
-      },
-        {
-        classNo: 9,
-        topic: "Introduction to Crypto",
-        date: "14th November 2026",
-        time: "5:00 PM",
-      },
-        {
-        classNo: 10,
-        topic: "Introduction to Crypto",
-        date: "16th November 2026",
-        time: "5:00 PM",
-      },
-      {
-        classNo: 11,
-        topic: "Introduction to Crypto",
-        date: "17th November 2026",
-        time: "5:00 PM",
-      },
-      {
-        classNo: 12,
-        topic: "Introduction to Crypto",
-        date: "18th November 2026",
-        time: "5:00 PM",
-      },
-    
+   {
+    classNo: 4,
+    topic: [
+      "Fundamental analysis",
+     "About coinmarketcap",
+     "About dexscanner",
+     "All type of trading (spot, future, margin, arbitrage)",
+     
+    ],
+  },
+   {
+    classNo: 5,
+    topic: [
+       "Trading strategies",
+       "Chart trading",
+       "Candle stick",
+      "Support and resistance",
+      "Time frame and indicators",
+    ],
+  },
+   {
+    classNo: 6,
+    topic: [
+      "Use of coin glass", 
+      
+    ],
+  },
+   {
+    classNo: 7,
+    topic: [
+       "Live trading interface",
+      "Live spot trading",
+      "Future trading",
+   
+    ],
+  },
+  {
+    classNo: 8,
+    topic: [
+       " Risk management and trading psychology : Stoploss , Target price , Trelling stop loss , Fomo, fud, fear index"
+      
+    ],
+  },
+  {
+    classNo: 9,
+    topic: [
+      "Dex and perp. Dex full tutorial"
+    ],
+  },
+   {
+    classNo: 10,
+    topic: [
+      "Live trading by applying all tools step by step.",
+    ],
+  },
+   {
+    classNo: 11,
+    topic: [
+      "Revision of all classes",
+      "Practical trading",
+      "Live profit making"
+    ],
+  },
+  {
+    classNo: 12,
+    topic: [
+      "Opportunities in Synthosphere Academy to grow yourself as a synthospherian",
+      "Opportunities to meet with CEO and Founder of Synthosphere Academy",
     ],
   },
 ];
-// const classData = [
-//   {
-//     classNo: 1,
-//     topic: "Introduction to Crypto",
-//     date: "20th July 2026",
-//     time: "7:00 PM",
-   
-//   },
-//   {
-//     classNo: 2,
-//     topic: "Blockchain Basics",
-//     date: "22th July 2026",
-//     time: "7:00 PM",
-   
-//   },
-//   {
-//     classNo: 3,
-//     topic: "Wallet Setup",
-//     date: "27th July 2026",
-//     time: "7:00 PM",
-    
-//   },
-//   {
-//     classNo: 4,
-//     topic: "Spot Trading",
-//     date: "29th July 2026",
-//     time: "7:00 PM",
-   
-//   },
-//   {
-//     classNo: 5,
-//     topic: "Futures Trading",
-//     date: "3rd August 2026",
-//     time: "7:00 PM",
-    
-//   },
-//   {
-//     classNo: 6,
-//     topic: "Risk Management",
-//     date: "5th August 2026",
-//     time: "7:00 PM",
-   
-//   },
-//   {
-//     classNo: 7,
-//     topic: "Technical Analysis",
-//     date: "10th August 2026",
-//     time: "7:00 PM",
-   
-//   },
-//   {
-//     classNo: 8,
-//     topic: "Indicators",
-//     date: "12th August 2026",
-//     time: "7:00 PM",
-   
-//   },
-//   {
-//     classNo: 9,
-//     topic: "Live Trading",
-//     date: "17th August 2026",
-//     time: "7:00 PM",
-   
-//   },
-//   {
-//     classNo: 10,
-//     topic: "Portfolio Management",
-//     date: "19th August 2026",
-//     time: "7:00 PM",  
-//   },
-//   {
-//     classNo: 11,
-//     topic: "Advanced Strategies",
-//     date: "24th August 2026",
-//     time: "7:00 PM",
-//   },
-//   {
-//     classNo: 12,
-//     topic: "Final Q&A",
-//     date: "26th August 2026",
-//     time: "7:00 PM",
-//   },
-// ];
-
 const Classschedule = () => {
   const [orderdata, setorderdata] = useState([]);
   const [showBatch, setShowBatch] = useState(false);
@@ -480,58 +145,6 @@ const [schedule, setSchedule] = useState([]);
           `${ROOT_URL}/api/users/full-details`,
           { userId },
         );
-
-//         setorderdata(response.data);
-//           const eligiblePackages = [
-//   "Learner Course",
-//   "Master Course",
-//   "Pro Master Course",
-//   "Teacher Course",
-
-// ];
-
-//         const paidOrders = response.data.filter(
-//   (order) =>
-//     order.paymentStatus === "paid" &&
-//     eligiblePackages.includes(order.packageName)
-// );
-
-
-//         // শুধুমাত্র paid order
-//         // const paidOrders = response.data.filter(
-//         //   (order) => order.paymentStatus === "paid",
-//         // );
-
-//         // Batch 10 Date Range
-//         // const startDate = new Date("2026-07-01T00:00:00");
-//         // const endDate = new Date("2026-07-15T23:59:59");
-
-//         // const hasBatch10 = paidOrders.some((order) => {
-//         //   const orderDate = new Date(order.createdAt);
-//         //   return orderDate >= startDate && orderDate <= endDate;
-//         // });
-
-//         // setShowBatch(hasBatch10);
-//         const matchedBatch = batchConfig.find((batch) =>
-//   paidOrders.some((order) => {
-//     const orderDate = new Date(order.createdAt);
-
-//     return (
-//       orderDate >= new Date(batch.startDate) &&
-//       orderDate <= new Date(batch.endDate)
-//     );
-//   })
-// );
-
-// if (matchedBatch) {
-//   setShowBatch(true);
-//   setBatchName(matchedBatch.batch);
-//   setSchedule(matchedBatch.classData);
-// } else {
-//   setShowBatch(false);
-//   setBatchName("");
-//   setSchedule([]);
-// }
 console.log("Order Data of a user:", response.data.data); // Debugging line
 setorderdata(response.data.data);
 
@@ -584,10 +197,19 @@ const matchedBatch = batchConfig.find(
     purchaseDate <= new Date(batch.endDate)
 );
 
+// if (matchedBatch) {
+//   setShowBatch(true);
+//   setBatchName(matchedBatch.batch);
+//   setSchedule(matchedBatch.classData);
+// } else {
+//   setShowBatch(false);
+//   setBatchName("");
+//   setSchedule([]);
+// }
 if (matchedBatch) {
   setShowBatch(true);
   setBatchName(matchedBatch.batch);
-  setSchedule(matchedBatch.classData);
+  setSchedule(commonClassData);
 } else {
   setShowBatch(false);
   setBatchName("");
@@ -681,9 +303,9 @@ if (!showBatch) {
             <thead className="table-light">
               <tr className="text-center">
                 <th>Class</th>
-                {/* <th>Topic</th>
-                <th>Time</th> */}
-                <th className="text-center">Date</th>
+                <th>Topic</th>
+                {/* <th>Time</th> */}
+                <th className="text-center">Link to Join the Class</th>
               </tr>
             </thead>
 
@@ -695,31 +317,19 @@ if (!showBatch) {
                       Class {item.classNo}
                     </span>
                   </td>
-
-                  {/* <td>{item.topic}</td>
-
-                  <td>{item.time}</td> */}
-                    
-                   {/* <td className="text-center"> 📅 {item.date}
-                   </td> */}
-                   <td className="text-center">
-  {new Date(
-    item.date.replace(/(\d+)(st|nd|rd|th)/, "$1")
-  ) < new Date().setHours(0, 0, 0, 0) ? (
-    <>
-    <span className="btn btn-outline-primary btn-sm fw-semibold"  style={{
-          borderRadius: "20px",
-          minWidth: "120px",
-        }}>
-      📅 {item.date}</span>
-       <span className="ms-4" style={{ color: "green", fontWeight: "bold" }}>
-        Class completed  <i class="fa-regular fa-square-check" style={{ color: "green", fontSize:"16px" }}></i>
-      </span>
-      </>
-   
+                  <td className="text-center">
+  {Array.isArray(item.topic) ? (
+    <ul className="mb-0 ps-3 text-center">
+      {item.topic.map((point, index) => (
+        <li key={index}>{point}</li>
+      ))}
+    </ul>
   ) : (
-    <>
-      <a
+    item.topic
+  )}
+</td>
+ {/* <td>{item.topic}</td> */}
+<td><a
         href="https://us06web.zoom.us/j/84936152756?pwd=WSO7dSppgmamC8XSYaqLWYfHcbGos0.1"
         target="_blank"
         rel="noopener noreferrer"
@@ -729,33 +339,8 @@ if (!showBatch) {
           minWidth: "120px",
         }}
       >
-        📅 {item.date}
-      </a>
-
-      <span className="ms-3" >
-        <i className="fa-regular fa-hand-point-left me-2"></i>
-        Click Here
-      </span>
-    </>
-  )}
-</td>
-                  {/* <td className="text-center">
-                    <a
-                      href="https://us06web.zoom.us/j/81195469231?pwd=V4qbcBkBRS2wa1BjOuobmIuiS48AvO.1"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline-primary btn-sm fw-semibold"
-                      style={{
-                        borderRadius: "20px",
-                        minWidth: "120px",
-                      }}
-                    >
-                      📅 {item.date}
-                    </a>
-                    <span className="ms-3">
-                      <i className="fa-regular fa-hand-point-left me-2"></i>Click Here{" "}
-                    </span>
-                  </td> */}
+        Click Here to Join Class
+      </a></td>               
                 </tr> 
               ))} 
             </tbody>
@@ -765,5 +350,4 @@ if (!showBatch) {
     </div>
   );
 };
-
 export default Classschedule;

@@ -38,6 +38,7 @@ import Resetpassword from './Components/Fotgotpassword/Resetpassword';
  import Cryptodetails from "./Components/CourseDetails/Cryptodetails";
  import Affiliatecourses from './Components/Affiliatecourses';
  import Registerbyparent from './Components/Userdashboard/Registerbyparent';
+ import JoinPopup from "./Components/JoinPopup";
 //  import Depositform from "./Components/Userdashboard/P2P/Depositform";
 //  import Sellordercreate from './Components/Userdashboard/P2P/Sellordercreate';
 //  import Buyusdt from './Components/Userdashboard/P2P/Buyusdt';
@@ -57,7 +58,7 @@ function App() {
   return (
     <>
       <Router>
-     
+      <JoinPopup />
       {/* <Nav /> */}
         <Routes>
         <Route path="/" element={<Userlayout><Homepage /></Userlayout>} />

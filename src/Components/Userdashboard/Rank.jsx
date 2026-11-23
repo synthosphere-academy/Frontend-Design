@@ -12,8 +12,8 @@ const Rank = () => {
   const userId = sessionStorage.getItem("userid");
 
   const tableData = [
-    { no: 1, name: "Class 1", team: "3 Direct", point: "1-5,000", reward: "Customized back cover" },
-    { no: 2, name: "Class 2", team: "50 team + 10 Direct", point: "5,001-15,000", reward: "Dinner set" },
+    { no: 1, name: "Class 1", team: "3 Direct", point: "1-5,000", reward: "Educational KIT" },
+    { no: 2, name: "Class 2", team: "50 team + 10 Direct", point: "5,001-15,000", reward: "Boat Airdops" },
     { no: 3, name: "Class 3", team: "100 team + 15 Direct", point: "15,000-50,000", reward: "Smart watch" },
     { no: 4, name: "Class 4", team: "200 team + 20 Direct", point: "50,001-1,00,000", reward: "Titan fastrack watch" },
     { no: 5, name: "Class 5", team: "500 team + 25 Direct", point: "1,00,001-3,00,000", reward: "Tab" },
