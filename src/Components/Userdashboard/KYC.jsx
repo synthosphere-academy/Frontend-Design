@@ -64,10 +64,24 @@ const KYC = () => {
     fetchBankDetails();
   }, [ROOT_URL, userId]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+const handleChange = (e) => {
+  const { name, value } = e.target;
 
+  if (name === "ifscCode") {
+    setFormData({
+      ...formData,
+      ifscCode: value.toUpperCase().replace(/[^A-Z0-9]/g, ""),
+    });
+  } else {
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  }
+};
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
@@ -311,7 +325,7 @@ const KYC = () => {
             />
           </div>
 
-          <div className="col-md-6">
+          {/* <div className="col-md-6">
             <label className="form-label">IFSC Code</label>
             <input
               type="text"
@@ -320,7 +334,19 @@ const KYC = () => {
               value={formData.ifscCode}
               onChange={handleChange}
             />
-          </div>
+          </div> */}
+          <div className="col-md-6">
+  <label className="form-label">IFSC Code</label>
+  <input
+    type="text"
+    name="ifscCode"
+    className="form-control"
+    value={formData.ifscCode}
+    onChange={handleChange}
+    maxLength={11}
+    placeholder="Enter IFSC Code"
+  />
+</div>
 
           <div className="col-md-6">
             <label className="form-label">Upload Passbook Photo</label>

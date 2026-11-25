@@ -73,22 +73,22 @@ const Affiliatecourses = () => {
   };
 
   const courses = [
-    {
-      name: "Learner Course",
-      price: " 1770",
-      subcription: "One Month",
-      paymentUrl: "https://rzp.io/rzp/snXe9FQ",
-      points: "1500",
-      features: [
-        "Basic Crypto Knowledge",
-        "Basic Buy/Sell On Centralised Exchange",
-        "Crypto Sip Guide",
-        "Portfolio Management Guide",
-        "One Month Spot Call",
-        "Basic Fundamental Analysis, Technical Analysis",
-        "Online Educational Videos",
-      ],
-    },
+    // {
+    //   name: "Learner Course",
+    //   price: " 1770",
+    //   subcription: "One Month",
+    //   paymentUrl: "https://rzp.io/rzp/snXe9FQ",
+    //   points: "1500",
+    //   features: [
+    //     "Basic Crypto Knowledge",
+    //     "Basic Buy/Sell On Centralised Exchange",
+    //     "Crypto Sip Guide",
+    //     "Portfolio Management Guide",
+    //     "One Month Spot Call",
+    //     "Basic Fundamental Analysis, Technical Analysis",
+    //     "Online Educational Videos",
+    //   ],
+    // },
     {
       name: "Master Course",
       price: " 3540",
@@ -192,19 +192,7 @@ const Affiliatecourses = () => {
         "DEX & CEX Arbitrage Model",
       ],
     },
-    {
-      name: "Expert Advice",
-      subcription: "One Month",
-      price: "1180",
-      points: "1000",
-      features: [
-        "Trading with Expert",
-        "Scalping trading with Expert",
-        "Full Expert Guidance",
-        
-      ],
-    },
-    {
+     {
       name: "Classic Traders",
       subcription: "One Month",
       price: "708",
@@ -217,6 +205,19 @@ const Affiliatecourses = () => {
         "Live full trading strategy"
       ],
     },
+    {
+      name: "Expert Advice",
+      subcription: "One Month",
+      price: "1180",
+      points: "1000",
+      features: [
+        "Trading with Expert",
+        "Scalping trading with Expert",
+        "Full Expert Guidance",
+        
+      ],
+    },
+   
     // {
     //   name: "Pro Teacher Course",
     //   price: " 59000",
