@@ -1,168 +1,183 @@
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import "../../Css/genealogytree.css";
 import user from "../../Images/userphoto.png";
+
 const Genealogytree = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState([]);
-  // const [searchUserId, setSearchUserId] = useState("");
+  const [rootUserId, setRootUserId] = useState(null);
+
   const ROOT_URL = import.meta.env.VITE_LOCALHOST_URL;
-   const [rootUserId, setRootUserId] = useState(null);
-const [searchUser, setSearchUser] = useState("");
-const [searchResults, setSearchResults] = useState([]);
- const userId_user = sessionStorage.getItem("userid"); 
+
+  // Rank calculation based on Direct Team
+  const getRank = (totalUsers = 0) => {
+    if (totalUsers >= 60) {
+      return { level: "Blue Diamond", color: "#4169E1" };
+    } else if (totalUsers >= 50) {
+      return { level: "Diamond", color: "#964bbf" };
+    } else if (totalUsers >= 40) {
+      return { level: "Platinum", color: "#6d94c7" };
+    } else if (totalUsers >= 30) {
+      return { level: "Gold", color: "#FFD700" };
+    } else if (totalUsers >= 20) {
+      return { level: "Silver", color: "#C0C0C0" };
+    } else if (totalUsers >= 10) {
+      return { level: "Bronze", color: "#CD7F32" };
+    }
+
+    return { level: "Normal", color: "#3fc83f" };
+  };
+
+  // Color based on totalSelfPoints and rank
+  const getUserColor = (totalSelfPoints, totalUsers) => {
+    if (totalSelfPoints === 0) {
+      return "#d82a2a"; // Red
+    }
+
+    if (totalUsers >= 10) {
+      return getRank(totalUsers).color;
+    }
+
+    return "#3fc83f"; // Green
+  };
+
   const fetchUserTree = async (userId, isBack = false) => {
     if (!userId) return;
 
     try {
       setLoading(true);
-       // Save current user to history (only when going forward)
-    if (!isBack && data?.mainUser) {
-      setHistory((prev) => [...prev, data.mainUser]);
-    }
-      const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
-      console.log(response.data.data);
-      setData(response.data.data); // API returns { mainUser, referredUsers }
-      setLoading(false);
+
+      if (!isBack && data?.mainUser) {
+        setHistory((prev) => [...prev, data.mainUser]);
+      }
+
+      const response = await axios.get(
+        `${ROOT_URL}/api/referral/${userId}`
+      );
+
+      setData(response.data.data);
     } catch (error) {
       console.error("Error fetching referral data:", error);
       swal("Oops!", "Failed to load genealogy data", "error");
+    } finally {
       setLoading(false);
     }
   };
 
-
-const handleSearch = async (value) => {
-  setSearchUser(value);
-
-  if (!value.trim()) {
-    setSearchResults([]);
-    return;
-  }
-
-  try {
-    const response = await axios.post(
-      `${ROOT_URL}/api/referral/searchtree`,
-      {
-        query: value,
-      }
-    );
-
-    setSearchResults(response.data.data || []);
-  } catch (error) {
-    console.error(error);
-  }
-};
   // Initial Load
   useEffect(() => {
-     const userId = sessionStorage.getItem("userid"); 
-     setRootUserId(userId);
+    const userId = sessionStorage.getItem("userid");
+
+    setRootUserId(userId);
     fetchUserTree(userId);
   }, []);
-    const handleGoToTop = () => {
+
+  // Go to root user
+  const handleGoToTop = () => {
     if (rootUserId) {
+      setHistory([]);
       fetchUserTree(rootUserId);
     } else {
       swal("Error", "Root user not found.", "error");
     }
   };
 
-//   const handleSearch = () => {
-//   if (!searchUserId.trim()) {
-//     swal("Error", "Please enter User ID", "error");
-//     return;
-//   }
-
-//   fetchUserTree(searchUserId);
-// };
-
-const handleSelectUser = (user) => {
-  setSearchUser(`${user.name}`);
-  setSearchResults([]);
-
-  fetchUserTree(user.userId);
-};
+  // Go Back
   const handleGoBack = () => {
-  if (history.length === 0) return;
+    if (history.length === 0) return;
 
-  const lastUser = history[history.length - 1];
+    const lastUser = history[history.length - 1];
 
-  setHistory((prev) => prev.slice(0, -1)); // remove last
-  fetchUserTree(lastUser.userId, true); // go back
-};
+    setHistory((prev) => prev.slice(0, -1));
+    fetchUserTree(lastUser.userId, true);
+  };
 
-  if (loading) return <div className="text-center mt-5">Loading genealogy...</div>;
-  if (!data) return <div className="text-center mt-5">No data found.</div>;
+  if (loading) {
+    return (
+      <div className="text-center mt-5">
+        Loading genealogy...
+      </div>
+    );
+  }
 
-  // Determine parent background color
-  const parentBgColor =  data?.mainUser?.totalSelfPoints === 0 ? "#d82a2a" : "#3fc83f";;
+  if (!data) {
+    return (
+      <div className="text-center mt-5">
+        No data found.
+      </div>
+    );
+  }
+
+  const parentTotalUsers = data.mainUser.totalReferralId || 0;
+
+  const parentRank = getRank(parentTotalUsers);
+
+  const parentBgColor = getUserColor(
+    data.mainUser.totalSelfPoints,
+    parentTotalUsers
+  );
 
   return (
     <div className="genealogy-container">
-  
-{/* <div className="position-relative mb-3">
-  <input
-    type="text"
-    className="form-control"
-    placeholder="Search Name or User ID"
-    value={searchUser}
-    onChange={(e) => handleSearch(e.target.value)}
-  />
 
-  {searchResults.length > 0 && (
-    <div
-      className="border bg-white position-absolute w-100"
-      style={{
-        zIndex: 1000,
-        maxHeight: "250px",
-        overflowY: "auto",
-      }}
-    >
-      {searchResults.map((user) => (
-        <div
-          key={user.userId}
-          className="p-2 border-bottom"
-          style={{
-            cursor: "pointer",
-          }}
-          onClick={() => handleSelectUser(user)}
+      {/* Buttons */}
+      <div className="d-flex gap-2">
+        <button
+          className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white"
+          style={{ backgroundColor: "#9a357f" }}
+          onClick={handleGoBack}
+          disabled={history.length === 0}
         >
-          <strong>{user.name}</strong>
-         
-        
-        </div>
-      ))}
-    </div>
-  )}
-</div> */}
-    <div className="d-flex gap-2">
-    <button
-    className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white"
-    style={{ backgroundColor: "#9a357f" }}
-    onClick={handleGoBack}
-    disabled={history.length === 0}
-  >
-    ⬅ Back
-  </button>
- <button className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white" style={{backgroundColor:"#9a357f"}}  onClick={handleGoToTop} >
-            Extreme top
-          </button>
-           
-    </div>
-   
-      
+          ⬅ Back
+        </button>
+
+        <button
+          className="btn mt-1 mb-4 w-lg-25 w-sm-100 text-white"
+          style={{ backgroundColor: "#9a357f" }}
+          onClick={handleGoToTop}
+        >
+          Extreme top
+        </button>
+      </div>
+
       {/* Parent Node */}
       <div className="parent-node">
-        <div
-           className="d-flex flex-column align-items-center "
-        
-        >
-        <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: parentBgColor, color: "#fff" }}/>
-          <h5 className="fw-bold">{data.mainUser.name}</h5>
+        <div className="d-flex flex-column align-items-center">
+
+          <img
+            src={user}
+            width="70px"
+            style={{
+              borderRadius: "35px",
+              backgroundColor: parentBgColor,
+              color: "#fff",
+            }}
+          />
+
+          <h5 className="fw-bold">
+            {data.mainUser.name}
+          </h5>
+
+          {/* {parentTotalUsers >= 10 && (
+            <span
+              style={{
+                color: parentRank.color,
+                fontWeight: "bold",
+              }}
+            >
+              {parentRank.level}
+            </span>
+          )} */}
+
+          {/* <p>
+            Direct Team: {parentTotalUsers}
+          </p> */}
+
           <p>{data.mainUser.userId}</p>
-          {/* <p>Status: {data.mainUser.status}</p> */}
         </div>
       </div>
 
@@ -171,43 +186,117 @@ const handleSelectUser = (user) => {
 
       {/* Child Nodes */}
       <div className="child-nodes">
-        {data.referredUsers && data.referredUsers.length > 0 ? (
-          data.referredUsers.map((ref, index) => {
-            const bgColor = ref?.totalSelfPoints === 0 ? "#d82a2a" :"#3fc83f" ;
+
+        {data.referredUsers &&
+        data.referredUsers.length > 0 ? (
+          data.referredUsers.map((ref) => {
+            const totalUsers = ref.totalReferralId || 0;
+
+            const rank = getRank(totalUsers);
+
+            const bgColor = getUserColor(
+              ref.totalSelfPoints,
+              totalUsers
+            );
 
             return (
               <div
-                key={index}
-                  className="d-flex flex-column align-items-center "
+                key={ref.userId}
+                className="d-flex flex-column align-items-center"
                 onClick={() => fetchUserTree(ref.userId)}
+                style={{ cursor: "pointer" }}
               >
-             <img src={user} width="70px" style={{borderRadius:"35px" ,backgroundColor: bgColor, color: "#fff" }}/>
-                <h5 className="fw-bold mt-1">{ref.name}</h5>
-                {ref.courseStatus === "active" && (
-                  <span style={{fontSize: "15px" }}>⭐</span>
-                  
-                  )}
 
-                  {ref.courseStatus === "expired" && (
-                      <i class="fa-regular fa-star-half" style={{color:"#e0bc38"}}></i>
-                  
-                  )}
-                  {ref.courseStatus === "none" && (
-                    <span style={{fontSize: "15px" }}></span>
-                  )}
-                {/* <p>Status: {ref.status}</p> */}
+                <img
+                  src={user}
+                  width="70px"
+                  style={{
+                    borderRadius: "35px",
+                    backgroundColor: bgColor,
+                    color: "#fff",
+                  }}
+                />
+
+                <h5 className="fw-bold mt-1">
+                  {ref.name}
+                </h5>
+
+                {/* {totalUsers >= 10 && (
+                  <span
+                    style={{
+                      color: rank.color,
+                      fontWeight: "bold",
+                      fontSize: "14px",
+                    }}
+                  >
+                    {rank.level}
+                  </span>
+                )} */}
+
+                {/* Course Status */}
+                {ref.courseStatus === "active" && (
+                  <span style={{ fontSize: "15px" }}>
+                    ⭐
+                  </span>
+                )}
+
+                {ref.courseStatus === "expired" && (
+                  <i
+                    className="fa-regular fa-star-half"
+                    style={{ color: "#e0bc38" }}
+                  ></i>
+                )}
+
+                {/* <p>
+                  Direct Team: {totalUsers}
+                </p> */}
+
                 <p>{ref.userId}</p>
               </div>
             );
           })
         ) : (
-          <p className="no-referrals">No referrals found</p>
+          <p className="no-referrals">
+            No referrals found
+          </p>
         )}
+
       </div>
+
+      {/* Rank Color Legend */}
+      <div className="rank-legend">
+        {/* <h5 className="fw-bold mb-3">
+          Color Legend
+        </h5> */}
+
+        {[
+          { name: "Active", color: "#3fc83f" },
+          { name: "Bronze", color: "#CD7F32" },
+          { name: "Silver", color: "#C0C0C0" },
+          { name: "Gold", color: "#FFD700" },
+          { name: "Platinum", color: "#6d94c7" },
+          { name: "Diamond", color: "#964bbf" },
+          { name: "Blue Diamond", color: "#4169E1" },
+          { name: "Inactive", color: "#d82a2a" },
+        ].map((rank) => (
+          <div
+            className="rank-legend-item"
+            key={rank.name}
+          >
+            <span
+              className="rank-color-box"
+              style={{
+                backgroundColor: rank.color,
+              }}
+            ></span>
+
+            <span>{rank.name}</span>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 };
 
 export default Genealogytree;
-
-
