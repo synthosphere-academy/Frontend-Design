@@ -49,16 +49,16 @@ const handleSocialClick = (platform, url) => {
     try {
       const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
       // setUsers(response.data.data);
-      const userData = response.data.data.referredUsers || [];
+      const totalUsers = response.data?.mainUser.scholarshipEligibleCount || [];
       console.log("directteam data:", response.data);
 
-      const activeUsers = userData.filter(
-        (user) => user.courseStatus === "active",
-      ).length;
-      const expiredUsers = userData.filter(
-        (user) => user.courseStatus === "expired",
-      ).length;
-       const totalUsers = activeUsers + expiredUsers;
+      // const activeUsers = userData.filter(
+      //   (user) => user.courseStatus === "active",
+      // ).length;
+      // const expiredUsers = userData.filter(
+      //   (user) => user.courseStatus === "expired",
+      // ).length;
+      //  const totalUsers = activeUsers + expiredUsers;
       // const totalUsers = 52
       ;
       let level = "Not Achieved";

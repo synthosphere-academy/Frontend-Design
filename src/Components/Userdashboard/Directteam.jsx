@@ -28,7 +28,7 @@ const Directteam = () => {
     try {
       const response = await axios.get(`${ROOT_URL}/api/referral/${userId}`);
 
-      const referredUsers = response.data.data?.referredUsers || [];
+      const referredUsers = response.data?.referredUsers || [];
 
       // Oldest user first based on createdAt
       const sortedUsers = [...referredUsers].sort(

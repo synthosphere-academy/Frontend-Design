@@ -58,8 +58,8 @@ const Genealogytree = () => {
       const response = await axios.get(
         `${ROOT_URL}/api/referral/${userId}`
       );
-
-      setData(response.data.data);
+      console.log("Fetched referral data:", response.data);
+      setData(response.data);
     } catch (error) {
       console.error("Error fetching referral data:", error);
       swal("Oops!", "Failed to load genealogy data", "error");
@@ -112,7 +112,7 @@ const Genealogytree = () => {
     );
   }
 
-  const parentTotalUsers = data.mainUser.totalReferralId || 0;
+  const parentTotalUsers = data.mainUser.scholarshipEligibleCount || 0;
 
   const parentRank = getRank(parentTotalUsers);
 
